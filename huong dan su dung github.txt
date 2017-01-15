@@ -1,0 +1,24 @@
+Github
+tro den thu muc 
+$ cd /volumes
+$ cd data
+$ cd github
+$ git config --global user.name "aceonlinevn"
+
+$ git config --global user.email "spacecowboyvn@gmail.com"
+
+clone: 
+$ git clone https://github.com/aceonlinevn/Doan.git
+
+Day noi dung len git:
+$ cd doan
+$ git add .
+$ git commit -m "them ghi chu"
+
+them tag cho git
+$ git tag nopbai
+$ git push origin master
+$ git push origin nopbai
+
+cap nhat 
+$ git pull
