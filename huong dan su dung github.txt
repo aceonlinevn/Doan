@@ -1,24 +1,28 @@
 Github
+B1: Tao thu muc Github trong o D
 tro den thu muc 
-$ cd /volumes
-$ cd data
+$ D:
 $ cd github
-$ git config --global user.name "aceonlinevn"
 
-$ git config --global user.email "spacecowboyvn@gmail.com"
+B2: thiet lap user name va email da tao tai github
+$ git config --global user.name “username”
+$ git config --global user.email “email”
 
-clone: 
+B3:Clone thu muc tren github ve may
 $ git clone https://github.com/aceonlinevn/Doan.git
+Den day vao kiem tra thu muc o D:\github da co data chua
 
 Day noi dung len git:
-$ cd doan
+$ cd doan //tro den thu muc do an
 $ git add .
 $ git commit -m "them ghi chu"
 
 them tag cho git
-$ git tag nopbai
-$ git push origin master
-$ git push origin nopbai
+$ git tag nopbai // co the khong can thiet
+$ git push origin nopbai //co the khong can thiet
+$ git push origin master //Day noi dung len github
 
-cap nhat 
+cap nhat noi dung tu github ve may
+B1: tro den thu muc D:\github\doan
+B2: Day noi dung ve:
 $ git pull
