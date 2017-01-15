@@ -1,4 +1,6 @@
-Github
+Tai git tai : https://git-scm.com/downloads
+Tao acc tại : https://github.com
+
 B1: Tao thu muc Github trong o D
 tro den thu muc 
 $ D:
