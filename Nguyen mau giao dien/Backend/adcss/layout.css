@@ -59,11 +59,11 @@
 	text-decoration:none;
 	list-style:none;
 }
-.menu ul li:active{
-	.menuchild ul: display:block;
-}
+
 .menuchild ul{
-	display:none;
+	padding-left:20px;
+	
+	margin:0px;
 }
 .view{
 	margin:20px 0px;
