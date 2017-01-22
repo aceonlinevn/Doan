@@ -34,19 +34,21 @@
 	
 }
 .menu h3{
+	font-weight: 300;
+}
+.menu a{
+	display: block;
 	font:normal 12px tahoma;
 	padding:8px 2px;
 	text-align:left;
 	border-bottom:1px solid #ddd;
 	color:#000;
-}
-
-.menu h3:hover{
-	background:#f9f9f9;
-	}
-.menu a{
 	text-decoration:none;
 }
+
+.menu a:hover{
+	background-color:#f9f9f9;
+	}
 .menu ul{
 	margin-right:0px;
 	margin-left:0px;
@@ -59,10 +61,15 @@
 	text-decoration:none;
 	list-style:none;
 }
-
-.menuchild ul{
+.has-sub>a{
+	cursor: pointer; 
+	background: url('../adimg/arrow_down.png') no-repeat right;
+}
+.menuchild{
+	display: none;
+}
+.menuchild li a{
 	padding-left:20px;
-	
 	margin:0px;
 }
 .view{
