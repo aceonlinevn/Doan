@@ -108,7 +108,7 @@
 }
 .content-box-header{
 	width:100%;
-	height:20px;
+	height:25px;
 	border-bottom:1px solid #ddd;
 	
 }
@@ -117,13 +117,17 @@
 }
 .content-box-left {
 	padding-left:10px;
-	line-height:20px;
+	line-height:25px;
 	float:left;
 }
 .content-box-right {
 	padding-right:10px;
-	line-height:20px;
+	line-height:25px;
 	float:right;
+}
+.content-full{
+    width: 970px;
+    float:none;
 }
 
 .odd{
@@ -133,11 +137,6 @@
 	text-align:center;
 	font-weight:bold;
 }
-
-
-
-
-
 
 .clr{
 	clear:both;
