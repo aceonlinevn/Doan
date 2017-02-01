@@ -45,6 +45,17 @@ public class ConfigObject implements Serializable{
 			putKeyrule(PRODUCT_COMPONENT, "component", "LK", (byte)6,null, (byte)1, "Linh kiện");
 			putKeyrule(PRODUCT_ACCESSORIES, "accessories", "PK", (byte)6,null, (byte)1, "Phụ kiện");
 		}
+		Config con = new Config();
+		ConfigObject item = con.getConfig();
+		this.version = item.getVersion();
+		this.company_name = item.getCompany_name();
+		this.company_tax_code = item.getCompany_tax_code();
+		this.company_phonenum = item.getCompany_phonenum();
+		this.company_address = item.getCompany_address();
+		this.company_national = item.getCompany_national();
+		this.company_currency = item.getCompany_currency();
+		this.config_lastmodified = "";
+		this.keyrule = item.getKeyrule();
 		
 	}
 	
