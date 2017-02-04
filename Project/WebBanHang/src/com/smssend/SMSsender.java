@@ -9,9 +9,9 @@ public class SMSsender {
 	static String messageString1 = "AT";
 	static String messageString2 = "AT+CPIN=\"7078\"";
 	static String messageString3 = "AT+CMGF=1";
-	//static String messageString4 = "AT+CMGS=\"+841292723597\"";
+	static String messageString4 = "AT+CMGS=\"+841292723597\"";
 
-	//static String messageString5 = "Xin chao, Day la tin nhan thu nghiem cua chuc nang nhan tin tu dong";
+	static String messageString5 = "Xin chao, Day la tin nhan thu nghiem cua chuc nang nhan tin tu dong";
 	static SerialPort serialPort;
 	static OutputStream outputStream;
 	static InputStream inputStream;
@@ -19,9 +19,7 @@ public class SMSsender {
 
 	static char CTRLZ = 26;
 
-	
-	public boolean SendSms(String phonenum, String messagetext) {
-		boolean flag = true;
+	public static void main(String[] args) throws InterruptedException {
 		portList = CommPortIdentifier.getPortIdentifiers();
 
 		while (portList.hasMoreElements()) {
@@ -34,22 +32,19 @@ public class SMSsender {
 					try {
 						serialPort = (SerialPort) portId.open("COM4", 2000);
 					} catch (PortInUseException e) {
-						System.out.println("Cant open port ");
-						flag = false;
+						System.out.println("err");
 					}
 					try {
 						outputStream = serialPort.getOutputStream();
 						inputStream = serialPort.getInputStream();
 					} catch (IOException e) {
 						e.printStackTrace();
-						flag = false;
 					}
 					try {
 						serialPort.setSerialPortParams(9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 								SerialPort.PARITY_NONE);
 					} catch (UnsupportedCommOperationException e) {
 						e.printStackTrace();
-						flag = false;
 					}
 					try {
 
@@ -64,38 +59,28 @@ public class SMSsender {
 						Thread.sleep(100);
 						outputStream.flush();
 
-						outputStream.write(("\""+phonenum +"\"" + enter).getBytes());
+						outputStream.write((messageString4 + enter).getBytes());
 
 						Thread.sleep(100);
 						outputStream.flush();
 
-						outputStream.write((messagetext + CTRLZ).getBytes());
+						outputStream.write((messageString5 + CTRLZ).getBytes());
 
 						outputStream.flush();
 						Thread.sleep(100);
 
-						System.out.println("Sms send success to " + phonenum);
+						System.out.println("Wyslano wiadomosc");
 						Thread.sleep(3000);
 
 						outputStream.close();
 						serialPort.close();
-						System.out.println("Port closed");
+						System.out.println("Port COM zamkniety");
 
 					} catch (IOException e) {
 						e.printStackTrace();
-						flag = false;
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						flag = false;
 					}
 				}
 			}
 		}
-		return flag;
-	}
-	
-	public static void main(String[] args) throws InterruptedException {
-		
 	}
 }
