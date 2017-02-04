@@ -19,8 +19,6 @@ public class ConnectionPoolImpl implements ConnectionPool{
     //Doi tuong luu tru cac ket noi
     private Stack pool;
 
-    
-    
 	public ConnectionPoolImpl() {
 		//Xác ðinh thông tin tai khoan
         this.username = "root";
@@ -30,7 +28,7 @@ public class ConnectionPoolImpl implements ConnectionPool{
         this.driver = "com.mysql.jdbc.Driver";
 
         //Xac dinh duong dan chay Mysql
-        this.url = "jdbc:mysql://localhost:3306/dacn_webbanhang";
+        this.url = "jdbc:mysql://localhost:3306/dacn_webbanhang?autoReconnect=true&useSSL=false";
 
         //Khoi tao bo nho lýu tru ket noi
         this.pool = new Stack();
@@ -77,5 +75,14 @@ public class ConnectionPoolImpl implements ConnectionPool{
         super.finalize();
 
         System.out.println("ConnectionPool is closed!");
+    }
+    public static void main(String[] args){
+    	ConnectionPool cp = new ConnectionPoolImpl();
+    	try {
+			cp.getConnection("User");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

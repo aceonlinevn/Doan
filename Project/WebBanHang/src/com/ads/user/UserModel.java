@@ -38,6 +38,9 @@ public class UserModel {
 				if (rs.next()) {
 					item = new UserObject();
 					item.setUserId(rs.getString("user_id"));
+					item.setUser_name(rs.getString("user_name"));
+					item.setUser_last_messased(rs.getString("user_last_messaged"));
+					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
 					item.setUser_password(rs.getString("user_password"));
 					item.setUser_address(rs.getString("user_address"));
@@ -47,7 +50,7 @@ public class UserModel {
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_note(rs.getString("user_note"));
-					item.setUser_permission(rs.getShort("user_permission"));
+					item.setUser_permission_id(rs.getShort("user_permission_id"));
 					
 					
 				}
@@ -58,9 +61,9 @@ public class UserModel {
 		return item;
 	}
 	
-	public ArrayList getUserObjects(UserObject similar, int page, byte total){
+	public ArrayList<UserObject> getUserObjects(UserObject similar, int page, byte total){
         //Danh sach doi tuong
-        ArrayList items = new ArrayList();//Mac dinh 10 ptu thieu thi cho them thua bo ra
+        ArrayList<UserObject> items = new ArrayList<UserObject>();//Mac dinh 10 ptu thieu thi cho them thua bo ra
         UserObject item = null;
 
         //Lay ban ghi nguoi su dung theo danh sach
@@ -71,6 +74,9 @@ public class UserModel {
                 while (rs.next()) {
                     item = new UserObject();
                     item.setUserId(rs.getString("user_id"));
+					item.setUser_name(rs.getString("user_name"));
+					item.setUser_last_messased(rs.getString("user_last_messaged"));
+					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
 					item.setUser_password(rs.getString("user_password"));
 					item.setUser_address(rs.getString("user_address"));
@@ -80,7 +86,7 @@ public class UserModel {
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_note(rs.getString("user_note"));
-					item.setUser_permission(rs.getShort("user_permission"));
+					item.setUser_permission_id(rs.getShort("user_permission_id"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }
@@ -97,8 +103,9 @@ public class UserModel {
 		UserModel u  = new UserModel(cp);
 		ArrayList<UserObject> listuser = u.getUserObjects(null, 1, (byte)10);
 		for(UserObject us:listuser){
-			System.out.print(us.getUserId());
-			System.out.print(us.getUser_username());
+			System.out.print(us.getUserId() + "   " + us.getUser_username() + "   " + us.getUser_name());
+			System.out.println();
+		
 			
 			
 		}

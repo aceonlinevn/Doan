@@ -15,12 +15,10 @@ public class UserImpl extends BasicImpl implements User {
 
 	@Override
 	public ResultSet getUser(int id) {
-		String sql = "SELECT u.userId,u.createDate,u.modifiedDate,u.screenName,u.emailAddress,u.greeting,u.firstName,u.lastName,u.middleName,u.lastLoginDate, u.facebookId, "
-				+ " u.lastLoginIp,u.loginDate,u.password_,u.status "
-				+ " FROM Liferay.User_ u INNER JOIN Liferay.Users_UserGroups g"
-				+ " ON u.userId = g.userId "
-				+ " WHERE g.userGroupId = '37737' "
-				+ " AND u.userId = ?";
+		String sql = "SELECT user_id,user_prefix,user_name,user_last_messaged,user_phonenumber,user_username,user_password,"
+				+ "user_address,user_email,user_birthdate,user_Lastlogined,user_isLogined,user_gender,user_note,user_permission_id "
+				+ " FROM dacn_webbanhang.user "
+				+ " WHERE u.userId = ?";
 		return this.get(sql, id);
 	}
 
@@ -28,18 +26,17 @@ public class UserImpl extends BasicImpl implements User {
 
 	@Override
 	public ResultSet getUsers(UserObject similar, int at, byte total) {
-		String sql = "SELECT u.userId,u.createDate,u.modifiedDate,u.screenName,u.emailAddress,u.greeting,u.firstName,u.lastName,u.middleName,u.lastLoginDate, u.facebookId, "
-				+ " u.lastLoginIp, u.loginDate,u.password_,u.status "
-				+ " FROM Liferay.User_ u INNER JOIN Liferay.Users_UserGroups g"
-				+ " ON u.userId = g.userId "
-				+ " WHERE g.userGroupId = '37737' ";
+		String sql = "SELECT user_id,user_prefix,user_name,user_last_messaged,user_phonenumber,user_username,user_password,"
+				+ "user_address,user_email,user_birthdate,user_Lastlogined,user_isLogined,user_gender,user_note,user_permission_id "
+				+ "FROM dacn_webbanhang.user "
+				+ "";
 
 		/*
 		 * //Lay dieu kien String conds=MakeConditions.createCondition(similar);
 		 * if(!conds.equalsIgnoreCase("")){ sql += "WHERE "+conds+" "; }
 		 */
 
-		sql += "ORDER BY u.emailAddress ASC ";
+		sql += " ORDER BY user_id ASC ";
 		sql += "LIMIT " + at + "," + total;
 		return this.gets(sql);
 	}
