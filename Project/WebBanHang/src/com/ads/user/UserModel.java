@@ -51,8 +51,6 @@ public class UserModel {
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
-					
-					
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -96,18 +94,4 @@ public class UserModel {
         }
         return items;
     }
-	
-	public static void main(String[] args){
-		
-		ConnectionPool cp = new ConnectionPoolImpl();
-		UserModel u  = new UserModel(cp);
-		ArrayList<UserObject> listuser = u.getUserObjects(null, 1, (byte)10);
-		for(UserObject us:listuser){
-			System.out.print(us.getUserId() + "   " + us.getUser_username() + "   " + us.getUser_name());
-			System.out.println();
-		
-			
-			
-		}
-	}
 }

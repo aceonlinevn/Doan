@@ -41,28 +41,6 @@ public class UserImpl extends BasicImpl implements User {
 		return this.gets(sql);
 	}
 
-	public static void main(String[] args) {
-		ConnectionPool cp = new ConnectionPoolImpl();
-		User u = new UserImpl(cp);
-
-		ResultSet rs = u.getUsers(null, 0, (byte) 10);
-		if (rs != null) {
-			try {
-				while (rs.next()) {
-					System.out.print(rs.getInt("userId") + "\t");
-					System.out.print(rs.getString("createDate") + "\t");
-					System.out.print(rs.getString("screenName") + "\t");
-					System.out.print(rs.getString("greeting") + "\t");
-					System.out.print(rs.getString("firstname") + "\t");
-					System.out.print(rs.getString("lastName") + "\t");
-					System.out.print(rs.getString("middleName") + "\t");
-					
-					System.out.print(rs.getString("emailAddress") + "\n");
-				}
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
+	
 
 }
