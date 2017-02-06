@@ -2,16 +2,16 @@ package com.object;
 
 
 public class UserObject {
-	private String userId;
+	private int userId;
 	private String user_prefix, user_name, user_last_messased, user_phonenum;
 	private String user_username,user_password,user_address,user_email,user_birthdate,user_lastlogined;
 	private boolean user_isloggined,user_gender;
 	private String user_note;
 	private int user_permission_id;
-	public UserObject(String userId, String user_prefix, String user_name, String user_last_messased,
-			String user_phonenum, String user_username, String user_password, String user_address, String user_email,
-			String user_birthdate, String user_lastlogined, boolean user_isloggined, boolean user_gender,
-			String user_note, int user_permission_id) {
+	public UserObject(int userId, String user_prefix, String user_name, String user_last_messased, String user_phonenum,
+			String user_username, String user_password, String user_address, String user_email, String user_birthdate,
+			String user_lastlogined, boolean user_isloggined, boolean user_gender, String user_note,
+			int user_permission_id) {
 		super();
 		this.userId = userId;
 		this.user_prefix = user_prefix;
@@ -32,10 +32,10 @@ public class UserObject {
 	public UserObject() {
 		super();
 	}
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUser_prefix() {
@@ -122,6 +122,7 @@ public class UserObject {
 	public void setUser_permission_id(int user_permission_id) {
 		this.user_permission_id = user_permission_id;
 	}
+	
 	
 	
 }

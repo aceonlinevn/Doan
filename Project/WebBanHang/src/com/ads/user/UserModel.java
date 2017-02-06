@@ -28,6 +28,47 @@ public class UserModel {
 
 	// ************************************************/
 
+	 public boolean addUser(UserObject item){
+	        return this.u.addUser(item);
+	    }
+
+	    public boolean editUser(UserObject item){
+	        return this.u.editUser(item);
+	    }
+
+	    public boolean delUser(UserObject item){
+	        return this.u.delUser(item);
+	    }
+	    
+	    public UserObject getUserObject(String username,String userpass){
+	        UserObject item = null;
+
+	        //Lay ban ghi nguoi su dung theo username userpass
+	        ResultSet rs = this.u.getUser(username,userpass);
+	        if(rs != null){
+	            try {
+	                if (rs.next()) {
+	                    item = new UserObject();
+	                    item.setUserId(rs.getInt("user_id"));
+						item.setUser_name(rs.getString("user_name"));
+						item.setUser_last_messased(rs.getString("user_last_messaged"));
+						item.setUser_phonenum(rs.getString("user_phonenumber"));
+						item.setUser_username(rs.getString("user_username"));
+						item.setUser_address(rs.getString("user_address"));
+						item.setUser_email(rs.getString("user_email"));
+						item.setUser_birthdate(rs.getString("user_birthdate"));
+						item.setUser_lastlogined(rs.getString("user_Lastlogined"));
+						item.setUser_isloggined(rs.getBoolean("user_isLogined"));
+						item.setUser_gender(rs.getBoolean("user_gender"));
+						item.setUser_note(rs.getString("user_note"));
+						item.setUser_permission_id(rs.getShort("user_permission_id"));
+	                }
+	            } catch (SQLException ex) {
+	                ex.printStackTrace();
+	            }
+	        }
+	        return item;
+	    }
 	public UserObject getUserObject(int id) {
 		UserObject item = null;
 
@@ -37,12 +78,11 @@ public class UserModel {
 			try {
 				if (rs.next()) {
 					item = new UserObject();
-					item.setUserId(rs.getString("user_id"));
+					item.setUserId(rs.getInt("user_id"));
 					item.setUser_name(rs.getString("user_name"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
-					item.setUser_password(rs.getString("user_password"));
 					item.setUser_address(rs.getString("user_address"));
 					item.setUser_email(rs.getString("user_email"));
 					item.setUser_birthdate(rs.getString("user_birthdate"));
@@ -71,12 +111,11 @@ public class UserModel {
             try {
                 while (rs.next()) {
                     item = new UserObject();
-                    item.setUserId(rs.getString("user_id"));
+                    item.setUserId(rs.getInt("user_id"));
 					item.setUser_name(rs.getString("user_name"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
-					item.setUser_password(rs.getString("user_password"));
 					item.setUser_address(rs.getString("user_address"));
 					item.setUser_email(rs.getString("user_email"));
 					item.setUser_birthdate(rs.getString("user_birthdate"));
