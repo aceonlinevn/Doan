@@ -1,9 +1,0 @@
-﻿/*Định dạng cho file user.html*/
-@import url('common.css');
-.userview{
-	width: 980px;
-	height: auto;
-	margin: 0 auto;
-	border: 1px solid #666;
-	background: #efefef;
-}

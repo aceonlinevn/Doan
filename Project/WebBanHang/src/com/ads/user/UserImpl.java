@@ -140,7 +140,7 @@ public class UserImpl extends BasicImpl implements User {
 		 if(!this.isEmpty(item)){
 	            return false;
 	        }
-	        String sql = "DELETE FROM tbluser WHERE user_id = ?";
+	        String sql = "DELETE FROM user WHERE user_id = ?";
 	        try {
 	            PreparedStatement preDel = this.con.prepareStatement(sql);
 	            preDel.setInt(1, item.getUserId());

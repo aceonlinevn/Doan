@@ -8,6 +8,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/cuongnguyen/Downloads/JSP CanvasJS Chart Samples/WebContent/WEB-INF/lib/javax.servlet-3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
