@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 //@WebServlet("UserView")
 public class UserView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
+
     /**
      * @see HttpServlet#HttpServlet()
      */

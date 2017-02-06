@@ -19,4 +19,14 @@
 			<servlet-name>UserView</servlet-name>
 			<url-pattern>/user/view</url-pattern>
 		</servlet-mapping>
+		<servlet>
+			<servlet-name>BillView</servlet-name>
+			<servlet-class>
+				com.ads.bill.BillView
+			</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>BillView</servlet-name>
+			<url-pattern>/bill/view</url-pattern>
+		</servlet-mapping>
 </web-app>

@@ -40,35 +40,7 @@ public class BillModel {
 	        return this.u.delBill(item);
 	    }
 	    
-	    public BillObject getBillObject(String Billname,String Billpass){
-	        BillObject item = null;
-
-	        //Lay ban ghi nguoi su dung theo Billname Billpass
-	        ResultSet rs = this.u.getBill(Billname,Billpass);
-	        if(rs != null){
-	            try {
-	                if (rs.next()) {
-	                    item = new BillObject();
-	                    item.setBillId(rs.getInt("Bill_id"));
-						item.setBill_name(rs.getString("Bill_name"));
-						item.setBill_last_messased(rs.getString("Bill_last_messaged"));
-						item.setBill_phonenum(rs.getString("Bill_phonenumber"));
-						item.setBill_Billname(rs.getString("Bill_Billname"));
-						item.setBill_address(rs.getString("Bill_address"));
-						item.setBill_email(rs.getString("Bill_email"));
-						item.setBill_birthdate(rs.getString("Bill_birthdate"));
-						item.setBill_lastlogined(rs.getString("Bill_Lastlogined"));
-						item.setBill_isloggined(rs.getBoolean("Bill_isLogined"));
-						item.setBill_gender(rs.getBoolean("Bill_gender"));
-						item.setBill_note(rs.getString("Bill_note"));
-						item.setBill_permission_id(rs.getShort("Bill_permission_id"));
-	                }
-	            } catch (SQLException ex) {
-	                ex.printStackTrace();
-	            }
-	        }
-	        return item;
-	    }
+	   
 	public BillObject getBillObject(int id) {
 		BillObject item = null;
 
@@ -78,19 +50,18 @@ public class BillModel {
 			try {
 				if (rs.next()) {
 					item = new BillObject();
-					item.setBillId(rs.getInt("Bill_id"));
-					item.setBill_name(rs.getString("Bill_name"));
-					item.setBill_last_messased(rs.getString("Bill_last_messaged"));
-					item.setBill_phonenum(rs.getString("Bill_phonenumber"));
-					item.setBill_Billname(rs.getString("Bill_Billname"));
-					item.setBill_address(rs.getString("Bill_address"));
-					item.setBill_email(rs.getString("Bill_email"));
-					item.setBill_birthdate(rs.getString("Bill_birthdate"));
-					item.setBill_lastlogined(rs.getString("Bill_Lastlogined"));
-					item.setBill_isloggined(rs.getBoolean("Bill_isLogined"));
-					item.setBill_gender(rs.getBoolean("Bill_gender"));
-					item.setBill_note(rs.getString("Bill_note"));
-					item.setBill_permission_id(rs.getShort("Bill_permission_id"));
+					item.setBill_id(rs.getInt("bill_id"));
+					item.setBill_prefix(rs.getString("bill_prefix"));
+					item.setBill_customer_id(rs.getInt("bill_customer_id"));
+					item.setBill_date_created(rs.getString("bill_date_created"));
+					item.setBill_payments(rs.getString("bill_payments"));
+					item.setBill_advance_payment(rs.getDouble("bill_advance_payment"));
+					item.setBill_owe(rs.getDouble("bill_owe"));
+					item.setBill_discount(rs.getInt("bill_discount"));
+					item.setBill_typeunitprice(rs.getInt("TypeUnitPrice"));
+					item.setBill_note(rs.getString("bill_note"));
+					item.setBill_total_amount(rs.getDouble("bill_Total_Amount"));
+					item.setBill_user_created_id(rs.getInt("bill_user_created_id"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -110,20 +81,19 @@ public class BillModel {
         if(rs != null){
             try {
                 while (rs.next()) {
-                    item = new BillObject();
-                    item.setBillId(rs.getInt("Bill_id"));
-					item.setBill_name(rs.getString("Bill_name"));
-					item.setBill_last_messased(rs.getString("Bill_last_messaged"));
-					item.setBill_phonenum(rs.getString("Bill_phonenumber"));
-					item.setBill_Billname(rs.getString("Bill_Billname"));
-					item.setBill_address(rs.getString("Bill_address"));
-					item.setBill_email(rs.getString("Bill_email"));
-					item.setBill_birthdate(rs.getString("Bill_birthdate"));
-					item.setBill_lastlogined(rs.getString("Bill_Lastlogined"));
-					item.setBill_isloggined(rs.getBoolean("Bill_isLogined"));
-					item.setBill_gender(rs.getBoolean("Bill_gender"));
-					item.setBill_note(rs.getString("Bill_note"));
-					item.setBill_permission_id(rs.getShort("Bill_permission_id"));
+                	item = new BillObject();
+					item.setBill_id(rs.getInt("bill_id"));
+					item.setBill_prefix(rs.getString("bill_prefix"));
+					item.setBill_customer_id(rs.getInt("bill_customer_id"));
+					item.setBill_date_created(rs.getString("bill_date_created"));
+					item.setBill_payments(rs.getString("bill_payments"));
+					item.setBill_advance_payment(rs.getDouble("bill_advance_payment"));
+					item.setBill_owe(rs.getDouble("bill_owe"));
+					item.setBill_discount(rs.getInt("bill_discount"));
+					item.setBill_typeunitprice(rs.getInt("TypeUnitPrice"));
+					item.setBill_note(rs.getString("bill_note"));
+					item.setBill_total_amount(rs.getDouble("bill_Total_Amount"));
+					item.setBill_user_created_id(rs.getInt("bill_user_created_id"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }

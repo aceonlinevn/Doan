@@ -6,12 +6,13 @@ public class BillObject {
 	private int bill_id,bill_customer_id,bill_user_created_id;
 	private String bill_prefix,bill_date_created,bill_payments;
 	private double bill_advance_payment,bill_owe;
-	private int bill_discount,bill_typeunitprice,bill_total_amount;
+	private int bill_discount,bill_typeunitprice;
+	private double bill_total_amount;
 	private String bill_note;
 	private ArrayList<BillDetailObject> items ;
 	public BillObject(int bill_id, int bill_customer_id, int bill_user_created_id, String bill_prefix,
 			String bill_date_created, String bill_payments, double bill_advance_payment, double bill_owe,
-			int bill_discount, int bill_typeunitprice, int bill_total_amount, String bill_note,
+			int bill_discount, int bill_typeunitprice, double bill_total_amount, String bill_note,
 			ArrayList<BillDetailObject> items) {
 		super();
 		this.bill_id = bill_id;
@@ -91,10 +92,10 @@ public class BillObject {
 	public void setBill_typeunitprice(int bill_typeunitprice) {
 		this.bill_typeunitprice = bill_typeunitprice;
 	}
-	public int getBill_total_amount() {
+	public double getBill_total_amount() {
 		return bill_total_amount;
 	}
-	public void setBill_total_amount(int bill_total_amount) {
+	public void setBill_total_amount(double bill_total_amount) {
 		this.bill_total_amount = bill_total_amount;
 	}
 	public String getBill_note() {

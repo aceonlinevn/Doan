@@ -24,15 +24,15 @@ public class BillControl {
 	}
 	// ************************************************/
 
-	public UserObject getUserObject(int id) {
-		return this.um.getUserObject(id);
+	public BillObject getBillObject(int id) {
+		return this.um.getBillObject(id);
 	}
 
 	// ************************************************/
-	public String viewUsers(UserObject similar, int page, byte total, UserObject user) {
+	public String viewBills(BillObject similar, int page, byte total, BillObject Bill) {
 		// Lay danh sach doi tuong
-		ArrayList items = this.um.getUserObjects(similar, page, total);
+		ArrayList items = this.um.getBillObjects(similar, page, total);
 
-		return BillLibrary.viewUser(items, user);
+		return BillLibrary.viewBill(items, Bill);
 	}
 }

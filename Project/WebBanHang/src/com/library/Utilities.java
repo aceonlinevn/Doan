@@ -1,7 +1,13 @@
 package com.library;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,8 +68,56 @@ public class Utilities {
 	        }
 	        return value;
 	}
+	
+	public static ArrayList<String> HTMLToServlet(String FILENAME){
+		ArrayList<String> line = new ArrayList<>();
+		BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+
+			fr = new FileReader(FILENAME);
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader(FILENAME));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				
+				sCurrentLine=sCurrentLine.replace((char)9, (char)00);
+				sCurrentLine = sCurrentLine.replace("\"", "\\\"" );
+		
+				//sCurrentLine = "\""+sCurrentLine + "\"";
+				line.add(sCurrentLine);
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}
+		return line;
+	}
 	public static void main(String[] args){
-		System.out.println(Utilities.getStringDateNow());
+		Utilities.HTMLToServlet("test.html");
 	}
 	
 }
