@@ -188,16 +188,20 @@ body{
 						.slcSearch{
 							display: table-cell;
 							width: 25%;
+							height: 33px;
 							cursor: pointer;
 							padding: 8.4px;
 							border: 1px solid $color_red;
 							background: #eee;
+							vertical-align: middle;
 							border-right: none !important;
 						}
 						.txtSearch{
 							width: 75%;
 							display: table-cell;
+							height: 33px;
 							padding: 10px;
+							vertical-align: middle;
 							border-left: none !important;
 							border-right: none !important;
 							border: 1px solid $color_red;
@@ -217,6 +221,8 @@ body{
 							position: relative;
 							background: $color_red;
 							.btnSearch{
+								vertical-align: middle;
+								height: 33px;
 								border: 1px solid $color_red;
 								cursor: pointer;
 								width: 100%;
@@ -300,12 +306,9 @@ body{
 	padding: 10px 0 !important;
 }
 .products{
-	width: 100%;
-	height: 277px;
-	float: left;
 	.product{
 		width: calc(16.6666667% - 2px);
-		height: 100%;
+		height: 277px;
 		overflow: hidden;
 		float: left;
 		border: 1px solid #ccc;
@@ -333,15 +336,20 @@ body{
 		}
 		.product-image{
 			padding: 0 10px;
+			img{
+				height: 123px;
+			}
 		}
 		.product-price{
 			padding:0 10px;
 			color: #000;
+			height: 23px;
 			font-weight: bold;
 			font-size: 18px;
 		}
 		.product-name{
 			padding: 0 10px;
+			height: 58px;
 			h2{
 				font-size: 13px;
 				padding: 5px !important;
@@ -349,19 +357,23 @@ body{
 			}
 		}
 		.product-add-cart{
+			height: 23px;
+			position: relative;
 			.product-stocking{
 				color: #0de400;
-				float: left;
 				display: inline-block;
 				padding: 3px 10px;
+				position: absolute;
+				left: 0;
 			}
 			a{
 				@include border-radius(3px);
 				display: inline-block;
 				padding: 4px;
 				margin: 3px;
+				right: 0;
+				position: absolute;
 				text-decoration: none;
-				float: right;
 				background: $color_blue;
 				color: #fff;
 				&:hover{
@@ -372,6 +384,8 @@ body{
 	}
 }
 .section{
+	width: 100%;
+	height: auto;
 	.section-title{
 		h3{
 			padding: 10px;
@@ -380,14 +394,15 @@ body{
 		}
 	}
 	.view-more{
-		width: 16%;
+		float: right;
+		width: 16.5%;
 		display: inline-block;
-		height: 277px;
+		height: 279px;
 		overflow: hidden;
 		transition: 0.5s;
 		box-shadow: 5px 5px 5px #ccc;
 		.view-more-img{
-			background-size: cover;
+			background-size: 100% 100%;
 			width: 100%;
 			height: 100%;
 			display: inline-block;
@@ -397,6 +412,7 @@ body{
 		}
 	}
 	.products{
+		float: left;
 		width: 83.3333333% !important;
 		position: relative;
 		.owl-prev{

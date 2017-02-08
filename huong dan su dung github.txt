@@ -1,4 +1,4 @@
-Tai git tai : https://git-scm.com/downloads
+﻿Tai git tai : https://git-scm.com/downloads
 Tao acc tại : https://github.com
 
 B1: Tao thu muc Github trong o D
@@ -22,6 +22,8 @@ $ git commit -m "them ghi chu"
 them tag cho git
 $ git tag nopbai // co the khong can thiet
 $ git push origin nopbai //co the khong can thiet
+git add *
+git commit -m "Ghi chú Commit"
 $ git push origin master //Day noi dung len github
 
 cap nhat noi dung tu github ve may

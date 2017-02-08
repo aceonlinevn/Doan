@@ -480,16 +480,20 @@ body {
 .content .sub-content .aside .tp-aside .form-area .frmSearch .slcSearch {
   display: table-cell;
   width: 25%;
+  height: 33px;
   cursor: pointer;
   padding: 8.4px;
   border: 1px solid #f00;
   background: #eee;
+  vertical-align: middle;
   border-right: none !important;
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch .txtSearch {
   width: 75%;
   display: table-cell;
+  height: 33px;
   padding: 10px;
+  vertical-align: middle;
   border-left: none !important;
   border-right: none !important;
   border: 1px solid #f00;
@@ -510,6 +514,8 @@ body {
   background: #f00;
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch .btnSearch-area .btnSearch {
+  vertical-align: middle;
+  height: 33px;
   border: 1px solid #f00;
   cursor: pointer;
   width: 100%;
@@ -588,14 +594,9 @@ body {
   padding: 10px 0 !important;
 }
 
-.products {
-  width: 100%;
-  height: 277px;
-  float: left;
-}
 .products .product {
   width: calc(16.6666667% - 2px);
-  height: 100%;
+  height: 277px;
   overflow: hidden;
   float: left;
   border: 1px solid #ccc;
@@ -625,25 +626,35 @@ body {
 .products .product .product-image {
   padding: 0 10px;
 }
+.products .product .product-image img {
+  height: 123px;
+}
 .products .product .product-price {
   padding: 0 10px;
   color: #000;
+  height: 23px;
   font-weight: bold;
   font-size: 18px;
 }
 .products .product .product-name {
   padding: 0 10px;
+  height: 58px;
 }
 .products .product .product-name h2 {
   font-size: 13px;
   padding: 5px !important;
   margin: 0px !important;
 }
+.products .product .product-add-cart {
+  height: 23px;
+  position: relative;
+}
 .products .product .product-add-cart .product-stocking {
   color: #0de400;
-  float: left;
   display: inline-block;
   padding: 3px 10px;
+  position: absolute;
+  left: 0;
 }
 .products .product .product-add-cart a {
   -moz-border-radius: 3px;
@@ -652,8 +663,9 @@ body {
   display: inline-block;
   padding: 4px;
   margin: 3px;
+  right: 0;
+  position: absolute;
   text-decoration: none;
-  float: right;
   background: #2a5099;
   color: #fff;
 }
@@ -661,21 +673,26 @@ body {
   background: #243a74;
 }
 
+.section {
+  width: 100%;
+  height: auto;
+}
 .section .section-title h3 {
   padding: 10px;
   text-align: left;
   text-transform: uppercase;
 }
 .section .view-more {
-  width: 16%;
+  float: right;
+  width: 16.5%;
   display: inline-block;
-  height: 277px;
+  height: 279px;
   overflow: hidden;
   transition: 0.5s;
   box-shadow: 5px 5px 5px #ccc;
 }
 .section .view-more .view-more-img {
-  background-size: cover;
+  background-size: 100% 100%;
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -684,6 +701,7 @@ body {
   box-shadow: none;
 }
 .section .products {
+  float: left;
   width: 83.3333333% !important;
   position: relative;
 }
