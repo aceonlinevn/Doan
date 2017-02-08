@@ -1,10 +1,7 @@
 package com.library;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,8 +66,7 @@ public class Utilities {
 	        return value;
 	}
 	
-	public static ArrayList<String> HTMLToServlet(String FILENAME){
-		ArrayList<String> line = new ArrayList<>();
+	public static void HTMLToServlet(String FILENAME){
 		BufferedReader br = null;
 		FileReader fr = null;
 
@@ -78,7 +74,11 @@ public class Utilities {
 
 			fr = new FileReader(FILENAME);
 			br = new BufferedReader(fr);
-
+			File file = new File("term.txt");
+			file.createNewFile();
+			 FileWriter fw = new FileWriter(file.getAbsoluteFile());
+	            BufferedWriter bw = new BufferedWriter(fw);
+			   
 			String sCurrentLine;
 
 			br = new BufferedReader(new FileReader(FILENAME));
@@ -88,10 +88,10 @@ public class Utilities {
 				sCurrentLine=sCurrentLine.replace((char)9, (char)00);
 				sCurrentLine = sCurrentLine.replace("\"", "\\\"" );
 		
-				//sCurrentLine = "\""+sCurrentLine + "\"";
-				line.add(sCurrentLine);
-				System.out.println(sCurrentLine);
+				sCurrentLine = "out.print(\""+sCurrentLine + "\");";
+				bw.write(sCurrentLine+"\n");
 			}
+			bw.close();
 
 		} catch (IOException e) {
 
@@ -114,10 +114,10 @@ public class Utilities {
 			}
 
 		}
-		return line;
+		
 	}
 	public static void main(String[] args){
-		Utilities.HTMLToServlet("test.html");
+		Utilities.HTMLToServlet("./adv/layout.html");
 	}
 	
 }

@@ -27,6 +27,9 @@ public class UserControl {
 	public UserObject getUserObject(int id) {
 		return this.um.getUserObject(id);
 	}
+	 public UserObject getUserObject(String username,String userpass){
+	        return this.um.getUserObject(username,userpass);
+	    }
 
 	// ************************************************/
 	public String viewUsers(UserObject similar, int page, byte total, UserObject user) {
@@ -35,4 +38,13 @@ public class UserControl {
 
 		return UserLibrary.viewUser(items, user);
 	}
+	public  static void main(String[] args){
+		ConnectionPool cp = new ConnectionPoolImpl();
+		UserControl uc = new UserControl(cp);
+		UserObject item = uc.getUserObject("admin2","admin2");
+		if(item!=null)
+		{
+			System.out.println(item.getUser_username());
+			}
+		}
 }

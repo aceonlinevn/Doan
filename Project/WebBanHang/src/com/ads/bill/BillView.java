@@ -37,11 +37,8 @@ public class BillView extends HttpServlet {
 		response.setContentType( "text/html" );
 		response.setCharacterEncoding( "UTF-8" );
 		PrintWriter out = response.getWriter();
-		ArrayList<String> lines = Utilities.HTMLToServlet(getServletContext().getRealPath("/")+"test.html");
-		
-		for(String line:lines){
-			out.write(line);
-		}
+		out.print("cộng hòa xã hội chủ nghĩa việt nam");
+	
 	}
 
 	/**
@@ -52,10 +49,7 @@ public class BillView extends HttpServlet {
 		doGet(request, response);
 	}
 	public static void main(String[] args){
-		ArrayList<String> lines = Utilities.HTMLToServlet("./src/com/ads/bill/test.html");
-		for(String line:lines){
-			System.out.println(line);
-		}
+		
 	}
 
 }

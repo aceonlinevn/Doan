@@ -50,7 +50,7 @@
 				</div><!-- end c-bt-header-->
 				<div class="r-bt-header">
 					<div class="login-area">
-						<a href="#" title="Đăng nhập"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
+						<a href="/WebBanHang/user/login" title="Đăng nhập"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
 						<a href="#" title="Đăng nhập"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
 					</div>
 					<div class="cart-area">
