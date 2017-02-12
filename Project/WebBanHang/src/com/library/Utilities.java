@@ -117,7 +117,7 @@ public class Utilities {
 		
 	}
 	public static void main(String[] args){
-		Utilities.HTMLToServlet("./adv/layout.html");
+		Utilities.HTMLToServlet("/Volumes/Data/github/Doan/Project/WebBanHang/WebContent/adv/layout.html");
 	}
 	
 }
