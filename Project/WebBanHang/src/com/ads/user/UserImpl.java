@@ -175,7 +175,7 @@ public class UserImpl extends BasicImpl implements User {
 	@Override
 	public ResultSet getUser(String username, String userpass) {
 		 String sql = "SELECT * FROM `dacn_webbanhang`.`user` WHERE ";
-	        sql += "user_username = ? and user_password = md5(?)";
+	        sql += "user_username = ? and user_password = ?";
 	        return this.get(sql, username, userpass);
 	}
 
