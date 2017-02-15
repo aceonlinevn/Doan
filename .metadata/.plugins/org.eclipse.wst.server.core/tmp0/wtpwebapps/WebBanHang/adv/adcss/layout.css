@@ -1,0 +1,155 @@
+@import url('common.css');
+.main{
+	width:1200px;
+	height:auto;
+	margin:0 auto;
+}
+.logo{
+	width:500px;
+	height:60px;
+	background:#666;
+	float:left;
+}
+.acc{
+	width:560px;
+	height:60px;
+	background:#aaa;
+	float:right;
+	font-weight:bold;
+}
+.acc h3{
+	font:bold 12px tahoma;
+	color:#fff;
+	text-transform:uppercase;
+	padding: 5px;
+	margin-bottom:8px;
+	background:#555;
+}
+.menu{
+	margin:20px 0px;
+	width:190px;
+	height:auto;
+	background:#efefff;
+	float:left;
+	
+}
+.menu h3{
+	font-weight: 300;
+}
+.menu a{
+	display: block;
+	font:normal 12px tahoma;
+	padding:8px 2px;
+	text-align:left;
+	border-bottom:1px solid #ddd;
+	color:#000;
+	text-decoration:none;
+}
+
+.menu a:hover{
+	background-color:#f9f9f9;
+	}
+.menu ul{
+	margin-right:0px;
+	margin-left:0px;
+	padding-left:0px;
+}
+.menu ul li{
+	margin-right:0px;
+	margin-left:0px;
+	width:100%;
+	text-decoration:none;
+	list-style:none;
+}
+.has-sub>a{
+	cursor: pointer; 
+	background: url('../adimg/arrow_down.png') no-repeat right;
+}
+.menuchild{
+	display: none;
+}
+.menuchild li a{
+	padding-left:20px;
+	margin:0px;
+}
+.view{
+	margin:20px 0px;
+	width:1000px;
+	height:auto;
+	float:right;
+	
+}
+.view table{
+	border-left:1px solid #ddd;
+	border-top:1px solid #ddd;
+}
+
+.view table th, .view table td{
+	border-right:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	
+}
+.view-header{
+	text-align:left;
+}
+.view-content{
+	height:700px;
+	border:solid 1px #c1c1c1;
+	text-align:left;
+	padding:8px;
+}
+.view-content-box{
+	width:479px;
+	min-height:90px;
+	margin:5px;
+	float:left;
+	border:1px solid #ddd;
+
+}
+.content-box-header{
+	width:100%;
+	height:25px;
+	border-bottom:1px solid #ddd;
+	
+}
+.content-box-body{
+	padding-left:10px;
+}
+.content-box-left {
+	padding-left:10px;
+	line-height:25px;
+	float:left;
+}
+.content-box-right {
+	padding-right:10px;
+	line-height:25px;
+	float:right;
+}
+.content-full{
+    width: 970px;
+    float:none;
+}
+
+.odd{
+	background:#efefef;
+}
+.NO, .NB, .ED, .ID{
+	text-align:center;
+	font-weight:bold;
+}
+
+.clr{
+	clear:both;
+}
+.footer{
+	height:auto;
+	padding:10px;
+	color:#fff;
+	font-weight:bold;
+	background:#666;
+	font-size:10px;
+}
+
+.tblae{
+	background:#ddd;
+}
