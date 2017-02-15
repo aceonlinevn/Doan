@@ -5,6 +5,7 @@ $color_blue: #2a5099;
 $color_blue_hover:#243a74;
 @import "compass/css3";
 @import "nivo-slider.css"; 
+@import "common.css"; 
 @import "default.css";
 @import "owl.carousel.css";
 @import "owl.theme.css";
@@ -181,30 +182,38 @@ body{
 				height: auto;
 				float: left;
 				.form-area{
-					width: 33%;
+					width: 40%;
 					float: left;
 					.frmSearch{
 						display: table;
+						width: 100%;
+						border: 1px solid $color_red;
 						.slcSearch{
 							display: table-cell;
 							width: 25%;
 							height: 33px;
 							cursor: pointer;
 							padding: 8.4px;
-							border: 1px solid $color_red;
+							border: 1px solid transparent;
+							float: left;
 							background: #eee;
 							vertical-align: middle;
 							border-right: none !important;
 						}
 						.txtSearch{
-							width: 75%;
-							display: table-cell;
+							width: 65%;
+							float: left;
 							height: 33px;
-							padding: 10px;
+							display: table-cell;
+							padding: 0 10px;
+							outline: none;
 							vertical-align: middle;
 							border-left: none !important;
 							border-right: none !important;
-							border: 1px solid $color_red;
+							-webkit-box-sizing: border-box;
+							   -moz-box-sizing: border-box;
+							        box-sizing: border-box;
+							border: none;
 							-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 							        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 							-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -215,6 +224,7 @@ body{
           					box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 5px $color_red_hover;
 						}
 						.btnSearch-area{
+							float: left;
 							width: 10%;
 							height: auto;
 							display: table-cell;
@@ -223,7 +233,7 @@ body{
 							.btnSearch{
 								vertical-align: middle;
 								height: 33px;
-								border: 1px solid $color_red;
+								border: 1px solid transparent;
 								cursor: pointer;
 								width: 100%;
 								padding: 10px 0;
@@ -247,7 +257,7 @@ body{
 					font-family: Myriad Pro Condensed;
 				}
 				.nav{
-					width: 67%;
+					width: 60%;
 					float: left;
 				}
 				.support-number{
@@ -306,6 +316,7 @@ body{
 	padding: 10px 0 !important;
 }
 .products{
+	float: left;
 	.product{
 		width: calc(16.6666667% - 2px);
 		height: 277px;
@@ -314,6 +325,14 @@ body{
 		border: 1px solid #ccc;
 		border-left: none !important;
 		transition: 0.25s;
+		&:after{
+			visibility: hidden;
+			 display: block;
+			 font-size: 0;
+			 content: " ";
+			 clear: both;
+			 height: 0;
+		}
 		&:hover{
 			box-shadow: -2px -2px 2px #ccc;
 		    -moz-box-shadow: -2px -2px 2px #ccc;
@@ -380,6 +399,66 @@ body{
 					background: $color_blue_hover;
 				}
 			}
+		}
+		.product-hover{
+			position: absolute !important;
+			opacity: 1 !important;
+		    z-index: 999 !important;
+		    background: white;
+		    border: solid 1px #333;
+		    width: 377px;
+		    box-shadow: 0 0 7px #333;
+		    display: none;
+		    padding-bottom: 10px;
+		    text-align: left;
+		    .title-hover{
+		    	color: $color_red;
+		    	font-weight: bold;
+		    	font-size: 13px;
+		    	padding: 5px 10px 0 10px;
+		    	border-top: 1px solid #ccc;
+		    }
+		    .product-name-hover{
+		    	font-weight: bold;
+		    	font-size: 13px;
+		    	padding: 5px;
+		    	color: #fff;
+		    	text-transform: uppercase;
+		    	background-color: $color_red;
+		    }
+		    .product-price-hover{
+		    	width: 100%;
+		    	float: left;
+		    	.price-text{
+					width: 77px;
+					float: left;
+					text-align: left;
+					padding: 10px 0 10px 10px;
+					font-weight: bold;
+					font-size: 13px;
+		    	}
+		    	.img_price{
+		    		width: 290px;
+		    		float: left;
+		    	}
+		    }
+		    .product-warranty{
+		    	font-weight: bold;
+				font-size: 13px;
+				padding: 10px 0 10px 10px;
+		    }
+		    .product-sumary{
+				p{
+					padding-left: 15px;
+					line-height: 1.4;
+				}
+		    }
+		    .product-saleoff{
+		    	p{
+					padding-left: 15px;
+					line-height: 1.4;
+				}
+		    }
 		}
 	}
 }
