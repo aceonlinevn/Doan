@@ -604,9 +604,6 @@ body {
   padding: 10px 0 !important;
 }
 
-.products {
-  float: left;
-}
 .products .product {
   width: calc(16.6666667% - 2px);
   height: 277px;
@@ -660,6 +657,14 @@ body {
 .products .product .product-name {
   padding: 0 10px;
   height: 58px;
+}
+.products .product .product-name:before {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 .products .product .product-name h2 {
   font-size: 13px;
