@@ -316,7 +316,7 @@ body {
 }
 
 .wrapper {
-  width: 90%;
+  width: 1200px;
   height: auto;
   margin: 0 auto;
 }
@@ -410,6 +410,10 @@ body {
   color: #f00;
 }
 
+.fl {
+  float: left;
+}
+
 .content .sub-content {
   width: 100%;
   height: auto;
@@ -477,7 +481,7 @@ body {
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch {
   display: table;
-  width: 100%;
+  width: calc(100% - 2px);
   border: 1px solid #f00;
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch .slcSearch {
@@ -787,19 +791,8 @@ body {
   width: 83.3333333% !important;
   position: relative;
 }
-.section .products .owl-prev {
-  position: absolute;
-  top: 101.5px;
-  left: 0;
-  background: url(../images/arrow-left.svg) no-repeat center !important;
-  height: 30px;
-}
-.section .products .owl-next {
-  top: 101.5px;
-  position: absolute;
-  right: 0;
-  background: url(../images/arrow-right.svg) no-repeat center !important;
-  height: 30px;
+.section .products .product {
+  width: calc(20% - 2px) !important;
 }
 
 .owl-wrapper-outer .product {

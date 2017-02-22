@@ -33,7 +33,7 @@ body{
 	text-align: center;
 }
 .wrapper{
-	width: 90%;
+	width: 1200px;
 	height: auto;
 	margin: 0 auto;
 }
@@ -127,6 +127,9 @@ body{
 		}
 	}
 }
+.fl{
+	float: left;
+}
 .content{
 	.sub-content{
 		width: 100%;
@@ -186,7 +189,7 @@ body{
 					float: left;
 					.frmSearch{
 						display: table;
-						width: 100%;
+						width: calc(100% - 2px);
 						border: 1px solid $color_red;
 						.slcSearch{
 							display: table-cell;
@@ -501,19 +504,8 @@ body{
 		float: left;
 		width: 83.3333333% !important;
 		position: relative;
-		.owl-prev{
-			position: absolute;
-			top: 101.5px;
-			left: 0;
-			background: url(../images/arrow-left.svg) no-repeat center !important;
-			height: 30px;		
-		}
-		.owl-next{
-			top: 101.5px;
-			position: absolute;
-			right: 0;
-			background: url(../images/arrow-right.svg) no-repeat center !important;
-			height: 30px;
+		.product{
+			width: calc(20% - 2px) !important;
 		}
 	}
 }

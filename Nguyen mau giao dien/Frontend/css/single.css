@@ -1,0 +1,170 @@
+.side-bar-auto {
+  position: relative;
+}
+.side-bar-auto ul {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  width: calc(100% - 2px);
+}
+.side-bar-auto .sidebar-title {
+  cursor: pointer;
+}
+.side-bar-auto:hover ul {
+  display: block;
+}
+
+.l-main-content {
+  width: calc(83.333333% - 10px);
+  margin-right: 10px;
+  height: auto;
+  float: left;
+}
+.l-main-content .single-img {
+  width: calc(40% - 15px);
+  float: left;
+  height: auto;
+  margin-right: 15px;
+}
+.l-main-content .single-img #img_large {
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 7px #ccc;
+  padding: 10px 0;
+}
+.l-main-content .single-img ul {
+  margin: 10px;
+  width: 100%;
+}
+.l-main-content .single-img ul li {
+  margin: 0 3px;
+  border: 1px solid #ccc;
+  width: 82px;
+  height: 82px;
+  float: left;
+  list-style: none;
+}
+.l-main-content .single-img ul li a {
+  display: table-cell !important;
+  width: 82px;
+  height: 82px;
+  text-align: center;
+  vertical-align: middle;
+}
+.l-main-content .single-content {
+  width: 60%;
+  float: left;
+  height: auto;
+  font-family: Roboto Condensed;
+}
+.l-main-content .single-content .single-product-title {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+.l-main-content .single-content .single-product-title h1 {
+  margin: 0;
+  font-size: 20px;
+}
+.l-main-content .single-content .single-product-title .product-code {
+  text-transform: uppercase;
+  padding: 10px 0;
+  color: red;
+  font-size: 14px;
+}
+.l-main-content .single-content .infor-summary {
+  text-align: left;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+}
+.l-main-content .single-content .infor-summary .product-vote {
+  padding: 5px 0;
+  font-weight: bold;
+  position: relative;
+}
+.l-main-content .single-content .infor-summary .product-vote .star-o {
+  display: inline-block;
+  background-image: url(../images/icons-common2.svg), none;
+  background-repeat: no-repeat;
+  height: 12px;
+  padding: 0px;
+  width: 12px;
+  background-position: 0 57.18%;
+}
+.l-main-content .single-content .infor-summary .product-vote .star-d {
+  display: inline-block;
+  background-image: url(../images/icons-common2.svg), none;
+  background-repeat: no-repeat;
+  height: 12px;
+  padding: 0px;
+  width: 12px;
+  background-position: 0 55.48%;
+}
+.l-main-content .single-content .infor-summary .product-warranty {
+  padding: 5px 0;
+}
+.l-main-content .single-content .infor-summary .product-summary {
+  padding: 5px 0 10px 0;
+}
+.l-main-content .single-content .infor-summary .product-summary .product-summary-content {
+  line-height: 1.4;
+}
+.l-main-content .single-content .bt-single-product {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.l-main-content .single-content .bt-single-product a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.l-main-content .single-content .bt-single-product .add-cart-checkout {
+  padding: 10px 20px;
+  background-color: #e00;
+}
+.l-main-content .single-content .bt-single-product .add-cart-checkout:hover {
+  background: #da2929;
+}
+.l-main-content .single-content .bt-single-product .add-to-cart {
+  background: #4fabda;
+}
+.l-main-content .single-content .bt-single-product .add-to-cart:hover {
+  background: #046495;
+}
+.l-main-content .single-content .bt-single-product .add-to-favorite {
+  background: #f9a421;
+}
+.l-main-content .single-content .bt-single-product .add-to-favorite:hover {
+  background: #f9c021;
+}
+.l-main-content .single-content .product-detail {
+  padding: 10px 0;
+  text-align: left;
+}
+.l-main-content .single-content .product-detail .product-detail-title {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 2px solid #000;
+}
+.l-main-content .single-content .product-detail table {
+  margin: 10px 0;
+}
+.l-main-content .single-content .product-detail table .td-title {
+  padding: 3pt;
+  width: 500px;
+}
+.l-main-content .single-content .product-detail table .event {
+  background-color: #f2f2f2 !important;
+}
+
+.r-main-content {
+  width: 16.666667%;
+  height: auto;
+  float: left;
+}

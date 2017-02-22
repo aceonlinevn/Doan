@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Trang chi tiết - Hùng Cường Computer</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/single.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<script language="javascript" type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>			
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/common.js"></script>
 </head>
@@ -62,7 +63,7 @@
 	<div class="content">
 		<div class="wrapper">
 			<div class="sub-content">
-				<div class="sidebar">
+				<div class="sidebar side-bar-auto">
 					<div class="sidebar-title">Danh mục sản phẩm</div>
 					<ul>
 						<li><h3><a href="#" title=""><i class="fa fa-laptop" aria-hidden="true"></i>&nbsp&nbspLaptop,phụ kiện</a></h3>
@@ -105,7 +106,276 @@
 			</div><!-- end sub-content-->
 			<div class="clr"></div>
 			<div class="main-content">
-				
+			<link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.6" type="text/css" media="screen" />
+			<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.6"></script>
+			<link rel="stylesheet" href="css/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+			<script type="text/javascript" src="js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+				<link rel="stylesheet" href="css/magiczoom.css">
+				<script src="js/magiczoom.js"></script>
+				<script type="text/javascript">
+				 $(document).ready(function(){
+				 	$(".fancybox").fancybox({
+				 		openEffect	: 'elastic',
+    					closeEffect	: 'elastic',
+						prevEffect		: 'none',
+						nextEffect		: 'none',
+						closeBtn		: false,
+						helpers		: {
+							title	: { type : 'inside' },
+							buttons	: {}
+						}
+					});
+				 	$("#img_large .MagicZoom").click(function(){
+				  		$(".view-large").click();
+				  		});
+				 });
+				</script>
+				<a href="pictures/lap1.jpg" class="fancybox view-large" rel="gallery" style="display:none;"></a>
+				<a href="pictures/lap2.jpg" class="fancybox" rel="gallery" style="display:none;"></a>
+				<a href="pictures/lap3.jpg" class="fancybox" rel="gallery" style="display:none;"></a>
+				<div class="l-main-content">
+					<div class="single-img">
+						<div id="img_large">
+			              <a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600" href="pictures/lap1.jpg" title="Click để xem ảnh lớn" >
+			              <img src="pictures/lap1.jpg" title="Click để xem ảnh lớn" alt="" />
+			              </a>
+			          	</div>
+			          	<ul id="img_thumb" class="ul">
+			  
+			                <li>
+			                  	<a class="img_thumb"  href="pictures/lap1.jpg" title="" rel="zoom-id:Zoomer;" rev="pictures/lap1.jpg">
+			                     <img src="pictures/lap1-small.jpg" alt=""/>
+			                   </a>
+			                </li>
+			                
+			                <li>
+			                  	<a class="img_thumb"  href="pictures/lap2.jpg" title="" rel="zoom-id:Zoomer;" rev="pictures/lap2.jpg">
+			                     <img src="pictures/lap2-small.jpg" alt=""/>
+			                   </a>
+			                </li>
+			   
+			                <li>
+			                  	<a class="img_thumb"  href="pictures/lap3.jpg" title="" rel="zoom-id:Zoomer;" rev="pictures/lap3.jpg">
+			                     <img src="pictures/lap3-small.jpg" alt=""/>
+			                   </a>
+			                </li>
+			          	</ul>
+					</div><!-- end single-img-->
+					<div class="single-content">
+						<div class="single-product-title">
+							<p><h1>PC Dell Vostro 3650MT MTI7330P mới nhất</h1></p>
+							<p class="product-code">Mã sản phẩm : PC001</p>
+						</div>
+						<div class="infor-summary">
+							<div class="product-price">699.000</div>
+							<div class="clr"></div>
+							<div class="product-vote">Đánh giá: 
+								<span class="star-o"></span>
+								<span class="star-o"></span>
+								<span class="star-o"></span>
+								<span class="star-d"></span>
+								<span class="star-d"></span>
+							</div>
+							<div class="product-warranty"><strong>Bảo hành: </strong>12 tháng</div>
+							<div class="product-summary"><strong>Mô tả ngắn: </strong>
+								<div class="product-content">
+									<p>- Miễn phí giao hàng (Trong bán kính 20 km) cho đơn hàng từ 500.000 đ trở lên</p>
+									<p>- Miễn phí giao hàng 300 km đối với khách hàng Games Net, Doanh Nghiệp, Dự Án </p>
+									<p>- Nhận giao hàng và lắp đặt từ 8h00 - 20h30 các ngày kể cả ngày lễ, thứ 7, CN</p>
+								</div>
+							</div>
+						</div>
+						<div class="bt-single-product">
+							<a href="#" class="add-cart-checkout" title="Đặt hàng">Đặt hàng</a>
+							<a href="#" class="add-to-cart"  title="Đặt hàng">Cho vào giỏ hàng</a>
+							<a href="#" class="add-to-favorite"  title="Đặt hàng">Lưu sản phẩm</a>
+							<div class="single-advantage">
+								
+							</div>
+						</div>
+						<div class="product-detail">
+							<div class="product-detail-title">Mô tả chi tiết sản phẩm</div>
+							<div class="product-detail-area">
+								<table border="0" cellspacing="0" cellpadding="0">
+									<tbody>
+									<tr style="height: 12.75pt;">
+									<td style="padding: 0in; width: 2.75pt; height: 12.75pt; background: #92d050 none repeat scroll 0% 0%;" valign="top" width="4">
+									<p>&nbsp;</p>
+									</td>
+									<td style="padding: 0in; width: 403pt; height: 12.75pt; background: #92d050 none repeat scroll 0% 0%;" colspan="6" width="537">
+									<p><strong><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Mô tả chi tiết</span></strong> </p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Hãng sản xuất</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Dell</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Chủng loại</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Vostro 3650MT</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Part Number</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p style="margin: 0in 0in 0.0001pt 1.5pt;"><span style="font-size: 10pt; font-family: 'Arial','sans-serif'; color: #222222;">MTI7330P</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Kiểu dáng</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Mini Tower</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Bộ vi xử lý</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Intel </span><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Core i7 6700 (3.4Ghz/8MB cache)</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Chipset</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 9pt; font-family: 'Arial','sans-serif';">Intel </span><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">H110</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Bộ nhớ trong</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">8GB DDR3L 16000</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Số khe cắm</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">2</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Dung lượng tối đa</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">&nbsp;</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">VGA</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><strong><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Nvidia Geforce 705 2G DDR3</span></strong></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Ổ cứng</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">1TB 7200rpm</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Giao tiếp mạng</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Gigabit, 802.11 bgn</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Khe cắm mở rộng</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif'; color: black;">2 x PCI-Ex 1X ; 1 x PCI-Ex 16X ; </span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Cổng giao tiếp</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif'; color: black;">2 x USB 3.0 ports (front) ; 4 x USB 2.0 ports (2 back) ;1 x VGA ; 1 x HDMI</span><span style="font-size: 10pt; font-family: 'Arial','sans-serif';"> ; CR 5 in 1, Bluetooth 4.0</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Ổ quang</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">DVD RW</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Công suất nguồn</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 9pt; font-family: 'Arial','sans-serif';">240w</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Bàn phím</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Dell USB</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Chuột</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Dell USB</span></p>
+									</td>
+									</tr>
+									<tr>
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Kích thước (rộng x dài x cao)</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt;" colspan="5" width="416">
+									<p><span style="font-size: 9pt; font-family: 'Arial','sans-serif';">&nbsp;</span></p>
+									</td>
+									</tr>
+									<tr class="event">
+									<td class="td-title" colspan="2" width="134">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Hệ điều hành</span></p>
+									</td>
+									<td style="padding: 3pt; width: 311.85pt; background: #f2f2f2 none repeat scroll 0% 0%;" colspan="5" width="416">
+									<p><span style="font-size: 10pt; font-family: 'Arial','sans-serif';">Dos</span></p>
+									</td>
+									</tr>
+									</tbody>
+									</table>
+							</div>
+						</div>
+					</div><!-- end single-img-->
+				</div><!-- end l-main-content-->
+				<div class="r-main-content">
+					sidebar right
+				</div><!-- end r-main-content-->
 			</div><!-- end main-content-->
 		</div>
 	</div><!-- end content-->
