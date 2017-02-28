@@ -2,9 +2,9 @@ package com.object;
 
 public class ProviderObject {
 	private int provider_id;
-	private String provider_prefix,provider_name,provider_address,provider_note,provider_phone,provider_homephone,provider_taxcode;
+	private String provider_prefix,provider_name,provider_address,provider_note,provider_phone,provider_homephone,provider_taxcode,provider_image;
 	public ProviderObject(int provider_id, String provider_prefix, String provider_name, String provider_address,
-			String provider_note, String provider_phone, String provider_homephone, String provider_taxcode) {
+			String provider_note, String provider_phone, String provider_homephone, String provider_taxcode,String provider_image) {
 		super();
 		this.provider_id = provider_id;
 		this.provider_prefix = provider_prefix;
@@ -14,7 +14,9 @@ public class ProviderObject {
 		this.provider_phone = provider_phone;
 		this.provider_homephone = provider_homephone;
 		this.provider_taxcode = provider_taxcode;
+		this.provider_image = provider_image;
 	}
+	
 	public ProviderObject() {
 		super();
 	}
@@ -66,6 +68,11 @@ public class ProviderObject {
 	public void setProvider_taxcode(String provider_taxcode) {
 		this.provider_taxcode = provider_taxcode;
 	}
-	
+	public String getProvider_image() {
+		return provider_image;
+	}
+	public void setProvider_image(String provider_image) {
+		this.provider_image = provider_image;
+	}
 	
 }
