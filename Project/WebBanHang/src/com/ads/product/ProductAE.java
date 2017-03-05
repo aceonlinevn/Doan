@@ -155,11 +155,11 @@ public class ProductAE extends HttpServlet {
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Thông số kĩ thuật</td>");
-    	out.println("<td><textarea rows=10 cols=80 name=\"txtSpecification\"></textarea></td>");
+    	out.println("<td><textarea rows=10 cols=80 id=\"txtSpecification\" name=\"txtSpecification\"></textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ghi chú</td>");
-    	out.println("<td><textarea rows=6 cols=80 name=\"txtNote\"></textarea></td>");
+    	out.println("<td><textarea rows=6 cols=80 id=\"txtNote\" name=\"txtNote\"></textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td colspan=2 align=\"center\">");
@@ -170,7 +170,11 @@ public class ProductAE extends HttpServlet {
     out.println("</tr>");
         out.println("</table>");
         out.println("</div>");
-
+        out.println("<script src=\"/WebBanHang/adv/ckeditor/ckeditor.js\"></script>");
+        out.println("<script>");
+        out.println("CKEDITOR.replace( 'txtSpecification' );");
+        out.println("CKEDITOR.replace( 'txtNote' );");
+        out.println("</script>");
         //Tim tham chieu cua footer
         RequestDispatcher f = request.getRequestDispatcher("/footer");
         if (f != null) {
