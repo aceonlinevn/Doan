@@ -20,13 +20,13 @@ public class ProductLibrary {
             tmp += "<td>"+item.getCategory_name()+"</td>";
             tmp += "<td>"+item.getCategory_group_name()+"</td>";
             tmp += "<td>"+item.getProduct_visited()+"</td>";
-            tmp += "<td class=\"ED\"><a href=\"/WebBanHang/product/ae?id="+item.getProduct_id()+"\">Sửa</a></td>";
+            tmp += "<td class=\"ED\"><a class=\"btn btn-info\" href=\"/WebBanHang/product/ae?id="+item.getProduct_id()+"\"><span class=\"glyphicon glyphicon-pencil\"></span> Sửa</a></td>";
 //            if(user.getUser_permission() > item.getUser_permission()){
 //                tmp += "<td class=\"ED\"><a href=\"javascript:confirmDel('/adv/user/del?id=" + item.getUser_id() + "');void(0);\">Xoa</a></td>";
 //            }else{
 //                tmp += "<td class=\"ED\">...</td>";
 //            }
-            tmp += "<td class=\"ED\"><a href=\"javascript:confirmDel('/WebBanHang/product/del?id=" + item.getProduct_id() + "');void(0);\">Xóa</a></td>";
+            tmp += "<td class=\"ED\"><a class=\"btn btn-danger\" href=\"javascript:confirmDel('/WebBanHang/product/del?id=" + item.getProduct_id() + "');void(0);\"><span class=\"glyphicon glyphicon-trash\"></span> Xóa</a></td>";
             tmp += "<td class=\"ID\">"+item.getProduct_id()+"</td>";
             tmp += "</tr>";
         }

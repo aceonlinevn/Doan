@@ -69,7 +69,7 @@ public class ProductView extends HttpServlet {
         
         out.println("<tr>");
         out.println("<td colspan=2>");
-        out.println("<a href=\"/WebBanHang/product/ae\">Thêm mới</a>");
+        out.println("<a class=\"btn btn-primary\" href=\"/WebBanHang/product/ae\"><span class=\"glyphicon glyphicon-plus\"></span> Thêm mới</a>");
         out.println("</td>");
         out.println("<td colspan=11 align=\"right\">");
         out.println("<form class=\"form-inline\" name=\"frmSearch\" action =\"/WebBanHang/product/view\" method=\"POST\" >");
