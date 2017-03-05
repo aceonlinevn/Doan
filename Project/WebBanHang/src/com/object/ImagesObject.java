@@ -6,28 +6,16 @@ public class ImagesObject {
 	private String images_name;
 	private String images_note;
 	private int images_product_id;
-	private boolean images_is_primary;
 	public ImagesObject(int images_id, String images_src, String images_name, String images_note,
-			int images_product_id, boolean images_is_primary) {
+			int images_product_id) {
 		super();
 		this.images_id = images_id;
 		this.images_src = images_src;
 		this.images_name = images_name;
 		this.images_note = images_note;
 		this.images_product_id = images_product_id;
-		this.images_is_primary = images_is_primary;
 	}
 	
-	public boolean isImages_is_primary() {
-		return images_is_primary;
-	}
-
-
-	public void setImages_is_primary(boolean images_is_primary) {
-		this.images_is_primary = images_is_primary;
-	}
-
-
 	public ImagesObject() {
 		super();
 	}

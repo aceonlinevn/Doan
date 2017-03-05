@@ -56,7 +56,7 @@
     <servlet-name>View</servlet-name>
     <url-pattern>/view</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>UserLogin</servlet-name>
     <servlet-class>com.ads.user.UserLogin</servlet-class>
   </servlet>

@@ -1,6 +1,6 @@
 package com.object;
 
-public class CategoryObject {
+public class CategoryObject extends CategoryGroupObject{
 	private int category_id;
 	private String category_prefix,category_name;
 	private int category_group_id;

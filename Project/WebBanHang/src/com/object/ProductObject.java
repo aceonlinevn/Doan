@@ -1,6 +1,6 @@
 package com.object;
 
-public class ProductObject {
+public class ProductObject extends CategoryObject{
 	private int product_id;
 	private String product_prefix,product_name;
 	private boolean product_status;
@@ -8,8 +8,8 @@ public class ProductObject {
 	private double product_origin_price,product_price2,product_price3;
 	private int product_price_discount;
 	private String product_imported_date,product_last_modified;
-	private String product_specification,product_note;
-	private int product_warranty_time,product_provider_id;
+	private String product_specification,product_note,product_image;
+	private int product_warranty_time,product_provider_id,product_visited;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -106,11 +106,25 @@ public class ProductObject {
 	public void setProduct_provider_id(int product_provider_id) {
 		this.product_provider_id = product_provider_id;
 	}
+	
+	public String getProduct_image() {
+		return product_image;
+	}
+	public void setProduct_image(String product_image) {
+		this.product_image = product_image;
+	}
+	
+	public int getProduct_visited() {
+		return product_visited;
+	}
+	public void setProduct_visited(int product_visited) {
+		this.product_visited = product_visited;
+	}
 	public ProductObject(int product_id, String product_prefix, String product_name, boolean product_status,
 			int product_category_id, int product_quantity, double product_origin_price, double product_price2,
 			double product_price3, int product_price_discount, String product_imported_date,
 			String product_last_modified, String product_specification, String product_note, int product_warranty_time,
-			int product_provider_id) {
+			int product_provider_id,String product_image,int product_visited) {
 		super();
 		this.product_id = product_id;
 		this.product_prefix = product_prefix;
@@ -128,6 +142,8 @@ public class ProductObject {
 		this.product_note = product_note;
 		this.product_warranty_time = product_warranty_time;
 		this.product_provider_id = product_provider_id;
+		this.product_image = product_image;
+		this.product_visited = product_visited;
 	}
 	public ProductObject() {
 		super();
