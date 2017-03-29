@@ -1,0 +1,14 @@
+/**
+ * javascript for common
+ */
+
+function confirmDel(url){
+	var message = "Bạn có chắc chắn xóa không ?";
+	if(window.confirm(message)){
+		window.location.href = url;
+	}
+	else{
+		return false;
+	}
+	
+}

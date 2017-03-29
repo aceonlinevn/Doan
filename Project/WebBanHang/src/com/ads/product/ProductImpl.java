@@ -149,7 +149,7 @@ public class ProductImpl extends CategoryImpl implements Product {
 	@Override
 	public ResultSet getProducts(ProductObject similar, int at, byte total) {
 		String sql = "SELECT * FROM product ";
-		String conds = MakeConditions.createCondition(similar);
+		String conds = MakeConditions.createConditionProduct(similar);
 
         if(!conds.equalsIgnoreCase("")){
             sql += "WHERE "+conds+" ";

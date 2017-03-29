@@ -1,0 +1,20 @@
+package com.sql.ads;
+
+import com.object.*;
+
+public class MakeConditions {
+
+	public static String createCondition(keyword){
+        String tmp = "";
+        if(keyword != null){
+            //Lay thong tin tu khoa tim kiem
+            tmp = "";
+            if(keyword != null && !keyword.equalsIgnoreCase("")){
+                tmp += "(product_name LIKE '%"+keyword+"%') OR ";
+                tmp += "(product_specification LIKE '%"+keyword+"%') OR ";
+                tmp += "(product_note LIKE '%"+keyword+"%')";
+            }
+        }
+        return tmp;
+    }
+}

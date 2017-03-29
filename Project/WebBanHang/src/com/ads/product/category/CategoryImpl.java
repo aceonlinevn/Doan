@@ -6,6 +6,7 @@ import java.text.*;
 import com.*;
 import com.ads.product.categorygroup.*;
 import com.object.*;
+import com.sql.ads.MakeConditions;
 
 public class CategoryImpl extends CategoryGroupImpl implements Category {
 
@@ -84,7 +85,7 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 		
 		try {
 			PreparedStatement preDel = this.con.prepareStatement(sql);
-			preDel.setInt(1, item.getCategory_group_id());
+			preDel.setInt(1, item.getCategory_id());
 			
 			return this.del(preDel);
 			
@@ -124,9 +125,15 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 	@Override
 	public ResultSet getCategorys(CategoryObject similar, int at, byte total) {
 		String sql = "SELECT * FROM category ";
-        sql += "";
+		String conds = MakeConditions.createConditionCategory(similar);
+
+        if(!conds.equalsIgnoreCase("")){
+            sql += " WHERE "+conds+" ";
+        }
         sql +="ORDER BY category_name ASC ";
-        sql +="LIMIT "+ at +","+ total;
+        if(at != 0 && total != 0){
+        	sql +="LIMIT "+ at +","+ total;
+        }
         return this.gets(sql);
 	}
 

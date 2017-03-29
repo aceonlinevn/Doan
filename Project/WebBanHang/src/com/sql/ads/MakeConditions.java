@@ -4,7 +4,7 @@ import com.object.*;
 
 public class MakeConditions {
 
-	public static String createCondition(ProductObject similar){
+	public static String createConditionProduct(ProductObject similar){
         String tmp = "";
         if(similar != null){
             //Lay thong tin tu khoa tim kiem
@@ -15,6 +15,36 @@ public class MakeConditions {
                 tmp += "(product_name LIKE '%"+keyword+"%') OR ";
                 tmp += "(product_specification LIKE '%"+keyword+"%') OR ";
                 tmp += "(product_note LIKE '%"+keyword+"%')";
+            }
+        }
+        return tmp;
+    }
+	
+	public static String createConditionCategoryGroup(CategoryGroupObject similar){
+        String tmp = "";
+        if(similar != null){
+            //Lay thong tin tu khoa tim kiem
+            String keyword = similar.getCategory_group_name();
+
+            tmp = "";
+            if(keyword != null && !keyword.equalsIgnoreCase("")){
+                tmp += "(category_group_name LIKE '%"+keyword+"%') OR ";
+                tmp += "(category_group_note LIKE '%"+keyword+"%')";
+            }
+        }
+        return tmp;
+    }
+	
+	public static String createConditionCategory(CategoryObject similar){
+        String tmp = "";
+        if(similar != null){
+            //Lay thong tin tu khoa tim kiem
+            String keyword = similar.getCategory_name();
+
+            tmp = "";
+            if(keyword != null && !keyword.equalsIgnoreCase("")){
+                tmp += "(category_name LIKE '%"+keyword+"%') OR ";
+                tmp += "(category_note LIKE '%"+keyword+"%')";
             }
         }
         return tmp;

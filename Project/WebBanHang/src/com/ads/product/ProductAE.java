@@ -12,6 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.*;
+import com.ads.product.categorygroup.*;
 import com.library.*;
 import com.object.*;
 
@@ -101,11 +102,20 @@ public class ProductAE extends HttpServlet {
         }
 
         out.println("<div class=\"view tblae\">");
+        out.println("<form name=\"frmProduct\" action=\"\" method=\"\">");
         out.println("<table class=\"table table-striped table-bordered\">");
         out.println("<tr><th colspan=2>Thông tin sản phẩm</th></tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên sản phẩm</td>");
-    	out.println("<td><input type=\"text\" name=\"txtProductName\" size=35/></td>");
+    	out.println("<td><input type=\"text\" value=\""+product_name+"\" name=\"txtProductName\" size=35/></td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Ảnh đại diện</td>");
+    	out.println("<td>"
+    			+ "<span class=\"productimage\"></span>"
+    			+ "<input onchange=\"loadImg(this.value)\" type=\"file\" name=\"txtProductImage\" size=35/>"
+    			+ ""
+    			+ "</td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Tình trạng</td>");
@@ -113,18 +123,22 @@ public class ProductAE extends HttpServlet {
     	out.println("<select name=\"slcStatus\">");
     	out.println("<option value=\"0\">Còn hàng</option>");
     	out.println("<option value=\"1\">Hết hàng</option>");
-    	out.println("<option value=\"2\" selected>-------</option>");
+    	out.println("<option value=\"2\">-------</option>");
     	out.println("</select>");
     	out.println("</td>");
     	out.println("</tr>");
     	out.println("<tr>");
-    	out.println("<td class=\"lc\">Danh mục</td>");
+    	out.println("<td class=\"lc\">Thuộc hệ sản phẩm</td>");
     	out.println("<td>");
-    	out.println("<select name=\"slcCategory\">");
-    	out.println("<option value=\"0\">Laptop, Phụ kiện</option>");
-    	out.println("<option value=\"1\">Pc, WorkStations</option>");
-    	out.println("<option value=\"2\" selected>-------</option>");
-    	out.println("</select>");
+    	ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
+        CategoryGroupControl cgc = new CategoryGroupControl(cp);
+    	if(cp != null){
+            getServletContext().setAttribute("cpool",cgc.getConnectionPool());
+        } 
+    	CategoryGroupObject similar = new CategoryGroupObject();
+    	String slcCategoryGroup = cgc.slcCategoryGroup(similar);
+        cgc.releaseConnection();
+    	out.println(slcCategoryGroup);
     	out.println("</td>");
     	out.println("</tr>");
     	out.println("<tr>");
@@ -169,7 +183,12 @@ public class ProductAE extends HttpServlet {
     	out.println("</td>");
     out.println("</tr>");
         out.println("</table>");
+        if(isExisting){
+            out.print("<input type=\"hidden\" name=\"idForPost\" value=\""+id+"\" />");
+        }
+        out.println("</form>");
         out.println("</div>");
+        out.println("<script src=\"/WebBanHang/adv/adjs/product.js\"></script>");
         out.println("<script src=\"/WebBanHang/adv/ckeditor/ckeditor.js\"></script>");
         out.println("<script>");
         out.println("CKEDITOR.replace( 'txtSpecification' );");

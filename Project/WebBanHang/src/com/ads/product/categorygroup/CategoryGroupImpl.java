@@ -5,7 +5,10 @@ import java.text.*;
 
 import com.*;
 import com.ads.basic.*;
+import com.ads.product.Product;
+import com.ads.product.ProductImpl;
 import com.object.*;
+import com.sql.ads.MakeConditions;
 
 public class CategoryGroupImpl extends BasicImpl implements CategoryGroup {
 
@@ -22,13 +25,14 @@ public class CategoryGroupImpl extends BasicImpl implements CategoryGroup {
 		sql += "category_group_manager_id,category_group_is_enable,";
 		sql += "category_group_image";
 		sql += ")";
-		sql += "VALUES(?,?,'"+getDateToday()+"',?,1,?)";
+		sql += "VALUES(?,?,'"+getDateToday()+"',?,?,?)";
 		try{
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
 			preAdd.setString(1, item.getCategory_group_name());
 			preAdd.setString(2, item.getCategory_group_note());
 			preAdd.setInt(3, item.getCategory_group_manager_id());
-			preAdd.setString(4, item.getCategory_group_image());
+			preAdd.setBoolean(4, item.isCategory_group_is_enable());
+			preAdd.setString(5,item.getCategory_group_image());
 			
 			return this.add(preAdd);
 		}
@@ -120,10 +124,50 @@ public class CategoryGroupImpl extends BasicImpl implements CategoryGroup {
 	@Override
 	public ResultSet getCategoryGroups(CategoryGroupObject similar, int at, byte total) {
 		String sql = "SELECT * FROM category_group ";
-        sql += "";
+		String conds = MakeConditions.createConditionCategoryGroup(similar);
+
+        if(!conds.equalsIgnoreCase("")){
+            sql += "WHERE "+conds+" ";
+        }
         sql +="ORDER BY category_group_name ASC ";
-        sql +="LIMIT "+ at +","+ total;
+        if(at !=0 && total !=0){
+        	sql +="LIMIT "+ at +","+ total;
+        }
         return this.gets(sql);
 	}
+	public static void main(String[] args){
+        // Tao bo quan ly ket noi
+        ConnectionPool cp = new ConnectionPoolImpl();
 
+        //Tao doi tuong thuc thi chuc nang
+        CategoryGroup a = new CategoryGroupImpl(cp,"CategoryGroup");
+
+        // tao doi tuong moi
+        CategoryGroupObject nProduct = new CategoryGroupObject();
+        nProduct.setCategory_group_name("test");
+        nProduct.setCategory_group_is_enable(false);
+        nProduct.setCategory_group_note("note");
+        //Thuc hien
+        boolean result = a.addCategoryGroup(nProduct);
+        if(!result){
+            System.out.println("\nKhong thanh cong\n");
+        }
+        //Lay danh sach nguoi su dung
+
+        ResultSet rs = a.getCategoryGroups(null,0,(byte) 10);
+
+        //Duyet va hien thi
+        if(rs !=null){
+            try {
+                while (rs.next()) {
+                    System.out.print(rs.getString("category_group_name")+"\t");
+                    System.out.print(rs.getString("category_group_created_date")+"\t");
+                    System.out.print(rs.getString("category_group_is_enable")+"\t");
+                    System.out.print(rs.getString("category_group_note")+"\t");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

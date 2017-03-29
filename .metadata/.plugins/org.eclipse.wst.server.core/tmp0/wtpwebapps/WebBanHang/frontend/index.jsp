@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    		
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Hùng Cường Computer</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/style.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/font-awesome.min.css">
-	<script language="javascript" type="text/javascript" src="<%=request.getContextPath()%>/frontend/js/jquery-1.7.1.min.js"></script>
+	<script language="javascript" type="text/javascript" src="<%=request.getContextPath()%>/frontend/js/jquery-1.8.2.min.js"></script>
 	<script src="<%=request.getContextPath()%>/frontend/js/owl.carousel.js"></script>
-
+	<script src="<%=request.getContextPath()%>/frontend/js/common.js"></script>
 </head>
 <body>
-
 	<div class="header">
 		<div class="tp-header">
 			<div class="wrapper">
@@ -50,7 +48,7 @@
 				</div><!-- end c-bt-header-->
 				<div class="r-bt-header">
 					<div class="login-area">
-						<a href="/WebBanHang/user/login" title="Đăng nhập"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
+						<a href="#" title="Đăng nhập"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
 						<a href="#" title="Đăng nhập"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
 					</div>
 					<div class="cart-area">
@@ -146,6 +144,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+									<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>					  				
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT002</div>
@@ -159,6 +175,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+									<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>					  				
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT003</div>
@@ -172,6 +206,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT004</div>
@@ -185,6 +237,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT005</div>
@@ -198,6 +268,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT006</div>
@@ -211,6 +299,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  		</div><!-- end Products-->
 					  	</div>
@@ -228,6 +334,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT002</div>
@@ -241,6 +365,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT003</div>
@@ -254,6 +396,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  		</div><!-- end Products-->
 					  	</div>
@@ -271,6 +431,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT002</div>
@@ -284,6 +462,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT003</div>
@@ -297,6 +493,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT004</div>
@@ -310,6 +524,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT005</div>
@@ -323,6 +555,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  		</div><!-- end Products-->
 					  	</div>
@@ -340,6 +590,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT002</div>
@@ -353,6 +621,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT003</div>
@@ -366,6 +652,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			<div class="product">
 					  				<div class="product-code">Mã sản phẩm: LT004</div>
@@ -379,6 +683,24 @@
 					  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 					  				</div>
 					  				<div class="clr"></div>
+					  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 					  			</div><!-- end Product-->
 					  			
 					  		</div><!-- end Products-->
@@ -422,7 +744,7 @@
 				</script>
 					<div class="section">
 						<div class="section-title"><h3>Laptop, Phụ kiện</h3></div>
-						<div class="products  owl-carousel"  id="laptop">
+						<div class="products owl-carousel"  id="laptop">
 							<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT001</div>
 				  				<div class="product-image">
@@ -435,6 +757,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT002</div>
@@ -448,6 +788,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT003</div>
@@ -461,6 +819,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT004</div>
@@ -474,6 +850,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT005</div>
@@ -487,6 +881,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT006</div>
@@ -500,6 +912,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT007</div>
@@ -513,6 +943,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 						</div><!-- end products-->
 						<div class="view-more">
@@ -554,7 +1002,7 @@
 				</script>
 					<div class="section">
 						<div class="section-title"><h3>PC, Workstation</h3></div>
-						<div class="products  owl-carousel"  id="pc">
+						<div class="products owl-carousel"  id="pc">
 							<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT021</div>
 				  				<div class="product-image">
@@ -567,6 +1015,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT025</div>
@@ -580,6 +1046,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT058</div>
@@ -593,6 +1077,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT032</div>
@@ -606,6 +1108,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT078</div>
@@ -619,6 +1139,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+										<div class="product-info">
+											<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+											<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+											<p class="product-warranty">Bản hành: 24 tháng</p>
+										</div>
+										<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+											<p>Mô tả 1</p>
+											<p>Mô tả 2</p>
+											<p>Mô tả 3</p>
+										</div>
+										<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+											<p>Khuyến mại 1</p>
+											<p>Khuyến mại 2</p>
+										</div>
+									</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT014</div>
@@ -632,6 +1170,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+									<div class="product-info">
+										<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+										<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+										<p class="product-warranty">Bản hành: 24 tháng</p>
+									</div>
+									<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+										<p>Mô tả 1</p>
+										<p>Mô tả 2</p>
+										<p>Mô tả 3</p>
+									</div>
+									<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+										<p>Khuyến mại 1</p>
+										<p>Khuyến mại 2</p>
+									</div>
+								</div>
 				  			</div><!-- end Product-->
 				  			<div class="product">
 				  				<div class="product-code">Mã sản phẩm: LT098</div>
@@ -645,6 +1201,24 @@
 				  					<a href="#" title="Mua ngay"><i class="fa fa-cart-plus" aria-hidden="true"></i> Mua ngay</a>
 				  				</div>
 				  				<div class="clr"></div>
+				  				<div class="product-hover">
+									<div class="product-info">
+										<p class="product-name-hover">Keyboard Geezer GS4 Mechanical Blue Switch 87</p>
+										<p class="product-price-hover"><span class="price-text">Giá bán: </span><span class="img_price">699.000</span></p>
+										<p class="product-warranty">Bản hành: 24 tháng</p>
+									</div>
+									<div class="product-sumary">
+											<div class="title-hover">Mô tả tóm tắt</div>
+										<p>Mô tả 1</p>
+										<p>Mô tả 2</p>
+										<p>Mô tả 3</p>
+									</div>
+									<div class="product-saleoff">
+											<div class="title-hover">Khuyến mại</div>
+										<p>Khuyến mại 1</p>
+										<p>Khuyến mại 2</p>
+									</div>
+								</div>
 				  			</div><!-- end Product-->
 						</div><!-- end products-->
 						<div class="view-more">

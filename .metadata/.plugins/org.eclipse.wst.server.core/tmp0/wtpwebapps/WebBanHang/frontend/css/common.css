@@ -1,0 +1,65 @@
+.price-number-0, .price-number-1, .price-number-2, .price-number-3, .price-number-4, .price-number-5, .price-number-6, .price-number-7, .price-number-8, .price-number-9, .price-number-dot, .price-number-dash {
+  float: left;
+  height: 42px;
+  width: 22px;
+}
+
+.price-number-0 {
+  background: url("../images/0x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-1 {
+  width: 16px;
+  background: url("../images/1x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-2 {
+  width: 23px;
+  background: url("../images/2x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-3 {
+  background: url("../images/3x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-4 {
+  background: url("../images/4x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-5 {
+  background: url("../images/5x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-6 {
+  background: url("../images/6x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-7 {
+  width: 20px;
+  background: url("../images/7x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-8 {
+  background: url("../images/8x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-9 {
+  width: 23px;
+  background: url("../images/9x42.png") no-repeat scroll center transparent;
+  background-size: auto 35px;
+}
+
+.price-number-dot {
+  width: 7px;
+  background: url("../images/x42.png") no-repeat scroll left 12px transparent;
+  background-size: 7px auto;
+}

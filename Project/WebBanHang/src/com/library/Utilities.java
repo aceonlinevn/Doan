@@ -4,10 +4,10 @@ import java.io.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import net.htmlparser.jericho.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.*;
 
 
 public class Utilities {
@@ -22,6 +22,14 @@ public class Utilities {
 		return ft.format(date);
 	}
 	
+	public static String encode(String strUNI){
+        return CharacterReference.encode(strUNI);
+    }
+
+    public static String decode(String strHTML){
+        return CharacterReference.decode(strHTML);
+    }
+    
 	public static Date parseStringtoDate(String date){
 		SimpleDateFormat ft = new SimpleDateFormat ("dd-MM-yyyy"); 
 
@@ -42,12 +50,20 @@ public class Utilities {
 		return Utilities.fomatDate(date);
 	}
 	
+	public static String getMessage(String message){
+		String tmp = "<script>";
+		tmp += "alert("+message+")";
+		tmp += "</script>";
+		
+		return tmp;
+	}
+	
 	public static Date getDateNow(){
 		Date date = new Date();
 		return date;
 	}
 	
-	public static int getIntParam(HttpServletRequest request, String name){
+	public static int getIntParam(ServletRequest request, String name){
 		 int value =-1;
 	        String strValue = request.getParameter(name);
 
@@ -56,7 +72,7 @@ public class Utilities {
 	        }
 	        return value;
 	}
-	public static int getIntAtt(HttpServletRequest request, String name){
+	public static int getIntAtt(ServletRequest request, String name){
 		 int value =-1;
 	        String strValue = (String)request.getAttribute(name);
 

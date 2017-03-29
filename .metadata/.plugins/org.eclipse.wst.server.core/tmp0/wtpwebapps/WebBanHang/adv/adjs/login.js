@@ -31,8 +31,8 @@ function checkValidLogin(fn){
 		messageUserPass = "\nThiếu mật khẩu đăng nhập hệ thống.";
 		validUserPass = false;
 	}else{
-		if(userpass.length<4){
-			messageUserPass = "\nMật khẩu quá ngắn cần lớn hơn 3 kí tự";
+		if(userpass.length<6){
+			messageUserPass = "\nMật khẩu quá ngắn cần lớn hơn 5 kí tự";
 			validUserPass = false;
 		}
 	}

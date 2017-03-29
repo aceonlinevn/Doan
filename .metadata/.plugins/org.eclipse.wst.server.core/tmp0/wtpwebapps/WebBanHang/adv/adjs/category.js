@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+function saveCategory(fn){
+	fn.method = "POST";
+	fn.action = "/WebBanHang/category/ae";
+	fn.submit();
+}
