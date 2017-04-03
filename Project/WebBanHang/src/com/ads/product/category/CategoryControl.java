@@ -50,6 +50,6 @@ public class CategoryControl {
 		// Lay danh sach doi tuong
 		ArrayList items = this.cg.getCategoryObjects(similar, 0,(byte) 0);
 
-		return CategoryLibrary.slcCategory(items);
+		return CategoryLibrary.slcCategory(similar,items);
 	}
 }

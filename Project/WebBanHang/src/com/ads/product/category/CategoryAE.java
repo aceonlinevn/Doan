@@ -102,6 +102,7 @@ public class CategoryAE extends HttpServlet {
     	out.println("<td class=\"lc\">Ẩn/Hiện</td>");
     	out.println("<td>");
     	out.println("<select name=\"slcCategoryEnable\">");
+    	out.print(Category_enable);
     	if(!Category_enable){
     		out.println("<option value=\"0\" selected>Ẩn</option>");
     		out.println("<option value=\"1\">Hiện</option>");
@@ -147,7 +148,6 @@ public class CategoryAE extends HttpServlet {
         }
         out.println("</form>");
         out.println("</div>");
-        out.println("<script src=\"/WebBanHang/adv/adjs/category.js\"></script>");
         out.println("<script src=\"/WebBanHang/adv/ckeditor/ckeditor.js\"></script>");
         out.println("<script>");
         out.println("CKEDITOR.replace( 'txtCategoryNote' );");

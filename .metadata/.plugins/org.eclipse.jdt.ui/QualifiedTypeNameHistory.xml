@@ -22,5 +22,6 @@
 <fullyQualifiedTypeName name="com.library.Utilities"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.commons.xmlutil.Converter"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.object.CategoryGroupObject"/>
 </qualifiedTypeNameHistroy>

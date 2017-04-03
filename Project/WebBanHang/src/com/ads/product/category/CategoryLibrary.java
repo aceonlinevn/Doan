@@ -28,7 +28,7 @@ public class CategoryLibrary {
             tmp += "<td>"+item.getCategory_created_date()+"</td>";
             tmp += "<td>"+ isEnable +"</td>";
             tmp += "<td>"+note+"</td>";
-            tmp += "<td>"+item.getCategory_group_id()+"</td>";
+            tmp += "<td>"+item.getCategory_group_name()+"</td>";
             tmp += "<td class=\"ED\"><a class=\"btn btn-info\" href=\"/WebBanHang/category/ae?id="+item.getCategory_id()+"\"><span class=\"glyphicon glyphicon-pencil\"></span> Sửa</a></td>";
 //            if(user.getUser_permission() > item.getUser_permission()){
 //                tmp += "<td class=\"ED\"><a href=\"javascript:confirmDel('/adv/user/del?id=" + item.getUser_id() + "');void(0);\">Xoa</a></td>";
@@ -44,13 +44,18 @@ public class CategoryLibrary {
     }
 	
 	//Get select box category group
-	public static String slcCategory(ArrayList<CategoryObject> items){
-		String tmp = "<select name=slcCategory class=\"form-control\">";
-		
-		for(CategoryObject item : items){
-			tmp += "<option value=\""+item.getCategory_id()+"\">"+item.getCategory_name()+"</option>";
+		public static String slcCategory(CategoryObject similar, ArrayList<CategoryObject> items){
+			String tmp = "<select name=slcCategory class=\"form-control\">";
+			String selected = "";
+			for(CategoryObject item : items){
+				if(item.getCategory_id() == similar.getCategory_id()){
+					selected = "selected";
+				}else{
+					selected = "";
+				}
+				tmp += "<option value=\""+item.getCategory_id()+"\" "+selected+">"+item.getCategory_name()+"</option>";
+			}
+			tmp += "</select>";
+			return tmp;
 		}
-		tmp += "</select>";
-		return tmp;
-	}
 }

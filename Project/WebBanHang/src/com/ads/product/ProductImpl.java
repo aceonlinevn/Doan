@@ -68,7 +68,7 @@ public class ProductImpl extends CategoryImpl implements Product {
 		sql += "product_category_id = ?,product_quantity = ?,";
 		sql += "product_origin_price = ?,product_price2 = ?,";
 		sql += "product_price3 = ?,product_price_discount = ?,";
-		sql += "product_imported_date = '"+getDateToday()+"',product_specification = ?,";
+		sql += "product_last_modified = '"+getDateToday()+"',product_specification = ?,";
 		sql += "product_note = ?,product_warranty_time = ?,";
 		sql += "product_provider_id = ?,product_image = ?";
 		sql += " WHERE product_id = ?";
@@ -148,15 +148,15 @@ public class ProductImpl extends CategoryImpl implements Product {
 
 	@Override
 	public ResultSet getProducts(ProductObject similar, int at, byte total) {
-		String sql = "SELECT * FROM product ";
+		String sql = "SELECT * FROM product p LEFT JOIN category c ON p.product_category_id = c.category_id LEFT JOIN category_group cg ON c.category_group_id = cg.category_group_id ";
 		String conds = MakeConditions.createConditionProduct(similar);
 
         if(!conds.equalsIgnoreCase("")){
-            sql += "WHERE "+conds+" ";
+            sql += " WHERE "+conds+" ";
         }
         
-        sql +="ORDER BY product_name ASC ";
-        sql +="LIMIT "+ at +","+ total;
+        sql +=" ORDER BY product_name ASC ";
+        sql +=" LIMIT "+ at +","+ total;
         return this.gets(sql);
 	}
 	

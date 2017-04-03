@@ -49,6 +49,8 @@ public class CategoryGroupLibrary {
 		for(CategoryGroupObject item : items){
 			if(item.getCategory_group_id() == similar.getCategory_group_id()){
 				selected = "selected";
+			}else{
+				selected = "";
 			}
 			tmp += "<option value=\""+item.getCategory_group_id()+"\" "+selected+">"+item.getCategory_group_name()+"</option>";
 		}

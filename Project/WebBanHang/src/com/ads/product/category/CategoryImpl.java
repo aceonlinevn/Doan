@@ -124,7 +124,7 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 
 	@Override
 	public ResultSet getCategorys(CategoryObject similar, int at, byte total) {
-		String sql = "SELECT * FROM category ";
+		String sql = "SELECT * FROM category c LEFT JOIN category_group cg ON c.category_group_id = cg.category_group_id ";
 		String conds = MakeConditions.createConditionCategory(similar);
 
         if(!conds.equalsIgnoreCase("")){

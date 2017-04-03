@@ -1,7 +1,8 @@
 package com.library;
 
 import java.io.*;
-
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +56,14 @@ public class Utilities {
 		tmp += "alert("+message+")";
 		tmp += "</script>";
 		
+		return tmp;
+	}
+	
+	public static String convertMoney(double money){
+		String tmp = "";
+		NumberFormat formatter = new DecimalFormat("#,###,###");
+		tmp = formatter.format(money);
+		tmp = tmp.replaceAll(",", ".");
 		return tmp;
 	}
 	

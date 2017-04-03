@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="product" key="selection"/>
+		<item value="Category" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Category_group"/>
+			<item value="/Category/"/>
+			<item value="CategoryGroup"/>
+			<item value="/CategoryGroup/"/>
+			<item value="CategoryGroup/del"/>
+			<item value="CategoryGroup/view"/>
 			<item value="Product"/>
 			<item value="product"/>
-			<item value="this.pm"/>
-			<item value="&lt;/a&gt;&lt;/a&gt;"/>
-			<item value="out.print"/>
-			<item value="Article"/>
-			<item value="this.um"/>
-			<item value="this.u"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Category"/>
+			<item value="/category/"/>
+			<item value="/categorygroup/"/>
+			<item value="categorygroup/del"/>
+			<item value="categorygroup/view"/>
 			<item value="CategoryGroup"/>
 			<item value="this.cg"/>
 			<item value="&lt;/a&gt;"/>
-			<item value="out.println"/>
-			<item value="Product"/>
-			<item value="this.pm"/>
-			<item value="this.p"/>
-			<item value="this.c"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

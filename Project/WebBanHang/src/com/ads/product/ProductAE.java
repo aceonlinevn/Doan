@@ -12,7 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.*;
-import com.ads.product.categorygroup.*;
+import com.ads.product.category.*;
 import com.library.*;
 import com.object.*;
 
@@ -56,12 +56,13 @@ public class ProductAE extends HttpServlet {
         int id = Utilities.getIntParam(request,"id");
         String product_name = "";
         boolean product_status = true;
-        int product_category_id = 1,product_price_discount=1,product_warranty_time=12,product_provider_id=1,product_visited=1;
-        double product_quantity =1,product_origin_price = 1,product_price2=1,product_price3=1;
+        int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
+        double product_origin_price = 1,product_price2=1,product_price3=1;
         String product_specification ="", product_note = "",product_image= "";
         String lblSave = "Thêm mới";
         String readonly = "";
         boolean isExisting = false;
+        String loadImg = "<img src=\"/WebBanHang/adv/adimg/uploadimg.png\" height=\"120\" width=\"120\" alt=\"Chọn ảnh upload\" id=\"thumbimage\" />"; 
         if(id >0){
             ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");            
             ProductControl pc = new ProductControl(cp);
@@ -86,10 +87,10 @@ public class ProductAE extends HttpServlet {
             	product_specification = eProduct.getProduct_specification();
             	product_note = eProduct.getProduct_note();
             	product_image = eProduct.getProduct_image();
-            	
                 lblSave = "Cập nhật";
                 readonly = "readonly";
                 isExisting = true;
+                loadImg = "<img src=\""+product_image+"\" id=\"thumbimage\" alt=\""+product_name+"\" width=\"120px\" height=\"120px\" />"; 
             }
 
             //Tra lai ket noi
@@ -107,55 +108,65 @@ public class ProductAE extends HttpServlet {
         out.println("<tr><th colspan=2>Thông tin sản phẩm</th></tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên sản phẩm</td>");
-    	out.println("<td><input type=\"text\" value=\""+product_name+"\" name=\"txtProductName\" size=35/></td>");
+    	out.println("<td><input type=\"text\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
     	out.println("<td>"
-    			+ "<span class=\"productimage\"></span>"
-    			+ "<input onchange=\"loadImg(this.value)\" type=\"file\" name=\"txtProductImage\" size=35/>"
+    			+ "<span id=\"thumbbox\">"+loadImg+"<a class=\"removeimg\" href=\"javascript:\" ><span class=\"glyphicon glyphicon-remove\"></span></a></span>"
+    			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this)\" type=\"file\" name=\"txtProductImage\" size=35 />"
     			+ ""
     			+ "</td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Tình trạng</td>");
     	out.println("<td>");
-    	out.println("<select name=\"slcStatus\">");
-    	out.println("<option value=\"0\">Còn hàng</option>");
-    	out.println("<option value=\"1\">Hết hàng</option>");
+    	out.println("<select name=\"slcProductStatus\">");
+    	if(product_status){
+	    	out.println("<option value=\"0\" selected>Còn hàng</option>");
+	    	out.println("<option value=\"1\">Hết hàng</option>");
+    	}else if(!product_status){
+    		out.println("<option value=\"0\">Còn hàng</option>");
+	    	out.println("<option value=\"1\" selected>Hết hàng</option>");
+    	}
+    	else{
+    		out.println("<option value=\"0\" selected>Còn hàng</option>");
+	    	out.println("<option value=\"1\">Hết hàng</option>");
+    	}
     	out.println("<option value=\"2\">-------</option>");
     	out.println("</select>");
     	out.println("</td>");
     	out.println("</tr>");
     	out.println("<tr>");
-    	out.println("<td class=\"lc\">Thuộc hệ sản phẩm</td>");
+    	out.println("<td class=\"lc\">Thuộc loại sản phẩm</td>");
     	out.println("<td>");
     	ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
-        CategoryGroupControl cgc = new CategoryGroupControl(cp);
+    	CategoryControl cc = new CategoryControl(cp);
     	if(cp != null){
-            getServletContext().setAttribute("cpool",cgc.getConnectionPool());
+            getServletContext().setAttribute("cpool",cc.getConnectionPool());
         } 
-    	CategoryGroupObject similar = new CategoryGroupObject();
-    	String slcCategoryGroup = cgc.slcCategoryGroup(similar);
-        cgc.releaseConnection();
-    	out.println(slcCategoryGroup);
+    	CategoryObject similar = new CategoryObject();
+    	similar.setCategory_id(product_category_id);
+    	String slcCategory = cc.slcCategory(similar);
+        cc.releaseConnection();
+    	out.println(slcCategory);
     	out.println("</td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Số lượng</td>");
-    	out.println("<td><input type=\"number\" name=\"txtQuantity\" size=20/></td>");
+    	out.println("<td><input type=\"number\" min=\"0\" name=\"txtProductQuantity\" value=\""+product_quantity+"\" size=20 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Giá gốc</td>");
-    	out.println("<td><input type=\"text\" name=\"txtOriginPrice\" size=35/></td>");
+    	out.println("<td><input type=\"number\" name=\"txtProductOriginPrice\" value=\""+product_origin_price+"\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Khuyến mại</td>");
-    	out.println("<td><input type=\"number\" name=\"txtDiscount\" size=20/></td>");
+    	out.println("<td><input type=\"number\" name=\"txtProductDiscount\" value=\""+product_price_discount+"\" size=10 /><span style=\"color:red\"><b>%</b></span></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Bảo hành</td>");
-    	out.println("<td><input type=\"number\" name=\"txtDiscount\" size=20/></td>");
+    	out.println("<td><input type=\"number\" name=\"txtProductWarrantyTime\" value=\""+product_warranty_time+"\" size=20 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Nhà cung cấp</td>");
@@ -169,15 +180,15 @@ public class ProductAE extends HttpServlet {
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Thông số kĩ thuật</td>");
-    	out.println("<td><textarea rows=10 cols=80 id=\"txtSpecification\" name=\"txtSpecification\"></textarea></td>");
+    	out.println("<td><textarea rows=10 cols=80 id=\"txtProductSpecification\" name=\"txtProductSpecification\">"+product_specification+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ghi chú</td>");
-    	out.println("<td><textarea rows=6 cols=80 id=\"txtNote\" name=\"txtNote\"></textarea></td>");
+    	out.println("<td><textarea rows=6 cols=80 id=\"txtProductNote\" name=\"txtProductNote\">"+product_note+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td colspan=2 align=\"center\">");
-    		out.println("<input class=\"btn btn-default\" type=\"button\" value=\""+lblSave+"\" name=\"btnAdd\"/>");
+    		out.println("<input class=\"btn btn-default\" type=\"button\" value=\""+lblSave+"\" onclick=\"saveProduct(this.form)\" name=\"btnAdd\"/>");
     		out.println("<input class=\"btn btn-default\" type=\"reset\" value=\"Nhập lại\" name=\"btnReset\"/>");
     		out.println("<a class=\"btn btn-default\" href=\"/WebBanHang/product/view\">Trở về</a>");
     	out.println("</td>");
@@ -187,12 +198,11 @@ public class ProductAE extends HttpServlet {
             out.print("<input type=\"hidden\" name=\"idForPost\" value=\""+id+"\" />");
         }
         out.println("</form>");
-        out.println("</div>");
-        out.println("<script src=\"/WebBanHang/adv/adjs/product.js\"></script>");
+        out.println("</div>");	
         out.println("<script src=\"/WebBanHang/adv/ckeditor/ckeditor.js\"></script>");
         out.println("<script>");
-        out.println("CKEDITOR.replace( 'txtSpecification' );");
-        out.println("CKEDITOR.replace( 'txtNote' );");
+        out.println("CKEDITOR.replace( 'txtProductSpecification' );");
+        out.println("CKEDITOR.replace( 'txtProductNote' );");
         out.println("</script>");
         //Tim tham chieu cua footer
         RequestDispatcher f = request.getRequestDispatcher("/footer");
@@ -206,8 +216,58 @@ public class ProductAE extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		int id = Utilities.getIntParam(request, "idForPost");
+		
+		String productname = request.getParameter("txtProductName");
+		String productimage = "/WebBanHang/upload/productimg/"+request.getParameter("txtProductImage");
+		boolean productstatus = request.getParameter("slcProductStatus").equalsIgnoreCase("0") ? false : true;
+		int productcategory = Integer.parseInt(request.getParameter("slcCategory"));
+		int productquantity = Integer.parseInt(request.getParameter("txtProductQuantity"));
+		double productoriginprice = Double.parseDouble(request.getParameter("txtProductOriginPrice"));
+		int productdiscount = Integer.parseInt(request.getParameter("txtProductDiscount"));
+		int productwarrantytime = Integer.parseInt(request.getParameter("txtProductWarrantyTime"));
+		int productprovider = Integer.parseInt(request.getParameter("slcProvider"));
+		String productproductspecification = request.getParameter("txtProductSpecification");
+		String productnote = request.getParameter("txtProductNote");
+		
+		ProductObject po = new ProductObject();
+		po.setProduct_name(productname);
+		po.setProduct_image(productimage);
+		po.setProduct_status(productstatus);
+		po.setProduct_category_id(productcategory);
+		po.setProduct_quantity(productquantity);
+		po.setProduct_origin_price(productoriginprice);
+		po.setProduct_price_discount(productdiscount);
+		po.setProduct_warranty_time(productwarrantytime);
+		po.setProduct_provider_id(productprovider);
+		po.setProduct_specification(productproductspecification);
+		po.setProduct_note(productnote);
+		
+		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
+        ProductControl pc = new ProductControl(cp);
+        if(cp == null){
+            getServletContext().setAttribute("cpool",pc.getConnectionPool());
+        }
+        //Thuc hien
+        boolean result;
+        if(id >0){
+        	po.setProduct_id(id); //dua id vao de cap nhap
+            result = pc.editProduct(po);
+        }else{
+            result = pc.addProduct(po);
+        }
+
+        //Tra ve ket noi
+        pc.releaseConnection();
+        //Kiem tra
+        if(result){
+            response.sendRedirect("/WebBanHang/product/view");
+        }else{
+            response.sendRedirect("/WebBanHang/product/ae?err=ae&at=failed");
+        }
+
 	}
 
 }

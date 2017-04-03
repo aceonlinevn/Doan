@@ -106,6 +106,8 @@ public class ProductModel {
 					item.setProduct_provider_id(rs.getInt("product_provider_id"));
 					item.setProduct_image(rs.getString("product_image"));
 					item.setProduct_visited(rs.getInt("product_visited"));
+					item.setCategory_group_name(rs.getString("category_group_name"));
+					item.setCategory_name(rs.getString("category_name"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }

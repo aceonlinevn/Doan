@@ -1,6 +1,9 @@
 package com.ads.product;
 
+import com.library.Utilities;
 import com.object.*;
+
+import java.text.*;
 import java.util.*;
 
 public class ProductLibrary {
@@ -8,14 +11,21 @@ public class ProductLibrary {
 	public static String viewProducts(ArrayList<ProductObject> items){
         String tmp = "";
          int i = 0;
+         String modified = "";
+         String origin_price = "";
         for(ProductObject item:items){
+        	if(item.getProduct_last_modified() == null || item.getProduct_last_modified().equalsIgnoreCase("")){
+        		modified = "không sửa";
+        	}else{
+        		modified = item.getProduct_last_modified();
+        	}
             tmp += (i%2 == 0) ? "<tr class=odd>":"<tr>";
             tmp += "<td class=\"NO\">"+ (++i) +"</td>";
             tmp += "<td class=\"NAME\">"+item.getProduct_name()+"</td>";
             tmp += "<td>"+item.getProduct_imported_date()+"</td>";
-            tmp += "<td>"+item.getProduct_last_modified()+"</td>";
+            tmp += "<td>"+modified+"</td>";
             tmp += "<td>"+item.getProduct_quantity()+"</td>";
-            tmp += "<td>"+item.getProduct_origin_price()+"</td>";
+            tmp += "<td>"+Utilities.convertMoney(item.getProduct_origin_price())+"</td>";
             tmp += "<td>"+item.getProduct_price_discount()+"</td>";
             tmp += "<td>"+item.getCategory_name()+"</td>";
             tmp += "<td>"+item.getCategory_group_name()+"</td>";
