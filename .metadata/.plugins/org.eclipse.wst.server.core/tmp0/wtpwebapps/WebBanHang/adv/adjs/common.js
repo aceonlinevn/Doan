@@ -29,12 +29,9 @@ function saveCategoryGroup(fn){
 }
 //
 function  loadImg(url) {
-	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' width='150px' height='120px' />";
-    $(".removeimg").show();         
+	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' id='thumbimage' width='150px' height='120px' /><a class='removeimg' href='javascript: removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";  
   }
-  $(document).ready(function () {
-   $(".removeimg").click(function () {
-      $("#thumbimage").attr('src', '').hide();
-      $(".removeimg").hide();
-    });
-   })
+function removeImg(){
+	$("#thumbimage").attr('src', '').hide();
+    $(".removeimg").hide();
+}

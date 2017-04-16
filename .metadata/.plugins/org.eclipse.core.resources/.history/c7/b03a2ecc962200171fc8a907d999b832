@@ -53,6 +53,6 @@ function popImageManager() {
 }
 function load(){
 	document.getElementById("loadimg").value = "/WebBanHang/upload/productimg/33260_01.jpg";
-	document.getElementById("thumbbox").innerHTML = "<img src='/WebBanHang/upload/productimg/34327_01.jpg' id='thumbimage' width='150px' height='120px' /><a class='removeimg' href='javascript: removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";
+	document.getElementById("thumbbox").innerHTML = "<img src='/WebBanHang/upload/productimg/34327_01.jpg' width='150px' height='120px' />";
 	$('#popImageManager').modal('hide');
 }

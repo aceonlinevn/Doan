@@ -29,7 +29,7 @@ function saveCategoryGroup(fn){
 }
 //
 function  loadImg(url) {
-	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' id='thumbimage' width='150px' height='120px' /><a class='removeimg' href='javascript: removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";  
+	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' width='150px' height='120px' /><a class='removeimg' href='removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";  
   }
 function removeImg(){
 	$("#thumbimage").attr('src', '').hide();

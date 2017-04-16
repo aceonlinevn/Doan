@@ -113,7 +113,7 @@ public class ProductAE extends HttpServlet {
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
     	out.println("<td>"
-    			+ "<span id=\"thumbbox\">"+loadImg+"<a class=\"removeimg\" href=\"javascript: removeImg()\" ><span class=\"glyphicon glyphicon-remove\"></span></a></span>"
+    			+ "<span id=\"thumbbox\">"+loadImg+"<a class=\"removeimg\" href=\"javascript:\" ><span class=\"glyphicon glyphicon-remove\"></span></a></span>"
     			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this.value)\" type=\"text\" id=\"loadimg\" name=\"txtProductImage\" size=35 />"
     			+ "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#popImageManager\">Chọn ảnh</button>"
     			+ "</td>");
