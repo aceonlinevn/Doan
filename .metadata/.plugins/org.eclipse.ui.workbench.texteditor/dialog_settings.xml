@@ -9,8 +9,8 @@
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
 			<item value="Category_group"/>
-			<item value="/Category/"/>
 			<item value="CategoryGroup"/>
+			<item value="/Category/"/>
 			<item value="/CategoryGroup/"/>
 			<item value="CategoryGroup/del"/>
 			<item value="CategoryGroup/view"/>

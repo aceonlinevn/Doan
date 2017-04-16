@@ -90,7 +90,7 @@ public class ProductAE extends HttpServlet {
                 lblSave = "Cập nhật";
                 readonly = "readonly";
                 isExisting = true;
-                loadImg = "<img src=\""+product_image+"\" id=\"thumbimage\" alt=\""+product_name+"\" width=\"120px\" height=\"120px\" />"; 
+                loadImg = "<img src=\""+product_image+"\" id=\"thumbimage\" alt=\""+product_name+"\" width=\"150px\" height=\"120px\" />"; 
             }
 
             //Tra lai ket noi
@@ -114,8 +114,8 @@ public class ProductAE extends HttpServlet {
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
     	out.println("<td>"
     			+ "<span id=\"thumbbox\">"+loadImg+"<a class=\"removeimg\" href=\"javascript:\" ><span class=\"glyphicon glyphicon-remove\"></span></a></span>"
-    			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this)\" type=\"file\" name=\"txtProductImage\" size=35 />"
-    			+ ""
+    			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this.value)\" type=\"text\" id=\"loadimg\" name=\"txtProductImage\" size=35 />"
+    			+ "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#popImageManager\">Chọn ảnh</button>"
     			+ "</td>");
     	out.println("</tr>");
     	out.println("<tr>");
@@ -199,6 +199,9 @@ public class ProductAE extends HttpServlet {
         }
         out.println("</form>");
         out.println("</div>");	
+        out.println("<script language=\"javascript\">");
+        out.println("popImageManager();");
+        out.println("</script>");
         out.println("<script src=\"/WebBanHang/adv/ckeditor/ckeditor.js\"></script>");
         out.println("<script>");
         out.println("CKEDITOR.replace( 'txtProductSpecification' );");

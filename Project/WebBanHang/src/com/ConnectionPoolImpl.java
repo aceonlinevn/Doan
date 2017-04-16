@@ -55,7 +55,7 @@ public class ConnectionPoolImpl implements ConnectionPool{
 	            System.out.println(objectName+ " have create a new Connection!\n");
 	            return DriverManager.getConnection(this.url,this.username,this.userpass);
 	        }else{
-	            System.out.print(objectName+ " have popped the Connection!");
+	            System.out.println(objectName+ " have popped the Connection!");
 	            return (Connection) this.pool.pop(); // pop lay ra
 	        }
 	}

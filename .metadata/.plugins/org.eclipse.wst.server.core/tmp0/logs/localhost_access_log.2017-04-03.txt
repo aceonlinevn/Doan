@@ -1096,3 +1096,14 @@
 0:0:0:0:0:0:0:1 - - [03/Apr/2017:18:37:35 +0700] "GET /WebBanHang/product/del?id=5 HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [03/Apr/2017:18:37:35 +0700] "GET /WebBanHang/product/view HTTP/1.1" 200 5481
 0:0:0:0:0:0:0:1 - - [03/Apr/2017:18:37:37 +0700] "GET /WebBanHang/product/view HTTP/1.1" 200 5481
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:24 +0700] "GET /WebBanHang/category/view HTTP/1.1" 200 6715
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:24 +0700] "GET /WebBanHang/adv/adjs/common.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:26 +0700] "GET /WebBanHang/categorygroup/view HTTP/1.1" 200 6669
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:27 +0700] "GET /WebBanHang/product/view HTTP/1.1" 200 5481
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:27 +0700] "GET /WebBanHang/adv/adjs/product.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:30 +0700] "GET /WebBanHang/categorygroup/view HTTP/1.1" 200 6669
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:31 +0700] "GET /WebBanHang/category/view HTTP/1.1" 200 6715
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:33 +0700] "GET /WebBanHang/product/view HTTP/1.1" 200 5481
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:38 +0700] "GET /WebBanHang/product/ae?id=4 HTTP/1.1" 200 6933
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:38 +0700] "GET /WebBanHang/upload/productimg/ HTTP/1.1" 404 1052
+0:0:0:0:0:0:0:1 - - [03/Apr/2017:19:07:56 +0700] "GET /WebBanHang/product/view HTTP/1.1" 200 5481

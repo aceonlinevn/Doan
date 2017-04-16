@@ -28,19 +28,8 @@ function saveCategoryGroup(fn){
 	fn.submit();
 }
 //
-function  loadImg(input,thumbimage) {
-   if  (input.files && input.files[0]) { 
-   var  reader = new FileReader();
-    reader.onload = function (e) {
-    $("#thumbimage").attr('src', e.target.result);
-     }
-     reader.readAsDataURL(input.files[0]);
-    }
-    else  { 
-      $("#thumbimage").attr('src', input.value);
-  
-    }
-    $("#thumbimage").show();
+function  loadImg(url) {
+	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' width='150px' height='120px' />";
     $(".removeimg").show();         
   }
   $(document).ready(function () {

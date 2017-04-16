@@ -41,6 +41,11 @@ public class Header extends HttpServlet {
         	out.println("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
         	out.println("<title>Quản trị hệ thống</title>");
         	out.println("<link rel=\"stylesheet\" href=\"/WebBanHang/adv/adcss/style.css\">");
+        	out.println("<link rel=\"stylesheet\" href=\"/WebBanHang/adv/adcss/bootstrap.min.css\">");
+        	out.println("<script src=\"/WebBanHang/adv/adjs/jquery-3.1.1.min.js\"></script>");
+	        out.println("<script src=\"/WebBanHang/adv/adjs/common.js\"></script>");
+			out.println("<script src=\"/WebBanHang/adv/adjs/bootstrap.min.js\"></script>");
+			out.println("<script src=\"/WebBanHang/adv/adjs/popup.js\"></script>");
         out.println("</head>");
         out.println("<body>");
         	out.println("<ul class=\"nav navbar-nav navbar-right\">");

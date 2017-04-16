@@ -26,7 +26,7 @@ public class ProductLibrary {
             tmp += "<td>"+modified+"</td>";
             tmp += "<td>"+item.getProduct_quantity()+"</td>";
             tmp += "<td>"+Utilities.convertMoney(item.getProduct_origin_price())+"</td>";
-            tmp += "<td>"+item.getProduct_price_discount()+"</td>";
+            tmp += "<td align=\"center\">"+item.getProduct_price_discount()+"%</td>";
             tmp += "<td>"+item.getCategory_name()+"</td>";
             tmp += "<td>"+item.getCategory_group_name()+"</td>";
             tmp += "<td>"+item.getProduct_visited()+"</td>";

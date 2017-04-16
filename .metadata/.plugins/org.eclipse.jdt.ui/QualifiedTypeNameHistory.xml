@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="com.ShareControl"/>
 <fullyQualifiedTypeName name="com.ads.basic.BasicImpl"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
@@ -11,7 +10,6 @@
 <fullyQualifiedTypeName name="com.object.CategoryObject"/>
 <fullyQualifiedTypeName name="com.object.UserObject"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="com.object.ProductObject"/>
 <fullyQualifiedTypeName name="com.sql.ads.MakeConditions"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -19,9 +17,12 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="com.library.Utilities"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.commons.xmlutil.Converter"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.object.CategoryGroupObject"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.object.ProductObject"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="com.library.Utilities"/>
 </qualifiedTypeNameHistroy>
