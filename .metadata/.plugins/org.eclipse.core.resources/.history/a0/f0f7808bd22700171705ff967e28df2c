@@ -1,0 +1,201 @@
+package com.ads.provider;
+
+import java.sql.*;
+
+import com.object.*;
+import com.sql.ads.MakeConditions;
+import com.*;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+
+public class ProviderImpl implements Provider {
+
+	public ProviderImpl(ConnectionPool cp) {
+		super(cp, "Provider");
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public boolean addProvider(ProviderObject item) {
+		String sql = "INSERT INTO Provider(";
+		sql += "Provider_name,Provider_status,Provider_category_id,";
+		sql += "Provider_quantity,Provider_origin_price,Provider_price2,";
+		sql += "Provider_price3,Provider_price_discount,Provider_imported_date,";
+		sql += "Provider_specification,Provider_note,";
+		sql += "Provider_warranty_time,Provider_provider_id,Provider_image,Provider_summary,Provider_promotion";
+		sql += ")";
+		sql += "VALUES(?,?,?,?,?,?,?,?,'"+getDateToday()+"',?,?,?,?,?,?,?)";
+		
+		try {
+			PreparedStatement preAdd = this.con.prepareStatement(sql);
+			preAdd.setString(1, item.getProvider_name());
+			preAdd.setBoolean(2, item.isProvider_status());
+			preAdd.setInt(3, item.getProvider_category_id());
+			preAdd.setInt(4, item.getProvider_quantity());
+			preAdd.setDouble(5, item.getProvider_origin_price());
+			preAdd.setDouble(6, item.getProvider_price2());
+			preAdd.setDouble(7, item.getProvider_price3());
+			preAdd.setInt(8, item.getProvider_price_discount());
+			preAdd.setString(9, item.getProvider_specification());
+			preAdd.setString(10,item.getProvider_note());
+			preAdd.setInt(11, item.getProvider_warranty_time());
+			preAdd.setInt(12,item.getProvider_provider_id());
+			preAdd.setString(13, item.getProvider_image());
+			preAdd.setString(14, item.getProvider_summary());
+			preAdd.setString(15, item.getProvider_promotion());
+			
+			return this.add(preAdd);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private String getDateToday(){
+        String datetoday = "";
+        Date date = new Date(System.currentTimeMillis());
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        datetoday = df.format(date);
+        return datetoday;
+    }
+	
+	@Override
+	public boolean editProvider(ProviderObject item) {
+		String sql = "UPDATE Provider SET ";
+		sql += "Provider_name = ?,Provider_status = ?,";
+		sql += "Provider_category_id = ?,Provider_quantity = ?,";
+		sql += "Provider_origin_price = ?,Provider_price2 = ?,";
+		sql += "Provider_price3 = ?,Provider_price_discount = ?,";
+		sql += "Provider_last_modified = '"+getDateToday()+"',Provider_specification = ?,";
+		sql += "Provider_note = ?,Provider_warranty_time = ?,";
+		sql += "Provider_provider_id = ?,Provider_image = ?,Provider_summary = ?,Provider_promotion = ?";
+		sql += " WHERE Provider_id = ?";
+		
+		try {
+			PreparedStatement preEdit = this.con.prepareStatement(sql);
+			preEdit.setString(1, item.getProvider_name());
+			preEdit.setBoolean(2, item.isProvider_status());
+			preEdit.setInt(3, item.getProvider_category_id());
+			preEdit.setInt(4, item.getProvider_quantity());
+			preEdit.setDouble(5, item.getProvider_origin_price());
+			preEdit.setDouble(6, item.getProvider_price2());
+			preEdit.setDouble(7, item.getProvider_price3());
+			preEdit.setInt(8, item.getProvider_price_discount());
+			preEdit.setString(9, item.getProvider_specification());
+			preEdit.setString(10,item.getProvider_note());
+			preEdit.setInt(11, item.getProvider_warranty_time());
+			preEdit.setInt(12,item.getProvider_provider_id());
+			preEdit.setString(13, item.getProvider_image());
+			preEdit.setInt(14, item.getProvider_id());
+			preEdit.setString(15, item.getProvider_summary());
+			preEdit.setString(16, item.getProvider_promotion());
+			
+			return this.edit(preEdit);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delProvider(ProviderObject item) {
+		if(!isExistingImages(item)){
+			return false;
+		}
+		
+		String sql = "DELETE FROM Provider WHERE Provider_id = ?";
+		
+		try {
+			PreparedStatement preDel = this.con.prepareStatement(sql);
+			preDel.setInt(1, item.getProvider_id());
+			
+			return this.del(preDel);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private boolean isExistingImages(ProviderObject item){
+        boolean flag = true;
+        String sql = "SELECT images_id FROM tblimages WHERE images_Provider_id = "+item.getProvider_id()+"";
+        ResultSet rs = this.get(sql,0);
+        if(rs !=null){
+            try {
+                if (rs.next()) {
+                    flag = false;
+                }
+                rs.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return flag;
+    }
+	
+	@Override
+	public ResultSet getProvider(int id) {
+		String sql = "SELECT * FROM Provider WHERE Provider_id = ?";
+		
+		return this.get(sql, id);
+	}
+
+	@Override
+	public ResultSet getProviders(ProviderObject similar, int at, byte total) {
+		String sql = "SELECT * FROM Provider p LEFT JOIN category c ON p.Provider_category_id = c.category_id LEFT JOIN category_group cg ON c.category_group_id = cg.category_group_id ";
+		String conds = MakeConditions.createConditionProvider(similar);
+
+        if(!conds.equalsIgnoreCase("")){
+            sql += " WHERE "+conds+" ";
+        }
+        
+        sql +=" ORDER BY Provider_name ASC ";
+        sql +=" LIMIT "+ at +","+ total;
+        return this.gets(sql);
+	}
+	
+	public static void main(String[] args){
+        // Tao bo quan ly ket noi
+        ConnectionPool cp = new ConnectionPoolImpl();
+
+        //Tao doi tuong thuc thi chuc nang
+        Provider a = new ProviderImpl(cp);
+
+        // tao doi tuong moi
+        ProviderObject nProvider = new ProviderObject();
+        nProvider.setProvider_id(1);
+        nProvider.setProvider_name("ban moi3");
+        nProvider.setProvider_category_id(2);
+        //Thuc hien
+        boolean result = a.addProvider(nProvider);
+        if(!result){
+            System.out.println("\nKhong thanh cong\n");
+        }
+        //Lay danh sach nguoi su dung
+
+        ResultSet rs = a.getProviders(null,0,(byte) 10);
+
+        //Duyet va hien thi
+        if(rs !=null){
+            try {
+                while (rs.next()) {
+                    System.out.print(rs.getInt("Provider_id")+"\t");
+                    System.out.print(rs.getString("Provider_name")+"\t");
+                    System.out.print(rs.getString("Provider_imported_date")+"\t");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+}

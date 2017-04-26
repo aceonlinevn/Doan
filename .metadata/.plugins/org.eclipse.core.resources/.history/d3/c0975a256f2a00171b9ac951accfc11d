@@ -1,0 +1,10 @@
+package com.sql.gui;
+
+import com.object.*;
+
+public class MakeConditions {
+
+	public static String createConditionProduct(){
+        
+    }
+}

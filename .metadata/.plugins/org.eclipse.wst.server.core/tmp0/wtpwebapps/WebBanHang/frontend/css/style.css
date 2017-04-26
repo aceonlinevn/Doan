@@ -316,7 +316,7 @@ body {
 }
 
 .wrapper {
-  width: 90%;
+  width: 1200px;
   height: auto;
   margin: 0 auto;
 }
@@ -410,6 +410,10 @@ body {
   color: #f00;
 }
 
+.fl {
+  float: left;
+}
+
 .content .sub-content {
   width: 100%;
   height: auto;
@@ -477,7 +481,7 @@ body {
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch {
   display: table;
-  width: 100%;
+  width: calc(100% - 2px);
   border: 1px solid #f00;
 }
 .content .sub-content .aside .tp-aside .form-area .frmSearch .slcSearch {
@@ -604,9 +608,6 @@ body {
   padding: 10px 0 !important;
 }
 
-.products {
-  float: left;
-}
 .products .product {
   width: calc(16.6666667% - 2px);
   height: 277px;
@@ -658,8 +659,18 @@ body {
   font-size: 18px;
 }
 .products .product .product-name {
+  overflow: hidden;
+  width: 178px;
   padding: 0 10px;
-  height: 58px;
+  height: 36px;
+}
+.products .product .product-name:before {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 .products .product .product-name h2 {
   font-size: 13px;
@@ -782,39 +793,8 @@ body {
   width: 83.3333333% !important;
   position: relative;
 }
-.section .products .owl-prev {
-  position: absolute;
-  top: 101.5px;
-  left: 0;
-  background: url(../images/arrow-left.svg) no-repeat center !important;
-  height: 30px;
-}
-.section .products .owl-next {
-  top: 101.5px;
-  position: absolute;
-  right: 0;
-  background: url(../images/arrow-right.svg) no-repeat center !important;
-  height: 30px;
-}
-
-.owl-wrapper-outer .product {
-  width: 100% !important;
-}
-.owl-wrapper-outer .product:first-child {
-  border-left: none !important;
-}
-.owl-wrapper-outer .owl-item {
-  transition: 0.25s;
-}
-.owl-wrapper-outer .owl-item:first-child {
-  border-left: 1px solid #ccc !important;
-}
-.owl-wrapper-outer .owl-item:hover {
-  box-shadow: -2px -2px 2px #ccc;
-  -moz-box-shadow: -2px -2px 2px #ccc;
-  -webkit-box-shadow: -2px -2px 2px #ccc;
-  -o-box-shadow: -2px -2px 2px #ccc;
-  -ms-box-shadow: -2px -2px 2px #ccc;
+.section .products .product {
+  width: calc(20% - 2px) !important;
 }
 
 .footer {
@@ -822,4 +802,38 @@ body {
   padding: 6px;
   color: #fff;
   background: #da2929;
+}
+
+#brand {
+  margin: 20px 0;
+  position: relative;
+  height: 50px !important;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+#brand .owl-wrapper-outer {
+  display: table !important;
+  height: 52px !important;
+}
+#brand .owl-item {
+  vertical-align: middle;
+}
+#brand img {
+  margin: 6.5px 0;
+  max-width: 100px;
+  max-height: 38px;
+}
+#brand .owl-prev {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  background: url(../images/arrow-left.svg) no-repeat center !important;
+  height: 30px;
+}
+#brand .owl-next {
+  top: 4px;
+  position: absolute;
+  right: 0;
+  background: url(../images/arrow-right.svg) no-repeat center !important;
+  height: 30px;
 }

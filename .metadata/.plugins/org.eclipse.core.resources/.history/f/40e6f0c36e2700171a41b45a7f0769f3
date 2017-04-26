@@ -1,0 +1,5 @@
+package com.ads.autodata;
+
+public class DataConstant {
+	public final static PRNAMETA = "h1>span";
+}

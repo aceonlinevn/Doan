@@ -1,0 +1,14 @@
+package com.sql.gui;
+
+import com.object.ProductObject;
+
+public class MakeConditions {
+
+	public static String createConditionProduct(ProductObject silimar){
+        String tmp = "";
+        if(cond != null){
+        	
+        }
+        return tmp;
+    }
+}

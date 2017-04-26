@@ -1,0 +1,16 @@
+package com.gui.product;
+
+import com.library.Utilities;
+import com.object.*;
+
+import java.text.*;
+import java.util.*;
+
+public class ProductLibrary {
+
+	public static String viewProductForCondition(ArraList<ProductObject> items,int condition){
+		String tmp = "";
+		
+		return tmp;
+	}
+}

@@ -17,6 +17,7 @@ $(document).ready(function(){
                 if(arr_price[i] == 8) arr_price[i] = "<span class='price-number-8'></span>";
                 if(arr_price[i] == 9) arr_price[i] = "<span class='price-number-9'></span>";
                 if(arr_price[i] == '.') arr_price[i] = "<span class='price-number-dot'></span>";
+                if(i> arr_price.length - 4) arr_price[i]="";
             }
 
             $(this).html(arr_price);

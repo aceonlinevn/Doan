@@ -1,0 +1,66 @@
+package com.gui.product;
+
+import com.library.Utilities;
+import com.object.*;
+
+import java.text.*;
+import java.util.*;
+
+public class ProductLibrary {
+
+	public static String viewProductForCondition(ArrayList<ProductObject> items,int condition){
+		String tmp = "";
+		
+		switch (condition) {
+		case 1:
+			
+			break;
+
+		default:
+			break;
+		}
+		
+		return tmp;
+	}
+	public static String viewProduct(ArrayList<ProductObject> items){
+		String tmp = "";
+		for(ProductObject item : items){
+			String status = "";
+			if(item.isProduct_status()){
+				status = "Còn hàng";
+			}else{
+				status = "Hết hàng";
+			}
+			tmp += "<div class=\"product\">";
+			tmp += "<div class=\"product-code\">Mã sản phẩm: "+item.getProduct_prefix()+"</div>";
+			tmp += "<div class=\"product-image\">";
+			tmp += "<a href=\"WebBanHang/frontend/detail.jsp?id="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\"><img src=\""+item.getProduct_image()+"\" alt=\""+item.getProduct_name()+"\"></a>";
+			tmp += "</div>";
+			tmp += "<div class=\"product-price\">"+Utilities.convertMoney(item.getProduct_origin_price())+"</div>";
+			tmp += "<div class=\"product-name\"><h2><a href=\"WebBanHang/frontend/detail.jsp?id="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\">"+item.getProduct_name()+"</a></h2></div>";
+			tmp += "<div class=\"product-add-cart\">";
+			tmp += "<span class=\"product-stocking\"><i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i> "+ status +"</span>";
+			tmp += "<a href=\"\" title=\"Mua ngay\"><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Mua ngay</a>";
+			tmp += "</div>";
+			tmp += "<div class=\"clr\"></div>";
+			tmp += "<div class=\"product-hover\">";
+			tmp += "<div class=\"product-info\">";
+			tmp += "<p class=\"product-name-hover\">"+item.getProduct_name()+"</p>";
+			tmp += "<p class=\"product-price-hover\"><span class=\"price-text\">Giá bán: </span><span class=\"img_price\">699.000</span></p>";
+			tmp += "<p class=\"product-warranty\">Bản hành: 24 tháng</p>";
+			tmp += "</div>";
+			tmp += "<div class=\"product-sumary\">";
+			tmp += "<div class=\"title-hover\">Mô tả tóm tắt</div>";
+			tmp += "";
+			tmp += "</div>";
+			tmp += "<div class=\"product-saleoff\">";
+			tmp += "<div class=\"title-hover\">Khuyến mại</div>";
+			tmp += "";
+			tmp += "</div>";
+			tmp += "</div>";
+			tmp += "</div><!-- end Product-->";
+		}
+		
+		return tmp;
+	}
+}

@@ -13,6 +13,7 @@ import javax.servlet.http.*;
 
 import com.*;
 import com.ads.product.category.*;
+import com.ads.provider.*;
 import com.library.*;
 import com.object.*;
 
@@ -54,7 +55,7 @@ public class ProductAE extends HttpServlet {
 
         //Tim id de chinh sua neu co
         int id = Utilities.getIntParam(request,"id");
-        String product_name = "";
+        String product_name = "",product_summary = "";
         boolean product_status = true;
         int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
         double product_origin_price = 1,product_price2=1,product_price3=1;
@@ -74,6 +75,7 @@ public class ProductAE extends HttpServlet {
             
             if(eProduct !=null){
             	product_name = eProduct.getProduct_name();
+            	product_summary = eProduct.getProduct_summary();
             	product_status = eProduct.isProduct_status();
             	product_category_id = eProduct.getProduct_category_id();
             	product_price_discount = eProduct.getProduct_price_discount();
@@ -117,6 +119,10 @@ public class ProductAE extends HttpServlet {
     			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this.value)\" type=\"text\" id=\"loadimg\" name=\"txtProductImage\" size=35 />"
     			+ "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#popImageManager\">Chọn ảnh</button>"
     			+ "</td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Tóm tắt sản phẩm</td>");
+    	out.println("<td><textarea rows=6 cols=80 id=\"txtProductSummary\" name=\"txtProductSummary\">"+product_summary+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Tình trạng</td>");
@@ -171,11 +177,15 @@ public class ProductAE extends HttpServlet {
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Nhà cung cấp</td>");
     	out.println("<td>");
-    	out.println("<select name=\"slcProvider\">");
-    	out.println("<option value=\"0\">SamSung</option>");
-    	out.println("<option value=\"1\">Apple</option>");
-    	out.println("<option value=\"2\" selected>-------</option>");
-    	out.println("</select>");
+    	ProviderControl pc = new ProviderControl(cp);
+    	if(cp != null){
+            getServletContext().setAttribute("cpool",cc.getConnectionPool());
+        } 
+    	ProviderObject similar2 = new ProviderObject();
+    	similar2.setProvider_id(product_provider_id);
+    	String slcProvider = pc.slcProvider(similar2);
+        pc.releaseConnection();
+    	out.println(slcProvider);
     	out.println("</td>");
     	out.println("</tr>");
     	out.println("<tr>");
@@ -206,6 +216,7 @@ public class ProductAE extends HttpServlet {
         out.println("<script>");
         out.println("CKEDITOR.replace( 'txtProductSpecification' );");
         out.println("CKEDITOR.replace( 'txtProductNote' );");
+        out.println("CKEDITOR.replace( 'txtProductSummary' );");
         out.println("</script>");
         //Tim tham chieu cua footer
         RequestDispatcher f = request.getRequestDispatcher("/footer");
@@ -224,6 +235,7 @@ public class ProductAE extends HttpServlet {
 		int id = Utilities.getIntParam(request, "idForPost");
 		
 		String productname = request.getParameter("txtProductName");
+		String productsummary = request.getParameter("txtProductSummary");
 		String productimage = "/WebBanHang/upload/productimg/"+request.getParameter("txtProductImage");
 		boolean productstatus = request.getParameter("slcProductStatus").equalsIgnoreCase("0") ? false : true;
 		int productcategory = Integer.parseInt(request.getParameter("slcCategory"));
@@ -237,6 +249,7 @@ public class ProductAE extends HttpServlet {
 		
 		ProductObject po = new ProductObject();
 		po.setProduct_name(productname);
+		po.setProduct_summary(productsummary);
 		po.setProduct_image(productimage);
 		po.setProduct_status(productstatus);
 		po.setProduct_category_id(productcategory);
