@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.sql.ads.MakeConditions"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
@@ -20,9 +19,17 @@
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.commons.xmlutil.Converter"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
 <fullyQualifiedTypeName name="com.object.CategoryGroupObject"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="com.object.ProductObject"/>
-<fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="org.jsoup.nodes.Document"/>
+<fullyQualifiedTypeName name="org.jsoup.Jsoup"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.ads.autodata.GetData"/>
+<fullyQualifiedTypeName name="com.ads.autodata.GetDataImpl"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="org.jsoup.nodes.Element"/>
+<fullyQualifiedTypeName name="com.ads.autodata.DataConstant"/>
+<fullyQualifiedTypeName name="sun.security.provider.JavaKeyStore.CaseExactJKS"/>
+<fullyQualifiedTypeName name="com.object.ProductObject"/>
 <fullyQualifiedTypeName name="com.library.Utilities"/>
 </qualifiedTypeNameHistroy>

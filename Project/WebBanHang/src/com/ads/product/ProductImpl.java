@@ -23,9 +23,9 @@ public class ProductImpl extends CategoryImpl implements Product {
 		sql += "product_quantity,product_origin_price,product_price2,";
 		sql += "product_price3,product_price_discount,product_imported_date,";
 		sql += "product_specification,product_note,";
-		sql += "product_warranty_time,product_provider_id,product_image";
+		sql += "product_warranty_time,product_provider_id,product_image,product_summary,product_promotion,product_isnew,product_isliquidation,product_isselling";
 		sql += ")";
-		sql += "VALUES(?,?,?,?,?,?,?,?,'"+getDateToday()+"',?,?,?,?,?)";
+		sql += "VALUES(?,?,?,?,?,?,?,?,'"+getDateToday()+"',?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
@@ -42,6 +42,11 @@ public class ProductImpl extends CategoryImpl implements Product {
 			preAdd.setInt(11, item.getProduct_warranty_time());
 			preAdd.setInt(12,item.getProduct_provider_id());
 			preAdd.setString(13, item.getProduct_image());
+			preAdd.setString(14, item.getProduct_summary());
+			preAdd.setString(15, item.getProduct_promotion());
+			preAdd.setBoolean(16, item.isProduct_isnew());
+			preAdd.setBoolean(17, item.isProduct_isliquidation());
+			preAdd.setBoolean(15, item.isProduct_isselling());
 			
 			return this.add(preAdd);
 			
@@ -70,7 +75,7 @@ public class ProductImpl extends CategoryImpl implements Product {
 		sql += "product_price3 = ?,product_price_discount = ?,";
 		sql += "product_last_modified = '"+getDateToday()+"',product_specification = ?,";
 		sql += "product_note = ?,product_warranty_time = ?,";
-		sql += "product_provider_id = ?,product_image = ?";
+		sql += "product_provider_id = ?,product_image = ?,product_summary = ?,product_promotion = ?,product_isnew = ?,product_isliquidation = ?,product_isselling = ?";
 		sql += " WHERE product_id = ?";
 		
 		try {
@@ -89,6 +94,11 @@ public class ProductImpl extends CategoryImpl implements Product {
 			preEdit.setInt(12,item.getProduct_provider_id());
 			preEdit.setString(13, item.getProduct_image());
 			preEdit.setInt(14, item.getProduct_id());
+			preEdit.setString(15, item.getProduct_summary());
+			preEdit.setString(16, item.getProduct_promotion());
+			preEdit.setBoolean(17, item.isProduct_isnew());
+			preEdit.setBoolean(18, item.isProduct_isliquidation());
+			preEdit.setBoolean(19, item.isProduct_isselling());
 			
 			return this.edit(preEdit);
 		} catch (SQLException e) {

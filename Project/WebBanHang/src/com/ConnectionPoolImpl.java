@@ -21,14 +21,14 @@ public class ConnectionPoolImpl implements ConnectionPool{
 
 	public ConnectionPoolImpl() {
 		//Xác ðinh thông tin tai khoan
-        this.username = "root";
-        this.userpass = "123456";
+        this.username = "admin";
+        this.userpass = "admin";
 
         //Xac dinh trinh dieu khien
         this.driver = "com.mysql.jdbc.Driver";
 
         //Xac dinh duong dan chay Mysql
-        this.url = "jdbc:mysql://localhost:3306/dacn_webbanhang?autoReconnect=true&useSSL=false";
+        this.url = "jdbc:mysql://192.168.1.100:3306/dacn_webbanhang?autoReconnect=true&useSSL=false";
 
         //Khoi tao bo nho lýu tru ket noi
         this.pool = new Stack();

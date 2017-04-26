@@ -33,7 +33,7 @@ body{
 	text-align: center;
 }
 .wrapper{
-	width: 90%;
+	width: 1200px;
 	height: auto;
 	margin: 0 auto;
 }
@@ -127,6 +127,9 @@ body{
 		}
 	}
 }
+.fl{
+	float: left;
+}
 .content{
 	.sub-content{
 		width: 100%;
@@ -186,7 +189,7 @@ body{
 					float: left;
 					.frmSearch{
 						display: table;
-						width: 100%;
+						width: calc(100% - 2px);
 						border: 1px solid $color_red;
 						.slcSearch{
 							display: table-cell;
@@ -316,7 +319,6 @@ body{
 	padding: 10px 0 !important;
 }
 .products{
-	float: left;
 	.product{
 		width: calc(16.6666667% - 2px);
 		height: 277px;
@@ -367,6 +369,14 @@ body{
 			font-size: 18px;
 		}
 		.product-name{
+			&:before{
+				visibility: hidden;
+				display: block;
+				font-size: 0;
+				content: " ";
+				clear: both;
+				height: 0;
+			}
 			padding: 0 10px;
 			height: 58px;
 			h2{
@@ -494,41 +504,8 @@ body{
 		float: left;
 		width: 83.3333333% !important;
 		position: relative;
-		.owl-prev{
-			position: absolute;
-			top: 101.5px;
-			left: 0;
-			background: url(../images/arrow-left.svg) no-repeat center !important;
-			height: 30px;		
-		}
-		.owl-next{
-			top: 101.5px;
-			position: absolute;
-			right: 0;
-			background: url(../images/arrow-right.svg) no-repeat center !important;
-			height: 30px;
-		}
-	}
-}
-.owl-wrapper-outer{
-	 .product{
-		width: 100% !important;
-		// border: none;
-		 &:first-child{
-		 	border-left: none !important;
-		}
-	}
-	.owl-item{
-		transition: 0.25s;
-		&:first-child{
-			border-left: 1px solid #ccc !important; 
-		}
-		&:hover{
-			box-shadow: -2px -2px 2px #ccc;
-		    -moz-box-shadow: -2px -2px 2px #ccc;
-		    -webkit-box-shadow: -2px -2px 2px #ccc;
-		    -o-box-shadow: -2px -2px 2px #ccc;
-		    -ms-box-shadow: -2px -2px 2px #ccc;
+		.product{
+			width: calc(20% - 2px) !important;
 		}
 	}
 }
@@ -537,4 +514,37 @@ body{
 	padding: 6px;
 	color: #fff;
 	background: $color_red_hover;
+}
+#brand{
+	margin: 20px 0;
+	position: relative;
+	height: 50px !important;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	.owl-wrapper-outer{
+		display: table !important;
+		height: 52px !important;
+	}
+	.owl-item{		
+		vertical-align: middle;
+	}
+	img{
+		margin: 6.5px 0;
+		max-width: 100px;
+		max-height: 38px;
+	}
+	.owl-prev{
+	position: absolute;
+	top: 4px;
+	left: 0;
+	background: url(../images/arrow-left.svg) no-repeat center !important;
+	height: 30px;		
+	}
+	.owl-next{
+		top: 4px;
+		position: absolute;
+		right: 0;
+		background: url(../images/arrow-right.svg) no-repeat center !important;
+		height: 30px;
+	}
 }

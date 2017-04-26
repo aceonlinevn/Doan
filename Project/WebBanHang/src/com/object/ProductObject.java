@@ -3,13 +3,28 @@ package com.object;
 public class ProductObject extends CategoryObject{
 	private int product_id;
 	private String product_prefix,product_name;
-	private boolean product_status;
+	private boolean product_status,product_isnew,product_isliquidation,product_isselling;
 	private int product_category_id,product_quantity;
 	private double product_origin_price,product_price2,product_price3;
 	private int product_price_discount;
 	private String product_imported_date,product_last_modified;
-	private String product_specification,product_note,product_image;
+	private String product_specification,product_note,product_image,product_summary,product_promotion;
 	private int product_warranty_time,product_provider_id,product_visited;
+	
+	public String getProduct_promotion() {
+		return product_promotion;
+	}
+	public void setProduct_promotion(String product_promotion) {
+		this.product_promotion = product_promotion;
+	}
+	
+	public String getProduct_summary() {
+		return product_summary;
+	}
+	public void setProduct_summary(String product_summary) {
+		this.product_summary = product_summary;
+	}
+	
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -27,6 +42,24 @@ public class ProductObject extends CategoryObject{
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+	public boolean isProduct_isnew() {
+		return product_isnew;
+	}
+	public void setProduct_isnew(boolean product_isnew) {
+		this.product_isnew = product_isnew;
+	}
+	public boolean isProduct_isliquidation() {
+		return product_isliquidation;
+	}
+	public void setProduct_isliquidation(boolean product_isliquidation) {
+		this.product_isliquidation = product_isliquidation;
+	}
+	public boolean isProduct_isselling() {
+		return product_isselling;
+	}
+	public void setProduct_isselling(boolean product_isselling) {
+		this.product_isselling = product_isselling;
 	}
 	public boolean isProduct_status() {
 		return product_status;

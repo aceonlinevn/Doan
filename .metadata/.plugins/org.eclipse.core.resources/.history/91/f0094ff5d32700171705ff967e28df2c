@@ -1,0 +1,90 @@
+package com.ads.provider;
+
+import com.*;
+import com.object.*;
+import java.sql.*;
+import java.util.*;
+
+public class ProviderModel {
+	private Provider p;
+
+	public ProviderModel(ConnectionPool cp) {
+		this.p = new ProviderImpl(cp);
+	}
+
+	protected void finalize() throws Throwable {
+		this.p = null;
+		System.gc();// thu gom rac he thong
+		System.runFinalization();// Don dep he thong
+	}
+
+	public ConnectionPool getConnectionPool() {
+		return this.p.getConnectionPool();
+	}
+
+	public void releaseConnection() {
+		this.p.releaseConnection();
+	}
+
+	// ************************************************/
+
+	 public boolean addProvider(ProviderObject item){
+	        return this.p.addProvider(item);
+	    }
+
+	    public boolean editProvider(ProviderObject item){
+	        return this.p.editProvider(item);
+	    }
+
+	    public boolean delProvider(ProviderObject item){
+	        return this.p.delProvider(item);
+	    }
+	    
+	   
+	public ProviderObject getProviderObject(int id) {
+		ProviderObject item = null;
+
+		// Lay ban ghi nguoi su dung theo id
+		ResultSet rs = this.p.getProvider(id);
+		if (rs != null) {
+			try {
+				if (rs.next()) {
+					item = new ProviderObject();
+					item.setProvider_id(rs.getInt("provider_id"));
+					item.setProvider_prefix(rs.getString("provider_prefix"));
+					item.setProvider_name(rs.getString("provider_name"));
+
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return item;
+	}
+	
+	public ArrayList<ProviderObject> getProviderObjects(ProviderObject similar, int page, byte total){
+        //Danh sach doi tuong
+        ArrayList<ProviderObject> items = new ArrayList<ProviderObject>();//Mac dinh 10 ptu thieu thi cho them thua bo ra
+        ProviderObject item = null;
+
+        //Lay ban ghi nguoi su dung theo danh sach
+        int at = (page -1)* total;
+        ResultSet rs = this.p.getProviders(similar, at, total);
+        if(rs != null){
+            try {
+                while (rs.next()) {
+                	item = new ProviderObject();
+					item.setProvider_id(rs.getInt("Provider_id"));
+					item.setProvider_prefix(rs.getString("Provider_prefix"));
+					item.setProvider_name(rs.getString("Provider_name"));
+
+                    //Them doi tuong vao danh sach
+                    items.add(item);
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return items;
+    }
+}
