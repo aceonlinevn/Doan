@@ -134,7 +134,7 @@ public class ProductAE extends HttpServlet {
         out.println("</tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên sản phẩm</td>");
-    	out.println("<td><input type=\"text\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
+    	out.println("<td><input type=\"text\" id=\"txtProductName\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
@@ -188,7 +188,7 @@ public class ProductAE extends HttpServlet {
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Giá gốc</td>");
-    	out.println("<td><input type=\"number\" name=\"txtProductOriginPrice\" value=\""+product_origin_price+"\" size=35 /></td>");
+    	out.println("<td><input type=\"number\" id=\"txtProductOriginPrice\" name=\"txtProductOriginPrice\" value=\""+product_origin_price+"\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Khuyến mại</td>");
@@ -196,7 +196,7 @@ public class ProductAE extends HttpServlet {
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Bảo hành</td>");
-    	out.println("<td><input type=\"number\" name=\"txtProductWarrantyTime\" value=\""+product_warranty_time+"\" size=20 /></td>");
+    	out.println("<td><input type=\"number\" id=\"txtProductWarrantyTime\" name=\"txtProductWarrantyTime\" value=\""+product_warranty_time+"\" size=20 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Nhà cung cấp</td>");
@@ -267,14 +267,23 @@ public class ProductAE extends HttpServlet {
         out.println("<h4 class=\"modal-title\" id=\"myModalLabel\">Thêm nhanh sản phẩm</h4>");
         out.println("</div>");
         out.println("<div class=\"modal-body\">");
-        out.println("<div class=\"alert alert-warning\" role=\"alert\"><i class=\"fa fa-exclamation-circle\" aria-hidden=\"true\"></i> Lưu ý chức năng mới hỗ trợ lấy dữ liệu từ 2 site <b>Trananh.vn</b> và <b>Hanoicomputer.vn</b><br/> Nháy dúp chuột để lấy nhanh thông tin.</div>");
+        out.println("<div class=\"alert alert-warning\" role=\"alert\"><i class=\"fa fa-exclamation-circle\" aria-hidden=\"true\"></i> Lưu ý chức năng mới hỗ trợ lấy dữ liệu từ 2 site <b>Trananh.vn</b> và <b>Hanoicomputer.vn</b></div>");
         out.println("<table class=\"table table-striped table-bordered\">");
-        
+        out.println("<from action=\"\" method=\"post\"");
+        out.println("<tr>");
+        out.println("<td>Nhập link nhanh</td>");
+        out.println("<td><input type=text /></td>");
+        out.println("<td><button class=\"btn btn-primary\" type=submit />Lấy dữ liệu</button></td>");
+        out.println("</tr>");
+        out.println("</form>");
+        out.println("</table>");
+        out.println("<table class=\"table table-striped table-bordered\">");
         out.println("<tr>");
         out.println("<th>Ảnh sản phẩm</th>");
         out.println("<th>Tên sản phẩm</th>");
+        out.println("<th>Lấy dữ liệu</th>");
         out.println("</tr>");
-        //out.println(GetDataImpl.getProductForKeywordHN("lap"));
+        out.println(GetDataImpl.getProductForKeywordHN("lap"));
         out.println("</table>");
         out.println("</div>");
         out.println("<div class=\"modal-footer\">");

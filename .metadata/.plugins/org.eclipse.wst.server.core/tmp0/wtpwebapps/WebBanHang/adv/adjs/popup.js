@@ -56,3 +56,12 @@ function load(){
 	document.getElementById("thumbbox").innerHTML = "<img src='/WebBanHang/upload/productimg/34327_01.jpg' id='thumbimage' width='150px' height='120px' /><a class='removeimg' href='javascript: removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";
 	$('#popImageManager').modal('hide');
 }
+function getDataPr(){
+	document.getElementById("txtProductName").value = document.getElementById("dtProductName").innerHTML;
+	document.getElementById("txtProductOriginPrice").value = document.getElementById("dtProductPrice").innerHTML;
+	document.getElementById("txtProductSummary").innerHTML = document.getElementById("dtProductSummary").innerHTML;
+	document.getElementById("txtProductWarrantyTime").value = document.getElementById("dtProductWarranty").innerHTML;
+	document.getElementById("txtProductPromotion").innerHTML = document.getElementById("dtProductPromotion").innerHTML;
+	document.getElementById("txtProductSpecification").innerHTML = document.getElementById("dtProductSpecification").innerHTML;
+	$('#addFastProduct').modal('hide');
+}

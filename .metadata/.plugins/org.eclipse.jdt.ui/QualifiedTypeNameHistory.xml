@@ -22,8 +22,6 @@
 <fullyQualifiedTypeName name="org.jsoup.nodes.Document"/>
 <fullyQualifiedTypeName name="org.jsoup.Jsoup"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="com.ads.autodata.GetData"/>
-<fullyQualifiedTypeName name="com.ads.autodata.GetDataImpl"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="org.jsoup.nodes.Element"/>
 <fullyQualifiedTypeName name="com.ads.autodata.DataConstant"/>
@@ -31,7 +29,10 @@
 <fullyQualifiedTypeName name="com.library.Utilities"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.object.CategoryObject"/>
-<fullyQualifiedTypeName name="com.object.ProductObject"/>
 <fullyQualifiedTypeName name="com.gui.product.ProductModel"/>
 <fullyQualifiedTypeName name="com.gui.product.ProductLibrary"/>
+<fullyQualifiedTypeName name="org.jsoup.select.Elements"/>
+<fullyQualifiedTypeName name="com.object.ProductObject"/>
+<fullyQualifiedTypeName name="com.ads.autodata.GetData"/>
+<fullyQualifiedTypeName name="com.ads.autodata.GetDataImpl"/>
 </qualifiedTypeNameHistroy>
