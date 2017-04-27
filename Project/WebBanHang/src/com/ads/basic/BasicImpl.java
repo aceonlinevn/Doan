@@ -144,6 +144,26 @@ public class BasicImpl implements Basic {
 		return null;
 	}
 
+	
+	public ResultSet get(String sql, String value) {
+
+		// Bien dich cau lenh
+		try {
+			PreparedStatement preCet = this.con.prepareStatement(sql);
+			if (!value.isEmpty()) {
+				preCet.setString(1, value);
+			}
+			return preCet.executeQuery();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			try {
+				this.con.rollback();
+			} catch (SQLException ex1) {
+				ex1.printStackTrace();
+			}
+		}
+		return null;
+	}
 	/**
 	 * get
 	 *

@@ -14,12 +14,12 @@ public class UserImpl extends BasicImpl implements User {
 
 
 	@Override
-	public ResultSet getUser(int id) {
+	public ResultSet getUser(String id) {
 		String sql = "SELECT user_id,user_prefix,user_name,user_last_messaged,user_phonenumber,user_username,user_password,"
 				+ "user_address,user_email,user_birthdate,user_Lastlogined,user_isLogined,user_gender,user_note,user_permission_id "
 				+ " FROM dacn_webbanhang.user "
-				+ " WHERE u.userId = ?";
-		return this.get(sql, id);
+				+ " WHERE u.userId = ?" ;
+		return this.get(sql,id);
 	}
 
 
@@ -123,7 +123,7 @@ public class UserImpl extends BasicImpl implements User {
 	            preEdit.setBoolean(12,item.isUser_gender());
 	            preEdit.setString(13,item.getUser_note());
 	            preEdit.setInt(14,item.getUser_permission_id());
-	            preEdit.setInt(15,item.getUserId());
+	            preEdit.setString(15,item.getUserId());
 
 	            return this.edit(preEdit);
 
@@ -143,7 +143,7 @@ public class UserImpl extends BasicImpl implements User {
 	        String sql = "DELETE FROM user WHERE user_id = ?";
 	        try {
 	            PreparedStatement preDel = this.con.prepareStatement(sql);
-	            preDel.setInt(1, item.getUserId());
+	            preDel.setString(1, item.getUserId());
 
 	            return this.del(preDel);
 	        } catch (SQLException ex) {
