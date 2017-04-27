@@ -28,7 +28,7 @@ public class ConnectionPoolImpl implements ConnectionPool{
         this.driver = "com.mysql.jdbc.Driver";
 
         //Xac dinh duong dan chay Mysql
-        this.url = "jdbc:mysql://192.168.1.100:3306/dacn_webbanhang?autoReconnect=true&useSSL=false";
+        this.url = "jdbc:mysql://hungcuong3.ddns.net:3306/dacn_webbanhang?autoReconnect=true&useSSL=false";
 
         //Khoi tao bo nho lýu tru ket noi
         this.pool = new Stack();
