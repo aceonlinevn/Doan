@@ -3,14 +3,13 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp" flush="true"></jsp:include>
 <%
-	String productDetailImg = (String) session.getAttribute("productDetailImg");	
+	String productDetailImg = (String) session.getAttribute("productDetailImg");
 	String productDetailName = (String) session.getAttribute("productDetailName");
 	String productDetailPrefix = (String) session.getAttribute("productDetailPrefix");
 	int productDetailPrice = (int) session.getAttribute("productDetailPrice");
 	String productDetailWarranty = (String) session.getAttribute("productDetailWarranty");
 	String productDetailSummary = (String) session.getAttribute("productDetailSummary");
 	String productDetailContent = (String) session.getAttribute("productDetailContent");
-
 %>
 <div class="content">
 	<div class="wrapper">
@@ -118,13 +117,23 @@
 					});
 				});
 			</script>
-			<a href="<% if (productDetailImg != null) {out.print(productDetailImg);} %>" class="fancybox view-large" rel="gallery" style="display:none;"></a>
+			<a
+				href="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+				class="fancybox view-large" rel="gallery" style="display: none;"></a>
 			<div class="l-main-content">
 				<div class="single-img">
 					<div id="img_large">
 						<a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600"
-							href="<% if (productDetailImg != null) {out.print(productDetailImg);} %>" title="Click để xem ảnh lớn"> <img
-							src="<% if (productDetailImg != null) {out.print(productDetailImg);} %>" title="Click để xem ảnh lớn" alt="" />
+							href="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+							title="Click để xem ảnh lớn"> <img
+							src="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+							title="Click để xem ảnh lớn" alt="" />
 						</a>
 					</div>
 					<div class="clr"></div>
@@ -133,12 +142,33 @@
 				<div class="single-content">
 					<div class="single-product-title">
 						<p>
-						<h1><% if (productDetailName != null) {out.print(productDetailName);} %></h1>
+						<h1>
+							<%
+								if (productDetailName != null) {
+									out.print(productDetailName);
+								}
+							%>
+						</h1>
 						</p>
-						<p class="product-code">Mã sản phẩm : <% if (productDetailPrefix != null) {out.print(productDetailPrefix);} %></p>
+						<p class="product-code">
+							Mã sản phẩm :
+							<%
+							if (productDetailPrefix != null) {
+								out.print(productDetailPrefix);
+							}
+						%>
+						</p>
 					</div>
 					<div class="infor-summary">
-						<div class="product-price"><% if (productDetailPrice > 0) {out.print(Utilities.convertMoney(productDetailPrice));}else{out.print("Liên hệ");} %></div>
+						<div class="product-price">
+							<%
+								if (productDetailPrice > 0) {
+									out.print(Utilities.convertMoney(productDetailPrice));
+								} else {
+									out.print("Liên hệ");
+								}
+							%>
+						</div>
 						<div class="clr"></div>
 						<div class="product-vote">
 							Đánh giá: <span class="star-o"></span> <span class="star-o"></span>
@@ -146,12 +176,21 @@
 								class="star-d"></span>
 						</div>
 						<div class="product-warranty">
-							<strong>Bảo hành: </strong><% if (productDetailWarranty != null) {out.print(productDetailWarranty);} %>
+							<strong>Bảo hành: </strong>
+							<%
+								if (productDetailWarranty != null) {
+									out.print(productDetailWarranty);
+								}
+							%>
 						</div>
 						<div class="product-summary">
 							<strong>Mô tả ngắn: </strong>
 							<div class="product-content">
-								<% if (productDetailSummary != null) {out.print(productDetailSummary);} %>
+								<%
+									if (productDetailSummary != null) {
+										out.print(productDetailSummary);
+									}
+								%>
 							</div>
 						</div>
 					</div>
@@ -165,7 +204,13 @@
 					<div class="product-detail">
 						<div class="product-detail-title">Mô tả chi tiết sản
 							phẩm</div>
-						<div class="product-detail-area"><% if (productDetailContent != null) {out.print(productDetailContent);} %></div>
+						<div class="product-detail-area">
+							<%
+								if (productDetailContent != null) {
+									out.print(productDetailContent);
+								}
+							%>
+						</div>
 					</div>
 					<div class="rate-area">
 						<div class="product-detail-title">Đánh giá sản phẩm</div>
@@ -408,6 +453,7 @@
 							<!-- end Product-->
 						</div>
 					</div>
+					<!-- end Product references -->
 				</div>
 				<!-- end single-img-->
 			</div>

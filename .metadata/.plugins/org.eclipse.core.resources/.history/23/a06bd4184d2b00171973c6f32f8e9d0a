@@ -1,0 +1,150 @@
+package com.ads.autodata;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.object.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.*;
+import org.jsoup.select.Elements;
+
+public class GetDataImpl implements GetData {
+
+	@Override
+	public ProductObject getData(String url) {
+		ProductObject item = new ProductObject();
+		Document doc = null;
+		try {
+			doc = Jsoup.connect(url).get();
+			if(url.contains("trananh.vn")){
+				Elements e = doc.getElementsByClass(DataConstant.PRPRIMARYTA);
+				item.setProduct_name(e.select(DataConstant.PRNAMETA).text());
+				item.setProduct_summary(e.select(DataConstant.PRSUMMARYTA).text());
+				if(e.select(DataConstant.PRSTATUSTA).text().equalsIgnoreCase("Còn hàng")){
+					item.setProduct_status(true);
+				}else{
+					item.setProduct_status(false);
+				}
+				if(e.select(DataConstant.PRWARRANTYTA).isEmpty()){
+					item.setProduct_warranty_time(0);
+				}else{
+				item.setProduct_warranty_time(Integer.parseInt(e.select(DataConstant.PRWARRANTYTA).text().trim().substring(e.select(DataConstant.PRWARRANTYTA).text().indexOf(": ")+2, (e.select(DataConstant.PRWARRANTYTA).text().indexOf(": ") + 4))));
+				}
+				if(e.select(DataConstant.PRPRICETA).isEmpty()){
+					item.setProduct_origin_price(0);
+				}else{
+					int c = 0;
+					int originPrice = 0;
+					String stroriginPrice = "";
+					for(int i = 0;i < e.select(DataConstant.PRPRICETA).text().length();i++){
+						if(e.select(DataConstant.PRPRICETA).text().charAt(i) == '.'){
+							removeCharAt()
+						}
+					}
+					switch (c) {
+					case 1:
+						originPrice = getOriginPrice(e, 2,DataConstant.PRPRICETA);
+						break;
+					case 2: 
+						originPrice = getOriginPrice(e, 3,DataConstant.PRPRICETA);
+						break;
+					case 3: 
+						originPrice = getOriginPrice(e, 4,DataConstant.PRPRICETA);
+						break;
+					case 4: 
+						originPrice = getOriginPrice(e, 5,DataConstant.PRPRICETA);
+						break;
+					}
+				item.setProduct_origin_price(originPrice);
+				}
+				if(e.select(DataConstant.PRSAFEOFFTA).isEmpty()){
+					item.setProduct_promotion(null);
+				}else{
+					item.setProduct_promotion(e.select(DataConstant.PRSAFEOFFTA).text());
+				}
+				if(e.select(DataConstant.PRDECTA).isEmpty()){
+					item.setProduct_specification(null);
+				}else{
+					item.setProduct_specification(e.select(DataConstant.PRDECTA).html());
+				}
+			}else if(url.contains("hanoicomputer.vn")){
+				Element e = doc.getElementById(DataConstant.PRPRIMARYHN);
+				item.setProduct_name(e.select(DataConstant.PRNAMEHN).text());
+				item.setProduct_summary(e.select(DataConstant.PRSUMMARYHN).text());
+				if(e.select(DataConstant.PRPRICEHN).isEmpty()){
+					item.setProduct_origin_price(0);
+				}else{
+					int c = 0;
+					int originPrice = 0;
+					for(int i = 0;i < e.select(DataConstant.PRPRICEHN).text().length();i++){
+						if(e.select(DataConstant.PRPRICEHN).text().charAt(i) == '.'){
+							c++;
+						}
+					}
+					switch (c) {
+					case 1:
+						originPrice = getOriginPrice(e, 2,DataConstant.PRPRICEHN);
+						break;
+					case 2: 
+						originPrice = getOriginPrice(e, 3,DataConstant.PRPRICEHN);
+						break;
+					case 3: 
+						originPrice = getOriginPrice(e, 4,DataConstant.PRPRICEHN);
+						break;
+					case 4: 
+						originPrice = getOriginPrice(e, 5,DataConstant.PRPRICEHN);
+						break;
+					}
+				item.setProduct_origin_price(originPrice);
+				}
+			}
+			else{
+			item = null;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return item;
+	}
+
+	@Override
+	public ArrayList<WebObject> getDatas(String url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private static int getOriginPrice(Elements e,int l,String name){
+		int price = 0;
+		
+		price = Integer.parseInt(e.select(name).text().trim().replace(".", "0").substring(0,(e.select(name).text().trim().replace(".", "0").length()-l)));
+		
+		return price;
+	}
+	public static String removeCharAt(String s, int pos) {
+	      return s.substring(0, pos) + s.substring(pos + 1);
+	}
+	private static int getOriginPrice(Element e,int l,String name){
+		int price = 0;
+		
+		price = Integer.parseInt(e.select(name).text().trim().replace(".", "0").substring(0,(e.select(name).text().trim().replace(".", "0").length()-2)));
+		
+		return price;
+	}
+	public static void main(String[] args){
+		GetData gd = new GetDataImpl();
+		ProductObject productObject = gd.getData("https://www.trananh.vn/laptop/laptop-dell-inspiron-14-3467-m20nr2-pid195274cid2");
+		if(productObject != null){
+		System.out.println(productObject.getProduct_name());
+		System.out.println(productObject.getProduct_origin_price());
+		System.out.println(productObject.getProduct_summary());
+		System.out.println(productObject.getProduct_warranty_time());
+		System.out.println(productObject.isProduct_status());
+		System.out.println(productObject.getProduct_promotion());
+		System.out.println(productObject.getProduct_specification());
+		}
+		else{
+			System.out.println("Trang web chưa được thêm vào! Liên hệ với quản trị để được bổ sung.");
+		}
+	}
+}

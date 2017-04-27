@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.*,com.object.*"%>
 <%@ page import="com.gui.product.*"%>
+<%@ page import="java.util.*"%>
 <%
 	ConnectionPool cp = (ConnectionPool) application.getAttribute("cpool");
 	ProductControl pc = new ProductControl(cp);
@@ -64,4 +65,10 @@
 	session.setAttribute("viewProductForSelling", viewProductForSelling);
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
+	
+	//loc cong tac
+	ArrayList<ProductObject> listProductReferences = pc.getReferencesProduct("1");
+	
+	String viewProductReferences = pc.viewProducts2(listProductReferences);
+	
 %>
