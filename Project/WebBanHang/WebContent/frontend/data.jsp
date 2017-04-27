@@ -66,9 +66,9 @@
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
 	
-	//loc cong tac
+	//hungcuong - loc cong tac
 	ArrayList<ProductObject> listProductReferences = pc.getReferencesProduct("1");
-	
 	String viewProductReferences = pc.viewProducts2(listProductReferences);
+	session.setAttribute("viewProductForReferences", viewProductReferences);
 	
 %>
