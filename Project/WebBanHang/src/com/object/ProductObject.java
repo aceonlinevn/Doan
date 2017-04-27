@@ -5,7 +5,8 @@ public class ProductObject extends CategoryObject{
 	private String product_prefix,product_name;
 	private boolean product_status,product_isnew,product_isliquidation,product_isselling;
 	private int product_category_id,product_quantity;
-	private double product_origin_price,product_price2,product_price3;
+	private double product_price2,product_price3;
+	private int product_origin_price;
 	private int product_price_discount;
 	private String product_imported_date,product_last_modified;
 	private String product_specification,product_note,product_image,product_summary,product_promotion;
@@ -79,10 +80,10 @@ public class ProductObject extends CategoryObject{
 	public void setProduct_quantity(int product_quantity) {
 		this.product_quantity = product_quantity;
 	}
-	public double getProduct_origin_price() {
+	public int getProduct_origin_price() {
 		return product_origin_price;
 	}
-	public void setProduct_origin_price(double product_origin_price) {
+	public void setProduct_origin_price(int product_origin_price) {
 		this.product_origin_price = product_origin_price;
 	}
 	public double getProduct_price2() {
@@ -154,7 +155,7 @@ public class ProductObject extends CategoryObject{
 		this.product_visited = product_visited;
 	}
 	public ProductObject(int product_id, String product_prefix, String product_name, boolean product_status,
-			int product_category_id, int product_quantity, double product_origin_price, double product_price2,
+			int product_category_id, int product_quantity, int product_origin_price, double product_price2,
 			double product_price3, int product_price_discount, String product_imported_date,
 			String product_last_modified, String product_specification, String product_note, int product_warranty_time,
 			int product_provider_id,String product_image,int product_visited) {

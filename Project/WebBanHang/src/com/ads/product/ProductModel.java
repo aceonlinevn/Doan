@@ -56,7 +56,7 @@ public class ProductModel {
 					item.setProduct_status(rs.getBoolean("product_status"));
 					item.setProduct_category_id(rs.getInt("product_category_id"));
 					item.setProduct_quantity(rs.getInt("product_quantity"));
-					item.setProduct_origin_price(rs.getDouble("product_origin_price"));
+					item.setProduct_origin_price(rs.getInt("product_origin_price"));
 					item.setProduct_price2(rs.getDouble("product_price2"));
 					item.setProduct_price3(rs.getDouble("product_price3"));
 					item.setProduct_price_discount(rs.getInt("product_price_discount"));
@@ -69,7 +69,10 @@ public class ProductModel {
 					item.setProduct_image(rs.getString("product_image"));
 					item.setProduct_visited(rs.getInt("product_visited"));
 					item.setProduct_summary(rs.getString("product_summary"));
-					item.setProduct_summary(rs.getString("product_promotion"));
+					item.setProduct_promotion(rs.getString("product_promotion"));
+					item.setProduct_isnew(rs.getBoolean("product_isnew"));
+					item.setProduct_isliquidation(rs.getBoolean("product_isliquidation"));
+					item.setProduct_isselling(rs.getBoolean("product_isselling"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -96,7 +99,7 @@ public class ProductModel {
 					item.setProduct_status(rs.getBoolean("product_status"));
 					item.setProduct_category_id(rs.getInt("product_category_id"));
 					item.setProduct_quantity(rs.getInt("product_quantity"));
-					item.setProduct_origin_price(rs.getDouble("product_origin_price"));
+					item.setProduct_origin_price(rs.getInt("product_origin_price"));
 					item.setProduct_price2(rs.getDouble("product_price2"));
 					item.setProduct_price3(rs.getDouble("product_price3"));
 					item.setProduct_price_discount(rs.getInt("product_price_discount"));
@@ -111,7 +114,10 @@ public class ProductModel {
 					item.setCategory_group_name(rs.getString("category_group_name"));
 					item.setCategory_name(rs.getString("category_name"));
 					item.setProduct_summary(rs.getString("product_summary"));
-					item.setProduct_summary(rs.getString("product_promotion"));
+					item.setProduct_promotion(rs.getString("product_promotion"));
+					item.setProduct_isnew(rs.getBoolean("product_isnew"));
+					item.setProduct_isliquidation(rs.getBoolean("product_isliquidation"));
+					item.setProduct_isselling(rs.getBoolean("product_isselling"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }
