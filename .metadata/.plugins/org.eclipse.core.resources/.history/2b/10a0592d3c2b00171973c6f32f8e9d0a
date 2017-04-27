@@ -6,7 +6,7 @@
 	String productDetailImg = (String) session.getAttribute("productDetailImg");	
 	String productDetailName = (String) session.getAttribute("productDetailName");
 	String productDetailPrefix = (String) session.getAttribute("productDetailPrefix");
-	int productDetailPrice = (int) session.getAttribute("productDetailPrice");
+	Double productDetailPrice = (Double) session.getAttribute("productDetailPrice");
 	String productDetailWarranty = (String) session.getAttribute("productDetailWarranty");
 	String productDetailSummary = (String) session.getAttribute("productDetailSummary");
 	String productDetailContent = (String) session.getAttribute("productDetailContent");
@@ -138,7 +138,7 @@
 						<p class="product-code">Mã sản phẩm : <% if (productDetailPrefix != null) {out.print(productDetailPrefix);} %></p>
 					</div>
 					<div class="infor-summary">
-						<div class="product-price"><% if (productDetailPrice > 0) {out.print(Utilities.convertMoney(productDetailPrice));}else{out.print("Liên hệ");} %></div>
+						<div class="product-price"><% if (productDetailPrice != null) {out.print(Utilities.convertMoney(productDetailPrice));} %></div>
 						<div class="clr"></div>
 						<div class="product-vote">
 							Đánh giá: <span class="star-o"></span> <span class="star-o"></span>

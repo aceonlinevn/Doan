@@ -59,7 +59,7 @@ public class Utilities {
 		return tmp;
 	}
 	
-	public static String convertMoney(int money){
+	public static String convertMoney(double money){
 		String tmp = "";
 		NumberFormat formatter = new DecimalFormat("#,###,###");
 		tmp = formatter.format(money);
