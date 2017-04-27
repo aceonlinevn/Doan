@@ -24,7 +24,7 @@ public class UserControl {
 	}
 	// ************************************************/
 
-	public UserObject getUserObject(int id) {
+	public UserObject getUserObject(String id) {
 		return this.um.getUserObject(id);
 	}
 	 public UserObject getUserObject(String username,String userpass){

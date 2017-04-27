@@ -49,7 +49,7 @@ public class UserModel {
 	            try {
 	                if (rs.next()) {
 	                    item = new UserObject();
-	                    item.setUserId(rs.getInt("user_id"));
+	                    item.setUserId(rs.getString("user_id"));
 						item.setUser_name(rs.getString("user_name"));
 						item.setUser_last_messased(rs.getString("user_last_messaged"));
 						item.setUser_phonenum(rs.getString("user_phonenumber"));
@@ -69,7 +69,7 @@ public class UserModel {
 	        }
 	        return item;
 	    }
-	public UserObject getUserObject(int id) {
+	public UserObject getUserObject(String id) {
 		UserObject item = null;
 
 		// Lay ban ghi nguoi su dung theo id
@@ -78,7 +78,7 @@ public class UserModel {
 			try {
 				if (rs.next()) {
 					item = new UserObject();
-					item.setUserId(rs.getInt("user_id"));
+					item.setUserId(rs.getString("user_id"));
 					item.setUser_name(rs.getString("user_name"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
@@ -111,7 +111,7 @@ public class UserModel {
             try {
                 while (rs.next()) {
                     item = new UserObject();
-                    item.setUserId(rs.getInt("user_id"));
+                    item.setUserId(rs.getString("user_id"));
 					item.setUser_name(rs.getString("user_name"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
