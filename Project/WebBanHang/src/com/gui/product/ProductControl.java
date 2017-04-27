@@ -35,4 +35,9 @@ public class ProductControl {
 
 		return ProductLibrary.viewProduct(items);
 	}
+	public String viewProductsForCategory(ProductObject similar) {
+		ProductLibrary pl = new ProductLibrary(this.getConnectionPool());
+		ArrayList items = this.pm.getCategoryObjects(similar, 0, (byte) 0);
+		return pl.viewProductForCategory(items);
+	}
 }

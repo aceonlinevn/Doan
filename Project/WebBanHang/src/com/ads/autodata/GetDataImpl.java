@@ -35,7 +35,7 @@ public class GetDataImpl implements GetData {
 					item.setProduct_origin_price(0);
 				}else{
 					int c = 0;
-					double originPrice = 0;
+					int originPrice = 0;
 					for(int i = 0;i < e.select(DataConstant.PRPRICETA).text().length();i++){
 						if(e.select(DataConstant.PRPRICETA).text().charAt(i) == '.'){
 							c++;
@@ -83,10 +83,10 @@ public class GetDataImpl implements GetData {
 		return null;
 	}
 	
-	private static Double getOriginPrice(Elements e,int l){
-		double price = 0;
+	private static int getOriginPrice(Elements e,int l){
+		int price = 0;
 		
-		price = Double.parseDouble(e.select(DataConstant.PRPRICETA).text().trim().replace(".", "0").substring(0,(e.select(DataConstant.PRPRICETA).text().trim().replace(".", "0").length()-l)));
+		price = Integer.parseInt(e.select(DataConstant.PRPRICETA).text().trim().replace(".", "0").substring(0,(e.select(DataConstant.PRPRICETA).text().trim().replace(".", "0").length()-l)));
 		
 		return price;
 	}

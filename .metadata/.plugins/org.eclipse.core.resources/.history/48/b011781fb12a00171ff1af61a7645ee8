@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.*,com.object.*" %>
+<%@ page import="com.gui.product.*" %>
+<%
+ConnectionPool cp = (ConnectionPool) application.getAttribute("cpool");
+ProductControl pc = new ProductControl(cp);
+ProductObject po = null;
+if(cp == null){
+  application.setAttribute("cpool",pc.getConnectionPool());
+}
+if(request.getParameter("id") != null){
+	int id = Integer.parseInt(request.getParameter("id"));
+	ProductObject po = pc.getProductObject(id);
+	
+}else{%>
+	<script>
+		window.location.href = "/WebBanHang/index.jsp";
+	</script>
+<%}
+//Khai bảo object
+ProductObject similar1 = new ProductObject();
+ProductObject similar2 = new ProductObject();
+ProductObject similar3 = new ProductObject();
+ProductObject similar4 = new ProductObject();
+ProductObject similar = new ProductObject();
+//Khởi tạo điểu kiện
+similar1.setProduct_isnew(true);
+similar2.setProduct_isliquidation(true);
+similar3.setProduct_isselling(true);
+similar4.setProduct_promotion("km");
+//Khởi tạo cấu trúc
+String viewProductForNew = pc.viewProducts(similar1 , (byte) 6);
+String viewProductForLiquidation = pc.viewProducts(similar2 , (byte) 6);
+String viewProductForSelling = pc.viewProducts(similar3 , (byte) 6);
+String viewProductPromotion = pc.viewProducts(similar4 , (byte) 6);
+String viewProductForCategory = pc.viewProductsForCategory(similar);
+String warranty = "";
+if(po.getProduct_warranty_time() < 6){
+	warranty = po.getProduct_warranty_time() + "năm";
+}else{
+	warranty = po.getProduct_warranty_time() + "tháng";
+}
+String summary = "";
+if(po.getProduct_summary() != null){
+	summary = po.getProduct_summary();
+}else{
+	summary = "Không có mô tả cho sản phẩm";
+}
+//Dua cau truc vao phien lam viec
+session.setAttribute("viewProductForNew", viewProductForNew);
+session.setAttribute("viewProductForLiquidation", viewProductForLiquidation);
+session.setAttribute("viewProductForSelling", viewProductForSelling);
+session.setAttribute("viewProductPromotion", viewProductPromotion);
+session.setAttribute("viewProductForCategory", viewProductForCategory);
+//product detail
+session.setAttribute("productDetailImg", po.getProduct_image());
+session.setAttribute("productDetailName", po.getProduct_name());
+session.setAttribute("productDetailPrefix", po.getCategory_group_prefix());
+session.setAttribute("productDetailPrice", po.getProduct_origin_price());
+session.setAttribute("productDetailWarranty", warranty);
+session.setAttribute("productDetailSummary", po.getProduct_summary());
+session.setAttribute("productDetailContent", po.getProduct_specification());
+%>

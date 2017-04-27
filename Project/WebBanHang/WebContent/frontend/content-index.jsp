@@ -59,5 +59,12 @@
 				</div><!-- end tp-main-content-->
 				<div class="clr"></div>
 				<div class="bt-main-content">
-				
+							<%
+					  			String viewProductForCategory = (String) session.getAttribute("viewProductForCategory");
+					  			if (viewProductForCategory != null) {
+					  				out.print(viewProductForCategory);
+					  			}else{
+					  				out.print("<p>Sản phẩm đang update...</p>");
+					  			}
+					  		%>
 				</div><!-- end bt-main-content-->

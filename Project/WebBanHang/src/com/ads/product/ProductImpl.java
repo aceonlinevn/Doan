@@ -46,7 +46,7 @@ public class ProductImpl extends CategoryImpl implements Product {
 			preAdd.setString(15, item.getProduct_promotion());
 			preAdd.setBoolean(16, item.isProduct_isnew());
 			preAdd.setBoolean(17, item.isProduct_isliquidation());
-			preAdd.setBoolean(15, item.isProduct_isselling());
+			preAdd.setBoolean(18, item.isProduct_isselling());
 			
 			return this.add(preAdd);
 			
@@ -75,7 +75,7 @@ public class ProductImpl extends CategoryImpl implements Product {
 		sql += "product_price3 = ?,product_price_discount = ?,";
 		sql += "product_last_modified = '"+getDateToday()+"',product_specification = ?,";
 		sql += "product_note = ?,product_warranty_time = ?,";
-		sql += "product_provider_id = ?,product_image = ?,product_summary = ?,product_promotion = ?,product_isnew = ?,product_isliquidation = ?,product_isselling = ?";
+		sql += "product_provider_id = ?,product_image = ?,product_summary = ?,product_promotion = ?,product_isnew = ?,product_isliquidation = ?,product_isselling = ? ";
 		sql += " WHERE product_id = ?";
 		
 		try {
@@ -93,12 +93,12 @@ public class ProductImpl extends CategoryImpl implements Product {
 			preEdit.setInt(11, item.getProduct_warranty_time());
 			preEdit.setInt(12,item.getProduct_provider_id());
 			preEdit.setString(13, item.getProduct_image());
-			preEdit.setInt(14, item.getProduct_id());
-			preEdit.setString(15, item.getProduct_summary());
-			preEdit.setString(16, item.getProduct_promotion());
-			preEdit.setBoolean(17, item.isProduct_isnew());
-			preEdit.setBoolean(18, item.isProduct_isliquidation());
-			preEdit.setBoolean(19, item.isProduct_isselling());
+			preEdit.setString(14, item.getProduct_summary());
+			preEdit.setString(15, item.getProduct_promotion());
+			preEdit.setBoolean(16, item.isProduct_isnew());
+			preEdit.setBoolean(17, item.isProduct_isliquidation());
+			preEdit.setBoolean(18, item.isProduct_isselling());
+			preEdit.setInt(19, item.getProduct_id());
 			
 			return this.edit(preEdit);
 		} catch (SQLException e) {

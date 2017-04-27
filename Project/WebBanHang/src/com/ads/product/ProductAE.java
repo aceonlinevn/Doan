@@ -56,12 +56,12 @@ public class ProductAE extends HttpServlet {
         //Tim id de chinh sua neu co
         int id = Utilities.getIntParam(request,"id");
         String product_name = "",product_summary = "";
-        boolean product_status = true;
+        boolean product_status = true,product_isnew = true,product_liqi = true,product_selling = true;
         int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
         double product_origin_price = 1,product_price2=1,product_price3=1;
-        String product_specification ="", product_note = "",product_image= "";
+        String product_specification ="", product_note = "",product_image= "",product_promotion ="";
         String lblSave = "Thêm mới";
-        String readonly = "";
+        String readonly = "",checked1="",checked2="",checked3="";
         boolean isExisting = false;
         String loadImg = "<img src=\"/WebBanHang/adv/adimg/uploadimg.png\" height=\"120\" width=\"120\" alt=\"Chọn ảnh upload\" id=\"thumbimage\" />"; 
         if(id >0){
@@ -76,7 +76,11 @@ public class ProductAE extends HttpServlet {
             if(eProduct !=null){
             	product_name = eProduct.getProduct_name();
             	product_summary = eProduct.getProduct_summary();
+            	product_promotion = eProduct.getProduct_promotion();
             	product_status = eProduct.isProduct_status();
+            	product_isnew = eProduct.isProduct_isnew();
+            	product_liqi = eProduct.isProduct_isliquidation();
+            	product_selling = eProduct.isProduct_isselling();
             	product_category_id = eProduct.getProduct_category_id();
             	product_price_discount = eProduct.getProduct_price_discount();
             	product_warranty_time = eProduct.getProduct_warranty_time();
@@ -89,6 +93,21 @@ public class ProductAE extends HttpServlet {
             	product_specification = eProduct.getProduct_specification();
             	product_note = eProduct.getProduct_note();
             	product_image = eProduct.getProduct_image();
+            	if(product_isnew){
+            		checked1 = "checked";
+            	}else{
+            		checked1 = "";
+            	}
+            	if(product_liqi){
+            		checked2 = "checked";
+            	}else{
+            		checked2 = "";
+            	}
+            	if(product_selling){
+            		checked3 = "checked";
+            	}else{
+            		checked3 = "";
+            	}
                 lblSave = "Cập nhật";
                 readonly = "readonly";
                 isExisting = true;
@@ -116,7 +135,7 @@ public class ProductAE extends HttpServlet {
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
     	out.println("<td>"
     			+ "<span id=\"thumbbox\">"+loadImg+"<a class=\"removeimg\" href=\"javascript: removeImg()\" ><span class=\"glyphicon glyphicon-remove\"></span></a></span>"
-    			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this.value)\" type=\"text\" id=\"loadimg\" name=\"txtProductImage\" size=35 />"
+    			+ "<input style=\"margin-top: 10px;\" onchange=\"loadImg(this.value)\" value=\""+product_image+"\" type=\"text\" id=\"loadimg\" name=\"txtProductImage\" size=35 />"
     			+ "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#popImageManager\">Chọn ảnh</button>"
     			+ "</td>");
     	out.println("</tr>");
@@ -193,10 +212,33 @@ public class ProductAE extends HttpServlet {
     	out.println("<td><textarea rows=10 cols=80 id=\"txtProductSpecification\" name=\"txtProductSpecification\">"+product_specification+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Thông tin khuyến mại</td>");
+    	out.println("<td><textarea rows=10 cols=80 id=\"txtProductPromotion\" name=\"txtProductPromotion\">"+product_promotion+"</textarea></td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
     	out.println("<td class=\"lc\">Ghi chú</td>");
     	out.println("<td><textarea rows=6 cols=80 id=\"txtProductNote\" name=\"txtProductNote\">"+product_note+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Sản phẩm có mới hay không?</td>");
+    	out.println("<td>");
+    	out.println("<input type=\"checkbox\" "+checked1+" name=\"ckIsnew\" id=\"ckIsnew\" value=1 > <label for=\"ckIsnew\">Là sản phẩm mới ?</label>");
+    	out.println("</td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Sản phẩm thanh lý?</td>");
+    	out.println("<td>");
+    	out.println("<input type=\"checkbox\" "+checked2+" name=\"ckli\" id=\"ckli\" value=1 > <label for=\"ckli\">Là sản phẩm thanh lý ?</label>");
+    	out.println("</td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Sản phẩm bán chạy?</td>");
+    	out.println("<td>");
+    	out.println("<input type=\"checkbox\" "+checked3+" name=\"ckSelling\" id=\"ckSelling\" value=1 > <label for=\"ckSelling\">Là sản phẩm bán chạy ?</label>");
+    	out.println("</td>");
+    	out.println("</tr>");
     	out.println("<td colspan=2 align=\"center\">");
     		out.println("<input class=\"btn btn-default\" type=\"button\" value=\""+lblSave+"\" onclick=\"saveProduct(this.form)\" name=\"btnAdd\"/>");
     		out.println("<input class=\"btn btn-default\" type=\"reset\" value=\"Nhập lại\" name=\"btnReset\"/>");
@@ -217,6 +259,7 @@ public class ProductAE extends HttpServlet {
         out.println("CKEDITOR.replace( 'txtProductSpecification' );");
         out.println("CKEDITOR.replace( 'txtProductNote' );");
         out.println("CKEDITOR.replace( 'txtProductSummary' );");
+        out.println("CKEDITOR.replace( 'txtProductPromotion' );");
         out.println("</script>");
         //Tim tham chieu cua footer
         RequestDispatcher f = request.getRequestDispatcher("/footer");
@@ -236,16 +279,20 @@ public class ProductAE extends HttpServlet {
 		
 		String productname = request.getParameter("txtProductName");
 		String productsummary = request.getParameter("txtProductSummary");
-		String productimage = "/WebBanHang/upload/productimg/"+request.getParameter("txtProductImage");
+		String productimage = request.getParameter("txtProductImage");
 		boolean productstatus = request.getParameter("slcProductStatus").equalsIgnoreCase("0") ? false : true;
 		int productcategory = Integer.parseInt(request.getParameter("slcCategory"));
 		int productquantity = Integer.parseInt(request.getParameter("txtProductQuantity"));
-		double productoriginprice = Double.parseDouble(request.getParameter("txtProductOriginPrice"));
+		int productoriginprice = Integer.parseInt(request.getParameter("txtProductOriginPrice"));
 		int productdiscount = Integer.parseInt(request.getParameter("txtProductDiscount"));
 		int productwarrantytime = Integer.parseInt(request.getParameter("txtProductWarrantyTime"));
 		int productprovider = Integer.parseInt(request.getParameter("slcProvider"));
-		String productproductspecification = request.getParameter("txtProductSpecification");
+		String productspecification = request.getParameter("txtProductSpecification");
 		String productnote = request.getParameter("txtProductNote");
+		String productpromotion = request.getParameter("txtProductPromotion");
+		boolean product_isnew = request.getParameter("ckIsnew") == null || !request.getParameter("ckIsnew").equalsIgnoreCase("1") ? false : true;
+		boolean ckli = request.getParameter("ckli")== null || !request.getParameter("ckli").equalsIgnoreCase("1") ? false : true;
+		boolean ckSelling = request.getParameter("ckSelling") == null || !request.getParameter("ckSelling").equalsIgnoreCase("1") ? false : true;
 		
 		ProductObject po = new ProductObject();
 		po.setProduct_name(productname);
@@ -258,8 +305,12 @@ public class ProductAE extends HttpServlet {
 		po.setProduct_price_discount(productdiscount);
 		po.setProduct_warranty_time(productwarrantytime);
 		po.setProduct_provider_id(productprovider);
-		po.setProduct_specification(productproductspecification);
+		po.setProduct_specification(productspecification);
 		po.setProduct_note(productnote);
+		po.setProduct_promotion(productpromotion);
+		po.setProduct_isnew(product_isnew);
+		po.setProduct_isliquidation(ckli);
+		po.setProduct_isselling(ckSelling);
 		
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
         ProductControl pc = new ProductControl(cp);

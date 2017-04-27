@@ -8,6 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Hùng Cường Computer</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/style.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/single.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/font-awesome.min.css">
 	<script language="javascript" type="text/javascript" src="<%=request.getContextPath()%>/frontend/js/jquery-1.8.2.min.js"></script>
 	<script src="<%=request.getContextPath()%>/frontend/js/owl.carousel.js"></script>
@@ -54,7 +55,7 @@
 					</div>
 					<div class="cart-area">
 						<a href="#" title="Giỏ hàng"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
-						<span class="cart-count"><i class="fa fa-comment-o" aria-hidden="true"></i> <span class="count">0<span></span>
+						<span class="cart-count"><i class="fa fa-comment-o" aria-hidden="true"></i> <span class="count" id="count_shopping_cart_store">0<span></span>
 					</div>
 				</div><!-- end r-bt-header-->				
 			</div>

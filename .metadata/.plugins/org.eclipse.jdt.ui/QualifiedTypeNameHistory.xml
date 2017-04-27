@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.lang.Void"/>
 <fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.dom.PSVIDOMImplementationImpl"/>
-<fullyQualifiedTypeName name="com.object.CategoryObject"/>
 <fullyQualifiedTypeName name="com.object.UserObject"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.sql.ads.MakeConditions"/>
@@ -22,7 +21,6 @@
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="org.jsoup.nodes.Document"/>
 <fullyQualifiedTypeName name="org.jsoup.Jsoup"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.ads.autodata.GetData"/>
 <fullyQualifiedTypeName name="com.ads.autodata.GetDataImpl"/>
@@ -30,6 +28,10 @@
 <fullyQualifiedTypeName name="org.jsoup.nodes.Element"/>
 <fullyQualifiedTypeName name="com.ads.autodata.DataConstant"/>
 <fullyQualifiedTypeName name="sun.security.provider.JavaKeyStore.CaseExactJKS"/>
-<fullyQualifiedTypeName name="com.object.ProductObject"/>
 <fullyQualifiedTypeName name="com.library.Utilities"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.object.CategoryObject"/>
+<fullyQualifiedTypeName name="com.object.ProductObject"/>
+<fullyQualifiedTypeName name="com.gui.product.ProductModel"/>
+<fullyQualifiedTypeName name="com.gui.product.ProductLibrary"/>
 </qualifiedTypeNameHistroy>
