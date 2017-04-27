@@ -183,8 +183,8 @@ public class UserRateModel {
 		return sim;
 	}
 	
-	public void CollaborationFilter(String user_id){
-		ArrayList <Integer> productSuggest = new ArrayList<>();
+	public ArrayList <ProductSuggestObject> CollaborationFilter(String user_id){
+		ArrayList <ProductSuggestObject> productSuggest = new ArrayList<>();
 		UserRateAVGObject UserRateAVG1 = getUserRateAVG(user_id);
 		UserRateAVGObject userRateAVG2;
 		float simPerson = 0f;
@@ -212,36 +212,38 @@ public class UserRateModel {
 			for(UserRateObject user2Rate:listUser2Rate){
 				System.out.println("product orgigin: " + user2Rate.getProduct_id());
 				userRateAVG2 = getUserRateAVG(user2Rate.getUser_id());
-				user_KNN = UserRateAVG1.getUser_rate_avg() + sim.getSimPerson()*(user2Rate.getUser_rate_point()-userRateAVG2.getUser_rate_avg())/Math.abs(sim.getSimPerson());
+				if(sim.getSimPerson()==0){
+					user_KNN = UserRateAVG1.getUser_rate_avg() ;
+				}else{
+					user_KNN = UserRateAVG1.getUser_rate_avg() + sim.getSimPerson()*(user2Rate.getUser_rate_point()-userRateAVG2.getUser_rate_avg())/Math.abs(sim.getSimPerson());
+				}
 				System.out.println("KNN: " + user_KNN + "product: " + user2Rate.getProduct_id());
 				if(user_KNN>3){
-					productSuggest.add(user2Rate.getProduct_id());
+					productSuggest.add(new ProductSuggestObject(user2Rate.getProduct_id(), (float)user_KNN));
 				}
 			}
 		}
-		for(Integer index:productSuggest){
-			System.out.println("product suggest: " + index);
-		}
+		return productSuggest;
 	}
 	
 	
 	public static void main(String args[]){
 		ConnectionPool cp = new ConnectionPoolImpl();
 		UserRateModel um = new UserRateModel(cp);
-		um.addUserRate(new UserRateObject("4", 7, 2, "abc"));
-		um.addUserRate(new UserRateObject("4", 7, 2, "abc"));
-		um.addUserRate(new UserRateObject("4", 6, 4, "abc"));
-		um.addUserRate(new UserRateObject("4", 7, 4, "abc"));
+//		um.addUserRate(new UserRateObject("2", 3, 5, "abc"));
+//		um.addUserRate(new UserRateObject("2", 4, 4, "abc"));
+//		um.addUserRate(new UserRateObject("2", 5, 4, "abc"));
+//		um.addUserRate(new UserRateObject("3", 1, 4, "abc"));
 		
 //		ArrayList<UserRateObject> listUser2Rate = um.getProductRating3("1", "2");
 //		for(UserRateObject u:listUser2Rate){
 //			System.out.println(u.getProduct_id());
 //		}
-		um.CollaborationFilter("1");
-//		um.addUserRate(new UserRateObject("2", 5, 5, "abc"));
-//		um.addUserRate(new UserRateObject("2", 6, 5, "abc"));
-//		um.addUserRate(new UserRateObject("2", 7, 4, "abc"));
-//		um.addUserRate(new UserRateObject("2", 8, 4, "abc"));
+		//um.CollaborationFilter("1");
+		//um.addUserRate(new UserRateObject("4", 7, 0, "abc"));
+		//um.addUserRate(new UserRateObject("2", 2, 5, "abc"));
+	//	um.addUserRate(new UserRateObject("1", 3, 4, "abc"));
+	//	um.addUserRate(new UserRateObject("1", 4, 4, "abc"));
 //		
 	}
 }
