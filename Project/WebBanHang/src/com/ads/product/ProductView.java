@@ -57,7 +57,7 @@ public class ProductView extends HttpServlet {
         ProductObject similar = new ProductObject();
 
         similar.setProduct_name(saveKey.trim());
-        String viewProducts = pc.viewProducts(similar,1,(byte) 10);
+        String viewProducts = pc.viewProducts(similar,1,(byte) 25);
         pc.releaseConnection();
         RequestDispatcher h = request.getRequestDispatcher("/header");
         if(h!=null){

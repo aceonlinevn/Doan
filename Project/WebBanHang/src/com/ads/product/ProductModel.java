@@ -73,6 +73,7 @@ public class ProductModel {
 					item.setProduct_isnew(rs.getBoolean("product_isnew"));
 					item.setProduct_isliquidation(rs.getBoolean("product_isliquidation"));
 					item.setProduct_isselling(rs.getBoolean("product_isselling"));
+					item.setProduct_prefix(rs.getString("product_prefix"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -118,6 +119,7 @@ public class ProductModel {
 					item.setProduct_isnew(rs.getBoolean("product_isnew"));
 					item.setProduct_isliquidation(rs.getBoolean("product_isliquidation"));
 					item.setProduct_isselling(rs.getBoolean("product_isselling"));
+					item.setProduct_prefix(rs.getString("product_prefix"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }

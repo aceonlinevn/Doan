@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="txtProductSpecification" key="selection"/>
+		<item value="getProductForCategory" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="getProductForCategory"/>
 			<item value="txtProductSpecification"/>
 			<item value="product_origin_price"/>
 			<item value="addToShoppingCartStop"/>
@@ -15,7 +16,6 @@
 			<item value="productpromotion"/>
 			<item value="productsummary"/>
 			<item value="txtProductSummary"/>
-			<item value="txtProductPromotion"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Provider"/>

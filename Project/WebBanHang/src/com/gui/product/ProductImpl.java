@@ -41,9 +41,8 @@ public class ProductImpl extends CategoryImpl implements Product {
 		String sql = "SELECT * FROM product p LEFT JOIN category c ON p.product_category_id = c.category_id LEFT JOIN category_group cg ON c.category_group_id = cg.category_group_id ";
 		sql += " WHERE product_category_id = "+categoryID+" ";
         sql +=" ORDER BY product_name ASC ";
-        if(at != 0 && total != 0){
-        	sql +="LIMIT "+ at +","+ total;
-        }
+        
+        sql +=" LIMIT "+ at +","+ total;
         return this.gets(sql);
 	}
 	@Override

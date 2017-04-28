@@ -62,7 +62,7 @@ public class ProductAE extends HttpServlet {
         int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
         double product_price2=1,product_price3=1;
         int product_origin_price = 1;
-        String product_specification ="", product_note = "",product_image= "",product_promotion ="";
+        String product_specification ="", product_note = "",product_image= "",product_promotion ="",product_prefix="";
         String lblSave = "Thêm mới";
         String readonly = "",checked1="",checked2="",checked3="";
         boolean isExisting = false;
@@ -96,6 +96,7 @@ public class ProductAE extends HttpServlet {
             	product_specification = eProduct.getProduct_specification();
             	product_note = eProduct.getProduct_note();
             	product_image = eProduct.getProduct_image();
+            	product_prefix = eProduct.getProduct_prefix();
             	if(product_isnew){
             		checked1 = "checked";
             	}else{
@@ -132,6 +133,10 @@ public class ProductAE extends HttpServlet {
         out.println("<tr><th>Thông tin sản phẩm</th>");
         out.println("<th><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#addFastProduct\">Thêm nhanh sản phẩm</button></th>");
         out.println("</tr>");
+        out.println("<tr>");
+    	out.println("<td class=\"lc\">Mã sản phẩm</td>");
+    	out.println("<td><input type=\"text\" maxlength=\"20\" id=\"txtProductPrefix\" value=\""+product_prefix+"\" name=\"txtProductPrefix\" size=35 /></td>");
+    	out.println("</tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên sản phẩm</td>");
     	out.println("<td><input type=\"text\" id=\"txtProductName\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
@@ -283,7 +288,7 @@ public class ProductAE extends HttpServlet {
         out.println("<th>Tên sản phẩm</th>");
         out.println("<th>Lấy dữ liệu</th>");
         out.println("</tr>");
-        out.println(GetDataImpl.getProductForKeywordHN("lap"));
+        //out.println(GetDataImpl.getProductForKeywordHN("lap"));
         out.println("</table>");
         out.println("</div>");
         out.println("<div class=\"modal-footer\">");
@@ -331,7 +336,7 @@ public class ProductAE extends HttpServlet {
 		boolean product_isnew = request.getParameter("ckIsnew") == null || !request.getParameter("ckIsnew").equalsIgnoreCase("1") ? false : true;
 		boolean ckli = request.getParameter("ckli")== null || !request.getParameter("ckli").equalsIgnoreCase("1") ? false : true;
 		boolean ckSelling = request.getParameter("ckSelling") == null || !request.getParameter("ckSelling").equalsIgnoreCase("1") ? false : true;
-		
+		String productprefix = request.getParameter("txtProductPrefix");
 		ProductObject po = new ProductObject();
 		po.setProduct_name(productname);
 		po.setProduct_summary(productsummary);
@@ -349,6 +354,7 @@ public class ProductAE extends HttpServlet {
 		po.setProduct_isnew(product_isnew);
 		po.setProduct_isliquidation(ckli);
 		po.setProduct_isselling(ckSelling);
+		po.setProduct_prefix(productprefix);
 		
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
         ProductControl pc = new ProductControl(cp);
