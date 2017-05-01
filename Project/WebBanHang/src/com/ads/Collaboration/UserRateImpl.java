@@ -130,7 +130,7 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 
 	@Override
 	public ResultSet getSimPerson(String userid, byte limit) {
-		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE user_id_1=" + userid 
+		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE user_id_1= " + userid 
 				+ " ORDER BY simperson DESC";
 		sql += " LIMIT 0," + limit;
 		return this.gets(sql);

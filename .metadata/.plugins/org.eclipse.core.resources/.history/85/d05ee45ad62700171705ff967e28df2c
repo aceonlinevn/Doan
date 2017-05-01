@@ -1,8 +1,0 @@
-package com.ads.provider;
-
-public class Snippet {
-	public static void main(String[] args) {
-		provider_image
-	}
-}
-

@@ -1,7 +1,0 @@
-package com.ads.autodata;
-
-public class DataConstant {
-	//Khai báo hằng cho web trananh.vn
-	public static final String PRPRIMARYTA = "tit-des-detail";
-	public static final String PRNAMETA = "h1>span";
-}

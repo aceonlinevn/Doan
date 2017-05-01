@@ -1,3 +1,5 @@
+<%@page import="com.ads.user.UserModel"%>
+<%@page import="com.library.Utilities"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.*,com.object.*"%>
@@ -10,6 +12,7 @@
 		application.setAttribute("cpool", pc.getConnectionPool());
 	}
 	if (request.getParameter("prid") != null && !request.getParameter("prid").equalsIgnoreCase("")) {
+		session.setAttribute("product_id", request.getParameter("prid"));
 		int id = Integer.parseInt(request.getParameter("prid"));
 		ProductObject po = pc.getProductObject(id);
 		if (id > 0) {
@@ -66,9 +69,8 @@
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
 	
-	//hungcuong - loc cong tac
-	ArrayList<ProductObject> listProductReferences = pc.getReferencesProduct("1");
+	/* ArrayList<ProductObject> listProductReferences = pc
+			.getReferencesProduct((String) request.getSession().getAttribute("1"));
 	String viewProductReferences = pc.viewProducts2(listProductReferences);
-	session.setAttribute("viewProductForReferences", viewProductReferences);
-	
+	request.getSession().setAttribute("viewProductForReferences", viewProductReferences); */
 %>

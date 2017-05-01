@@ -1,6 +1,0 @@
-package com.ads.autodata;
-
-public class DataConstant {
-	public static final String PRPRIMARYTA = "tit-des-detail";
-	public static final String PRNAMETA = "h1>span";
-}

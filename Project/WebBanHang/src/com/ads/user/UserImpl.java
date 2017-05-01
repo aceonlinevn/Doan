@@ -39,7 +39,7 @@ public class UserImpl extends BasicImpl implements User {
 	}
 
 	public String getNextUserId(UserObject item) {
-		String id = null ;
+		String id = "0";
 		double did = 0;
 		String sql = " SELECT user_id FROM  dacn_webbanhang.user WHERE user_prefix = ? ORDER BY user_id DESC LIMIT 1 ";
 		ResultSet rs = this.get(sql, item.getUser_prefix());
@@ -47,32 +47,52 @@ public class UserImpl extends BasicImpl implements User {
 			try {
 				if (rs.next()) {
 					id = rs.getString("user_id");
+					id = id.substring(1);
+					did = Double.parseDouble(id);
+					did++;
+				} else {
+					did = Double.parseDouble(id);
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
 			}
 		}
-		if (id!=null) {
-			id = id.substring(1);
+		NumberFormat formatter = new DecimalFormat("000000000000000");
+		String digit = item.getUser_prefix() + formatter.format(did);
+		return digit;
+	}
+	
+	@Override
+	public String getNextVisitorId() {
+		String id = "0";
+		double did = 0;
+		String sql = " SELECT Visitor_id FROM dacn_webbanhang.visitor ORDER BY Visitor_id DESC LIMIT 1 ";
+		ResultSet rs = this.gets(sql);
+		if (rs != null) {
 			try {
-				did = Double.parseDouble(id);
-				did++;
-				NumberFormat formatter = new DecimalFormat("000000000000000");
-				String digit = item.getUser_prefix() + formatter.format(did);
-				return digit;
-			} catch (Exception e) {
-				did = 0;
+				if (rs.next()) {
+					id = rs.getString("Visitor_id");
+					id = id.substring(1);
+					did = Double.parseDouble(id);
+					did++;
+				} else {
+					did = Double.parseDouble(id);
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
 			}
 		}
-		return "";
+		NumberFormat formatter = new DecimalFormat("000000000000000");
+		String digit = "V" + formatter.format(did);
+		return digit;
 	}
 
 	public static void main(String[] args) {
 		ConnectionPool cp = new ConnectionPoolImpl();
 		UserImpl u = new UserImpl(cp);
-		UserObject user = new UserObject();
-		user.setUser_prefix("U");
-		System.out.println(u.getNextUserId(user));
+		UserObject item = new UserObject();
+		item.setUser_prefix("D");
+		System.out.println(u.getNextVisitorId());
 	}
 
 	@Override
@@ -94,20 +114,20 @@ public class UserImpl extends BasicImpl implements User {
 		try {
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
 			preAdd.setString(1, nextID);
-			preAdd.setString(1, item.getUser_prefix());
-			preAdd.setString(2, item.getUser_name());
-			preAdd.setString(3, item.getUser_last_messased());
-			preAdd.setString(4, item.getUser_phonenum());
-			preAdd.setString(5, item.getUser_username());
-			preAdd.setString(6, item.getUser_password());
-			preAdd.setString(7, item.getUser_address());
-			preAdd.setString(8, item.getUser_email());
-			preAdd.setString(9, item.getUser_birthdate());
-			preAdd.setString(10, item.getUser_lastlogined());
-			preAdd.setBoolean(11, item.isUser_isloggined());
-			preAdd.setBoolean(12, item.isUser_gender());
-			preAdd.setString(13, item.getUser_note());
-			preAdd.setInt(14, item.getUser_permission_id());
+			preAdd.setString(2, item.getUser_prefix());
+			preAdd.setString(3, item.getUser_name());
+			preAdd.setString(4, item.getUser_last_messased());
+			preAdd.setString(5, item.getUser_phonenum());
+			preAdd.setString(6, item.getUser_username());
+			preAdd.setString(7, item.getUser_password());
+			preAdd.setString(8, item.getUser_address());
+			preAdd.setString(9, item.getUser_email());
+			preAdd.setString(10, item.getUser_birthdate());
+			preAdd.setString(11, item.getUser_lastlogined());
+			preAdd.setBoolean(12, item.isUser_isloggined());
+			preAdd.setBoolean(13, item.isUser_gender());
+			preAdd.setString(14, item.getUser_note());
+			preAdd.setInt(15, item.getUser_permission_id());
 			return this.add(preAdd);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -213,6 +233,52 @@ public class UserImpl extends BasicImpl implements User {
 		String sql = "SELECT * FROM `dacn_webbanhang`.`user` WHERE ";
 		sql += "user_username = ? and user_password = ?";
 		return this.get(sql, username, userpass);
+	}
+
+	@Override
+	public boolean addVisitor(Visitor item) {
+		String sql = "INSERT INTO `dacn_webbanhang`.`visitor` (`Visitor_id`, `Visitor_prefix`, `Visitor_created_date`, `Visitor_IP`) ";
+		sql += " VALUES (?,?,?,?)";
+		try {
+			PreparedStatement preAdd = this.con.prepareStatement(sql);
+			preAdd.setString(1, item.getVisitor_id());
+			preAdd.setString(2, item.getVisitor_prefix());
+			preAdd.setString(3, item.getVisitor_created_date());
+			preAdd.setString(4, item.getVisitor_IP());
+
+			return this.add(preAdd);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delVisitor(Visitor item) {
+		String sql = "DELETE FROM visitor WHERE Visitor_id = ?";
+		try {
+			PreparedStatement preDel = this.con.prepareStatement(sql);
+			preDel.setString(1, item.getVisitor_id());
+
+			return this.del(preDel);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public ResultSet getVisitor(String id) {
+		String sql = "SELECT Visitor_id,Visitor_prefix,Visitor_created_date,Visitor_IP FROM dacn_webbanhang.visitor WHERE Visitor_id = ?";
+		return this.get(sql, id);
+	}
+
+	@Override
+	public ResultSet getVisitors(Visitor similar, int at, byte total) {
+		String sql = "SELECT Visitor_id,Visitor_prefix,Visitor_created_date,Visitor_IP FROM dacn_webbanhang.visitor ";
+		sql += " ORDER BY Visitor_id ASC ";
+		sql += "LIMIT " + at + "," + total;
+		return this.gets(sql);
 	}
 
 }

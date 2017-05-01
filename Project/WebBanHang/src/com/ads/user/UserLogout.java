@@ -29,7 +29,7 @@ public class UserLogout extends HttpServlet {
         request.getSession().setAttribute("userLogined",null);
         request.getSession().removeAttribute("userLogined");
         //tro ve giao dien dang nhap
-        response.sendRedirect("/WebBanHang/user/login");
+        response.sendRedirect("/WebBanHang/");
 	}
 
 	/**
