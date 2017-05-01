@@ -129,6 +129,8 @@ public class UserLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
+		PrintWriter out = response.getWriter();
 		// Lay thong tin tren giao dien
 		String username = request.getParameter("txtUserName");
 		String userpass = request.getParameter("txtUserPass");
@@ -185,7 +187,10 @@ public class UserLogin extends HttpServlet {
 						}
 
 					} else {
-						response.sendRedirect("/WebBanHang/user/login?err=login&at=notok");
+						out.println("<script>");
+						out.println("alert('Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại');");
+						out.println("window.location = '/WebBanHang';");
+						out.println("</script>");
 					}
 				}
 

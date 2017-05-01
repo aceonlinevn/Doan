@@ -5,19 +5,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hùng Cường Computer</title>
-<link rel="stylesheet"
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hùng Cường Computer</title>
+	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/frontend/css/style.css">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/frontend/css/single.css">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/frontend/css/font-awesome.min.css">
-<script language="javascript" type="text/javascript"
+	<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/frontend/css/bootstrap.css">
+	<script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/frontend/js/jquery-1.8.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/frontend/js/owl.carousel.js"></script>
-<script src="<%=request.getContextPath()%>/frontend/js/common.js"></script>
+	<script src="<%=request.getContextPath()%>/frontend/js/owl.carousel.js"></script>
+	<script src="<%=request.getContextPath()%>/frontend/js/common.js"></script>
+	<script src="<%=request.getContextPath()%>/frontend/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -79,12 +82,11 @@
 						<a href="/WebBanHang/" title="<%=userLogined.getUser_name()%>"><i
 							class="fa fa-user" style="font-weight: bold;" aria-hidden="true"></i>
 							<%=userLogined.getUser_name()%> </a> <a
-							href="/WebBanHang/user/logout" title="Thoát"><i
-							class="fa fa-user-plus" aria-hidden="true"></i> Thoát</a>
+							href="/WebBanHang/user/logout" title="Thoát"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
 						<%
 							} else {
 						%>
-						<a href="/WebBanHang/user/login" title="Đăng nhập"><i
+						<a href="javascript:void(0)" title="Đăng nhập" data-toggle="modal" data-target="#mdLogin"><i
 							class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a> <a href="#"
 							title="Đăng ký"><i class="fa fa-user-plus" aria-hidden="true"></i>
 							Đăng ký</a>
@@ -95,7 +97,7 @@
 
 					</div>
 					<div class="cart-area">
-						<a href="#" title="Giỏ hàng"><i class="fa fa-shopping-cart"
+						<a href="/WebBanHang/frontend/cart.jsp" title="Giỏ hàng"><i class="fa fa-shopping-cart"
 							aria-hidden="true"></i> Giỏ hàng</a> <span class="cart-count"><i
 							class="fa fa-comment-o" aria-hidden="true"></i> <span
 							class="count" id="count_shopping_cart_store">0<span></span>

@@ -128,7 +128,6 @@ function hura_erase_cookie(e) {
 }
 
 function countShoppingCart(e) {
-	debugger;
 	var t = document.getElementById("count_shopping_cart_store");
 	var n = document.getElementById("total_shopping_cart_store");
 	if (hura_read_cookie(e) == null) {
@@ -190,10 +189,7 @@ function addToShoppingCartStop(e, t, n, r, i) {
 		var o = s + "," + e + "-" + t + "-" + n + "-" + r;
 		hura_create_cookie("shopping_cart_store", o, 1);
 		countShoppingCart("shopping_cart_store");
-		var u = document.getElementById(i);
-		if (typeof u != "undefined" && u != null) {
-			$("#" + i).html("Đã thêm vào giỏ hàng")
-		}
+		alert("Thêm sản phẩm vào giỏ hàng thành công!")
 	} else {
 	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!");
 	}
@@ -209,7 +205,7 @@ function isItemInCart(e, t) {
 function deleteShoppingCartItem(e, t, n, r) {
 	if (confirm("Bạn muốn xóa bỏ sản phẩm này khỏi giỏ hàng ? ")) {
 		removeShoppingCartItem(e, t, n, r);
-		window.location = "/WebBanHang/fronted/cart.jsp"
+		window.location = "/WebBanHang/frontend/cart.jsp"
 	}
 }
 

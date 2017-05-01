@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.htmlparser.jericho.*;
+import org.apache.axis.encoding.Base64;
 
 import javax.servlet.*;
 
@@ -141,6 +142,12 @@ public class Utilities {
 		}
 		
 	}
+	public static String decodeString(String encodeText)
+	           throws UnsupportedEncodingException {
+	       byte[] decodeBytes = Base64.decode(encodeText);
+	       String str = new String(decodeBytes, "UTF-8");
+	       return str;
+	   }
 	public static void main(String[] args){
 		Utilities.HTMLToServlet("/Volumes/Data/github/Doan/Project/WebBanHang/WebContent/adv/layout.html");
 	}
