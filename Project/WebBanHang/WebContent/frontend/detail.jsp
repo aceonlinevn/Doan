@@ -215,44 +215,43 @@
 					<div class="rate-area">
 						<div class="product-detail-title">Đánh giá sản phẩm</div>
 						<div class="rate-content">
-							<form action="single_submit" method="get" accept-charset="utf-8">
+							<form action="<%=request.getContextPath()%>/ProductRating" method="post" accept-charset="utf-8">
 								<table>
 									<tbody>
 										<tr>
 											<td colspan="5"><textarea
-													style="padding: 10px; line-height: 1.4" name="" cols="90"
+													style="padding: 10px; line-height: 1.4" name="comment" id = "comment" cols="90"
 													rows="5" placeholder="Nội dung đánh giá"></textarea></td>
 										</tr>
 										<tr>
 											<td colspan="5" align="left"
-												style="color: #333; font-size: 14px; font-weight: bold">Đánh
-												giá :</td>
+												style="color: #333; font-size: 14px; font-weight: bold">Đánh giá :</td>
 										</tr>
 										<tr align="left">
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" id="rdoRate" name="rdoRate" value="5" checked="checked" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" id="rdoRate" name="rdoRate" value="4" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" id="rdoRate" name="rdoRate" value="3" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" id="rdoRate" name="rdoRate" value="2" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" id="rdoRate" name="rdoRate" value="1" placeholder="">
 												<span class="star-o"></span> <span class="star-d"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
 										</tr>
-										<tr align="left">
+										<tr align="right">
 											<td colspan="5"><input class="btnRating" type="submit"
-												name="" value="Đăng nhập để nhập đánh giá"></td>
+												name="" value="Đánh giá"></td>
 										</tr>
 									</tbody>
 								</table>
