@@ -288,7 +288,7 @@ public class ProductAE extends HttpServlet {
         out.println("<th>Tên sản phẩm</th>");
         out.println("<th>Lấy dữ liệu</th>");
         out.println("</tr>");
-        //out.println(GetDataImpl.getProductForKeywordHN("lap"));
+        out.println(GetDataImpl.getProductForKeywordHN("lap"));
         out.println("</table>");
         out.println("</div>");
         out.println("<div class=\"modal-footer\">");

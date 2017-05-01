@@ -108,12 +108,7 @@ public class GetDataImpl implements GetData {
 				GetData gd = new GetDataImpl();
 				ProductObject po = gd.getData("https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href"));
 				tmp += "<td style=\"display:none\">";
-				tmp += "<span id=\"dtProductName\" >"+po.getProduct_name()+"</span>";
-				tmp += "<span id=\"dtProductPrice\" >"+po.getProduct_origin_price()+"</span>";
-				tmp += "<span id=\"dtProductSummary\" >"+po.getProduct_summary()+"</span>";
-				tmp += "<span id=\"dtProductWarranty\" >"+po.getProduct_warranty_time()+"</span>";
-				tmp += "<span id=\"dtProductPromotion\" >"+po.getProduct_promotion()+"</span>";
-				tmp += "<span id=\"dtProductSpecification\" >"+po.getProduct_specification().toString()+"</span>";
+				
 				tmp +="</td>";
 				tmp += "<td><a href=\"javasrcipt: void();\" onclick=\"getDataPr()\" title=\"Lấy dữ liệu\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-floppy-disk\"></span> Lấy dữ liệu</a></td>";
 				tmp += "<tr>";

@@ -229,26 +229,26 @@
 												giá :</td>
 										</tr>
 										<tr align="left">
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-o"></span> <span
+											<td><input type="radio" name="rdStar" value="5" id="rdStar5" placeholder="">
+												<label for="rdStar5"><span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
-												class="star-o"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-o"></span> <span
+												class="star-o"></span></label></td>
+											<td><input type="radio" name="rdStar" value="4" id="rdStar4" placeholder="">
+												<label for="rdStar4"><span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
-												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-o"></span> <span
+												class="star-d"></span></label></td>
+											<td><input type="radio" name="rdStar" value="3" id="rdStar3" placeholder="">
+												<label for="rdStar3"><span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-d"></span> <span
-												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-o"></span> <span
+												class="star-d"></span></label></td>
+											<td><input type="radio" name="rdStar" value="2" id="rdStar2" placeholder="">
+												<label for="rdStar2"><span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
-												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-d"></span> <span
+												class="star-d"></span></label></td>
+											<td><input type="radio" name="rdStar" value="1" id="rdStar1" placeholder="">
+												<label for="rdStar1"><span class="star-o"></span> <span class="star-d"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
-												class="star-d"></span></td>
+												class="star-d"></span></label></td>
 										</tr>
 										<tr align="left">
 											<td colspan="5"><input class="btnRating" type="submit"

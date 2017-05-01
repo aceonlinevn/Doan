@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/single.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<script src="js/jquery-1.8.2.min.js"></script>			
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>			
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/common.js"></script>
 </head>
@@ -47,7 +49,7 @@
 				</div><!-- end c-bt-header-->
 				<div class="r-bt-header">
 					<div class="login-area">
-						<a href="#" title="Đăng nhập"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
+						<a href="#" title="Đăng nhập" data-toggle="modal" data-target="#mdLogin"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a>
 						<a href="#" title="Đăng nhập"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
 					</div>
 					<div class="cart-area">
@@ -542,5 +544,22 @@
 	<div class="footer">
 		Copyright&copy2017&nbspHUNGCUONGCOMPUTER
 	</div><!-- end footer-->
+	<!-- Modal -->
+	<div class="modal fade" id="mdLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title" id="lblTitle">ĐĂNG NHẬP HỆ THỐNG</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>

@@ -1,12 +1,15 @@
+<%@page import="com.library.Utilities"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp" flush="true"></jsp:include>
 <%
-	if(request.getParameter("id") != null){
-		String id = request.getParameter("id");
-	}else{
-		response.sendRedirect(request.getContextPath() + "/frontend/index.jsp);
-	}
+	String productDetailImg = (String) session.getAttribute("productDetailImg");
+	String productDetailName = (String) session.getAttribute("productDetailName");
+	String productDetailPrefix = (String) session.getAttribute("productDetailPrefix");
+	int productDetailPrice = (int) session.getAttribute("productDetailPrice");
+	String productDetailWarranty = (String) session.getAttribute("productDetailWarranty");
+	String productDetailSummary = (String) session.getAttribute("productDetailSummary");
+	String productDetailContent = (String) session.getAttribute("productDetailContent");
 %>
 <div class="content">
 	<div class="wrapper">
@@ -114,43 +117,58 @@
 					});
 				});
 			</script>
+			<a
+				href="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+				class="fancybox view-large" rel="gallery" style="display: none;"></a>
 			<div class="l-main-content">
 				<div class="single-img">
 					<div id="img_large">
 						<a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600"
-							href="pictures/lap1.jpg" title="Click để xem ảnh lớn"> <img
-							src="pictures/lap1.jpg" title="Click để xem ảnh lớn" alt="" />
+							href="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+							title="Click để xem ảnh lớn"> <img
+							src="<%if (productDetailImg != null) {
+				out.print(productDetailImg);
+			}%>"
+							title="Click để xem ảnh lớn" alt="" />
 						</a>
 					</div>
 					<div class="clr"></div>
-					<ul id="img_thumb" class="ul">
-
-						<li><a class="img_thumb" href="pictures/lap1.jpg" title=""
-							rel="zoom-id:Zoomer;" rev="pictures/lap1.jpg"> <img
-								src="pictures/lap1-small.jpg" alt="" />
-						</a></li>
-
-						<li><a class="img_thumb" href="pictures/lap2.jpg" title=""
-							rel="zoom-id:Zoomer;" rev="pictures/lap2.jpg"> <img
-								src="pictures/lap2-small.jpg" alt="" />
-						</a></li>
-
-						<li><a class="img_thumb" href="pictures/lap3.jpg" title=""
-							rel="zoom-id:Zoomer;" rev="pictures/lap3.jpg"> <img
-								src="pictures/lap3-small.jpg" alt="" />
-						</a></li>
-					</ul>
 				</div>
 				<!-- end single-img-->
 				<div class="single-content">
 					<div class="single-product-title">
 						<p>
-						<h1>PC Dell Vostro 3650MT MTI7330P mới nhất</h1>
+						<h1>
+							<%
+								if (productDetailName != null) {
+									out.print(productDetailName);
+								}
+							%>
+						</h1>
 						</p>
-						<p class="product-code">Mã sản phẩm : PC001</p>
+						<p class="product-code">
+							Mã sản phẩm :
+							<%
+							if (productDetailPrefix != null) {
+								out.print(productDetailPrefix);
+							}
+						%>
+						</p>
 					</div>
 					<div class="infor-summary">
-						<div class="product-price">699.000</div>
+						<div class="product-price">
+							<%
+								if (productDetailPrice > 0) {
+									out.print(Utilities.convertMoney(productDetailPrice));
+								} else {
+									out.print("Liên hệ");
+								}
+							%>
+						</div>
 						<div class="clr"></div>
 						<div class="product-vote">
 							Đánh giá: <span class="star-o"></span> <span class="star-o"></span>
@@ -158,17 +176,21 @@
 								class="star-d"></span>
 						</div>
 						<div class="product-warranty">
-							<strong>Bảo hành: </strong>12 tháng
+							<strong>Bảo hành: </strong>
+							<%
+								if (productDetailWarranty != null) {
+									out.print(productDetailWarranty);
+								}
+							%>
 						</div>
 						<div class="product-summary">
 							<strong>Mô tả ngắn: </strong>
 							<div class="product-content">
-								<p>- Miễn phí giao hàng (Trong bán kính 20 km) cho đơn hàng
-									từ 500.000 đ trở lên</p>
-								<p>- Miễn phí giao hàng 300 km đối với khách hàng Games Net,
-									Doanh Nghiệp, Dự Án</p>
-								<p>- Nhận giao hàng và lắp đặt từ 8h00 - 20h30 các ngày kể
-									cả ngày lễ, thứ 7, CN</p>
+								<%
+									if (productDetailSummary != null) {
+										out.print(productDetailSummary);
+									}
+								%>
 							</div>
 						</div>
 					</div>
@@ -182,7 +204,13 @@
 					<div class="product-detail">
 						<div class="product-detail-title">Mô tả chi tiết sản
 							phẩm</div>
-						<div class="product-detail-area">noi dung</div>
+						<div class="product-detail-area">
+							<%
+								if (productDetailContent != null) {
+									out.print(productDetailContent);
+								}
+							%>
+						</div>
 					</div>
 					<div class="rate-area">
 						<div class="product-detail-title">Đánh giá sản phẩm</div>
@@ -201,23 +229,23 @@
 												giá :</td>
 										</tr>
 										<tr align="left">
-											<td><input type="radio" name="" value="" placeholder="">
-												<span class="star-o"></span> <span class="star-o"></span> <span
+											<td><input type="radio" name="rdStar" value="5" id="rdStar5" placeholder="">
+												<label for="rdStar5"><span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
-												class="star-o"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+												class="star-o"></span></label></td>
+											<td><input type="radio" name="rdStar" value="4" id="rdStar4" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-o"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" name="rdStar" value="3" id="rdStar3" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-o"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" name="rdStar" value="2" id="rdStar2" placeholder="">
 												<span class="star-o"></span> <span class="star-o"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
-											<td><input type="radio" name="" value="" placeholder="">
+											<td><input type="radio" name="rdStar" value="1" id="rdStar1" placeholder="">
 												<span class="star-o"></span> <span class="star-d"></span> <span
 												class="star-d"></span> <span class="star-d"></span> <span
 												class="star-d"></span></td>
@@ -232,199 +260,8 @@
 						</div>
 					</div>
 					<!--End Rating-->
-					<div class="product-reference">
-						<div class="product-detail-title">Có thể bạn quan tâm</div>
-						<div class="products">
-							<div class="product">
-								<div class="product-code">Mã sản phẩm: LT001</div>
-								<div class="product-image">
-									<a href="single.html"
-										title="Keyboard Geezer GS4 Mechanical Blue Switch 87"><img
-										src="pictures/pr1.jpg"
-										alt="Keyboard Geezer GS4 Mechanical Blue Switch 87"></a>
-								</div>
-								<div class="product-price">699.000</div>
-								<div class="product-name">
-									<h2>
-										<a href="single.html"
-											title="Keyboard Geezer GS4 Mechanical Blue Switch 87">Keyboard
-											Geezer GS4 Mechanical Blue Switch 87</a>
-									</h2>
-								</div>
-								<div class="product-add-cart">
-									<span class="product-stocking"><i
-										class="fa fa-shopping-cart" aria-hidden="true"></i> Còn hàng</span> <a
-										href="#" title="Mua ngay"><i class="fa fa-cart-plus"
-										aria-hidden="true"></i> Mua ngay</a>
-								</div>
-								<div class="clr"></div>
-								<div class="product-hover">
-									<div class="product-info">
-										<p class="product-name-hover">Keyboard Geezer GS4
-											Mechanical Blue Switch 87</p>
-										<p class="product-price-hover">
-											<span class="price-text">Giá bán: </span><span
-												class="img_price">699.000</span>
-										</p>
-										<p class="product-warranty">Bản hành: 24 tháng</p>
-									</div>
-									<div class="product-sumary">
-										<div class="title-hover">Mô tả tóm tắt</div>
-										<p>Mô tả 1</p>
-										<p>Mô tả 2</p>
-										<p>Mô tả 3</p>
-									</div>
-									<div class="product-saleoff">
-										<div class="title-hover">Khuyến mại</div>
-										<p>Khuyến mại 1</p>
-										<p>Khuyến mại 2</p>
-									</div>
-								</div>
-							</div>
-							<!-- end Product-->
-							<div class="product">
-								<div class="product-code">Mã sản phẩm: LT001</div>
-								<div class="product-image">
-									<a href="single.html"
-										title="Keyboard Geezer GS4 Mechanical Blue Switch 87"><img
-										src="pictures/pr1.jpg"
-										alt="Keyboard Geezer GS4 Mechanical Blue Switch 87"></a>
-								</div>
-								<div class="product-price">699.000</div>
-								<div class="product-name">
-									<h2>
-										<a href="single.html"
-											title="Keyboard Geezer GS4 Mechanical Blue Switch 87">Keyboard
-											Geezer GS4 Mechanical Blue Switch 87</a>
-									</h2>
-								</div>
-								<div class="product-add-cart">
-									<span class="product-stocking"><i
-										class="fa fa-shopping-cart" aria-hidden="true"></i> Còn hàng</span> <a
-										href="#" title="Mua ngay"><i class="fa fa-cart-plus"
-										aria-hidden="true"></i> Mua ngay</a>
-								</div>
-								<div class="clr"></div>
-								<div class="product-hover">
-									<div class="product-info">
-										<p class="product-name-hover">Keyboard Geezer GS4
-											Mechanical Blue Switch 87</p>
-										<p class="product-price-hover">
-											<span class="price-text">Giá bán: </span><span
-												class="img_price">699.000</span>
-										</p>
-										<p class="product-warranty">Bản hành: 24 tháng</p>
-									</div>
-									<div class="product-sumary">
-										<div class="title-hover">Mô tả tóm tắt</div>
-										<p>Mô tả 1</p>
-										<p>Mô tả 2</p>
-										<p>Mô tả 3</p>
-									</div>
-									<div class="product-saleoff">
-										<div class="title-hover">Khuyến mại</div>
-										<p>Khuyến mại 1</p>
-										<p>Khuyến mại 2</p>
-									</div>
-								</div>
-							</div>
-							<!-- end Product-->
-							<div class="product">
-								<div class="product-code">Mã sản phẩm: LT001</div>
-								<div class="product-image">
-									<a href="single.html"
-										title="Keyboard Geezer GS4 Mechanical Blue Switch 87"><img
-										src="pictures/pr1.jpg"
-										alt="Keyboard Geezer GS4 Mechanical Blue Switch 87"></a>
-								</div>
-								<div class="product-price">699.000</div>
-								<div class="product-name">
-									<h2>
-										<a href="single.html"
-											title="Keyboard Geezer GS4 Mechanical Blue Switch 87">Keyboard
-											Geezer GS4 Mechanical Blue Switch 87</a>
-									</h2>
-								</div>
-								<div class="product-add-cart">
-									<span class="product-stocking"><i
-										class="fa fa-shopping-cart" aria-hidden="true"></i> Còn hàng</span> <a
-										href="#" title="Mua ngay"><i class="fa fa-cart-plus"
-										aria-hidden="true"></i> Mua ngay</a>
-								</div>
-								<div class="clr"></div>
-								<div class="product-hover">
-									<div class="product-info">
-										<p class="product-name-hover">Keyboard Geezer GS4
-											Mechanical Blue Switch 87</p>
-										<p class="product-price-hover">
-											<span class="price-text">Giá bán: </span><span
-												class="img_price">699.000</span>
-										</p>
-										<p class="product-warranty">Bản hành: 24 tháng</p>
-									</div>
-									<div class="product-sumary">
-										<div class="title-hover">Mô tả tóm tắt</div>
-										<p>Mô tả 1</p>
-										<p>Mô tả 2</p>
-										<p>Mô tả 3</p>
-									</div>
-									<div class="product-saleoff">
-										<div class="title-hover">Khuyến mại</div>
-										<p>Khuyến mại 1</p>
-										<p>Khuyến mại 2</p>
-									</div>
-								</div>
-							</div>
-							<!-- end Product-->
-							<div class="product">
-								<div class="product-code">Mã sản phẩm: LT001</div>
-								<div class="product-image">
-									<a href="single.html"
-										title="Keyboard Geezer GS4 Mechanical Blue Switch 87"><img
-										src="pictures/pr1.jpg"
-										alt="Keyboard Geezer GS4 Mechanical Blue Switch 87"></a>
-								</div>
-								<div class="product-price">699.000</div>
-								<div class="product-name">
-									<h2>
-										<a href="single.html"
-											title="Keyboard Geezer GS4 Mechanical Blue Switch 87">Keyboard
-											Geezer GS4 Mechanical Blue Switch 87</a>
-									</h2>
-								</div>
-								<div class="product-add-cart">
-									<span class="product-stocking"><i
-										class="fa fa-shopping-cart" aria-hidden="true"></i> Còn hàng</span> <a
-										href="#" title="Mua ngay"><i class="fa fa-cart-plus"
-										aria-hidden="true"></i> Mua ngay</a>
-								</div>
-								<div class="clr"></div>
-								<div class="product-hover">
-									<div class="product-info">
-										<p class="product-name-hover">Keyboard Geezer GS4
-											Mechanical Blue Switch 87</p>
-										<p class="product-price-hover">
-											<span class="price-text">Giá bán: </span><span
-												class="img_price">699.000</span>
-										</p>
-										<p class="product-warranty">Bản hành: 24 tháng</p>
-									</div>
-									<div class="product-sumary">
-										<div class="title-hover">Mô tả tóm tắt</div>
-										<p>Mô tả 1</p>
-										<p>Mô tả 2</p>
-										<p>Mô tả 3</p>
-									</div>
-									<div class="product-saleoff">
-										<div class="title-hover">Khuyến mại</div>
-										<p>Khuyến mại 1</p>
-										<p>Khuyến mại 2</p>
-									</div>
-								</div>
-							</div>
-							<!-- end Product-->
-						</div>
-					</div>
+					<jsp:include page="ProductReferences.jsp" flush="true"></jsp:include>
+					<!-- end Product references -->
 				</div>
 				<!-- end single-img-->
 			</div>

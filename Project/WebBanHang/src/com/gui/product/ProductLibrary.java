@@ -43,7 +43,7 @@ public class ProductLibrary {
 			}else{
 				summary = "<p>Tóm tắt về sản phẩm đang được update...</p>";
 			}
-			if(item.getProduct_promotion() != null && !item.getProduct_promotion().equalsIgnoreCase("")){
+			if(item.getProduct_promotion() != null && !item.getProduct_promotion().equalsIgnoreCase("") && !item.getProduct_promotion().equalsIgnoreCase("null")){
 				promotion = item.getProduct_promotion();
 			}else{
 				promotion = "<p>Sản phẩm chưa có khuyến mại!</p>";

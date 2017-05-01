@@ -10,9 +10,11 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/style.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/single.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/css/bootstrap.css">
 	<script language="javascript" type="text/javascript" src="<%=request.getContextPath()%>/frontend/js/jquery-1.8.2.min.js"></script>
 	<script src="<%=request.getContextPath()%>/frontend/js/owl.carousel.js"></script>
 	<script src="<%=request.getContextPath()%>/frontend/js/common.js"></script>
+	<script src="<%=request.getContextPath()%>/frontend/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="header">
