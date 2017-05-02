@@ -111,7 +111,7 @@ public class GetDataImpl implements GetData {
 		try {
 			doc = Jsoup.connect("https://www.hanoicomputer.vn/ajax/get_product_list.php?q="+key).get();
 			Elements e = doc.getElementsByClass("autocomplete-suggestion");
-			for(int i=0;i< 5;i++){
+			for(int i=0;i< 10;i++){
 				tmp += "<tr>";
 				tmp += "<td><img src=\"https://hanoicomputer.vn"+e.get(i).select("img").attr("src")+"\" /></td>";
 				tmp += "<td><a href=\"https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href")+"\">"+e.get(i).select(".suggest_link").text()+"</a></td>";
