@@ -88,10 +88,6 @@ public class UserLogin extends HttpServlet {
 		out.print("<td><input type=\"password\" name=\"txtUserPass\"  onkeydown = \"if (event.keyCode == 13) document.getElementById('btnLogin').click()\"/></td>");
 		out.print("</tr>");
 		out.print("<tr>");
-		out.print("<td class=\"lc\">Email</td>	<!-- td-table data -->");
-		out.print("<td><input type=\"text\" name=\"txtEmail\" /></td>");
-		out.print("</tr>");
-		out.print("<tr>");
 		out.print("<td class=\"lc\">");
 		out.print("<input type=\"checkbox\" id=\"chkSave\" name=\"chkSave\" />");
 		out.print("</td>	");
@@ -183,7 +179,9 @@ public class UserLogin extends HttpServlet {
 							// Chuyen ve giao dien chinh
 							response.sendRedirect("/WebBanHang/view");
 						} else {
-							response.sendRedirect("/WebBanHang/");
+							// Dua thong tin dang nhap vao phien
+							session.setAttribute("userLogined", user);
+							response.sendRedirect(request.getContextPath());
 						}
 
 					} else {

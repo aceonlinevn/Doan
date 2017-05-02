@@ -24,7 +24,7 @@
 							đăng nhập</label>
 						<div class="col-sm-8">
 							<input type="text" required="required"
-								placeholder="Tên đăng nhập" id="txtUserName" name="txtUserName"
+								placeholder="Tên đăng nhập hoặc email" id="txtUserName" name="txtUserName"
 								class="form-control">
 						</div>
 					</div>

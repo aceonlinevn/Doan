@@ -259,14 +259,6 @@ function updatePrice(e, t, n) {
 		$("#quantity_" + e + "_" + t).val(n)
 	}
 	show_cart_total(e, t, n);
-	var r = $("#discount_code").val();
-	if (r.length > 0) {
-		var i = document.getElementById("total_value").innerHTML;
-		while (i.indexOf(".") > 0) {
-			i = i.replace(".", "")
-		}
-		check_discount("coupon", r, parseInt(i))
-	}
 }
 
 function show_cart_total(e, t, n) {

@@ -63,6 +63,7 @@ public class UserModel {
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
+					item.setUser_is_encryption(rs.getBoolean("user_is_encryption"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -93,6 +94,7 @@ public class UserModel {
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
+					item.setUser_is_encryption(rs.getBoolean("user_is_encryption"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();

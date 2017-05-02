@@ -77,7 +77,11 @@
 		</div>
 		<!-- end sub-content-->
 		<div class="clr"></div>
-		<div class="main-content">
+		<div class="main-content text-left">
+		<ol class="breadcrumb">
+		  <li><a href="/WebBanHang"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+		  <li class="active">Giỏ hàng của bạn</li>
+		</ol>
 		<div id="tp-cart">
 	      <i class="bg icon_large_cart"></i>
 	      <h1>Chi tiết giỏ hàng</h1>
@@ -87,17 +91,14 @@
 			<%
 			Cookie[] listCookie = request.getCookies();
 			String name = "";
-			int co = 0;
 			if(listCookie != null){
-		        while(co < listCookie.length){
-		          if(listCookie[co].getName().equals("shopping_cart_store")){
-		        	  name = listCookie[co].getValue();
+				for (int i = 0; i < listCookie.length; i++){
+		          if(listCookie[i].getName().equalsIgnoreCase("shopping_cart_store")){
+		        	  name = listCookie[i].getValue();
 		           }
-		          co++;
 		        }
-		  
 		      }
-			String[] items = Utilities.decodeString(name).split(",");
+			String[] items = Utilities.decodeString(name+"==").split(",");
 			ConnectionPool cp = (ConnectionPool) application.getAttribute("cpool");
 			ProductControl pc = new ProductControl(cp);
 			if (cp == null) {
@@ -105,6 +106,7 @@
 			}
 			%>
 			<div class="content-cart">
+			<form name="frmCartDetail" method="post" onsubmit="return check_field()">
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -118,22 +120,47 @@
 					</thead>
 					<tbody>
 					<%
-					for(int i=1;i<items.length;i++){
+					String carts =  ",";
+					int total = 0;
+					for(int i=1;i<items.length;i++){						
 						String[] item = items[i].split("-");
+						carts += item[0]+"-"+item[1]+",";
 						ProductObject po = pc.getProductObject(Integer.parseInt(item[1]));
-						out.println("<tr>");
-						out.println("<td>"+(i)+"</td>");
-						out.println("<td><img src=\""+po.getProduct_image()+"\" width=\"40\" height=\"30\" /></td>");
-						out.println("<td>"+po.getProduct_name()+"</td>");
-						out.println("<td><span id=\"sell_price_pro_"+item[1]+"\">"+item[3]+"</span>VND</td>");
-						out.println("<td><input name=\"quantity_pro_"+item[1]+"\" id=\"quantity_pro_"+item[1]+"\" value=\""+item[2]+"\" onchange=\"updatePrice('"+item[0]+"','"+item[1]+"',this.value)\" size=\"5\"></td>");
-						out.println("<td><b><span id=\"price_pro_"+item[1]+"\"></span> VND</b></td>");
-						out.println("<td><a href=\"javascript:deleteShoppingCartItem('"+item[0]+"','"+item[1]+"','"+item[2]+"','"+item[3]+"')\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a></td>");
-						out.println("</tr>");											
+						if(po != null){
+							out.println("<tr>");
+							out.println("<td>"+(i)+"</td>");
+							out.println("<td><img src=\""+po.getProduct_image()+"\" width=\"40\" height=\"30\" /></td>");
+							out.println("<td>"+po.getProduct_name()+"</td>");
+							out.println("<td><span id=\"sell_price_pro_"+item[1]+"\">"+Utilities.convertMoney(Integer.parseInt(item[3]))+"</span> VND</td>");
+							out.println("<td><input type=\"number\" name=\"quantity_pro_"+item[1]+"\" id=\"quantity_pro_"+item[1]+"\" value=\""+item[2]+"\" onchange=\"updatePrice('"+item[0]+"','"+item[1]+"',this.value)\" size=\"5\"></td>");
+							out.println("<td><b><span id=\"price_pro_"+item[1]+"\">"+Utilities.convertMoney(Integer.parseInt(item[3]) * Integer.parseInt(item[2]))+"</span> VND</b></td>");
+							out.println("<td><a href=\"javascript:deleteShoppingCartItem('"+item[0]+"','"+item[1]+"','"+item[2]+"','"+item[3]+"')\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a></td>");
+							out.println("</tr>");
+							total += (Integer.parseInt(item[3]) * Integer.parseInt(item[2]));
+						}else{
+							out.println("lỗi");
+						}
 					}
+					out.println("<input type=\"hidden\" name=\"send_order\" value=\"yes\">");
+					out.println("<input type=\"hidden\" name=\"item_update_quantity\" id=\"item_update_quantity\" value=\""+carts+"\">");
+					out.println("<input type=\"hidden\" name=\"update_quantity\" value=\"yes\">");
+					out.println("<input type=\"hidden\" name=\"total_cart_value\" id=\"total_cart_value\">");
 					%>
+					<tr>
+						<td colspan="3"></td>
+						<td colspan="4" align="right">
+							<b>Tổng tiền:</b>
+        					<b style="color:red; font-size:18px;"><span class="sub1" id="total_value" style="color: red; font-weight: bold;"><% out.println(Utilities.convertMoney(total)); %></span> VND</b><br>
+        					<b>Chưa bao gồm phí vận chuyển</b>
+        				</td>
+					</tr>
 					</tbody>
 				</table>
+				<div class="bt-cart pull-right">
+					<a href="/WebBanHang/" class="btn btn-primary">Tiếp tục mua hàng</a>
+					<a href="/WebBanHang/frontend/checkout.jsp"  class="btn btn-danger">Thanh toán</a>
+				</div>
+				</form>
 			</div>
 		</div>
 		<!-- end main-content-->
