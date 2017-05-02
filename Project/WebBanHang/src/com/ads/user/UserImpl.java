@@ -166,8 +166,8 @@ public class UserImpl extends BasicImpl implements User {
 	public boolean editUser(UserObject item) {
 		String sql = "UPDATE `dacn_webbanhang`.`user` SET `user_prefix`=?, `user_name`=?,"
 				+ " `user_last_messaged`=?, `user_phonenumber`=?, `user_username`=?,"
-				+ (item.getUser_password() == "" ? " " :" `user_password`=md5(?) ")
-						+ ", `user_address`=?, `user_email`=?, `user_birthdate`=?,"
+				+ (item.getUser_password() == "" ? " " :" `user_password`=md5(?), ")
+						+ " `user_address`=?, `user_email`=?, `user_birthdate`=?,"
 				+ " `user_Lastlogined`=?, `user_isLogined`=?, `user_gender`=?, `user_note`=?,"
 				+ " `user_permission_id`=?" + " WHERE `user_id`=? ";
 		try {

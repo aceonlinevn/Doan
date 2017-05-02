@@ -49,6 +49,7 @@ public class ProductCart extends HttpServlet {
 		response.setContentType(CONTENT_TYPE);
 		ServletContext application = getServletConfig().getServletContext();
 		ConnectionPool cp = (ConnectionPool) application.getAttribute("cpool");
+		request.setCharacterEncoding("UTF-8");
 		// Tao doi tuong thuc thi xuat cau truc HTML
 		PrintWriter out = response.getWriter();
 		String bill_customer_id = "";
@@ -65,27 +66,28 @@ public class ProductCart extends HttpServlet {
 		String bill_product_detail = request.getParameter("item_update_quantity");
 		UserControl uc = new UserControl(cp);
 		UserObject uo = new UserObject();
-		uo.setUser_name(user_name);
-		uo.setUser_phonenum(user_phonenum);
-		uo.setUser_address(user_address);
-		uo.setUser_note(user_note);
 		if (cp == null) {
 			application.setAttribute("cpool", uc.getConnectionPool());
 		}
 		UserObject userLogined = (UserObject) request.getSession().getAttribute("userLogined");
 		if(userLogined != null && userLogined.getUser_permission_id() != 0){
 			bill_customer_id = userLogined.getUserId();
-			uo.setUserId(bill_customer_id);
-			uo.setUser_username(userLogined.getUser_username());
-			uo.setUser_permission_id(userLogined.getUser_permission_id());
-			uo.setUser_prefix(userLogined.getUser_prefix());
-			uo.setUser_email(userLogined.getUser_email());
+			uo = userLogined;
+			uo.setUser_name(user_name);
+			uo.setUser_phonenum(user_phonenum);
+			uo.setUser_address(user_address);
+			uo.setUser_password("");
+			uo.setUser_note(user_note);
 			uc.editUser(uo);
 			
 		}else{
 			String user_pass = Utilities.randomString(8);
 			String user_prefix = "C";
 			int user_permiss = 4;
+			uo.setUser_name(user_name);
+			uo.setUser_phonenum(user_phonenum);
+			uo.setUser_address(user_address);
+			uo.setUser_note(user_note);
 			uo.setUser_email(user_email);
 			uo.setUser_prefix(user_prefix);
 			uo.setUser_password(user_pass);
@@ -117,14 +119,6 @@ public class ProductCart extends HttpServlet {
 		boolean rtBill = bc.addBill(bo);
 		bc.releaseConnection();
 		if(rtBill){			
-			Cookie[] listCookie = request.getCookies();
-			if (listCookie != null) {
-				for (int i = 0; i < listCookie.length; i++) {
-					if (listCookie[i].getName().equalsIgnoreCase("shopping_cart_store")) {
-						listCookie[i].setValue("");
-					}
-				}
-			}
 			out.println("<script>");
 			out.println("alert('Đặt hàng thành công');");
 			out.println("window.location = '/WebBanHang/frontent/bill.jsp';");

@@ -584,7 +584,6 @@ function user_vote_review(e, t) {
 	})
 }
 
-
 var Base64 = {
 	_keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 	encode: function(e) {
@@ -677,6 +676,16 @@ var Base64 = {
 };
 if (window.top !== window.self) window.top.location.replace(window.self.location.href);
 $(document).ready(function() {
-    countShoppingCart("shopping_cart_store")
-
+    countShoppingCart("shopping_cart_store")    
+      $("#frmCheckout").submit(function() {
+		    $.ajax({
+		     type: "POST",
+		      url: "/WebBanHang/product/cart",
+		      data: $(this).serialize(),
+		      success: function() {
+		    	  emptyShoppingCart('shopping_cart_store');
+		       }
+		    })
+		
+		  })
 })

@@ -52,6 +52,7 @@ public class UserModel {
 					item = new UserObject();
 					item.setUserId(rs.getString("user_id"));
 					item.setUser_name(rs.getString("user_name"));
+					item.setUser_prefix(rs.getString("user_prefix"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
@@ -61,6 +62,7 @@ public class UserModel {
 					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
+					item.setUser_password(rs.getString("user_password"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
 					item.setUser_is_encryption(rs.getBoolean("user_is_encryption"));
@@ -83,6 +85,7 @@ public class UserModel {
 					item = new UserObject();
 					item.setUserId(rs.getString("user_id"));
 					item.setUser_name(rs.getString("user_name"));
+					item.setUser_prefix(rs.getString("user_prefix"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
@@ -92,6 +95,7 @@ public class UserModel {
 					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
+					item.setUser_password(rs.getString("user_password"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
 					item.setUser_is_encryption(rs.getBoolean("user_is_encryption"));
@@ -121,6 +125,7 @@ public class UserModel {
 					item = new UserObject();
 					item.setUserId(rs.getString("user_id"));
 					item.setUser_name(rs.getString("user_name"));
+					item.setUser_prefix(rs.getString("user_prefix"));
 					item.setUser_last_messased(rs.getString("user_last_messaged"));
 					item.setUser_phonenum(rs.getString("user_phonenumber"));
 					item.setUser_username(rs.getString("user_username"));
@@ -130,8 +135,10 @@ public class UserModel {
 					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
+					item.setUser_password(rs.getString("user_password"));
 					item.setUser_note(rs.getString("user_note"));
 					item.setUser_permission_id(rs.getShort("user_permission_id"));
+					item.setUser_is_encryption(rs.getBoolean("user_is_encryption"));
 					// Them doi tuong vao danh sach
 					items.add(item);
 				}

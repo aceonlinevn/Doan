@@ -1,10 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.gui.product.ProductControl"%>
 <%@page import="com.object.ProductObject"%>
 <%@page import="com.library.Utilities"%>
 <%@ page import="com.*,com.object.*"%>
 <%@ page import="com.gui.product.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp" flush="true"></jsp:include>
 <div class="content">
 	<div class="wrapper">
@@ -101,7 +100,7 @@
 				}
 			%>
 			<div class="content-cart">
-				<form action="/WebBanHang/product/cart" method="post" accept-charset="UTF-8">
+				<form action="/WebBanHang/product/cart" id="frmCheckout" method="post" accept-charset="UTF-8">
 					<div class="col-sm-3">
 						<%
 							UserObject userLogined = (UserObject) session.getAttribute("userLogined");

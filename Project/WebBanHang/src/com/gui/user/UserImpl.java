@@ -166,8 +166,8 @@ public class UserImpl extends BasicImpl implements User {
 	public boolean editUser(UserObject item) {
 		String sql = "UPDATE `dacn_webbanhang`.`user` SET `user_prefix`=?, `user_name`=?,"
 				+ " `user_last_messaged`=?, `user_phonenumber`=?, `user_username`=?,"
-				+ (item.getUser_password() == "" ? " " :" `user_password`=md5(?) ")
-						+ ", `user_address`=?, `user_email`=?, `user_birthdate`=?,"
+				+ (item.getUser_password() == "" ? " " :" `user_password`=md5(?), ")
+						+ " `user_address`=?, `user_email`=?, `user_birthdate`=?,"
 				+ " `user_Lastlogined`=?, `user_isLogined`=?, `user_gender`=?, `user_note`=?,"
 				+ " `user_permission_id`=?" + " WHERE `user_id`=? ";
 		try {
@@ -363,12 +363,10 @@ public class UserImpl extends BasicImpl implements User {
 
         // tao doi tuong moi
         UserObject nProduct = new UserObject();
-        //nProduct.setUserId("U000000000000005");
-        nProduct.setUser_prefix("C");
-        nProduct.setUser_name("hthiep-thêm");
-        nProduct.setUser_email("hthiep123@gmail.com");
+        nProduct.setUserId("C000000000000005");
+        nProduct.setUser_name("hthiep-sửa1");
         //Thuc hien
-        boolean result = a.addUser(nProduct);
+        boolean result = a.editUser(nProduct);
         if(!result){
             System.out.println("\nKhong thanh cong\n");
         }
