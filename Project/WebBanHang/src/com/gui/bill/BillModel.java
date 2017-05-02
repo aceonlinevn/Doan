@@ -39,7 +39,9 @@ public class BillModel {
 	    public boolean delBill(BillObject item){
 	        return this.u.delBill(item);
 	    }
-	    
+	    public boolean cancelBill(BillObject item){
+	        return this.u.cancelBill(item);
+	    }
 	   
 	public BillObject getBillObject(int id) {
 		BillObject item = null;
@@ -65,12 +67,49 @@ public class BillModel {
 					item.setBill_product_detail(rs.getString("bill_product_detail"));
 					item.setBill_accept_date(rs.getString("bill_accept_date"));
 					item.setBill_finish_date(rs.getString("bill_finish_date"));
+					item.setBill_iscancel(rs.getBoolean("bill_iscancel"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
 			}
 		}
 		return item;
+	}
+	
+	public ArrayList<BillObject> getBillForCusObject(String cusid) {
+		ArrayList<BillObject> items = new ArrayList<BillObject>();
+		BillObject item = null;
+
+		// Lay ban ghi nguoi su dung theo id
+		ResultSet rs = this.u.getBillForCus(cusid);
+		if (rs != null) {
+			try {
+				while (rs.next()) {
+					item = new BillObject();
+					item.setBill_id(rs.getInt("bill_id"));
+					item.setBill_prefix(rs.getString("bill_prefix"));
+					item.setBill_customer_id(rs.getString("bill_customer_id"));
+					item.setBill_date_created(rs.getString("bill_date_created"));
+					item.setBill_payments(rs.getString("bill_payments"));
+					item.setBill_advance_payment(rs.getDouble("bill_advance_payment"));
+					item.setBill_tranfer(rs.getString("bill_tranfer"));
+					item.setBill_discount(rs.getInt("bill_discount"));
+					item.setBill_note(rs.getString("bill_note"));
+					item.setBill_total_amount(rs.getInt("bill_Total_Amount"));
+					item.setBill_status(rs.getInt("bill_status"));
+					item.setBill_user_accept_id(rs.getInt("bill_user_accept_id"));
+					item.setBill_product_detail(rs.getString("bill_product_detail"));
+					item.setBill_accept_date(rs.getString("bill_accept_date"));
+					item.setBill_finish_date(rs.getString("bill_finish_date"));
+					item.setBill_iscancel(rs.getBoolean("bill_iscancel"));
+					
+					items.add(item);
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return items;
 	}
 	
 	public ArrayList<BillObject> getBillObjects(BillObject similar, int page, byte total){
@@ -100,6 +139,7 @@ public class BillModel {
 					item.setBill_product_detail(rs.getString("bill_product_detail"));
 					item.setBill_accept_date(rs.getString("bill_accept_date"));
 					item.setBill_finish_date(rs.getString("bill_finish_date"));
+					item.setBill_iscancel(rs.getBoolean("bill_iscancel"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }

@@ -101,7 +101,7 @@ public class ProductCart extends HttpServlet {
 				UserObject user = uc.getUserObject(user_email, user_pass);
 				request.getSession().setAttribute("userLogined", user);
 				bill_customer_id = user.getUserId();
-				SMSsender.SmsSender(user_phonenum, "Cam on ban da dang ky la thanh vien HC voi email: "+user_email+", mat khau: "+user_pass+".Vui long dang nhap va doi mat khau !");
+				//SMSsender.SmsSender(user_phonenum, "Cam on ban da dang ky la thanh vien HC voi email: "+user_email+", mat khau: "+user_pass+".Vui long dang nhap va doi mat khau !");
 			}
 			 uc.releaseConnection();
 		}
@@ -123,10 +123,10 @@ public class ProductCart extends HttpServlet {
 		if(rtBill){
 			String[] items = bill_product_detail.split(",");			
 			String msg = "Cam on ban da mua hang tai HungCuongComputer voi tong tien la: "+Utilities.convertMoney(bill_Total_Amount)+"đ. Moi chi tiet lien he CSKH: 0965909929.";
-			SMSsender.SmsSender(user_phonenum, msg);
+			//SMSsender.SmsSender(user_phonenum, msg);
 			out.println("<script>");
 			out.println("alert('Đặt hàng thành công');");
-			out.println("window.location = '/WebBanHang/frontent/bill.jsp';");
+			out.println("window.location = '/WebBanHang/frontend/info-account.jsp';");
 			out.println("</script>");
 		}else{
 			out.println(Utilities.getMessageRedict("Đặt hàng thất bại !",request.getContextPath()+"/frontend/checkout.jsp"));

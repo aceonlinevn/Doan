@@ -57,6 +57,14 @@ public class ProductAE extends HttpServlet {
 
         //Tim id de chinh sua neu co
         int id = Utilities.getIntParam(request,"id");
+        String action = "";
+        String url ="";
+        if(request.getParameter("action") != null){
+        	action = request.getParameter("action");
+        }
+        if(request.getParameter("url") != null){
+        	url = request.getParameter("url");
+        }  
         String product_name = "",product_summary = "";
         boolean product_status = true,product_isnew = true,product_liqi = true,product_selling = true;
         int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
@@ -120,6 +128,47 @@ public class ProductAE extends HttpServlet {
 
             //Tra lai ket noi
             pc.releaseConnection();
+        }
+        
+        if(action.equalsIgnoreCase("getdata") && !url.equalsIgnoreCase("")){
+        	GetData gd = new GetDataImpl();
+            ProductObject eProduct = gd.getData(url);
+            product_name = eProduct.getProduct_name();
+        	product_summary = eProduct.getProduct_summary();
+        	product_promotion = eProduct.getProduct_promotion();
+        	product_status = eProduct.isProduct_status();
+        	product_isnew = eProduct.isProduct_isnew();
+        	product_liqi = eProduct.isProduct_isliquidation();
+        	product_selling = eProduct.isProduct_isselling();
+        	product_category_id = eProduct.getProduct_category_id();
+        	product_price_discount = eProduct.getProduct_price_discount();
+        	product_warranty_time = eProduct.getProduct_warranty_time();
+        	product_provider_id = eProduct.getProduct_provider_id();
+        	product_visited = eProduct.getProduct_visited();
+        	product_quantity = eProduct.getProduct_quantity();
+        	product_origin_price = eProduct.getProduct_origin_price();
+        	product_price2 = eProduct.getProduct_price2();
+        	product_price3 = eProduct.getProduct_price3();
+        	product_specification = eProduct.getProduct_specification();
+        	product_note = eProduct.getProduct_note();
+        	product_image = eProduct.getProduct_image();
+        	product_prefix = eProduct.getProduct_prefix();
+        	if(product_isnew){
+        		checked1 = "checked";
+        	}else{
+        		checked1 = "";
+        	}
+        	if(product_liqi){
+        		checked2 = "checked";
+        	}else{
+        		checked2 = "";
+        	}
+        	if(product_selling){
+        		checked3 = "checked";
+        	}else{
+        		checked3 = "";
+        	}
+        	loadImg = "<img src=\""+product_image+"\" id=\"thumbimage\" alt=\""+product_name+"\" width=\"150px\" height=\"120px\" />"; 
         }
         //Tim tham chieu header
         RequestDispatcher h = request.getRequestDispatcher("/header");
@@ -273,15 +322,15 @@ public class ProductAE extends HttpServlet {
         out.println("</div>");
         out.println("<div class=\"modal-body\">");
         out.println("<div class=\"alert alert-warning\" role=\"alert\"><i class=\"fa fa-exclamation-circle\" aria-hidden=\"true\"></i> Lưu ý chức năng mới hỗ trợ lấy dữ liệu từ 2 site <b>Trananh.vn</b> và <b>Hanoicomputer.vn</b></div>");
+        out.println("<form action=\"/WebBanHang/product/ae\" method=\"get\">");
         out.println("<table class=\"table table-striped table-bordered\">");
-        out.println("<from action=\"\" method=\"post\"");
         out.println("<tr>");
         out.println("<td>Nhập link nhanh</td>");
-        out.println("<td><input type=text /></td>");
-        out.println("<td><button class=\"btn btn-primary\" type=submit />Lấy dữ liệu</button></td>");
+        out.println("<td><input type=\"hidden\" name=\"action\" value=\"getdata\" /><input class=\"form-control\" type=\"text\" name=\"url\" /></td>");
+        out.println("<td><button class=\"btn btn-primary\" type=\"submit\" />Lấy dữ liệu</button></td>");
         out.println("</tr>");
-        out.println("</form>");
         out.println("</table>");
+        out.println("</form>");
         out.println("<table class=\"table table-striped table-bordered\">");
         out.println("<tr>");
         out.println("<th>Ảnh sản phẩm</th>");
@@ -319,7 +368,6 @@ public class ProductAE extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int id = Utilities.getIntParam(request, "idForPost");
-		
 		String productname = request.getParameter("txtProductName");
 		String productsummary = request.getParameter("txtProductSummary");
 		String productimage = request.getParameter("txtProductImage");
@@ -378,7 +426,6 @@ public class ProductAE extends HttpServlet {
         }else{
             response.sendRedirect("/WebBanHang/product/ae?err=ae&at=failed");
         }
-
 	}
 
 }

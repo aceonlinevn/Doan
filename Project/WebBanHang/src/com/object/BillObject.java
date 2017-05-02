@@ -10,9 +10,10 @@ public class BillObject {
 	private int bill_total_amount;
 	private String bill_note,bill_product_detail,bill_finish_date,bill_accept_date;
 	private int bill_status;
+	private boolean bill_iscancel;
 	public BillObject(int bill_id, String bill_customer_id, int bill_user_accept_id, String bill_prefix,
 			String bill_date_created, String bill_payments, double bill_advance_payment, String bill_tranfer,
-			int bill_discount, int bill_total_amount, String bill_note,int bill_status,String bill_product_detail,String bill_accept_date,String bill_finish_date) {
+			int bill_discount, int bill_total_amount, String bill_note,int bill_status,String bill_product_detail,String bill_accept_date,String bill_finish_date,boolean bill_iscancel) {
 		super();
 		this.bill_id = bill_id;
 		this.bill_customer_id = bill_customer_id;
@@ -29,6 +30,13 @@ public class BillObject {
 		this.bill_product_detail = bill_product_detail;
 		this.bill_finish_date = bill_finish_date;
 		this.bill_accept_date = bill_accept_date;
+		this.bill_iscancel = bill_iscancel;
+	}
+	public boolean isBill_iscancel() {
+		return bill_iscancel;
+	}
+	public void setBill_iscancel(boolean bill_iscancel) {
+		this.bill_iscancel = bill_iscancel;
 	}
 	public String getBill_finish_date() {
 		return bill_finish_date;

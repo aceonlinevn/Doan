@@ -47,7 +47,7 @@
 		<div class="bt-header">
 			<div class="wrapper">
 				<div class="l-bt-header">
-					<a href="#" title="Hùng cường Computer">logo</a>
+					<a href="<%=request.getContextPath() %>" title="Hùng cường Computer">logo</a>
 				</div>
 				<!-- end l-bt-header-->
 				<div class="c-bt-header">

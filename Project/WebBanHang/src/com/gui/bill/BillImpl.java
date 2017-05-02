@@ -49,8 +49,8 @@ public class BillImpl extends BasicImpl implements Bill {
 		
 		String sql = "INSERT INTO bill(bill_customer_id, bill_date_created, bill_payments,"
 				+ " bill_advance_payment, bill_tranfer, bill_discount, bill_note, bill_Total_Amount, "
-				+ "bill_status,bill_user_accept_id,bill_product_detail,bill_accept_date,bill_finish_date)"
-				+ " VALUES (?,'"+Utilities.getStringDateNow()+"',?,?,?,?,?,?,?,?,?,NULL,NULL);";
+				+ "bill_status,bill_user_accept_id,bill_product_detail,bill_accept_date,bill_finish_date,bill_iscancel)"
+				+ " VALUES (?,'"+Utilities.getStringDateNow()+"',?,?,?,?,?,?,?,?,?,NULL,NULL,0);";
 		 try {
 	            PreparedStatement preAdd = this.con.prepareStatement(sql);
 	            preAdd.setString(1,item.getBill_customer_id());
@@ -74,7 +74,7 @@ public class BillImpl extends BasicImpl implements Bill {
 
 	@Override
 	public boolean editBill(BillObject item) {
-		String sql = "UPDATE bill SET bill_status=?,bill_user_accept_id=?,bill_accept_date=?,bill_finish_date=? "
+		String sql = "UPDATE bill SET bill_status=?,bill_user_accept_id=?,bill_accept_date=?,bill_finish_date=?,bill_iscancel=? "
 				+ " WHERE bill_id= ? ";
 		 try {
 	            PreparedStatement preEdit = this.con.prepareStatement(sql);
@@ -82,7 +82,8 @@ public class BillImpl extends BasicImpl implements Bill {
 	            preEdit.setInt(2,item.getBill_user_accept_id());
 	            preEdit.setString(3,item.getBill_accept_date());
 	            preEdit.setString(4,item.getBill_finish_date());
-	            preEdit.setInt(5, item.getBill_id());
+	            preEdit.setBoolean(5,item.isBill_iscancel());
+	            preEdit.setInt(6, item.getBill_id());
 	            return this.edit(preEdit);
 
 	        } catch (SQLException ex) {
@@ -105,6 +106,32 @@ public class BillImpl extends BasicImpl implements Bill {
 	        } catch (SQLException ex) {
 	            ex.printStackTrace();
 	        }
+	        return false;
+	}
+
+
+	@Override
+	public ResultSet getBillForCus(String cusid) {
+		String sql = "SELECT * "
+				+ "FROM bill "
+				+ " WHERE bill_customer_id = ? AND bill_iscancel = 0 ";
+		return this.get(sql, cusid);
+	}
+
+
+	@Override
+	public boolean cancelBill(BillObject item) {
+		String sql = "UPDATE bill SET bill_iscancel=1 "
+				+ " WHERE bill_id= ? ";
+		 try {
+	            PreparedStatement preEdit = this.con.prepareStatement(sql);
+	            preEdit.setInt(1, item.getBill_id());
+	            return this.edit(preEdit);
+
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+
 	        return false;
 	}
 	

@@ -100,7 +100,7 @@
 				}
 			%>
 			<div class="content-cart">
-				<form action="/WebBanHang/product/cart" id="frmCheckout" method="post" accept-charset="UTF-8">
+				<form name="frmCheckout" id="frmCheckout" method="POST" action="/WebBanHang/product/cart" onsubmit="return emptyShoppingCart('shopping_cart_store');">
 					<div class="col-sm-3">
 						<%
 							UserObject userLogined = (UserObject) session.getAttribute("userLogined");

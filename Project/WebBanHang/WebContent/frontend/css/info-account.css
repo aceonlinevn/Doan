@@ -1,0 +1,41 @@
+.content-info-account{
+	width: 100%;
+	height: auto;
+	float:left;
+}
+.left-info-account{
+	width: 220px;
+	height: auto;
+	float: left;
+}
+.right-info-account{
+	width: 960px;
+	height: auto;
+	margin-left: 20px;
+	float: left;
+}
+.left-info-account .nav-title-info{
+	background: #D11A1A;
+	color: #fff;
+	font-weight: bold;
+	padding: 5px;
+}
+.left-info-account a{
+	display: block;
+	text-decoration: none;
+	color: #333;
+	padding: 5px;
+}
+.left-info-account h3{
+	font-size: 12px;
+}
+.left-info-account a:hover{
+	color: #000;
+}
+.right-info-account .tb1{
+	width: 100%;
+	margin: 0 !important;
+}
+.right-info-account .tb1 td{
+	padding: 5px;
+}

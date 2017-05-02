@@ -47,6 +47,11 @@ public class GetDataImpl implements GetData {
 				}else{
 					item.setProduct_specification(e.select(DataConstant.PRDECTA).html());
 				}
+				if(e.select(DataConstant.PRIMGTA).isEmpty()){
+					item.setProduct_image("");
+				}else{
+					item.setProduct_image(e.select(DataConstant.PRIMGTA).attr("src"));
+				}
 			}else if(url.contains("hanoicomputer.vn")){
 				Element e = doc.getElementById(DataConstant.PRPRIMARYHN);
 				item.setProduct_name(e.select(DataConstant.PRNAMEHN).text());
@@ -66,6 +71,11 @@ public class GetDataImpl implements GetData {
 					item.setProduct_specification(null);
 				}else{
 					item.setProduct_specification(e.select(DataConstant.PRDECHN).html());
+				}
+				if(e.select(DataConstant.PRIMGHN).isEmpty()){
+					item.setProduct_image("");
+				}else{
+					item.setProduct_image("https://www.hanoicomputer.vn/"+e.select(DataConstant.PRIMGHN).attr("href"));
 				}
 			}
 			else{
@@ -101,16 +111,17 @@ public class GetDataImpl implements GetData {
 		try {
 			doc = Jsoup.connect("https://www.hanoicomputer.vn/ajax/get_product_list.php?q="+key).get();
 			Elements e = doc.getElementsByClass("autocomplete-suggestion");
-			for(int i=0;i< e.size();i++){
+			for(int i=0;i< 5;i++){
 				tmp += "<tr>";
 				tmp += "<td><img src=\"https://hanoicomputer.vn"+e.get(i).select("img").attr("src")+"\" /></td>";
 				tmp += "<td><a href=\"https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href")+"\">"+e.get(i).select(".suggest_link").text()+"</a></td>";
 				GetData gd = new GetDataImpl();
-				ProductObject po = gd.getData("https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href"));
+				//ProductObject po = gd.getData("https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href"));
+				String url = "https://hanoicomputer.vn"+e.get(i).select(".suggest_link").attr("href");
 				tmp += "<td style=\"display:none\">";
 				
 				tmp +="</td>";
-				tmp += "<td><a href=\"javasrcipt: void();\" onclick=\"getDataPr()\" title=\"Lấy dữ liệu\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-floppy-disk\"></span> Lấy dữ liệu</a></td>";
+				tmp += "<td><a href=\"/WebBanHang/product/ae?action=getdata&url="+url+"\" title=\"Lấy dữ liệu\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-floppy-disk\"></span> Lấy dữ liệu</a></td>";
 				tmp += "<tr>";
 			}
 		} catch (IOException e) {
@@ -121,19 +132,20 @@ public class GetDataImpl implements GetData {
 	}
 	public static void main(String[] args){
 		GetData gd = new GetDataImpl();
-//		ProductObject productObject = gd.getData("https://www.hanoicomputer.vn/hdd-box-for-laptop-ssk-sata-usb-20/p1068.html");
-//		if(productObject != null){
-//		System.out.println(productObject.getProduct_name());
-//		System.out.println(productObject.getProduct_origin_price());
-//		System.out.println(productObject.getProduct_summary());
-//		System.out.println(productObject.getProduct_warranty_time());
-//		System.out.println(productObject.isProduct_status());
-//		System.out.println(productObject.getProduct_promotion());
-//		System.out.println(productObject.getProduct_specification());
-//		}
-//		else{
-//			System.out.println("Trang web chưa được thêm vào! Liên hệ với quản trị để được bổ sung.");
-//		}
-		System.out.println(getProductForKeywordHN("LTLE380"));
+		ProductObject productObject = gd.getData("https://www.hanoicomputer.vn/hdd-box-for-laptop-ssk-sata-usb-20/p1068.html");
+		if(productObject != null){
+		System.out.println(productObject.getProduct_name());
+		System.out.println(productObject.getProduct_origin_price());
+		System.out.println(productObject.getProduct_summary());
+		System.out.println(productObject.getProduct_warranty_time());
+		System.out.println(productObject.isProduct_status());
+		System.out.println(productObject.getProduct_promotion());
+		System.out.println(productObject.getProduct_specification());
+		System.out.println(productObject.getProduct_image());
+		}
+		else{
+			System.out.println("Trang web chưa được thêm vào! Liên hệ với quản trị để được bổ sung.");
+		}
+		//System.out.println(getProductForKeywordHN("LTLE380"));
 	}
 }

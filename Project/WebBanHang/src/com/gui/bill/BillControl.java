@@ -32,12 +32,18 @@ public class BillControl {
     public boolean delBill(BillObject item){
         return this.bm.delBill(item);
     }
+    public boolean cancelBill(BillObject item){
+        return this.bm.cancelBill(item);
+    }
 	// ************************************************/
 
 	public BillObject getBillObject(int id) {
 		return this.bm.getBillObject(id);
 	}
-
+	
+	public ArrayList<BillObject> getBillForCusObject(String cusid) {
+		return this.bm.getBillForCusObject(cusid);
+	}
 	// ************************************************/
 	public String viewBills(BillObject similar, int page, byte total, BillObject Bill) {
 		// Lay danh sach doi tuong

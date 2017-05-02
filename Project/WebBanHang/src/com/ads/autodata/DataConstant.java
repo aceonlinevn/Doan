@@ -10,6 +10,7 @@ public class DataConstant {
 	public static final String PRPRICETA = ".real-price";
 	public static final String PRSAFEOFFTA = ".promotion";
 	public static final String PRDECTA = ".ltlmota";
+	public static final String PRIMGTA = "#zoom_03";
 	//Khai bao hang cho web hanoicomputer.vn
 	public static final String PRPRIMARYHN = "pro_detail_page";
 	public static final String PRNAMEHN = "#overview>h1";
@@ -20,4 +21,5 @@ public class DataConstant {
 	public static final String PRPRICEHN = "#price_detail .line_through";
 	public static final String PRSAFEOFFHN = "#offer_detail span";
 	public static final String PRDECHN = "#tab4";
+	public static final String PRIMGHN = "#Zoomer";
 }
