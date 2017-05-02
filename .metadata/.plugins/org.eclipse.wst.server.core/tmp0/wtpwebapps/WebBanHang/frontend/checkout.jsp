@@ -101,7 +101,7 @@
 				}
 			%>
 			<div class="content-cart">
-				<form action="/WebBanHang/product/cart" method="post">
+				<form action="/WebBanHang/product/cart" method="post" accept-charset="UTF-8">
 					<div class="col-sm-3">
 						<%
 							UserObject userLogined = (UserObject) session.getAttribute("userLogined");
@@ -110,12 +110,14 @@
 							String cusPhonenum = "";
 							String cusAddress = "";
 							String cusNote = "";
+							String readonly = "";
 							if (userLogined != null && userLogined.getUser_permission_id() != 0) {
 								cusName = userLogined.getUser_name();
 								cusEmail = userLogined.getUser_email();
 								cusPhonenum = userLogined.getUser_phonenum();
 								cusAddress = userLogined.getUser_address();
 								cusNote = userLogined.getUser_note();
+								readonly = "readonly";
 							}else{
 								out.println("<div class=\"form-group\">Nếu quý khách có tài khoản nhấn vào đây: <a href=\"javascript:void(0)\" class=\"btn btn-primary\" title=\"Đăng nhập\" data-toggle=\"modal\" data-target=\"#mdLogin\">Đăng nhập</a></div>");
 							}
@@ -129,7 +131,7 @@
 						<div class="form-group">
 							<label for="txtCustomerEmail">Địa chỉ email</label> <input
 								type="text" id="txtCustomerEmail" name="txtCustomerEmail"
-								required="required" value="<%=cusEmail %>" class="form-control">
+								required="required" <%=readonly %> value="<%=cusEmail %>" class="form-control">
 						</div>
 						<div class="form-group">
 							<label for="txtCustomerPhoneNumber">Địa thoại</label> <input
@@ -207,7 +209,7 @@
 						out.println("<input type=\"hidden\" name=\"send_order\" value=\"yes\">");
 						out.println("<input type=\"hidden\" name=\"item_update_quantity\" id=\"item_update_quantity\" value=\""+carts+"\">");
 						out.println("<input type=\"hidden\" name=\"update_quantity\" value=\"yes\">");
-						out.println("<input type=\"hidden\" name=\"total_cart_value\" id=\"total_cart_value\">");
+						out.println("<input type=\"hidden\" name=\"total_cart_value\" id=\"total_cart_value\" value="+total+">");
 						%>
 						<tr>
 							<td colspan="4" align="right">

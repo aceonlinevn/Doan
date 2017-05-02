@@ -50,7 +50,7 @@ public class Header extends HttpServlet {
         out.println("<body>");
         	out.println("<ul class=\"nav navbar-nav navbar-right\">");
         		out.println("<li class=\"dropdown\">");
-        		  	out.println("<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Hoàng Tuấn Hiệp(admin) <span class=\"caret\"></span></a>");
+        		  	out.println("<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">"+user.getUser_name()+"("+user.getUser_username()+") <span class=\"caret\"></span></a>");
         			  out.println("<ul class=\"dropdown-menu\">");
         			    out.println("<li><a href=\"#\">Thay đổi mật khẩu</a></li>");
         			    out.println("<li class=\"divider\"></li>");

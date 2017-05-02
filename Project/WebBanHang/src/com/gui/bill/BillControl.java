@@ -23,13 +23,13 @@ public class BillControl {
 		this.bm.releaseConnection();
 	}
 	 //**********************************************/
-    public boolean addProduct(BillObject item){
+    public boolean addBill(BillObject item){
         return this.bm.addBill(item);
     }
-    public boolean editProduct(BillObject item){
+    public boolean editBill(BillObject item){
         return this.bm.editBill(item);
     }
-    public boolean delProduct(BillObject item){
+    public boolean delBill(BillObject item){
         return this.bm.delBill(item);
     }
 	// ************************************************/

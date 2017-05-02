@@ -52,7 +52,7 @@ public class BillModel {
 					item = new BillObject();
 					item.setBill_id(rs.getInt("bill_id"));
 					item.setBill_prefix(rs.getString("bill_prefix"));
-					item.setBill_customer_id(rs.getInt("bill_customer_id"));
+					item.setBill_customer_id(rs.getString("bill_customer_id"));
 					item.setBill_date_created(rs.getString("bill_date_created"));
 					item.setBill_payments(rs.getString("bill_payments"));
 					item.setBill_advance_payment(rs.getDouble("bill_advance_payment"));
@@ -87,7 +87,7 @@ public class BillModel {
                 	item = new BillObject();
                 	item.setBill_id(rs.getInt("bill_id"));
 					item.setBill_prefix(rs.getString("bill_prefix"));
-					item.setBill_customer_id(rs.getInt("bill_customer_id"));
+					item.setBill_customer_id(rs.getString("bill_customer_id"));
 					item.setBill_date_created(rs.getString("bill_date_created"));
 					item.setBill_payments(rs.getString("bill_payments"));
 					item.setBill_advance_payment(rs.getDouble("bill_advance_payment"));

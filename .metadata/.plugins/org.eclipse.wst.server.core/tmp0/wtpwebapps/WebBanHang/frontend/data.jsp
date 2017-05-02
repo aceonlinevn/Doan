@@ -44,7 +44,7 @@
 			session.setAttribute("productDetailContent", specification);
 		}
 	}
-	
+
 	//Khai bảo object
 	ProductObject similar1 = new ProductObject();
 	ProductObject similar2 = new ProductObject();
@@ -68,9 +68,14 @@
 	session.setAttribute("viewProductForSelling", viewProductForSelling);
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
-	
-	/* ArrayList<ProductObject> listProductReferences = pc
-			.getReferencesProduct((String) request.getSession().getAttribute("1"));
-	String viewProductReferences = pc.viewProducts2(listProductReferences);
-	request.getSession().setAttribute("viewProductForReferences", viewProductReferences); */
+
+	String user_id_now = (String) request.getSession().getAttribute("user_id_now");
+	String viewProductForReferences = (String) request.getSession().getAttribute("viewProductForReferences");
+	if (user_id_now != null) {
+
+			ArrayList<ProductObject> listProductReferences = pc.getReferencesProduct(user_id_now);
+			String viewProductReferences = pc.viewProducts2(listProductReferences);
+			request.getSession().setAttribute("viewProductForReferences", viewProductReferences);
+		
+	}
 %>

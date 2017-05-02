@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 
 import com.*;
 import com.ads.basic.*;
+import com.ads.product.Product;
+import com.ads.product.ProductImpl;
 import com.object.*;
 
 public class UserImpl extends BasicImpl implements User {
@@ -87,13 +89,13 @@ public class UserImpl extends BasicImpl implements User {
 		return digit;
 	}
 
-	public static void main(String[] args) {
-		ConnectionPool cp = new ConnectionPoolImpl();
-		UserImpl u = new UserImpl(cp);
-		UserObject item = new UserObject();
-		item.setUser_prefix("D");
-		System.out.println(u.getNextVisitorId());
-	}
+//	public static void main(String[] args) {
+//		ConnectionPool cp = new ConnectionPoolImpl();
+//		UserImpl u = new UserImpl(cp);
+//		UserObject item = new UserObject();
+//		item.setUser_prefix("D");
+//		System.out.println(u.getNextVisitorId());
+//	}
 
 	@Override
 	public boolean addUser(UserObject item) {
@@ -101,12 +103,15 @@ public class UserImpl extends BasicImpl implements User {
 		if (this.isExisting(item)) {
 			return false;
 		}
+		if (this.isExistingEmail(item)) {
+			return false;
+		}
 		// id se tu dong tang
 		String nextID = getNextUserId(item);
 		if (nextID.isEmpty()) {
 			return false;
 		}
-		String sql = "INSERT INTO `dacn_webbanhang`.`user` "
+		String sql = "INSERT INTO `user` "
 				+ "(`user_id`, `user_prefix`, `user_name`, `user_last_messaged`, `user_phonenumber`,"
 				+ " `user_username`, `user_password`, `user_address`, `user_email`, `user_birthdate`, "
 				+ "`user_Lastlogined`, `user_isLogined`, `user_gender`, `user_note`, `user_permission_id`,user_is_encryption)";
@@ -132,6 +137,7 @@ public class UserImpl extends BasicImpl implements User {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+		
 		return false;
 	}
 
@@ -158,11 +164,12 @@ public class UserImpl extends BasicImpl implements User {
 
 	@Override
 	public boolean editUser(UserObject item) {
-		String sql = "UPDATE `dacn_webbanhang`.`user` SET `user_prefix`='?', `user_name`='?',"
-				+ " `user_last_messaged`='?', `user_phonenumber`='?', `user_username`='?',"
-				+ " `user_password`='?', `user_address`='?', `user_email`='?', `user_birthdate`='?',"
-				+ " `user_Lastlogined`='?', `user_isLogined`=?, `user_gender`=?, `user_note`='?',"
-				+ " `user_permission_id`='?'" + " WHERE `user_id`='?' ";
+		String sql = "UPDATE `dacn_webbanhang`.`user` SET `user_prefix`=?, `user_name`=?,"
+				+ " `user_last_messaged`=?, `user_phonenumber`=?, `user_username`=?,"
+				+ (item.getUser_password() == "" ? " " :" `user_password`=md5(?) ")
+						+ ", `user_address`=?, `user_email`=?, `user_birthdate`=?,"
+				+ " `user_Lastlogined`=?, `user_isLogined`=?, `user_gender`=?, `user_note`=?,"
+				+ " `user_permission_id`=?" + " WHERE `user_id`=? ";
 		try {
 			PreparedStatement preEdit = this.con.prepareStatement(sql);
 			preEdit.setString(1, item.getUser_prefix());
@@ -170,16 +177,28 @@ public class UserImpl extends BasicImpl implements User {
 			preEdit.setString(3, item.getUser_last_messased());
 			preEdit.setString(4, item.getUser_phonenum());
 			preEdit.setString(5, item.getUser_username());
-			preEdit.setString(6, item.getUser_password());
-			preEdit.setString(7, item.getUser_address());
-			preEdit.setString(8, item.getUser_email());
-			preEdit.setString(9, item.getUser_birthdate());
-			preEdit.setString(10, item.getUser_lastlogined());
-			preEdit.setBoolean(11, item.isUser_isloggined());
-			preEdit.setBoolean(12, item.isUser_gender());
-			preEdit.setString(13, item.getUser_note());
-			preEdit.setInt(14, item.getUser_permission_id());
-			preEdit.setString(15, item.getUserId());
+			if(item.getUser_password() != ""){
+				preEdit.setString(6, item.getUser_password());
+				preEdit.setString(7, item.getUser_address());
+				preEdit.setString(8, item.getUser_email());
+				preEdit.setString(9, item.getUser_birthdate());
+				preEdit.setString(10, item.getUser_lastlogined());
+				preEdit.setBoolean(11, item.isUser_isloggined());
+				preEdit.setBoolean(12, item.isUser_gender());
+				preEdit.setString(13, item.getUser_note());
+				preEdit.setInt(14, item.getUser_permission_id());
+				preEdit.setString(15, item.getUserId());
+			}else{
+				preEdit.setString(6, item.getUser_address());
+				preEdit.setString(7, item.getUser_email());
+				preEdit.setString(8, item.getUser_birthdate());
+				preEdit.setString(9, item.getUser_lastlogined());
+				preEdit.setBoolean(10, item.isUser_isloggined());
+				preEdit.setBoolean(11, item.isUser_gender());
+				preEdit.setString(12, item.getUser_note());
+				preEdit.setInt(13, item.getUser_permission_id());
+				preEdit.setString(14, item.getUserId());
+			}
 
 			return this.edit(preEdit);
 
@@ -227,6 +246,28 @@ public class UserImpl extends BasicImpl implements User {
 		}
 		return true;
 	}
+	
+	private boolean isExistingEmail(UserObject item) {
+		boolean flag = false;
+
+		String sql = "SELECT user_id FROM dacn_webbanhang.user WHERE ";
+		sql += " user_email = '" + item.getUser_email() + "'";
+
+		ResultSet rs = this.get(sql, 0); // luu ban ghi khi truy xuat tu CSDL ra
+
+		if (rs != null) {
+			try {
+				if (rs.next()) {
+					flag = true;
+				}
+				rs.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return flag;
+	}
+	
 	private UserObject isExistUserName(String input) {
 		UserObject item = null;
 		String sql = "SELECT user_is_encryption FROM `dacn_webbanhang`.`user` WHERE ";
@@ -313,5 +354,26 @@ public class UserImpl extends BasicImpl implements User {
 		sql += "LIMIT " + at + "," + total;
 		return this.gets(sql);
 	}
+	public static void main(String[] args){
+        // Tao bo quan ly ket noi
+        ConnectionPool cp = new ConnectionPoolImpl();
+
+        //Tao doi tuong thuc thi chuc nang
+        User a = new UserImpl(cp);
+
+        // tao doi tuong moi
+        UserObject nProduct = new UserObject();
+        //nProduct.setUserId("U000000000000005");
+        nProduct.setUser_prefix("C");
+        nProduct.setUser_name("hthiep-thêm");
+        nProduct.setUser_email("hthiep123@gmail.com");
+        //Thuc hien
+        boolean result = a.addUser(nProduct);
+        if(!result){
+            System.out.println("\nKhong thanh cong\n");
+        }
+        //Lay danh sach nguoi su dung
+
+    }
 
 }

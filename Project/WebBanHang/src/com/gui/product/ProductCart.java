@@ -6,12 +6,15 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.object.BillObject;
 import com.object.UserObject;
 import com.ConnectionPool;
+import com.gui.bill.BillControl;
 import com.gui.user.*;
 import com.library.Utilities;
 /**
@@ -52,37 +55,84 @@ public class ProductCart extends HttpServlet {
 		String bill_payments = request.getParameter("txtCustomPay");
 		String bill_tranfer = request.getParameter("txtCustomTranfer");
 		String bill_note = request.getParameter("txtCustomerNote");
-		String bill_Total_Amount = request.getParameter("total_cart_value");
+		int bill_Total_Amount = Integer.parseInt(request.getParameter("total_cart_value"));
+		String user_name = request.getParameter("txtCustomerName");
+		String user_email = request.getParameter("txtCustomerEmail");
+		String user_phonenum = request.getParameter("txtCustomerPhoneNumber");
+		String user_address = request.getParameter("txtCustomerAdress");
+		String user_note = request.getParameter("txtCustomerNote");
 		int bill_status = 0;
 		String bill_product_detail = request.getParameter("item_update_quantity");
-		UserObject userLogined = (UserObject) request.getAttribute("userLogined");
+		UserControl uc = new UserControl(cp);
+		UserObject uo = new UserObject();
+		uo.setUser_name(user_name);
+		uo.setUser_phonenum(user_phonenum);
+		uo.setUser_address(user_address);
+		uo.setUser_note(user_note);
+		if (cp == null) {
+			application.setAttribute("cpool", uc.getConnectionPool());
+		}
+		UserObject userLogined = (UserObject) request.getSession().getAttribute("userLogined");
 		if(userLogined != null && userLogined.getUser_permission_id() != 0){
 			bill_customer_id = userLogined.getUserId();
+			uo.setUserId(bill_customer_id);
+			uo.setUser_username(userLogined.getUser_username());
+			uo.setUser_permission_id(userLogined.getUser_permission_id());
+			uo.setUser_prefix(userLogined.getUser_prefix());
+			uo.setUser_email(userLogined.getUser_email());
+			uc.editUser(uo);
+			
 		}else{
-			String user_name = request.getParameter("txtCustomerName");
-			String user_email = request.getParameter("txtCustomerEmail");
-			String user_phonenum = request.getParameter("txtCustomerPhoneNumber");
-			String user_address = request.getParameter("txtCustomerAdress");
-			String user_note = request.getParameter("txtCustomerNote");
 			String user_pass = Utilities.randomString(8);
 			String user_prefix = "C";
 			int user_permiss = 4;
-			UserControl uc = new UserControl(cp);
-			if (cp == null) {
-				application.setAttribute("cpool", uc.getConnectionPool());
-			}
-			
-			UserObject uo = new UserObject();
+			uo.setUser_email(user_email);
 			uo.setUser_prefix(user_prefix);
-			uo.setUser_name(user_name);
-			uo.setUser_phonenum(user_phonenum);
-			uo.setUser_address(user_address);
-			uo.setUser_note(user_note);
 			uo.setUser_password(user_pass);
 			uo.setUser_permission_id(user_permiss);
-			uc.addUser(uo);
+			boolean result;
+			result = uc.addUser(uo);
+			if(!result){
+				out.println(Utilities.getMessageRedict("Email đã đăng ký vui lòng đăng nhập để mua hàng. Hoặc sử dụng chức năng quên mật khẩu nếu mất mật khẩu.",request.getContextPath()+"/frontend/checkout.jsp"));	
+			}else{
+				UserObject user = uc.getUserObject(user_email, user_pass);
+				request.getSession().setAttribute("userLogined", user);
+				bill_customer_id = user.getUserId();
+			}
+			 uc.releaseConnection();
+		}
+		BillControl bc = new BillControl(cp);
+		if (cp == null) {
+			application.setAttribute("cpool", bc.getConnectionPool());
 		}
 		
+		BillObject bo = new BillObject();
+		bo.setBill_customer_id(bill_customer_id);
+		bo.setBill_payments(bill_payments);
+		bo.setBill_tranfer(bill_tranfer);
+		bo.setBill_note(bill_note);
+		bo.setBill_total_amount(bill_Total_Amount);
+		bo.setBill_status(bill_status);
+		bo.setBill_product_detail(bill_product_detail);
+		boolean rtBill = bc.addBill(bo);
+		bc.releaseConnection();
+		if(rtBill){			
+			Cookie[] listCookie = request.getCookies();
+			if (listCookie != null) {
+				for (int i = 0; i < listCookie.length; i++) {
+					if (listCookie[i].getName().equalsIgnoreCase("shopping_cart_store")) {
+						listCookie[i].setValue("");
+					}
+				}
+			}
+			out.println("<script>");
+			out.println("alert('Đặt hàng thành công');");
+			out.println("window.location = '/WebBanHang/frontent/bill.jsp';");
+			out.println("</script>");
+		}else{
+			out.println(Utilities.getMessageRedict("Đặt hàng thất bại !",request.getContextPath()+"/frontend/checkout.jsp"));
+			
+		}
 	}
 
 }

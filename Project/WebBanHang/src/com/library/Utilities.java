@@ -44,8 +44,8 @@ public class Utilities {
 
 	public static String decode(String strHTML) {
 		return CharacterReference.decode(strHTML);
-	}
-
+	}	
+	
 	public static Date parseStringtoDate(String date) {
 		SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -69,12 +69,19 @@ public class Utilities {
 
 	public static String getMessage(String message) {
 		String tmp = "<script>";
-		tmp += "alert(" + message + ")";
+		tmp += "alert('" + message + "');";
 		tmp += "</script>";
 
 		return tmp;
 	}
+	public static String getMessageRedict(String message,String location) {
+		String tmp = "<script>";
+		tmp += "alert('" + message + "');";
+		tmp += "window.location = '"+location+"';";
+		tmp += "</script>";
 
+		return tmp;
+	}
 	public static String convertMoney(int money) {
 		String tmp = "";
 		NumberFormat formatter = new DecimalFormat("#,###,###");

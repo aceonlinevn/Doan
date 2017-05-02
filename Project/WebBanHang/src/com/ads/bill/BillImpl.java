@@ -53,18 +53,16 @@ public class BillImpl extends BasicImpl implements Bill {
 				+ " VALUES (?,'"+Utilities.getDateNow()+"',?,?,?,?,?,?,?,?,?,NULL,NULL);";
 		 try {
 	            PreparedStatement preAdd = this.con.prepareStatement(sql);
-	            preAdd.setInt(1,item.getBill_customer_id());
+	            preAdd.setString(1,item.getBill_customer_id());
 	            preAdd.setString(2,item.getBill_payments());
 	            preAdd.setDouble(3,item.getBill_advance_payment());
 	            preAdd.setString(4,item.getBill_tranfer());
 	            preAdd.setInt(5,item.getBill_discount());
 	            preAdd.setString(6,item.getBill_note());
 	            preAdd.setInt(7,item.getBill_total_amount());
-	            preAdd.setString(8,item.getBill_note());
-	            preAdd.setDouble(9,item.getBill_total_amount());
-	            preAdd.setInt(10,item.getBill_status());
-	            preAdd.setInt(11,item.getBill_user_accept_id());
-	            preAdd.setString(12,item.getBill_product_detail());
+	            preAdd.setInt(8,item.getBill_status());
+	            preAdd.setInt(9,item.getBill_user_accept_id());
+	            preAdd.setString(10,item.getBill_product_detail());
 	            return this.add(preAdd);
 
 	        } catch (SQLException ex) {

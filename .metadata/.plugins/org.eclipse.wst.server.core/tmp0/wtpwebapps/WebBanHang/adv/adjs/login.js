@@ -9,13 +9,11 @@ function checkValidLogin(fn){
 	//Biến xác nhận sự hợp lệ của từng giá trị
 	var validUserName = true;
 	var validUserPass = true;
-	var validEmail = true;
 	var validUserSave = false;
 	
 	//Lưu trữ các thông báo
 	var messageUserPass = "";
 	var messageUserName = "";
-	var messageEmail = "";
 	
 	//Kiểm tra tên đăng nhập
 	username = username.trim();
@@ -62,15 +60,13 @@ function checkValidLogin(fn){
 		}
 	}
 	
-	
 	//Hiển thị thông báo và di chuyển con trỏ
-	var message = messageUserName+messageUserPass+messageEmail;
+	var message = messageUserName+messageUserPass;
 	if(message != ""){
 		window.alert(message);
 		if(!validUserName){
-			if(!validEmail){
 				fn.txtUserName.focus();
-			}
+		
 		}else if(!validUserPass){
 			fn.txtUserPass.focus();
 			fn.txtUserPass.select();
@@ -80,7 +76,7 @@ function checkValidLogin(fn){
 		}
 	}
 	//Trả về kết quả kiểm tra
-	return validUserName && validUserPass && validEmail;
+	return validUserName && validUserPass;
 	
 }	
 

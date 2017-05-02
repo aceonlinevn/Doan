@@ -3,14 +3,14 @@ package com.object;
 import java.util.ArrayList;
 
 public class BillObject {
-	private int bill_id,bill_customer_id,bill_user_accept_id;
-	private String bill_prefix,bill_date_created,bill_payments,bill_tranfer;
+	private int bill_id,bill_user_accept_id;
+	private String bill_prefix,bill_date_created,bill_payments,bill_tranfer,bill_customer_id;
 	private double bill_advance_payment;
 	private int bill_discount;
 	private int bill_total_amount;
 	private String bill_note,bill_product_detail,bill_finish_date,bill_accept_date;
 	private int bill_status;
-	public BillObject(int bill_id, int bill_customer_id, int bill_user_accept_id, String bill_prefix,
+	public BillObject(int bill_id, String bill_customer_id, int bill_user_accept_id, String bill_prefix,
 			String bill_date_created, String bill_payments, double bill_advance_payment, String bill_tranfer,
 			int bill_discount, int bill_total_amount, String bill_note,int bill_status,String bill_product_detail,String bill_accept_date,String bill_finish_date) {
 		super();
@@ -63,10 +63,10 @@ public class BillObject {
 	public void setBill_id(int bill_id) {
 		this.bill_id = bill_id;
 	}
-	public int getBill_customer_id() {
+	public String getBill_customer_id() {
 		return bill_customer_id;
 	}
-	public void setBill_customer_id(int bill_customer_id) {
+	public void setBill_customer_id(String bill_customer_id) {
 		this.bill_customer_id = bill_customer_id;
 	}
 	public int getBill_user_accept_id() {
