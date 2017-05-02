@@ -196,15 +196,15 @@ public class UserRateModel {
 			String user_id2 = userCompare.getUser_id();
 			userRateAVG2 = getUserRateAVG(user_id2);
 			listSameProduct = getSameProduct(user_id, user_id2);
-			if(listSameProduct.isEmpty()){
-				return productSuggest;
+			if(!listSameProduct.isEmpty()){
+				simPerson = simPerson(listSameProduct, UserRateAVG1.getUser_rate_avg(), userRateAVG2.getUser_rate_avg());
+				SimPerson simObject = new SimPerson();
+				simObject.setSimPerson(simPerson);
+				simObject.setUser_id_1(user_id);
+				simObject.setUser_id_2(user_id2);
+				addSimPerson(simObject);
 			}
-			simPerson = simPerson(listSameProduct, UserRateAVG1.getUser_rate_avg(), userRateAVG2.getUser_rate_avg());
-			SimPerson simObject = new SimPerson();
-			simObject.setSimPerson(simPerson);
-			simObject.setUser_id_1(user_id);
-			simObject.setUser_id_2(user_id2);
-			addSimPerson(simObject);
+			
 		}
 		//get list simperson
 		
@@ -243,7 +243,7 @@ public class UserRateModel {
 //		for(UserRateObject u:listUser2Rate){
 //			System.out.println(u.getProduct_id());
 //		}
-		um.CollaborationFilter("C000000000000002");
+		um.CollaborationFilter("U000000000000001");
 		//um.addUserRate(new UserRateObject("4", 7, 0, "abc"));
 		//um.addUserRate(new UserRateObject("2", 2, 5, "abc"));
 	//	um.addUserRate(new UserRateObject("1", 3, 4, "abc"));

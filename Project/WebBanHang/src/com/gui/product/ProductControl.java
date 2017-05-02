@@ -94,7 +94,7 @@ public class ProductControl {
 	public static void main(String[] args){
 		ConnectionPool cp = new ConnectionPoolImpl();
 		ProductControl pc = new ProductControl(cp);
-		ArrayList<ProductObject> items = pc.getReferencesProduct("U000000000000002");
+		ArrayList<ProductObject> items = pc.getReferencesProduct("U000000000000001");
 		for(ProductObject item:items){
 			System.out.println(item.getProduct_id());
 		}
