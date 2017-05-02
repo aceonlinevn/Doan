@@ -17,6 +17,7 @@ import com.ConnectionPool;
 import com.gui.bill.BillControl;
 import com.gui.user.*;
 import com.library.Utilities;
+import com.smssend.*;
 /**
  * Servlet implementation class ProductCart
  */
@@ -100,6 +101,7 @@ public class ProductCart extends HttpServlet {
 				UserObject user = uc.getUserObject(user_email, user_pass);
 				request.getSession().setAttribute("userLogined", user);
 				bill_customer_id = user.getUserId();
+				SMSsender.SmsSender(user_phonenum, "Cam on ban da dang ky la thanh vien HC voi email: "+user_email+", mat khau: "+user_pass+".Vui long dang nhap va doi mat khau !");
 			}
 			 uc.releaseConnection();
 		}
