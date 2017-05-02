@@ -20,6 +20,7 @@ public class ProductControl {
 	public ConnectionPool getConnectionPool() {
 		return this.pm.getConnectionPool();
 	}
+
 	public void releaseConnection() {
 		this.pm.releaseConnection();
 	}
@@ -36,41 +37,66 @@ public class ProductControl {
 
 		return ProductLibrary.viewProduct(items);
 	}
+
 	public String viewProductsForCategory(ProductObject similar) {
 		ProductLibrary pl = new ProductLibrary(this.getConnectionPool());
 		ArrayList items = this.pm.getCategoryObjects(similar, 0, (byte) 0);
 		return pl.viewProductForCategory(items);
 	}
-	
+
 	// ************************************************/
-		// hungcuong - hien thi san pham tu arraylist
-		public String viewProducts2(ArrayList<ProductObject> items){
-			return ProductLibrary.viewProduct(items);
-		}
-		
-		public ArrayList<ProductObject> getReferencesProduct(String user_id){
-			ConnectionPool cp = getConnectionPool();
-			UserRateModel ur = new UserRateModel(cp);
-			ArrayList<ProductSuggestObject> suggestProduct = ur.CollaborationFilter(user_id);
-			int count = (suggestProduct.size()>=6)?6:suggestProduct.size();
-			int index = suggestProduct.size();
-			for(int i = 0; i< index-1; i++){
-				for(int j = i+1; j <index;j++){
-					if(suggestProduct.get(i).getUSER_KNN()<suggestProduct.get(j).getUSER_KNN()){
-						ProductSuggestObject temp = suggestProduct.get(i);
-						suggestProduct.set(i, suggestProduct.get(j));
-						suggestProduct.set(j, temp);
+	// hungcuong - hien thi san pham tu arraylist
+	public String viewProducts2(ArrayList<ProductObject> items) {
+		return ProductLibrary.viewProduct(items);
+	}
+
+	public ArrayList<ProductObject> getReferencesProduct(String user_id) {
+		ConnectionPool cp = getConnectionPool();
+		UserRateModel ur = new UserRateModel(cp);
+		ArrayList<ProductSuggestObject> suggestProduct = ur.CollaborationFilter(user_id);
+		int count = (suggestProduct.size() >= 6) ? 6 : suggestProduct.size();
+		for (int i = 0; i < suggestProduct.size() - 1; i++) {
+			for (int j = i + 1; j < suggestProduct.size(); j++) {
+				if (suggestProduct.get(i).getProduct_id() == suggestProduct.get(j).getProduct_id()) {
+					if (suggestProduct.get(i).getUSER_KNN() < suggestProduct.get(j).getUSER_KNN()) {
+						suggestProduct.remove(i);
+					} else {
+						suggestProduct.remove(j);
 					}
 				}
-			}
-			
-			ArrayList<ProductObject> listProduct = new ArrayList<>();
-			for(ProductSuggestObject product:suggestProduct){
-				ProductObject p = getProductObject(product.getProduct_id());
-				if(p!=null){
-					listProduct.add(p);
+				if (suggestProduct.get(i).getProduct_id() < suggestProduct.get(j).getProduct_id()) {
+					ProductSuggestObject temp = suggestProduct.get(i);
+					suggestProduct.set(i, suggestProduct.get(j));
+					suggestProduct.set(j, temp);
 				}
 			}
-			return listProduct;
 		}
+
+		for (int i = 0; i < suggestProduct.size() - 1; i++) {
+			for (int j = i + 1; j < suggestProduct.size(); j++) {
+				if (suggestProduct.get(i).getUSER_KNN() < suggestProduct.get(j).getUSER_KNN()) {
+					ProductSuggestObject temp = suggestProduct.get(i);
+					suggestProduct.set(i, suggestProduct.get(j));
+					suggestProduct.set(j, temp);
+				}
+			}
+		}
+		ArrayList<ProductObject> listProduct = new ArrayList<>();
+		for (ProductSuggestObject product : suggestProduct) {
+			ProductObject p = getProductObject(product.getProduct_id());
+			if (p != null) {
+				listProduct.add(p);
+			}
+		}
+		return listProduct;
+	}
+	
+	public static void main(String[] args){
+		ConnectionPool cp = new ConnectionPoolImpl();
+		ProductControl pc = new ProductControl(cp);
+		ArrayList<ProductObject> items = pc.getReferencesProduct("U000000000000002");
+		for(ProductObject item:items){
+			System.out.println(item.getProduct_id());
+		}
+	}
 }

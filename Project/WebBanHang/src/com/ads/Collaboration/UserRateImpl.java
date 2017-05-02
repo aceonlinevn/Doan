@@ -17,15 +17,15 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 	public ResultSet getSameProduct(String userid1, String userid2) {
 		String sql = "SELECT A.product_id,A.user_rate_point,B.user_rate_point FROM user_rate A INNER JOIN user_rate B";
 		sql += " WHERE A.product_id = B.product_id";
-		sql += " AND A.user_id = " + userid1;
-		sql += " AND B.User_id = " + userid2;
+		sql += " AND A.user_id = '" + userid1 + "'";
+		sql += " AND B.User_id = '" + userid2 + "'";
 		return this.gets(sql);
 	}
 
 	@Override
 	public ResultSet getUserRateAVG(String userid) {
 		String sql = "SELECT user_id, user_rate_avg, user_rate_total FROM user_rate_avg";
-		sql += " WHERE user_id = " + userid;
+		sql += " WHERE user_id = '" + userid+"'";
 		return this.gets(sql);
 	}
 
@@ -111,8 +111,8 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 
 	private boolean isExists(String userid1, String userid2) {
 		Boolean flag = false;
-		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE (user_id_1 = " + userid1 + " AND user_id_2 = "
-				+ userid2 + ") OR (user_id_1 = " + userid2 + " AND user_id_2 = " + userid1 + ")";
+		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE (user_id_1 = '" + userid1 + "' AND user_id_2 = '"
+				+ userid2 + "') OR (user_id_1 = '" + userid2 + "' AND user_id_2 = '" + userid1 + "')";
 		ResultSet rs = this.gets(sql); // luu ban ghi khi truy xuat tu CSDL ra
 
 		if (rs != null) {
@@ -130,8 +130,8 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 
 	@Override
 	public ResultSet getSimPerson(String userid, byte limit) {
-		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE user_id_1= " + userid 
-				+ " ORDER BY simperson DESC";
+		String sql = "SELECT * FROM dacn_webbanhang.simperson WHERE user_id_1= '" + userid 
+				+ "' ORDER BY simperson DESC";
 		sql += " LIMIT 0," + limit;
 		return this.gets(sql);
 	}
@@ -139,7 +139,7 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 	@Override
 	public ResultSet getProductRating(String userid) {
 		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
-		sql += "WHERE user_id = " + userid;
+		sql += "WHERE user_id = '" + userid+"'";
 		return this.gets(sql);
 	}
 	
@@ -147,7 +147,7 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 	@Override
 	public ResultSet getProductRating2(String userid) {
 		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
-		sql += "WHERE user_id != " + userid;
+		sql += "WHERE user_id != '" + userid+"'";
 		return this.gets(sql);
 	}
 	
@@ -155,7 +155,7 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 	@Override
 	public ResultSet getProductRating3(String user_id1,String user_id2) {
 		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
-		sql += " WHERE user_id = "+user_id2+" AND product_id NOT IN(SELECT product_id FROM user_rate WHERE user_id = "+user_id1+"); ";
+		sql += " WHERE user_id = '"+user_id2+"' AND product_id NOT IN(SELECT product_id FROM user_rate WHERE user_id = '"+user_id1+"'); ";
 		return this.gets(sql);
 	}
 	

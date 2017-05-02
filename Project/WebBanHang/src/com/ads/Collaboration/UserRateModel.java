@@ -191,10 +191,14 @@ public class UserRateModel {
 		
 		ArrayList<SameUserRateProductObject> listSameProduct = new ArrayList<>();
 		ArrayList<UserRateObject> listUserCompare = getProductRating2(user_id);
+		
 		for(UserRateObject userCompare:listUserCompare){
 			String user_id2 = userCompare.getUser_id();
 			userRateAVG2 = getUserRateAVG(user_id2);
 			listSameProduct = getSameProduct(user_id, user_id2);
+			if(listSameProduct.isEmpty()){
+				return productSuggest;
+			}
 			simPerson = simPerson(listSameProduct, UserRateAVG1.getUser_rate_avg(), userRateAVG2.getUser_rate_avg());
 			SimPerson simObject = new SimPerson();
 			simObject.setSimPerson(simPerson);
@@ -239,7 +243,7 @@ public class UserRateModel {
 //		for(UserRateObject u:listUser2Rate){
 //			System.out.println(u.getProduct_id());
 //		}
-		//um.CollaborationFilter("1");
+		um.CollaborationFilter("C000000000000002");
 		//um.addUserRate(new UserRateObject("4", 7, 0, "abc"));
 		//um.addUserRate(new UserRateObject("2", 2, 5, "abc"));
 	//	um.addUserRate(new UserRateObject("1", 3, 4, "abc"));

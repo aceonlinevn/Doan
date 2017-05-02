@@ -175,6 +175,8 @@ public class UserLogin extends HttpServlet {
 						// true: da co session: tao moi. chua co: tao moi.
 						// false: da co session: huy session. ko co session: ko
 						// lam gi
+						request.getSession().removeAttribute("VisitorNow");
+						request.getSession().setAttribute("user_id_now", user.getUserId());
 						HttpSession session = request.getSession(true);
 						if (user.getUser_permission_id() <= 3) {
 							// Dua thong tin dang nhap vao phien
@@ -183,7 +185,9 @@ public class UserLogin extends HttpServlet {
 							// Chuyen ve giao dien chinh
 							response.sendRedirect("/WebBanHang/view");
 						} else {
-							response.sendRedirect("/WebBanHang/");
+							// Dua thong tin dang nhap vao phien
+							session.setAttribute("userLogined", user);
+							response.sendRedirect(request.getContextPath());
 						}
 
 					} else {
