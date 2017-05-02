@@ -33,8 +33,32 @@ function checkValidLogin(fn){
 			validUserPass = false;
 		}
 	}
-	
-
+	//Kiểm tra sự cần thiết của hộp thư
+	if(username.search("@")>0){
+		username=username.trim();
+		var pattern = /\w+@\w+[.]\w/; // mẫu định dạng email chuẩn js \w - ký tự tùy ý
+		if(!validUserName){
+			if(username == ""){
+				messageEmail = "\nCần phải có hộp thư để đăng nhập hoặc phải có tên đăng nhập";
+				validEmail = false;
+			}else{
+				if(!username.match(pattern)){			// match - đúng với mẫu trả về true false
+					messageEmail = "\nKhông đúng định dạng email";
+					validEmail = false;
+				}else{
+					validUserName = true;
+					messageUserName = "";
+				}
+			}
+		}else{
+			if(username != ""){
+				if(!username.match(pattern)){			
+					messageEmail = "\nKhông đúng định dạng email";
+					validEmail = false;
+				}
+			}
+		}
+	}
 	
 	//Hiển thị thông báo và di chuyển con trỏ
 	var message = messageUserName+messageUserPass;
@@ -46,6 +70,9 @@ function checkValidLogin(fn){
 		}else if(!validUserPass){
 			fn.txtUserPass.focus();
 			fn.txtUserPass.select();
+		}else if(!validEmail){
+			fn.txtUserName.focus();
+			fn.txtUserName.select();
 		}
 	}
 	//Trả về kết quả kiểm tra
