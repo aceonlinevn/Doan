@@ -10,6 +10,7 @@
 	String productDetailWarranty = (String) session.getAttribute("productDetailWarranty");
 	String productDetailSummary = (String) session.getAttribute("productDetailSummary");
 	String productDetailContent = (String) session.getAttribute("productDetailContent");
+	String product_id = (String) session.getAttribute("product_id");
 %>
 <div class="content">
 	<div class="wrapper">
@@ -195,8 +196,9 @@
 						</div>
 					</div>
 					<div class="bt-single-product">
-						<a href="#" class="add-cart-checkout" title="Đặt hàng">Đặt
-							hàng</a> <a href="#" class="add-to-cart" title="Đặt hàng">Cho
+						<a href="javascript:addToShoppingCart('pro','<%=product_id %>','1','<%=productDetailPrice %>')" class="add-cart-checkout" title="Đặt hàng">Đặt
+							hàng</a> <a href="javascript:addToShoppingCartStop('pro','<%=product_id %>','1','<%=productDetailPrice %>')" class="add-to-cart" title="Cho
+							vào giỏ hàng">Cho
 							vào giỏ hàng</a> <a href="#" class="add-to-favorite"
 							title="Đặt hàng">Lưu sản phẩm</a>
 						<div class="single-advantage"></div>

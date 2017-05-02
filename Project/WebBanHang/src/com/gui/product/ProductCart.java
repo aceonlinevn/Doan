@@ -121,9 +121,8 @@ public class ProductCart extends HttpServlet {
 		boolean rtBill = bc.addBill(bo);
 		bc.releaseConnection();
 		if(rtBill){
-			String[] items = bill_product_detail.split(",");
-			
-			String msg = "Cam on ban da mua hang tai HungCuongComputer voi tong tien la: "+bill_Total_Amount+". Moi chi tiet lien he CSKH: 0965909929.";
+			String[] items = bill_product_detail.split(",");			
+			String msg = "Cam on ban da mua hang tai HungCuongComputer voi tong tien la: "+Utilities.convertMoney(bill_Total_Amount)+"đ. Moi chi tiet lien he CSKH: 0965909929.";
 			SMSsender.SmsSender(user_phonenum, msg);
 			out.println("<script>");
 			out.println("alert('Đặt hàng thành công');");
