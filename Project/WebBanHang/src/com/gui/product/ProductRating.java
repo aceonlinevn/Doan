@@ -104,7 +104,7 @@ public class ProductRating extends HttpServlet {
 		ratting.setUser_rate_comment(comment);
 
 		ur.addUserRate(ratting);
-		
+		 
 		// tra lai ket noi cho he thong
 		ur.releaseConnection();
 		response.sendRedirect(request.getContextPath() + "/frontend/detail.jsp");
