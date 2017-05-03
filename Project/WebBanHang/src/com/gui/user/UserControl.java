@@ -32,6 +32,9 @@ public class UserControl {
     public boolean delUser(UserObject item){
         return this.um.delUser(item);
     }
+    public boolean checkPass(UserObject item){
+        return this.um.checkPass(item);
+    }
 	// ************************************************/
 
 	public UserObject getUserObject(String id) {

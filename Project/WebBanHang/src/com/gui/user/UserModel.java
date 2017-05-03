@@ -41,6 +41,10 @@ public class UserModel {
 		return this.u.delUser(item);
 	}
 	
+	public boolean checkPass(UserObject item) {
+		return this.u.checkPass(item);
+	}
+	
 	public UserObject getUserObject(String username, String userpass) {
 		UserObject item = null;
 

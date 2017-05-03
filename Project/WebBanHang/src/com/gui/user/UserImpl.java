@@ -161,6 +161,32 @@ public class UserImpl extends BasicImpl implements User {
 		}
 		return flag;
 	}
+	
+	@Override
+	public boolean checkPass(UserObject item) {
+		boolean flag = true;
+
+		String sql = "SELECT user_id FROM dacn_webbanhang.user WHERE ";
+		sql += " user_password = md5('" + item.getUser_password() + "')";
+
+		ResultSet rs = this.get(sql, 0); // luu ban ghi khi truy xuat tu CSDL ra
+
+		if (rs != null) {
+			try {
+				if (rs.next()) {
+					flag = true;
+				}else{
+					flag = false;
+				}
+				rs.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}else{
+			flag = false;
+		}
+		return flag;
+	}
 
 	@Override
 	public boolean editUser(UserObject item) {

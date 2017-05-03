@@ -10,6 +10,7 @@ public interface User extends ShareControl {
 	public boolean addUser(UserObject item);
     public boolean editUser(UserObject item);
     public boolean delUser(UserObject item);
+    public boolean checkPass(UserObject item);
 
     public boolean addVisitor(Visitor item);
     public boolean delVisitor(Visitor item);
