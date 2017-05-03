@@ -234,20 +234,16 @@ public class UserRateModel {
 	public static void main(String args[]){
 		ConnectionPool cp = new ConnectionPoolImpl();
 		UserRateModel um = new UserRateModel(cp);
-//		um.addUserRate(new UserRateObject("2", 3, 5, "abc"));
-//		um.addUserRate(new UserRateObject("2", 4, 4, "abc"));
-//		um.addUserRate(new UserRateObject("2", 5, 4, "abc"));
-//		um.addUserRate(new UserRateObject("3", 1, 4, "abc"));
+		SameUserRateProductObject p1 = new SameUserRateProductObject(1, "1", "2", 4, 1);
+		SameUserRateProductObject p2 = new SameUserRateProductObject(2, "1", "2", 3, 1);
+		SameUserRateProductObject p4 = new SameUserRateProductObject(4, "1", "2", 2, 2);
+		ArrayList<SameUserRateProductObject> list = new ArrayList<>();
+		list.add(p1);
+		list.add(p2);
+		list.add(p4);
+		System.out.println(um.simPerson(list, (7/3), 3));
 		
-//		ArrayList<UserRateObject> listUser2Rate = um.getProductRating3("1", "2");
-//		for(UserRateObject u:listUser2Rate){
-//			System.out.println(u.getProduct_id());
-//		}
-		um.CollaborationFilter("U000000000000001");
-		//um.addUserRate(new UserRateObject("4", 7, 0, "abc"));
-		//um.addUserRate(new UserRateObject("2", 2, 5, "abc"));
-	//	um.addUserRate(new UserRateObject("1", 3, 4, "abc"));
-	//	um.addUserRate(new UserRateObject("1", 4, 4, "abc"));
-//		
+		
+		
 	}
 }
