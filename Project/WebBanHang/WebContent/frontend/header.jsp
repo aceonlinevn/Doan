@@ -81,7 +81,7 @@
 							UserObject userLogined = (UserObject) session.getAttribute("userLogined");
 							if (userLogined != null && userLogined.getUser_permission_id()!=0) {
 						%>
-						<a href="/WebBanHang/" title="<%=userLogined.getUser_name()%>"><i
+						<a href="/WebBanHang/frontend/info-account.jsp" title="<%=userLogined.getUser_name()%>"><i
 							class="fa fa-user" style="font-weight: bold;" aria-hidden="true"></i>
 							<%=userLogined.getUser_name()%> </a> <a
 							href="/WebBanHang/user/logout" title="Thoát"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>

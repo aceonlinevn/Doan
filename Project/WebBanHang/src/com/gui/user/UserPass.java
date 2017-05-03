@@ -53,7 +53,7 @@ public class UserPass extends HttpServlet {
 		String txtUserPassNew = request.getParameter("txtUserPassNew");
 		String txtReUserPassNew = request.getParameter("txtReUserPassNew");
 		if(userLogined !=null){
-			if(txtUserPassNew.equalsIgnoreCase(txtReUserPassNew)){
+			if(!txtUserPassNew.equalsIgnoreCase(txtReUserPassNew)){
 				out.println(Utilities.getMessageRedict("Mật khẩu không khớp", "/WebBanHang/frontend/info-account.jsp?view=account-change-pass"));
 			}else{
 				UserControl uc = new UserControl(cp);
@@ -65,7 +65,8 @@ public class UserPass extends HttpServlet {
 				if(uc.checkPass(uo)){
 					uo = userLogined;
 					uo.setUser_password(txtUserPassNew);
-					if(uc.editUser(uo)){
+					boolean rs = uc.editUser(uo);
+					if(rs){
 						SMSsender.SmsSender(userLogined.getUser_phonenum(), "Ban vua thuc hien thay doi mat khau tai HC. Mat khau moi la: "+txtUserPassNew);
 						out.println(Utilities.getMessageRedict("Thay đổi mật khẩu thành công", "/WebBanHang/frontend/info-account.jsp"));
 					}else{
