@@ -147,7 +147,7 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 	@Override
 	public ResultSet getProductRating2(String userid) {
 		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
-		sql += "WHERE user_id != '" + userid+"'";
+		sql += " WHERE user_id != '" + userid+"'";
 		return this.gets(sql);
 	}
 	
@@ -161,8 +161,8 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 
 	@Override
 	public ResultSet getProductRating(int product_id) {
-		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
-		sql += "WHERE product_id = " + product_id;
+		String sql = "SELECT A.user_id,B.user_name, A.product_id, A.user_rate_point, A.user_rate_comment FROM dacn_webbanhang.user_rate A LEFT JOIN user B ON A.user_id = B.user_id ";
+		sql += " WHERE product_id = " + product_id;
 		return this.gets(sql);
 	}
 

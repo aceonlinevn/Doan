@@ -160,7 +160,8 @@
 			<div class="rate-content">
 			<table>
 				<tr>
-				<td colspan = "5">Nguoi dung xxx</td>
+				<td colspan="5" align="left"
+									style="color: #333; font-size: 14px; font-weight: bold">Nguoi dung xxx</td>
 				</tr>
 				<tr>
 				<td colspan = "5">danh gia xxx</td>
@@ -168,6 +169,7 @@
 
 			</table>
 			</div>
+			
 			<div class="rate-content">
 				<form action="<%=request.getContextPath()%>/ProductRating" method="post" accept-charset="utf-8">
 					<table>

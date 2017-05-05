@@ -253,7 +253,12 @@ public class UserRateModel {
 			try {
 				while(rs.next()){
 					item = new UserRateObject();
-					item.setUser_id(rs.getString("user_id"));
+					if(rs.getString("user_name")==null){
+						item.setUser_id(rs.getString("user_id"));
+					}
+					else{
+						item.setUser_id(rs.getString("user_name"));
+					}
 					item.setProduct_id(rs.getInt("product_id"));
 					item.setUser_rate_point(rs.getInt("user_rate_point"));
 					item.setUser_rate_comment(rs.getString("user_rate_comment"));
@@ -282,7 +287,7 @@ public class UserRateModel {
 		
 		ArrayList<UserRateObject> items = um.getProductRating(1);
 		for(UserRateObject item:items){
-			System.out.println(item.getUser_rate_point() + "  " + item.getUser_rate_comment() );
+			System.out.println(item.getUser_id() + " " +  item.getUser_rate_point() + "  " + item.getUser_rate_comment() );
 		}
 //		System.out.println();
 		
