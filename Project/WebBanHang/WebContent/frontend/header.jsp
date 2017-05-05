@@ -89,7 +89,7 @@
 							} else {
 						%>
 						<a href="javascript:void(0)" title="Đăng nhập" data-toggle="modal" data-target="#mdLogin"><i
-							class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a> <a href="#"
+							class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a> <a href="/WebBanHang/frontend/page.jsp?paction=register-account"
 							title="Đăng ký"><i class="fa fa-user-plus" aria-hidden="true"></i>
 							Đăng ký</a>
 						<%
@@ -99,7 +99,7 @@
 
 					</div>
 					<div class="cart-area">
-						<a href="/WebBanHang/frontend/cart.jsp" title="Giỏ hàng"><i class="fa fa-shopping-cart"
+						<a href="/WebBanHang/frontend/page.jsp?paction=cart" title="Giỏ hàng"><i class="fa fa-shopping-cart"
 							aria-hidden="true"></i> Giỏ hàng</a> <span class="cart-count"><i
 							class="fa fa-comment-o" aria-hidden="true"></i> <span
 							class="count" id="count_shopping_cart_store">0<span></span>

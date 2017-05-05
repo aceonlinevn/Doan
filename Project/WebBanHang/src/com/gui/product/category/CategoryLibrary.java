@@ -7,7 +7,7 @@ public class CategoryLibrary {
 
 	
 	
-	//Get select box category group
+	//Get select box category
 		public static String slcCategory(CategoryObject similar, ArrayList<CategoryObject> items){
 			String tmp = "<select name=slcCategory class=\"form-control\">";
 			String selected = "";
@@ -18,6 +18,15 @@ public class CategoryLibrary {
 					selected = "";
 				}
 				tmp += "<option value=\""+item.getCategory_id()+"\" "+selected+">"+item.getCategory_name()+"</option>";
+			}
+			tmp += "</select>";
+			return tmp;
+		}
+		//get select box category for search
+		public static String slcCategory(ArrayList<CategoryObject> items){
+			String tmp = "<select name=slcSearch class=\"slcSearch\">";
+			for(CategoryObject item : items){
+				tmp += "<option value=\""+item.getCategory_id()+"\">"+item.getCategory_name()+"</option>";
 			}
 			tmp += "</select>";
 			return tmp;

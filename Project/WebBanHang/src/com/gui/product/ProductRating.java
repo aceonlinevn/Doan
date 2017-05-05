@@ -107,7 +107,7 @@ public class ProductRating extends HttpServlet {
 		 
 		// tra lai ket noi cho he thong
 		ur.releaseConnection();
-		response.sendRedirect(request.getContextPath() + "/frontend/detail.jsp?prid="+product_id);
+		response.sendRedirect(request.getContextPath() + "/frontend/page.jsp?paction=detail&prid="+product_id);
 
 	}
 

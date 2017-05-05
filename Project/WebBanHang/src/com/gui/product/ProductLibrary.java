@@ -51,7 +51,7 @@ public class ProductLibrary {
 			tmp += "<div class=\"product\">";
 			tmp += "<div class=\"product-code\">Mã sản phẩm: "+item.getProduct_prefix()+"</div>";
 			tmp += "<div class=\"product-image\">";
-			tmp += "<a href=\"/WebBanHang/frontend/detail.jsp?prid="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\"><img src=\""+item.getProduct_image()+"\" alt=\""+item.getProduct_name()+"\"></a>";
+			tmp += "<a href=\"/WebBanHang/frontend/page.jsp?paction=detail&prid="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\"><img src=\""+item.getProduct_image()+"\" alt=\""+item.getProduct_name()+"\"></a>";
 			tmp += "</div>";
 			tmp += "<div class=\"product-price\">"+Utilities.convertMoney(item.getProduct_origin_price())+"</div>";
 			tmp += "<div class=\"product-name\"><h2><a href=\"WebBanHang/frontend/detail.jsp?id="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\">"+item.getProduct_name()+"</a></h2></div>";
@@ -89,7 +89,7 @@ public class ProductLibrary {
 			tmp += "<div class=\"section-title\"><h3>"+cate.getCategory_name()+"</h3></div>";
 			tmp += viewProduct(items);
 			tmp+= "<div class=\"view-more\">";
-			tmp += "<a href=\"/WebBanHang/frontend/category.jsp?id="+cate.getCategory_id()+"\"><span class=\"view-more-img\" style=\" background-image: url("+cate.getCategory_images()+")\"></span></a>";
+			tmp += "<a href=\"/WebBanHang/frontend/page.jsp?paction=category&cid="+cate.getCategory_id()+"\"><span class=\"view-more-img\" style=\" background-image: url("+cate.getCategory_images()+")\"></span></a>";
 			tmp += "</div>";
 			tmp += "</div><!-- end-section-->";
 			tmp += "<div class=\"clr\"></div>";

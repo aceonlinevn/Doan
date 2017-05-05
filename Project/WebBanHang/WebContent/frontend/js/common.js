@@ -174,7 +174,7 @@ function addToShoppingCart(e, t, n, r) {
 	if (i.search("," + e + "-" + t + "-") == -1) {
 		var s = i + "," + e + "-" + t + "-" + n + "-" + r;
 		hura_create_cookie("shopping_cart_store", s, 1);
-		window.location = "/WebBanHang/frontend/cart.jsp"
+		window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
 	} else {
 	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!")
 	}
@@ -205,7 +205,7 @@ function isItemInCart(e, t) {
 function deleteShoppingCartItem(e, t, n, r) {
 	if (confirm("Bạn muốn xóa bỏ sản phẩm này khỏi giỏ hàng ? ")) {
 		removeShoppingCartItem(e, t, n, r);
-		window.location = "/WebBanHang/frontend/cart.jsp"
+		window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
 	}
 }
 

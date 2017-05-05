@@ -1,3 +1,4 @@
+<%@page import="com.gui.product.category.CategoryControl"%>
 <%@page import="com.ads.user.UserModel"%>
 <%@page import="com.library.Utilities"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,6 +11,10 @@
 	ProductControl pc = new ProductControl(cp);
 	if (cp == null) {
 		application.setAttribute("cpool", pc.getConnectionPool());
+	}
+	CategoryControl cc = new CategoryControl(cp);
+	if (cp == null) {
+		application.setAttribute("cpool", cc.getConnectionPool());
 	}
 	if (request.getParameter("prid") != null && !request.getParameter("prid").equalsIgnoreCase("")) {
 		session.setAttribute("product_id", request.getParameter("prid"));
@@ -56,6 +61,7 @@
 	ProductObject similar3 = new ProductObject();
 	ProductObject similar4 = new ProductObject();
 	ProductObject similar = new ProductObject();
+	CategoryObject similarc = new CategoryObject();
 	//Khởi tạo điểu kiện
 	similar1.setProduct_isnew(true);
 	similar2.setProduct_isliquidation(true);
@@ -67,13 +73,14 @@
 	String viewProductForSelling = pc.viewProducts(similar3, (byte) 6);
 	String viewProductPromotion = pc.viewProducts(similar4, (byte) 6);
 	String viewProductForCategory = pc.viewProductsForCategory(similar);
+	String viewCategorySearch = cc.slcCategoryForSearch(similarc);
 	//Dua cau truc vao phien lam viec
 	session.setAttribute("viewProductForNew", viewProductForNew);
 	session.setAttribute("viewProductForLiquidation", viewProductForLiquidation);
 	session.setAttribute("viewProductForSelling", viewProductForSelling);
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
-
+	session.setAttribute("viewCategorySearch", viewCategorySearch);
 	//hungcuong - collaboration filter
 	String user_id_now = (String) request.getSession().getAttribute("user_id_now");
 	String viewProductForReferences = (String) request.getSession().getAttribute("viewProductForReferences");

@@ -40,26 +40,7 @@
 		<!-- end sidebar-->
 		<div class="aside">
 			<div class="tp-aside">
-				<div class="form-area clearfix">
-					<form action="" method="" name="frmSearch" class="frmSearch">
-						<select name="slcSearch" class="slcSearch">
-							<option value="0">Tất cả</option>
-							<option value="1">Laptop,phụ kiện</option>
-							<option value="2">PC,Workstaion</option>
-							<option value="3">Camera giám sát</option>
-							<option value="4">Linh kiện máy tính, PC</option>
-							<option value="5">Thiết bị lưu trữ</option>
-							<option value="6">Thiết bị nghe nhìn</option>
-							<option value="7">Sản phẩm thanh lý</option>
-						</select> <input type="search" name="txtSearch" class="txtSearch" value=""
-							placeholder="Gõ từ khóa tìm kiếm...">
-						<div class="btnSearch-area">
-							<button type="submit" name="btnSearch" class="btnSearch">
-								<i class="fa fa-search fa-lg" aria-hidden="true"></i>
-							</button>
-						</div>
-					</form>
-				</div>
+				<jsp:include page="search.jsp" flush="true"></jsp:include>
 				<div class="nav">
 					<a href="tel:19009068" class="support-number">Hỗ trợ trực
 						tuyến: 1900.9068</a> <a href="#" class="news-tp-aside">Tin tức</a> <a

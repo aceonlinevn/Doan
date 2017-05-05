@@ -126,10 +126,10 @@ public class ProductCart extends HttpServlet {
 			SMSsender.SmsSender(user_phonenum, msg);
 			out.println("<script>");
 			out.println("alert('Đặt hàng thành công');");
-			out.println("window.location = '/WebBanHang/frontend/info-account.jsp';");
+			out.println("window.location = '/WebBanHang/frontend/page.jsp?paction=info-account';");
 			out.println("</script>");
 		}else{
-			out.println(Utilities.getMessageRedict("Đặt hàng thất bại !",request.getContextPath()+"/frontend/checkout.jsp"));
+			out.println(Utilities.getMessageRedict("Đặt hàng thất bại !",request.getContextPath()+"/frontend/page.jsp?paction=checkout"));
 			
 		}
 	}
