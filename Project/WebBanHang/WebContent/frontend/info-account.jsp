@@ -21,16 +21,16 @@
 		<div class="nav-info-account">
 			<div class="nav-title-info">Đơn hàng đặt mua</div>
 			<div class="nav-content-info">
-				<a href="?view=account-order"><h3>Danh sách đơn hàng</h3></a>
+				<a href="?paction=info-account&view=account-order"><h3>Danh sách đơn hàng</h3></a>
 			</div>
 			<div class="nav-title-info">Hoạt động cá nhân</div>
 			<div class="nav-content-info">
-				<a href="?view=account-pro-save"><h3>Sản phẩm đang lưu</h3></a>
+				<a href="?paction=info-account&view=account-pro-save"><h3>Sản phẩm đang lưu</h3></a>
 			</div>
 			<div class="nav-title-info">Thông tin tài khoản</div>
 			<div class="nav-content-info">
-				<a href="?view=account-detail"><h3>Thông tin cá nhân</h3></a>
-				<a href="?view=account-change-pass"><h3>Thay đổi mật khẩu</h3></a>
+				<a href="?paction=info-account&view=account-detail"><h3>Thông tin cá nhân</h3></a>
+				<a href="?paction=info-account&view=account-change-pass"><h3>Thay đổi mật khẩu</h3></a>
 			</div>
 		</div>
 	</div>

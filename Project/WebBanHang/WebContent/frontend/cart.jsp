@@ -85,7 +85,7 @@
 		</table>
 		<div class="bt-cart pull-right">
 			<a href="/WebBanHang/" class="btn btn-primary">Mua thêm sản phẩm khác</a>
-			<a href="/WebBanHang/frontend/checkout.jsp"  class="btn btn-danger">Tiếp tục</a>
+			<a href="/WebBanHang/frontend/page.jsp?paction=checkout"  class="btn btn-danger">Tiếp tục</a>
 		</div>
 		</form>
 	</div>
