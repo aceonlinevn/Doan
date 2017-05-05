@@ -21,4 +21,10 @@ public interface UserRate extends ShareControl {
 	public ResultSet getProductRating2(String uerid);
 
 	public ResultSet getProductRating3(String user_id1, String user_id2);
+	
+	public ResultSet getProductRating(int product_id);
+	
+	public ResultSet getProductRatingAVG(int product_id);
+	
+	
 }

@@ -91,12 +91,17 @@ public class ProductControl {
 		return listProduct;
 	}
 	
+	public int getProductRateAVG(int product_id){
+		ConnectionPool cp = getConnectionPool();
+		UserRateModel ur = new UserRateModel(cp);
+		return Math.round(ur.getProductRateAVG(product_id));
+	}
+	
+	
+	
 	public static void main(String[] args){
 		ConnectionPool cp = new ConnectionPoolImpl();
 		ProductControl pc = new ProductControl(cp);
-		ArrayList<ProductObject> items = pc.getReferencesProduct("U000000000000001");
-		for(ProductObject item:items){
-			System.out.println(item.getProduct_id());
-		}
+		System.out.println(pc.getProductRateAVG(1));
 	}
 }

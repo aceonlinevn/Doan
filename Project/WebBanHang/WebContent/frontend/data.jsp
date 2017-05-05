@@ -16,24 +16,29 @@
 		int id = Integer.parseInt(request.getParameter("prid"));
 		ProductObject po = pc.getProductObject(id);
 		if (id > 0) {
+			//hungcuong - sua lai services - chi goi vao services 1 lan 
 			String warranty = "";
-			if (po.getProduct_warranty_time() < 6) {
-				warranty = po.getProduct_warranty_time() + " năm";
+			int iwarranty = po.getProduct_warranty_time();
+			if (iwarranty < 6) {
+				warranty = iwarranty + " năm";
 			} else {
-				warranty = po.getProduct_warranty_time() + " tháng";
+				warranty = iwarranty + " tháng";
 			}
-			String summary = "";
-			if (po.getProduct_summary() != null && !po.getProduct_summary().equalsIgnoreCase("")) {
-				summary = po.getProduct_summary();
-			} else {
+			// fix lai ham 
+			String summary = po.getProduct_summary();
+			if (summary == null && summary.equalsIgnoreCase("")) {
 				summary = "Mô tả đang được cập nhât";
 			}
-			String specification = "";
-			if (po.getProduct_specification() != null && !po.getProduct_specification().equalsIgnoreCase("")) {
-				specification = po.getProduct_specification();
-			} else {
+			
+			String specification = po.getProduct_specification();
+			if (specification == null && specification.equalsIgnoreCase("")) {
 				specification = "Nội dung đang được cập nhât";
-			}
+			} 
+			
+			//hungcuong - load product rate
+			int productRate = pc.getProductRateAVG(id);
+			session.setAttribute("productRate", productRate);
+			
 			//product detail
 			session.setAttribute("productDetailImg", po.getProduct_image());
 			session.setAttribute("productDetailName", po.getProduct_name());
@@ -69,13 +74,16 @@
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
 
+	//hungcuong - collaboration filter
 	String user_id_now = (String) request.getSession().getAttribute("user_id_now");
 	String viewProductForReferences = (String) request.getSession().getAttribute("viewProductForReferences");
 	if (user_id_now != null) {
-
 			ArrayList<ProductObject> listProductReferences = pc.getReferencesProduct(user_id_now);
 			String viewProductReferences = pc.viewProducts2(listProductReferences);
 			request.getSession().setAttribute("viewProductForReferences", viewProductReferences);
 		
 	}
+	
+	
+	
 %>

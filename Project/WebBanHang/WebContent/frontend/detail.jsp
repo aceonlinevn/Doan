@@ -11,6 +11,7 @@
 	String productDetailSummary = (String) session.getAttribute("productDetailSummary");
 	String productDetailContent = (String) session.getAttribute("productDetailContent");
 	String product_id = (String) session.getAttribute("product_id");
+	int productRate = (int)session.getAttribute("productRate");
 %>
 <div class="content">
 	<div class="wrapper">
@@ -172,9 +173,17 @@
 						</div>
 						<div class="clr"></div>
 						<div class="product-vote">
-							Đánh giá: <span class="star-o"></span> <span class="star-o"></span>
-							<span class="star-o"></span> <span class="star-d"></span> <span
-								class="star-d"></span>
+						Đánh giá:
+						<%
+							for(int i = 1; i<=5 ; i++){
+								if(i<=productRate){
+									%> <span class="star-o"></span> <%
+								}else{
+									%><span class="star-d"></span>  <%
+								}
+							}
+						%>
+							<span >(1 đánh giá)</span>
 						</div>
 						<div class="product-warranty">
 							<strong>Bảo hành: </strong>
@@ -216,6 +225,17 @@
 					</div>
 					<div class="rate-area">
 						<div class="product-detail-title">Đánh giá sản phẩm</div>
+						<div class="rate-content">
+						<table>
+							<tr>
+							<td colspan = "5">Nguoi dung xxx</td>
+							</tr>
+							<tr>
+							<td colspan = "5">danh gia xxx</td>
+							</tr>
+
+						</table>
+						</div>
 						<div class="rate-content">
 							<form action="<%=request.getContextPath()%>/ProductRating" method="post" accept-charset="utf-8">
 								<table>

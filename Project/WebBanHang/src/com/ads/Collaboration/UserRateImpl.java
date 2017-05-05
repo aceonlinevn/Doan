@@ -158,5 +158,18 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 		sql += " WHERE user_id = '"+user_id2+"' AND product_id NOT IN(SELECT product_id FROM user_rate WHERE user_id = '"+user_id1+"'); ";
 		return this.gets(sql);
 	}
+
+	@Override
+	public ResultSet getProductRating(int product_id) {
+		String sql = "SELECT user_id,product_id,user_rate_point,user_rate_comment FROM dacn_webbanhang.user_rate ";
+		sql += "WHERE product_id = " + product_id;
+		return this.gets(sql);
+	}
+
+	@Override
+	public ResultSet getProductRatingAVG(int product_id) {
+		String sql = "SELECT AVG(user_rate_point) FROM dacn_webbanhang.user_rate WHERE product_id =" + product_id;
+		return this.gets(sql);
+	}
 	
 }

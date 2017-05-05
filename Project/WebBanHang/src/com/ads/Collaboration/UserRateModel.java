@@ -1,6 +1,7 @@
 package com.ads.Collaboration;
 
 import com.*;
+import com.gui.product.ProductRating;
 import com.object.*;
 import java.sql.*;
 import java.util.*;
@@ -230,19 +231,60 @@ public class UserRateModel {
 		return productSuggest;
 	}
 	
+	public float getProductRateAVG(int product_id){
+		ResultSet rs = p.getProductRatingAVG(product_id);
+		if(rs!=null){
+			try {
+				if(rs.next()){
+					return rs.getFloat(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
+	public ArrayList<UserRateObject> getProductRating(int product_id){
+		ArrayList<UserRateObject> items = new ArrayList<>();
+		UserRateObject item;
+		ResultSet rs = p.getProductRating(product_id);
+		if(rs!=null){
+			try {
+				while(rs.next()){
+					item = new UserRateObject();
+					item.setUser_id(rs.getString("user_id"));
+					item.setProduct_id(rs.getInt("product_id"));
+					item.setUser_rate_point(rs.getInt("user_rate_point"));
+					item.setUser_rate_comment(rs.getString("user_rate_comment"));
+					items.add(item);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return items;
+	}
+	
 	
 	public static void main(String args[]){
 		ConnectionPool cp = new ConnectionPoolImpl();
 		UserRateModel um = new UserRateModel(cp);
-		SameUserRateProductObject p1 = new SameUserRateProductObject(1, "1", "2", 4, 1);
-		SameUserRateProductObject p2 = new SameUserRateProductObject(2, "1", "2", 3, 1);
-		SameUserRateProductObject p4 = new SameUserRateProductObject(4, "1", "2", 2, 2);
-		ArrayList<SameUserRateProductObject> list = new ArrayList<>();
-		list.add(p1);
-		list.add(p2);
-		list.add(p4);
-		System.out.println(um.simPerson(list, (7/3), 3));
+//		SameUserRateProductObject p1 = new SameUserRateProductObject(1, "1", "2", 4, 1);
+//		SameUserRateProductObject p2 = new SameUserRateProductObject(2, "1", "2", 3, 1);
+//		SameUserRateProductObject p4 = new SameUserRateProductObject(4, "1", "2", 2, 2);
+//		ArrayList<SameUserRateProductObject> list = new ArrayList<>();
+//		list.add(p1);
+//		list.add(p2);
+//		list.add(p4);
+//		System.out.println(um.simPerson(list, (7/3), 3));
 		
+		ArrayList<UserRateObject> items = um.getProductRating(1);
+		for(UserRateObject item:items){
+			System.out.println(item.getUser_rate_point() + "  " + item.getUser_rate_comment() );
+		}
+//		System.out.println();
 		
 		
 	}
