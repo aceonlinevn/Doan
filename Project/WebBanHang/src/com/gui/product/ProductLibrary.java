@@ -1,6 +1,7 @@
 package com.gui.product;
 
 import com.ConnectionPool;
+import com.ads.Collaboration.UserRate;
 import com.library.Utilities;
 import com.object.*;
 
@@ -112,6 +113,29 @@ public class ProductLibrary {
 				tmp += "<div class=\"clr\"></div>";
 			}
 		
+		return tmp;
+	}
+	
+	public static String viewUserComment(ArrayList<UserRateObject> items){
+		String tmp = "<div class=\"rate-content\">";
+		tmp+="<table>";
+		for(UserRateObject item:items){
+			tmp+="<tr>";
+			tmp+="<td conspan = \"5\" align=\"left\" style=\"color: #333; font-size: 14px; font-weight: bold\">";
+			tmp+="User: " + item.getUser_id() +" -  Đánh giá sản phẩm ";
+			for(int i = 1;i<=item.getUser_rate_point();i++){
+				tmp+="<span class=\"star-o\"></span>";
+			}
+			tmp+="</td>";
+			tmp+="</tr>";
+			tmp+="<tr>";
+			tmp+="<td conspan = \"5\">";
+			tmp+="<span>" + item.getUser_rate_comment() + "</span>";
+			tmp+="</td>";
+			tmp+="</tr>";
+		}
+		tmp+="</table>";
+		tmp+="</div>";
 		return tmp;
 	}
 }

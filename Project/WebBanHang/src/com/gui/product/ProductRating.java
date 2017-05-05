@@ -1,10 +1,6 @@
 package com.gui.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ConnectionPool;
 import com.ads.Collaboration.UserRateModel;
-import com.ads.user.UserControl;
 import com.ads.user.UserModel;
 import com.library.Utilities;
 import com.object.*;
@@ -25,6 +20,7 @@ import com.object.*;
 @WebServlet("/ProductRating")
 public class ProductRating extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String CONTENT_TYPE = "text/html; charset=utf-8";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,6 +47,7 @@ public class ProductRating extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        response.setContentType(CONTENT_TYPE);
 		String user_id_now = "";
 		// TODO Auto-generated method stub
 		ServletContext application = getServletConfig().getServletContext();

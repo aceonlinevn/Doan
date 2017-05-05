@@ -105,6 +105,15 @@ public class ProductControl {
 		return Math.round(ur.getProductRateAVG(product_id));
 	}
 	
+	public ArrayList<UserRateObject> getProductRating(int product_id){
+		ConnectionPool cp = getConnectionPool();
+		UserRateModel ur = new UserRateModel(cp);
+		return ur.getProductRating(product_id);
+	}
+	
+	public String getUserComment(ArrayList<UserRateObject> items){
+		return ProductLibrary.viewUserComment(items);
+	}
 	
 	
 	public static void main(String[] args){

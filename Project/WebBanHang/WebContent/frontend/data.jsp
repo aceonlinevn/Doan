@@ -45,6 +45,12 @@
 			//hungcuong - load product rate
 			int productRate = pc.getProductRateAVG(id);
 			session.setAttribute("productRate", productRate);
+			ArrayList<UserRateObject> alComments = pc.getProductRating(id);
+			
+			String productComment = pc.getUserComment(alComments);
+			int productRateCount = alComments.size();
+			session.setAttribute("productComment", productComment);
+			session.setAttribute("productRateCount", productRateCount);
 			
 			//product detail
 			session.setAttribute("productDetailImg", po.getProduct_image());
@@ -57,7 +63,6 @@
 			session.setAttribute("productDetailQuantity", po.getProduct_quantity());
 		}
 	}
-
 	//Khai bảo object
 	ProductObject similar1 = new ProductObject();
 	ProductObject similar2 = new ProductObject();

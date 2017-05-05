@@ -16,6 +16,9 @@
 	if(productQuantity>0){
 		prQuantity = 1;
 	}
+	
+	String productComment = (String)session.getAttribute("productComment");
+	int productRateCount = (int) session.getAttribute("productRateCount");
 %>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/frontend/css/jquery.fancybox.css?v=2.1.6"
@@ -115,7 +118,7 @@
 					}
 				}
 			%>
-				<span >(1 đánh giá)</span>
+				<span >(<%=productRateCount %> đánh giá)</span>
 			</div>
 			<div class="product-warranty">
 				<strong>Bảo hành: </strong>
@@ -157,19 +160,10 @@
 		</div>
 		<div class="rate-area">
 			<div class="product-detail-title">Đánh giá sản phẩm</div>
-			<div class="rate-content">
-			<table>
-				<tr>
-				<td colspan="5" align="left"
-									style="color: #333; font-size: 14px; font-weight: bold">Nguoi dung xxx</td>
-				</tr>
-				<tr>
-				<td colspan = "5">danh gia xxx</td>
-				</tr>
-
-			</table>
-			</div>
-			
+			<%if(productComment!=null){
+				out.print(productComment);
+			}
+			%>
 			<div class="rate-content">
 				<form action="<%=request.getContextPath()%>/ProductRating" method="post" accept-charset="utf-8">
 					<table>
