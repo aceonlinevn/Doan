@@ -9,7 +9,7 @@ public class CategoryObject extends CategoryGroupObject{
 	private String category_last_modified;
 	private int category_mamager_id;
 	private boolean category_is_enable,category_is_deleted;
-	private String category_images;
+	private String category_images,category_icon;
 	
 	public CategoryObject() {
 		super();
@@ -17,7 +17,7 @@ public class CategoryObject extends CategoryGroupObject{
 	public CategoryObject(int category_id, String category_prefix, String category_name, int category_group_id,
 			String category_note, String category_created_date, int category_author_created_id,
 			String category_last_modified, int category_mamager_id, boolean category_is_enable,
-			boolean category_is_deleted, String category_images) {
+			boolean category_is_deleted, String category_images,String category_icon) {
 		super();
 		this.category_id = category_id;
 		this.category_prefix = category_prefix;
@@ -31,6 +31,13 @@ public class CategoryObject extends CategoryGroupObject{
 		this.category_is_enable = category_is_enable;
 		this.category_is_deleted = category_is_deleted;
 		this.category_images = category_images;
+		this.category_icon = category_icon;
+	}
+	public String getCategory_icon() {
+		return category_icon;
+	}
+	public void setCategory_icon(String category_icon) {
+		this.category_icon = category_icon;
 	}
 	public int getCategory_id() {
 		return category_id;

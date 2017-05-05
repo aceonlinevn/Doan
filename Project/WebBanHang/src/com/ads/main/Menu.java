@@ -60,9 +60,7 @@ public class Menu extends HttpServlet {
 	        out.println("</ul>");
 	        out.println("<li data-toggle=\"collapse\" data-target=\"#receipt\" class=\"collapsed\"><a href=\"#\"><i class=\"fa fa-files-o\" aria-hidden=\"true\"></i> Hóa đơn <span class=\"arrow\"></span></a></li>  ");
 	        out.println("<ul class=\"sub-menu collapse\" id=\"receipt\">");
-	        out.println("<li><a href=\"#\">Xuất hóa đơn</a></li>");
-	        out.println("<li><a href=\"#\">Hủy hóa đơn</a></li>");
-	        out.println("<li><a href=\"#\">Tình trạng hóa đơn</a></li>");
+	        out.println("<li><a href=\"/WebBanHang/bill/view\">Tình trạng hóa đơn</a></li>");
 	        out.println("</ul>");
 	        out.println("<li data-toggle=\"collapse\" data-target=\"#customer\" class=\"collapsed\"><a href=\"#\"><i class=\"fa fa-user-o\" aria-hidden=\"true\"></i> Khách hàng <span class=\"arrow\"></span></a></li>  ");
 	        out.println("<ul class=\"sub-menu collapse\" id=\"customer\">");

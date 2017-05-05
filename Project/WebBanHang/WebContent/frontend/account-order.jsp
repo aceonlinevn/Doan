@@ -62,14 +62,14 @@
 								ProductObject po = pc.getProductObject(Integer.parseInt(pritem[1]));
 						%>
 						<tr>
-							<td><a href="<%=request.getContextPath()+"/frontend/detail.jsp?prid="+po.getProduct_id()%>" target="_blank" title="<%=po.getProduct_name() %>"><%=po.getProduct_name() %></a></td>
+							<td><a href="<%=request.getContextPath()+"/frontend/page.jsp?paction=detail?prid="+po.getProduct_id()%>" target="_blank" title="<%=po.getProduct_name() %>"><%=po.getProduct_name() %></a></td>
 							<td><%=pritem[2] %></td>
 						</tr>
 						<% } %>
 					</table>
 				</td>
 				<td><%=status %></td>
-				<td><a href="/WebBanHang/frontend/info-account.jsp?view=account-order&del=<%=item.getBill_id() %>" onclick="return confirm('Bạn có chắn chắn muốn hủy bỏ đơn hàng này không?')"><i class="fa fa-times" aria-hidden="true"></i> Hủy bỏ</a></td>
+				<td><a href="/WebBanHang/frontend/info-account.jsp?paction=detail&view=account-order&del=<%=item.getBill_id() %>" onclick="return confirm('Bạn có chắn chắn muốn hủy bỏ đơn hàng này không?')"><i class="fa fa-times" aria-hidden="true"></i> Hủy bỏ</a></td>
 			</tr>
 			<% } %>
 		</tbody>

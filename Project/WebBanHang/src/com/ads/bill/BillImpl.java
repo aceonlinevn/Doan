@@ -16,9 +16,8 @@ public class BillImpl extends BasicImpl implements Bill {
 
 	@Override
 	public ResultSet getBill(int id) {
-		String sql = "SELECT bill_id,bill_prefix,bill_customer_id,bill_date_created,bill_payments,bill_advance_payment,"
-				+ "bill_owe,bill_discount,bill_TypeUnitPrice,bill_note,bill_Total_Amount,bill_user_created_id "
-				+ "FROM dacn_webbanhang.bill "
+		String sql = "SELECT * "
+				+ " FROM dacn_webbanhang.bill "
 				+ " WHERE bill_id = ?";
 		return this.get(sql, id);
 	}
@@ -27,9 +26,8 @@ public class BillImpl extends BasicImpl implements Bill {
 
 	@Override
 	public ResultSet getBills(BillObject similar, int at, byte total) {
-		String sql = "SELECT bill_id,bill_prefix,bill_customer_id,bill_date_created,bill_payments,bill_advance_payment,"
-				+ "bill_owe,bill_discount,bill_TypeUnitPrice,bill_note,bill_Total_Amount,bill_user_created_id "
-				+ "FROM dacn_webbanhang.bill "
+		String sql = "SELECT * "
+				+ " FROM dacn_webbanhang.bill "
 				+ "";
 
 		/*
@@ -37,8 +35,10 @@ public class BillImpl extends BasicImpl implements Bill {
 		 * if(!conds.equalsIgnoreCase("")){ sql += "WHERE "+conds+" "; }
 		 */
 
-		sql += " ORDER BY Bill_id ASC ";
-		sql += "LIMIT " + at + "," + total;
+		sql += " ORDER BY Bill_id DESC ";
+		if(at != 0 && total !=0){
+			sql += "LIMIT " + at + "," + total;
+		}
 		return this.gets(sql);
 	}
 
@@ -61,7 +61,7 @@ public class BillImpl extends BasicImpl implements Bill {
 	            preAdd.setString(6,item.getBill_note());
 	            preAdd.setInt(7,item.getBill_total_amount());
 	            preAdd.setInt(8,item.getBill_status());
-	            preAdd.setInt(9,item.getBill_user_accept_id());
+	            preAdd.setString(9,item.getBill_user_accept_id());
 	            preAdd.setString(10,item.getBill_product_detail());
 	            return this.add(preAdd);
 
@@ -78,7 +78,7 @@ public class BillImpl extends BasicImpl implements Bill {
 		 try {
 	            PreparedStatement preEdit = this.con.prepareStatement(sql);
 	            preEdit.setInt(1,item.getBill_status());
-	            preEdit.setInt(2,item.getBill_user_accept_id());
+	            preEdit.setString(2,item.getBill_user_accept_id());
 	            preEdit.setString(3,item.getBill_accept_date());
 	            preEdit.setString(4,item.getBill_finish_date());
 	            preEdit.setInt(5, item.getBill_id());

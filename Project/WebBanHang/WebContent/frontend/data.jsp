@@ -12,10 +12,12 @@
 	if (cp == null) {
 		application.setAttribute("cpool", pc.getConnectionPool());
 	}
+	pc.releaseConnection();
 	CategoryControl cc = new CategoryControl(cp);
 	if (cp == null) {
 		application.setAttribute("cpool", cc.getConnectionPool());
 	}
+	cc.releaseConnection();
 	if (request.getParameter("prid") != null && !request.getParameter("prid").equalsIgnoreCase("")) {
 		session.setAttribute("product_id", request.getParameter("prid"));
 		int id = Integer.parseInt(request.getParameter("prid"));
@@ -52,6 +54,7 @@
 			session.setAttribute("productDetailWarranty", warranty);
 			session.setAttribute("productDetailSummary", summary);
 			session.setAttribute("productDetailContent", specification);
+			session.setAttribute("productDetailQuantity", po.getProduct_quantity());
 		}
 	}
 
@@ -74,6 +77,7 @@
 	String viewProductPromotion = pc.viewProducts(similar4, (byte) 6);
 	String viewProductForCategory = pc.viewProductsForCategory(similar);
 	String viewCategorySearch = cc.slcCategoryForSearch(similarc);
+	String viewCategory = cc.viewCategory(similarc);
 	//Dua cau truc vao phien lam viec
 	session.setAttribute("viewProductForNew", viewProductForNew);
 	session.setAttribute("viewProductForLiquidation", viewProductForLiquidation);
@@ -81,6 +85,7 @@
 	session.setAttribute("viewProductPromotion", viewProductPromotion);
 	session.setAttribute("viewProductForCategory", viewProductForCategory);
 	session.setAttribute("viewCategorySearch", viewCategorySearch);
+	session.setAttribute("viewCategory", viewCategory);
 	//hungcuong - collaboration filter
 	String user_id_now = (String) request.getSession().getAttribute("user_id_now");
 	String viewProductForReferences = (String) request.getSession().getAttribute("viewProductForReferences");

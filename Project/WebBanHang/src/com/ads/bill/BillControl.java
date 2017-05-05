@@ -1,6 +1,7 @@
 package com.ads.bill;
 
 import com.*;
+import com.gui.product.ProductLibrary;
 import com.object.*;
 import java.util.*;
 
@@ -22,6 +23,17 @@ public class BillControl {
 	public void releaseConnection() {
 		this.um.releaseConnection();
 	}
+	public boolean addBill(BillObject item){
+        return this.um.addBill(item);
+    }
+
+    public boolean editBill(BillObject item){
+        return this.um.editBill(item);
+    }
+
+    public boolean delBill(BillObject item){
+        return this.um.delBill(item);
+    }
 	// ************************************************/
 
 	public BillObject getBillObject(int id) {
@@ -29,10 +41,11 @@ public class BillControl {
 	}
 
 	// ************************************************/
-	public String viewBills(BillObject similar, int page, byte total, BillObject Bill) {
+	public String viewBills(BillObject similar) {
+		BillLibrary bl = new BillLibrary(this.getConnectionPool());
 		// Lay danh sach doi tuong
-		ArrayList items = this.um.getBillObjects(similar, page, total);
+		ArrayList items = this.um.getBillObjects(similar, 0, (byte) 0);
 
-		return BillLibrary.viewBill(items, Bill);
+		return bl.viewBill(items);
 	}
 }

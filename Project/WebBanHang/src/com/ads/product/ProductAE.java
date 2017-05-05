@@ -203,25 +203,6 @@ public class ProductAE extends HttpServlet {
     	out.println("<td><textarea rows=6 cols=80 id=\"txtProductSummary\" name=\"txtProductSummary\">"+product_summary+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
-    	out.println("<td class=\"lc\">Tình trạng</td>");
-    	out.println("<td>");
-    	out.println("<select name=\"slcProductStatus\">");
-    	if(product_status){
-	    	out.println("<option value=\"0\" selected>Còn hàng</option>");
-	    	out.println("<option value=\"1\">Hết hàng</option>");
-    	}else if(!product_status){
-    		out.println("<option value=\"0\">Còn hàng</option>");
-	    	out.println("<option value=\"1\" selected>Hết hàng</option>");
-    	}
-    	else{
-    		out.println("<option value=\"0\" selected>Còn hàng</option>");
-	    	out.println("<option value=\"1\">Hết hàng</option>");
-    	}
-    	out.println("<option value=\"2\">-------</option>");
-    	out.println("</select>");
-    	out.println("</td>");
-    	out.println("</tr>");
-    	out.println("<tr>");
     	out.println("<td class=\"lc\">Thuộc loại sản phẩm</td>");
     	out.println("<td>");
     	ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
@@ -371,7 +352,6 @@ public class ProductAE extends HttpServlet {
 		String productname = request.getParameter("txtProductName");
 		String productsummary = request.getParameter("txtProductSummary");
 		String productimage = request.getParameter("txtProductImage");
-		boolean productstatus = request.getParameter("slcProductStatus").equalsIgnoreCase("0") ? false : true;
 		int productcategory = Integer.parseInt(request.getParameter("slcCategory"));
 		int productquantity = Integer.parseInt(request.getParameter("txtProductQuantity"));
 		int productoriginprice = Integer.parseInt(request.getParameter("txtProductOriginPrice"));
@@ -389,7 +369,6 @@ public class ProductAE extends HttpServlet {
 		po.setProduct_name(productname);
 		po.setProduct_summary(productsummary);
 		po.setProduct_image(productimage);
-		po.setProduct_status(productstatus);
 		po.setProduct_category_id(productcategory);
 		po.setProduct_quantity(productquantity);
 		po.setProduct_origin_price(productoriginprice);

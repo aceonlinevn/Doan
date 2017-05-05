@@ -43,10 +43,11 @@ public class CategoryModel {
 					item.setCategory_created_date(rs.getString("category_created_date"));
 					item.setCategory_author_created_id(rs.getInt("category_author_created_id"));
 					item.setCategory_last_modified(rs.getString("category_last_modified"));
-					item.setCategory_mamager_id(rs.getInt("category_mamager_id"));
+					item.setCategory_mamager_id(rs.getInt("category_manager_id"));
 					item.setCategory_is_enable(rs.getBoolean("category_is_enable"));
 					item.setCategory_is_deleted(rs.getBoolean("category_isdelete"));
 					item.setCategory_images(rs.getString("category_image"));
+					item.setCategory_icon(rs.getString("category_icon"));
 				}
 			} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -80,6 +81,7 @@ public class CategoryModel {
 					item.setCategory_is_deleted(rs.getBoolean("category_isdelete"));
 					item.setCategory_images(rs.getString("category_image"));
 					item.setCategory_group_name(rs.getString("category_group_name"));
+					item.setCategory_icon(rs.getString("category_icon"));
                     //Them doi tuong vao danh sach
                     items.add(item);
                 }

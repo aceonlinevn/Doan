@@ -24,6 +24,10 @@ public class ProductControl {
 	public void releaseConnection() {
 		this.pm.releaseConnection();
 	}
+	
+	public boolean editProduct(ProductObject item){
+        return this.pm.editProduct(item);
+    }
 	// ************************************************/
 
 	public ProductObject getProductObject(int id) {
@@ -43,7 +47,11 @@ public class ProductControl {
 		ArrayList items = this.pm.getCategoryObjects(similar, 0, (byte) 0);
 		return pl.viewProductForCategory(items);
 	}
-
+	public String viewProductsForCategory(CategoryObject cate,ProductObject similar) {
+		ProductLibrary pl = new ProductLibrary(this.getConnectionPool());
+		ArrayList items = this.pm.getCategoryObjects(similar, 1, (byte) 18);
+		return pl.viewProductForCategory(cate,items);
+	}
 	// ************************************************/
 	// hungcuong - hien thi san pham tu arraylist
 	public String viewProducts2(ArrayList<ProductObject> items) {

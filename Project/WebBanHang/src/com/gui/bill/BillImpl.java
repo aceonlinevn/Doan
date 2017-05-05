@@ -61,7 +61,7 @@ public class BillImpl extends BasicImpl implements Bill {
 	            preAdd.setString(6,item.getBill_note());
 	            preAdd.setInt(7,item.getBill_total_amount());
 	            preAdd.setInt(8,item.getBill_status());
-	            preAdd.setInt(9,item.getBill_user_accept_id());
+	            preAdd.setString(9,item.getBill_user_accept_id());
 	            preAdd.setString(10,item.getBill_product_detail());
 	            return this.add(preAdd);
 
@@ -79,7 +79,7 @@ public class BillImpl extends BasicImpl implements Bill {
 		 try {
 	            PreparedStatement preEdit = this.con.prepareStatement(sql);
 	            preEdit.setInt(1,item.getBill_status());
-	            preEdit.setInt(2,item.getBill_user_accept_id());
+	            preEdit.setString(2,item.getBill_user_accept_id());
 	            preEdit.setString(3,item.getBill_accept_date());
 	            preEdit.setString(4,item.getBill_finish_date());
 	            preEdit.setBoolean(5,item.isBill_iscancel());

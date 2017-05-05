@@ -25,7 +25,9 @@ public class ProductModel {
 	public void releaseConnection() {
 		this.p.releaseConnection();
 	}    
-	   
+	public boolean editProduct(ProductObject item){
+        return this.p.editProduct(item);
+    }
 	public ProductObject getProductObject(int id) {
 		ProductObject item = null;
 

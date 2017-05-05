@@ -32,4 +32,15 @@ public class CategoryLibrary {
 			tmp += "</select>";
 			return tmp;
 		}
+		
+		//get danh muc san pham
+				public static String viewCategory(ArrayList<CategoryObject> items){
+					String tmp = "<div class=\"sidebar-title\">Danh mục sản phẩm</div>";
+					tmp += "<ul>";
+					for(CategoryObject item : items){
+						tmp += "<li><h3><a href=\"/WebBanHang/frontend/page.jsp?paction=category&cid="+item.getCategory_id()+"\" title=\""+item.getCategory_name()+"\">"+item.getCategory_icon()+"&nbsp&nbsp"+item.getCategory_name()+"</a></h3></li>";
+					}
+					tmp += "</ul>";
+					return tmp;
+				}
 }

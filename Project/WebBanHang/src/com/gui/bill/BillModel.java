@@ -63,7 +63,7 @@ public class BillModel {
 					item.setBill_note(rs.getString("bill_note"));
 					item.setBill_total_amount(rs.getInt("bill_Total_Amount"));
 					item.setBill_status(rs.getInt("bill_status"));
-					item.setBill_user_accept_id(rs.getInt("bill_user_accept_id"));
+					item.setBill_user_accept_id(rs.getString("bill_user_accept_id"));
 					item.setBill_product_detail(rs.getString("bill_product_detail"));
 					item.setBill_accept_date(rs.getString("bill_accept_date"));
 					item.setBill_finish_date(rs.getString("bill_finish_date"));
@@ -97,7 +97,7 @@ public class BillModel {
 					item.setBill_note(rs.getString("bill_note"));
 					item.setBill_total_amount(rs.getInt("bill_Total_Amount"));
 					item.setBill_status(rs.getInt("bill_status"));
-					item.setBill_user_accept_id(rs.getInt("bill_user_accept_id"));
+					item.setBill_user_accept_id(rs.getString("bill_user_accept_id"));
 					item.setBill_product_detail(rs.getString("bill_product_detail"));
 					item.setBill_accept_date(rs.getString("bill_accept_date"));
 					item.setBill_finish_date(rs.getString("bill_finish_date"));
@@ -135,7 +135,7 @@ public class BillModel {
 					item.setBill_note(rs.getString("bill_note"));
 					item.setBill_total_amount(rs.getInt("bill_Total_Amount"));
 					item.setBill_status(rs.getInt("bill_status"));
-					item.setBill_user_accept_id(rs.getInt("bill_user_accept_id"));
+					item.setBill_user_accept_id(rs.getString("bill_user_accept_id"));
 					item.setBill_product_detail(rs.getString("bill_product_detail"));
 					item.setBill_accept_date(rs.getString("bill_accept_date"));
 					item.setBill_finish_date(rs.getString("bill_finish_date"));

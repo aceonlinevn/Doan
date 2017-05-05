@@ -167,31 +167,39 @@ function emptyShoppingCart(e) {
 }
 
 function addToShoppingCart(e, t, n, r) {
-	if (hura_read_cookie("shopping_cart_store") == null) {
-		hura_create_cookie("shopping_cart_store", ",", 1)
-	}
-	var i = hura_read_cookie("shopping_cart_store");
-	if (i.search("," + e + "-" + t + "-") == -1) {
-		var s = i + "," + e + "-" + t + "-" + n + "-" + r;
-		hura_create_cookie("shopping_cart_store", s, 1);
-		window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
-	} else {
-	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!")
+	if(n>0){
+		if (hura_read_cookie("shopping_cart_store") == null) {
+			hura_create_cookie("shopping_cart_store", ",", 1)
+		}
+		var i = hura_read_cookie("shopping_cart_store");
+		if (i.search("," + e + "-" + t + "-") == -1) {
+			var s = i + "," + e + "-" + t + "-" + n + "-" + r;
+			hura_create_cookie("shopping_cart_store", s, 1);
+			window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
+		} else {
+		    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!")
+		}
+	}else{
+		alert("Sản phẩm bạn chọn hiện đang hết hàng! Vui lòng liên hệ chúng tôi để đặt trước.")
 	}
 }
 
 function addToShoppingCartStop(e, t, n, r, i) {
-	if (hura_read_cookie("shopping_cart_store") == null) {
-		hura_create_cookie("shopping_cart_store", ",", 1)
-	}
-	var s = hura_read_cookie("shopping_cart_store");
-	if (s.search("," + e + "-" + t + "-") == -1) {
-		var o = s + "," + e + "-" + t + "-" + n + "-" + r;
-		hura_create_cookie("shopping_cart_store", o, 1);
-		countShoppingCart("shopping_cart_store");
-		alert("Thêm sản phẩm vào giỏ hàng thành công!")
-	} else {
-	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!");
+	if(n>0){
+		if (hura_read_cookie("shopping_cart_store") == null) {
+			hura_create_cookie("shopping_cart_store", ",", 1)
+		}
+		var s = hura_read_cookie("shopping_cart_store");
+		if (s.search("," + e + "-" + t + "-") == -1) {
+			var o = s + "," + e + "-" + t + "-" + n + "-" + r;
+			hura_create_cookie("shopping_cart_store", o, 1);
+			countShoppingCart("shopping_cart_store");
+			alert("Thêm sản phẩm vào giỏ hàng thành công!")
+		} else {
+		    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!");
+		}
+	}else{
+		alert("Sản phẩm bạn chọn hiện đang hết hàng! Vui lòng liên hệ chúng tôi để đặt trước.")
 	}
 }
 

@@ -26,12 +26,15 @@ public class ProductLibrary {
 	public static String viewProduct(ArrayList<ProductObject> items){
 		String tmp = "<div class=\"products\">";
 		String warranty = "";
+		int prQuantity = 0;
 		for(ProductObject item : items){
 			String status = "",summary = "",promotion = "";
-			if(item.isProduct_status()){
+			if(item.getProduct_quantity()>0){
 				status = "Còn hàng";
+				prQuantity = 1;
 			}else{
 				status = "Hết hàng";
+				prQuantity = 0;
 			}
 			if(item.getProduct_warranty_time() < 5){
 				warranty = item.getProduct_warranty_time() + " năm";
@@ -57,7 +60,7 @@ public class ProductLibrary {
 			tmp += "<div class=\"product-name\"><h2><a href=\"WebBanHang/frontend/detail.jsp?id="+item.getProduct_id()+"\" title=\""+item.getProduct_name()+"\">"+item.getProduct_name()+"</a></h2></div>";
 			tmp += "<div class=\"product-add-cart\">";
 			tmp += "<span class=\"product-stocking\"><i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i> "+ status +"</span>";
-			tmp += "<a href=\"javascript:addToShoppingCartStop('pro','"+item.getProduct_id()+"',1,'"+item.getProduct_origin_price()+"')\" title=\"Mua ngay\"><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Mua ngay</a>";
+			tmp += "<a href=\"javascript:addToShoppingCartStop('pro','"+item.getProduct_id()+"',"+prQuantity+",'"+item.getProduct_origin_price()+"')\" title=\"Mua ngay\"><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i> Mua ngay</a>";
 			tmp += "</div>";
 			tmp += "<div class=\"clr\"></div>";
 			tmp += "<div class=\"product-hover\">";
@@ -85,15 +88,30 @@ public class ProductLibrary {
 		String tmp = "";
 		for(CategoryObject cate : cates){
 			ArrayList items = this.pm.getProductForCategory(cate.getCategory_id(), 1, (byte) 5);
-			tmp += "<div class=\"section\">";
-			tmp += "<div class=\"section-title\"><h3>"+cate.getCategory_name()+"</h3></div>";
-			tmp += viewProduct(items);
-			tmp+= "<div class=\"view-more\">";
-			tmp += "<a href=\"/WebBanHang/frontend/page.jsp?paction=category&cid="+cate.getCategory_id()+"\"><span class=\"view-more-img\" style=\" background-image: url("+cate.getCategory_images()+")\"></span></a>";
-			tmp += "</div>";
-			tmp += "</div><!-- end-section-->";
-			tmp += "<div class=\"clr\"></div>";
+			if(items.size() > 0){
+				tmp += "<div class=\"section\">";
+				tmp += "<div class=\"section-title\"><h3>"+cate.getCategory_name()+"</h3></div>";
+				tmp += viewProduct(items);
+				tmp+= "<div class=\"view-more\">";
+				tmp += "<a href=\"/WebBanHang/frontend/page.jsp?paction=category&cid="+cate.getCategory_id()+"\"><span class=\"view-more-img\" style=\" background-image: url("+cate.getCategory_images()+")\"></span></a>";
+				tmp += "</div>";
+				tmp += "</div><!-- end-section-->";
+				tmp += "<div class=\"clr\"></div>";
+			}
 		}
+		return tmp;
+	}
+	public String viewProductForCategory(CategoryObject cate,ArrayList<ProductObject> pro){
+		String tmp = "";		
+			ArrayList items = this.pm.getProductForCategory(cate.getCategory_id(), 1, (byte) 5);
+			if(items.size() > 0){
+				tmp += "<div class=\"section\">";
+				tmp += "<div class=\"section-title\"><h3>"+cate.getCategory_name()+"</h3></div>";
+				tmp += viewProduct(items);
+				tmp += "</div><!-- end-section-->";
+				tmp += "<div class=\"clr\"></div>";
+			}
+		
 		return tmp;
 	}
 }

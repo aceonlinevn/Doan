@@ -28,6 +28,13 @@ public class CategoryControl {
 		return this.cg.getCategoryObject(id);
 	}
 
+	public String viewCategory(CategoryObject similar) {
+		// Lay danh sach doi tuong
+		ArrayList items = this.cg.getCategoryObjects(similar, 0,(byte) 0);
+
+		return CategoryLibrary.viewCategory(items);
+	}
+	
 	// ************************************************/
 	
 	public String slcCategory(CategoryObject similar) {

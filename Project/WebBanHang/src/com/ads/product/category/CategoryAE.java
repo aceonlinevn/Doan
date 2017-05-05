@@ -58,21 +58,23 @@ public class CategoryAE extends HttpServlet {
         boolean Category_enable = true;
         String Category_note = "";
         int Category_Group_id = -1;
+        String Category_icon= "";
         String lblSave = "Thêm mới";
         String readonly = "";
         boolean isExisting = false;
         if(id >0){
             ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");            
-            CategoryControl cgc = new CategoryControl(cp);
+            CategoryControl cc = new CategoryControl(cp);
             if (cp != null) {
-                getServletContext().setAttribute("cpool", cgc.getConnectionPool());
+                getServletContext().setAttribute("cpool", cc.getConnectionPool());
             } 
-            CategoryObject eCategory = cgc.getCategoryObject(id);
+            CategoryObject eCategory = cc.getCategoryObject(id);
 
             
             if(eCategory !=null){
             	Category_name = eCategory.getCategory_name();
             	Category_enable = eCategory.isCategory_is_enable();
+            	Category_icon = eCategory.getCategory_icon();
             	Category_note = eCategory.getCategory_note();
             	Category_Group_id = eCategory.getCategory_group_id();
             	
@@ -82,7 +84,7 @@ public class CategoryAE extends HttpServlet {
             }
 
             //Tra lai ket noi
-            cgc.releaseConnection();
+            cc.releaseConnection();
         }
         //Tim tham chieu header
         RequestDispatcher h = request.getRequestDispatcher("/header");
@@ -97,6 +99,10 @@ public class CategoryAE extends HttpServlet {
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên loại sản phẩm</td>");
     	out.println("<td><input type=\"text\" name=\"txtCategoryName\" value=\""+Category_name+"\" required size=35/></td>");
+    	out.println("</tr>");
+    	out.println("<tr>");
+    	out.println("<td class=\"lc\">Icon hiển thị</td>");
+    	out.println("<td><textarea rows=2 cols=90 id=\"txtCategoryIcon\" name=\"txtCategoryIcon\">"+Category_icon+"</textarea></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ẩn/Hiện</td>");
@@ -171,13 +177,14 @@ public class CategoryAE extends HttpServlet {
 		boolean categoryenable  = request.getParameter("slcCategoryEnable").equalsIgnoreCase("0") ? false : true;
 		String categorynote  = request.getParameter("txtCategoryNote");
 		int categorygroupid = Integer.parseInt(request.getParameter("slcCategoryGroup"));
+		String category_icon = request.getParameter("txtCategoryIcon");
 		
 		CategoryObject co = new CategoryObject();
 		co.setCategory_name(Categoryname);
 		co.setCategory_is_enable(categoryenable);
 		co.setCategory_note(categorynote);
 		co.setCategory_group_id(categorygroupid);
-		
+		co.setCategory_icon(category_icon);
 		//Tim bo quan ly
         ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("cpool");
         CategoryControl cc = new CategoryControl(cp);

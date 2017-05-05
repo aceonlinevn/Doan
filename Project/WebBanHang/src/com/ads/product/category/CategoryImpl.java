@@ -21,9 +21,9 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 		sql += "category_name,category_group_id,";
 		sql += "category_note,category_created_date,";
 		sql += "category_author_created_id,category_last_modified,";
-		sql += "category_manager_id,category_is_enable,category_image";
+		sql += "category_manager_id,category_is_enable,category_image,category_icon";
 		sql += ")";
-		sql += "VALUES(?,?,?,'"+getDateToday()+"',?,'"+getDateToday()+"',?,1,?)";
+		sql += "VALUES(?,?,?,'"+getDateToday()+"',?,'"+getDateToday()+"',?,1,?,?)";
 		try{
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
 			preAdd.setString(1, item.getCategory_name());
@@ -32,6 +32,7 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 			preAdd.setInt(4, item.getCategory_author_created_id());
 			preAdd.setInt(5, item.getCategory_mamager_id());
 			preAdd.setString(6, item.getCategory_images());
+			preAdd.setString(7, item.getCategory_icon());
 			
 			return this.add(preAdd);
 		}
@@ -53,7 +54,7 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 		sql += "category_name = ?,category_group_id = ?,category_note = ?,";
 		sql += "category_created_date = '"+getDateToday()+"',";
 		sql += "category_author_created_id = ?,category_last_modified = '"+getDateToday()+"',";
-		sql += "category_manager_id = ?,category_is_enable = ?,category_image = ?";
+		sql += "category_manager_id = ?,category_is_enable = ?,category_image = ?,category_icon = ?";
 		sql += " WHERE category_id = ?";
 		
 		try {
@@ -65,7 +66,8 @@ public class CategoryImpl extends CategoryGroupImpl implements Category {
 			preEdit.setInt(5, item.getCategory_mamager_id());
 			preEdit.setBoolean(6, item.isCategory_is_enable());
 			preEdit.setString(7, item.getCategory_images());
-			preEdit.setInt(8, item.getCategory_id());
+			preEdit.setString(8, item.getCategory_icon());
+			preEdit.setInt(9, item.getCategory_id());
 			
 			return this.edit(preEdit);
 		} catch (SQLException e) {
