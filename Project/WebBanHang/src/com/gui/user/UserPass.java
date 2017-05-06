@@ -68,7 +68,7 @@ public class UserPass extends HttpServlet {
 					uo.setUser_lastlogined(1);
 					boolean rs = uc.editUser(uo);
 					if(rs){
-						//SMSsender.SmsSender(userLogined.getUser_phonenum(), "Ban vua thuc hien thay doi mat khau tai HC. Mat khau moi la: "+txtUserPassNew);
+						SMSsender.SmsSender(userLogined.getUser_phonenum(), "Ban vua thuc hien thay doi mat khau tai HC. Mat khau moi la: "+txtUserPassNew);
 						out.println(Utilities.getMessageRedict("Thay đổi mật khẩu thành công", "/WebBanHang/frontend/page.jsp?paction=info-account"));
 					}else{
 						out.println(Utilities.getMessageRedict("Thay đổi mật khẩu thất bại", "/WebBanHang/frontend/page.jsp?paction=info-account"));
