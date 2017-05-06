@@ -56,7 +56,7 @@
 			//product detail
 			session.setAttribute("productDetailImg", po.getProduct_image());
 			session.setAttribute("productDetailName", po.getProduct_name());
-			session.setAttribute("productDetailPrefix", po.getCategory_group_prefix());
+			session.setAttribute("productDetailPrefix", po.getProduct_prefix());
 			session.setAttribute("productDetailPrice", po.getProduct_origin_price());
 			session.setAttribute("productDetailWarranty", warranty);
 			session.setAttribute("productDetailSummary", summary);
