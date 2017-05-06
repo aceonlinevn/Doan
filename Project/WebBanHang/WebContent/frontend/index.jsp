@@ -2,21 +2,19 @@
 	pageEncoding="utf-8"%>
 <%@page import="com.library.Utilities"%>
 <%@page import="com.object.UserObject"%>
+<%
+	UserObject userLogined = (UserObject) session.getAttribute("userLogined");
+if (userLogined != null && userLogined.getUser_permission_id()!=0) {
+	if(userLogined.getUser_lastlogined() <2){
+		out.print(Utilities.getMessageRedict("Chào mừng bạn đến với HungCuongComputer. Đây là lần đăng nhập đầu tiên của bạn. Vui lòng đổi lại mật khẩu!", "/WebBanHang/frontend/page.jsp?paction=info-account&view=account-change-pass"));
+	}
+}
+%>
 <jsp:include page="header.jsp" flush="true"></jsp:include>
 <div class="content">
 <div class="wrapper">
 	<div class="sub-content">
 		<div class="sidebar">
-			<%
-				String viewCategory = (String) session.getAttribute("viewCategory");
-				if(viewCategory != null){
-					out.print(viewCategory);
-				}
-				UserObject userLogined = (UserObject) session.getAttribute("userLogined");
-				if(userLogined.getUser_lastlogined()==0){
-					out.print(Utilities.getMessageRedict("Chào mừng bạn lần đầu tiên đến với website. Mời bạn bấm vào đây để đổi lại mật khẩu.", "/WebBanHang/frontend/page.jsp?paction=info-account&view=account-change-pass"));
-				}
-			%>
 		</div>
 		<!-- end sidebar-->
 		<div class="aside">

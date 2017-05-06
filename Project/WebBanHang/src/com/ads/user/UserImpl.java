@@ -115,7 +115,7 @@ public class UserImpl extends BasicImpl implements User {
 				+ "(`user_id`, `user_prefix`, `user_name`, `user_last_messaged`, `user_phonenumber`,"
 				+ " `user_username`, `user_password`, `user_address`, `user_email`, `user_birthdate`, "
 				+ "`user_Lastlogined`, `user_isLogined`, `user_gender`, `user_note`, `user_permission_id`,user_is_encryption)";
-		sql += " VALUES (?,?, ?, ?, ?, ?, md5(?), ?, ?, ?, 0, ?, ?, ?, ?,1)";
+		sql += " VALUES (?,?, ?, ?, ?, ?, md5(?), ?, ?, ?, 1, ?, ?, ?, ?,1)";
 		try {
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
 			preAdd.setString(1, nextID);
