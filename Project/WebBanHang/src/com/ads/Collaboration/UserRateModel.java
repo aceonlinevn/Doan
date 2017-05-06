@@ -215,14 +215,14 @@ public class UserRateModel {
 			//System.out.println("sim user 1: " + sim.getUser_id_1() + " user 2 " + sim.getUser_id_2());
 			ArrayList<UserRateObject> listUser2Rate = getProductRating3(sim.getUser_id_1(), sim.getUser_id_2());
 			for(UserRateObject user2Rate:listUser2Rate){
-				System.out.println("product orgigin: " + user2Rate.getProduct_id());
+				//System.out.println("product orgigin: " + user2Rate.getProduct_id());
 				userRateAVG2 = getUserRateAVG(user2Rate.getUser_id());
 				if(sim.getSimPerson()==0){
 					user_KNN = UserRateAVG1.getUser_rate_avg() ;
 				}else{
 					user_KNN = UserRateAVG1.getUser_rate_avg() + sim.getSimPerson()*(user2Rate.getUser_rate_point()-userRateAVG2.getUser_rate_avg())/Math.abs(sim.getSimPerson());
 				}
-				System.out.println("KNN: " + user_KNN + "product: " + user2Rate.getProduct_id());
+				//System.out.println("KNN: " + user_KNN + "product: " + user2Rate.getProduct_id());
 				if(user_KNN>3){
 					productSuggest.add(new ProductSuggestObject(user2Rate.getProduct_id(), (float)user_KNN));
 				}
@@ -272,6 +272,49 @@ public class UserRateModel {
 		return items;
 	}
 	
+	public ArrayList<ProductObject> getProductRattingSample(){
+		//Danh sach doi tuong
+        ArrayList<ProductObject> items = new ArrayList<ProductObject>();//Mac dinh 10 ptu thieu thi cho them thua bo ra
+        ProductObject item = null;
+
+        ResultSet rs = this.p.getProductRatingSample();
+        if(rs != null){
+            try {
+                while (rs.next()) {
+                	item = new ProductObject();
+					item.setProduct_id(rs.getInt("product_id"));
+					item.setProduct_prefix(rs.getString("product_prefix"));
+					item.setProduct_name(rs.getString("product_name"));
+					item.setProduct_status(rs.getBoolean("product_status"));
+					item.setProduct_category_id(rs.getInt("product_category_id"));
+					item.setProduct_quantity(rs.getInt("product_quantity"));
+					item.setProduct_origin_price(rs.getInt("product_origin_price"));
+					item.setProduct_price2(rs.getDouble("product_price2"));
+					item.setProduct_price3(rs.getDouble("product_price3"));
+					item.setProduct_price_discount(rs.getInt("product_price_discount"));
+					item.setProduct_imported_date(rs.getString("product_imported_date"));
+					item.setProduct_last_modified(rs.getString("product_last_modified"));
+					item.setProduct_specification(rs.getString("product_specification"));
+					item.setProduct_note(rs.getString("product_note"));
+					item.setProduct_warranty_time(rs.getInt("product_warranty_time"));
+					item.setProduct_provider_id(rs.getInt("product_provider_id"));
+					item.setProduct_image(rs.getString("product_image"));
+					item.setProduct_visited(rs.getInt("product_visited"));
+					item.setProduct_summary(rs.getString("product_summary"));
+					item.setProduct_promotion(rs.getString("product_promotion"));
+					item.setProduct_isnew(rs.getBoolean("product_isnew"));
+					item.setProduct_isliquidation(rs.getBoolean("product_isliquidation"));
+					item.setProduct_isselling(rs.getBoolean("product_isselling"));
+                    //Them doi tuong vao danh sach
+                    items.add(item);
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return items;
+	}
+	
 	
 	public static void main(String args[]){
 		ConnectionPool cp = new ConnectionPoolImpl();
@@ -285,9 +328,9 @@ public class UserRateModel {
 //		list.add(p4);
 //		System.out.println(um.simPerson(list, (7/3), 3));
 		
-		ArrayList<UserRateObject> items = um.getProductRating(1);
-		for(UserRateObject item:items){
-			System.out.println(item.getUser_id() + " " +  item.getUser_rate_point() + "  " + item.getUser_rate_comment() );
+		ArrayList<ProductObject> items = um.getProductRattingSample();
+		for(ProductObject item:items){
+			System.out.println(item.getProduct_id());
 		}
 //		System.out.println();
 		

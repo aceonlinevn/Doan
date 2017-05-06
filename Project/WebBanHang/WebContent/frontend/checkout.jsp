@@ -60,7 +60,7 @@
 					required="required" <%=readonly %> value="<%=cusEmail %>" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="txtCustomerPhoneNumber">Địa thoại</label> <input
+				<label for="txtCustomerPhoneNumber">Điện thoại</label> <input
 					type="text" id="txtCustomerPhoneNumber"
 					name="txtCustomerPhoneNumber" value="<%=cusPhonenum %>" required="required"
 					class="form-control">

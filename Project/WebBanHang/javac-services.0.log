@@ -209,3 +209,4 @@ org.javacs.NoJavaConfigException: Can't find configuration file for /Volumes/Dat
 	at org.javacs.Main.run(Main.java:150)
 	at org.javacs.Main.main(Main.java:69)
 
+INFO	?	main	2017-05-06T06:57:19.055Z	org.javacs.Main#run	Connection closed

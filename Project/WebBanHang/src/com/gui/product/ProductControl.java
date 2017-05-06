@@ -111,6 +111,12 @@ public class ProductControl {
 		return ur.getProductRating(product_id);
 	}
 	
+	public ArrayList<ProductObject> getProductRattingSample(){
+		ConnectionPool cp = getConnectionPool();
+		UserRateModel ur = new UserRateModel(cp);
+		return ur.getProductRattingSample();
+	}
+	
 	public String getUserComment(ArrayList<UserRateObject> items){
 		return ProductLibrary.viewUserComment(items);
 	}

@@ -26,5 +26,5 @@ public interface UserRate extends ShareControl {
 	
 	public ResultSet getProductRatingAVG(int product_id);
 	
-	
+	public ResultSet getProductRatingSample();
 }

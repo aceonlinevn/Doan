@@ -171,5 +171,11 @@ public class UserRateImpl extends BasicImpl implements UserRate {
 		String sql = "SELECT AVG(user_rate_point) FROM dacn_webbanhang.user_rate WHERE product_id =" + product_id;
 		return this.gets(sql);
 	}
+
+	@Override
+	public ResultSet getProductRatingSample() {
+		String sql = "SELECT * FROM product WHERE product_id IN(SELECT product_id FROM user_rate group by product_id ORDER BY user_rate_point desc) LIMIT 0,6";
+		return this.gets(sql);
+	}
 	
 }

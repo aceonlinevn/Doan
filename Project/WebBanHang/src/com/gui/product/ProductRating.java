@@ -1,6 +1,8 @@
 package com.gui.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +49,8 @@ public class ProductRating extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("UTF-8");
         response.setContentType(CONTENT_TYPE);
 		String user_id_now = "";
 		// TODO Auto-generated method stub
@@ -104,6 +108,9 @@ public class ProductRating extends HttpServlet {
 		 
 		// tra lai ket noi cho he thong
 		ur.releaseConnection();
+		out.println(Utilities.getMessageRedict(
+				"Cảm ơn bản đã đánh giá sản phẩm ",
+				request.getContextPath() + "/"));
 		response.sendRedirect(request.getContextPath() + "/frontend/page.jsp?paction=detail&prid="+product_id);
 
 	}
