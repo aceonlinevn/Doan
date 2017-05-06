@@ -12,5 +12,6 @@ public interface Bill extends ShareControl {
     public boolean delBill(BillObject item);
 
     public ResultSet getBill(int id);
+    public ResultSet getBillst(BillObject similar);
     public ResultSet getBills(BillObject similar, int at,byte total);
 }

@@ -63,7 +63,7 @@ public class UserModel {
 					item.setUser_address(rs.getString("user_address"));
 					item.setUser_email(rs.getString("user_email"));
 					item.setUser_birthdate(rs.getString("user_birthdate"));
-					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
+					item.setUser_lastlogined(rs.getInt("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_password(rs.getString("user_password"));
@@ -96,7 +96,7 @@ public class UserModel {
 					item.setUser_address(rs.getString("user_address"));
 					item.setUser_email(rs.getString("user_email"));
 					item.setUser_birthdate(rs.getString("user_birthdate"));
-					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
+					item.setUser_lastlogined(rs.getInt("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_password(rs.getString("user_password"));
@@ -136,7 +136,7 @@ public class UserModel {
 					item.setUser_address(rs.getString("user_address"));
 					item.setUser_email(rs.getString("user_email"));
 					item.setUser_birthdate(rs.getString("user_birthdate"));
-					item.setUser_lastlogined(rs.getString("user_Lastlogined"));
+					item.setUser_lastlogined(rs.getInt("user_Lastlogined"));
 					item.setUser_isloggined(rs.getBoolean("user_isLogined"));
 					item.setUser_gender(rs.getBoolean("user_gender"));
 					item.setUser_password(rs.getString("user_password"));

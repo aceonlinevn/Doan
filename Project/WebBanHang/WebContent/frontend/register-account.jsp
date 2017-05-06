@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 <form name="registryForm" id="registryForm" method="POST" action="/WebBanHang/UserRegister" onsubmit="">
 	<div class="col-sm-12">
+		<div class="title-custom">Đăng ký tài khoản</div>
 		<div class="col-sm-4">
-
-			<div class="title-custom">Đăng ký tài khoản</div>
 			<div class="form-group">
 				<label for="txtCustomerName">Họ tên </label> <input type="text"
 					id="txtCustomerName" name="txtCustomerName" required="required"
@@ -43,8 +42,17 @@
 				<textarea id="txtCustomerNote" name="txtCustomerNote"
 					class="form-control"></textarea>
 			</div>
+			<div class="form-group">
+				<label for="txtCustomerNote">Mã captcha</label>
+				<div id="captchaImg"><img src="/WebBanHang/captcha-image.jpg"></div>
+			</div>
+			<div class="form-group">
+				<label for="txtReCaptcha">Xác nhận mã captcha</label>
+				<input type="text" id="txtReCaptcha" name="txtReCaptcha"
+					class="form-control" required="required"></input>
+			</div>
 			<button type="submit" class="btn btn-danger">Đăng ký</button>
-
+			<a class="btn btn-primary" data-toggle="modal" data-target="#mdLogin">Đăng Nhập</a>
 		</div>
 	</div>
 </form>

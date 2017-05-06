@@ -111,4 +111,27 @@ public class BillModel {
         }
         return items;
     }
+	public ArrayList<BillObject> getBillObjectst(BillObject similar){
+        //Danh sach doi tuong
+        ArrayList<BillObject> items = new ArrayList<BillObject>();//Mac dinh 10 ptu thieu thi cho them thua bo ra
+        BillObject item = null;
+
+        //Lay ban ghi nguoi su dung theo danh sach
+        ResultSet rs = this.u.getBillst(similar);
+        if(rs != null){
+            try {
+                while (rs.next()) {
+                	item = new BillObject();
+                	item.setBill_id(rs.getInt("bill_id"));
+					item.setBill_total_amount(rs.getInt("bill_Total_Amount"));
+					item.setBill_finish_date(rs.getString("bill_finish_date"));
+                    //Them doi tuong vao danh sach
+                    items.add(item);
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return items;
+    }
 }

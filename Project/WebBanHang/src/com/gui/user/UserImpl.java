@@ -115,7 +115,7 @@ public class UserImpl extends BasicImpl implements User {
 				+ "(`user_id`, `user_prefix`, `user_name`, `user_last_messaged`, `user_phonenumber`,"
 				+ " `user_username`, `user_password`, `user_address`, `user_email`, `user_birthdate`, "
 				+ "`user_Lastlogined`, `user_isLogined`, `user_gender`, `user_note`, `user_permission_id`,user_is_encryption)";
-		sql += " VALUES (?,?, ?, ?, ?, ?, md5(?), ?, ?, ?, ?, ?, ?, ?, ?,1)";
+		sql += " VALUES (?,?, ?, ?, ?, ?, md5(?), ?, ?, ?, 0, ?, ?, ?, ?,1)";
 		try {
 			PreparedStatement preAdd = this.con.prepareStatement(sql);
 			preAdd.setString(1, nextID);
@@ -128,11 +128,10 @@ public class UserImpl extends BasicImpl implements User {
 			preAdd.setString(8, item.getUser_address());
 			preAdd.setString(9, item.getUser_email());
 			preAdd.setString(10, item.getUser_birthdate());
-			preAdd.setString(11, item.getUser_lastlogined());
-			preAdd.setBoolean(12, item.isUser_isloggined());
-			preAdd.setBoolean(13, item.isUser_gender());
-			preAdd.setString(14, item.getUser_note());
-			preAdd.setInt(15, item.getUser_permission_id());
+			preAdd.setBoolean(11, item.isUser_isloggined());
+			preAdd.setBoolean(12, item.isUser_gender());
+			preAdd.setString(13, item.getUser_note());
+			preAdd.setInt(14, item.getUser_permission_id());
 			return this.add(preAdd);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -208,7 +207,7 @@ public class UserImpl extends BasicImpl implements User {
 				preEdit.setString(7, item.getUser_address());
 				preEdit.setString(8, item.getUser_email());
 				preEdit.setString(9, item.getUser_birthdate());
-				preEdit.setString(10, item.getUser_lastlogined());
+				preEdit.setInt(10, item.getUser_lastlogined());
 				preEdit.setBoolean(11, item.isUser_isloggined());
 				preEdit.setBoolean(12, item.isUser_gender());
 				preEdit.setString(13, item.getUser_note());
@@ -218,7 +217,7 @@ public class UserImpl extends BasicImpl implements User {
 				preEdit.setString(6, item.getUser_address());
 				preEdit.setString(7, item.getUser_email());
 				preEdit.setString(8, item.getUser_birthdate());
-				preEdit.setString(9, item.getUser_lastlogined());
+				preEdit.setInt(9, item.getUser_lastlogined());
 				preEdit.setBoolean(10, item.isUser_isloggined());
 				preEdit.setBoolean(11, item.isUser_gender());
 				preEdit.setString(12, item.getUser_note());

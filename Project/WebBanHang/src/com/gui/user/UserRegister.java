@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ConnectionPool;
 import com.library.Utilities;
 import com.object.UserObject;
+import com.smssend.SMSsender;
 
 /**
  * Servlet implementation class UserRegister
@@ -60,6 +61,7 @@ public class UserRegister extends HttpServlet {
 		String user_note = request.getParameter("txtCustomerNote");
 		String user_gender = request.getParameter("rdoGender");
 		String user_birthdate = request.getParameter("txtCustomerBirthdate");
+		String catchacode = request.getParameter("txtReCaptcha");
 		
 		//out.print(user_name + " - " +  user_email + " - " + user_phonenum + " - "  + user_address + " - " + user_note + " - " + user_gender + " - " + user_birthdate);
 		UserControl uc = new UserControl(cp);
@@ -68,57 +70,61 @@ public class UserRegister extends HttpServlet {
 			application.setAttribute("cpool", uc.getConnectionPool());
 		}
 		UserObject userLogined = (UserObject) request.getSession().getAttribute("userLogined");
-		if (userLogined != null && userLogined.getUser_permission_id() != 0) {
-			uo = userLogined;
-			uo.setUser_name(user_name);
-			uo.setUser_phonenum(user_phonenum);
-			uo.setUser_address(user_address);
-			uo.setUser_password("");
-			uo.setUser_note(user_note);
-			if(user_gender == "2"){
-				uo.setUser_gender(true);
-			}else{
-				uo.setUser_gender(false);
-			}
-			uo.setUser_birthdate(user_birthdate);
-			uc.editUser(uo);
-
-		} else {
-			String user_pass = Utilities.randomString(8);
-			String user_prefix = "C";
-			int user_permiss = 4;
-			uo.setUser_name(user_name);
-			uo.setUser_phonenum(user_phonenum);
-			uo.setUser_address(user_address);
-			uo.setUser_note(user_note);
-			uo.setUser_email(user_email);
-			uo.setUser_prefix(user_prefix);
-			uo.setUser_password(user_pass);
-			uo.setUser_permission_id(user_permiss);
-			if(user_gender == "2"){
-				uo.setUser_gender(true);
-			}else{
-				uo.setUser_gender(false);
-			}
-			uo.setUser_birthdate(user_birthdate);
-			boolean result;
-			result = uc.addUser(uo);
-			if (!result) {
-				out.println(Utilities.getMessageRedict(
-						"Email đã đăng ký vui lòng đăng nhập để mua hàng. Hoặc sử dụng chức năng quên mật khẩu nếu mất mật khẩu.",
-						request.getContextPath() + "/frontend/page.jsp?paction=register-account"));
+		String catcha = (String) request.getSession().getAttribute("dns_security_code");
+		if(catchacode.equalsIgnoreCase(catcha)){
+			if (userLogined != null && userLogined.getUser_permission_id() != 0) {
+				uo = userLogined;
+				uo.setUser_name(user_name);
+				uo.setUser_phonenum(user_phonenum);
+				uo.setUser_address(user_address);
+				uo.setUser_password("");
+				uo.setUser_note(user_note);
+				if(user_gender == "2"){
+					uo.setUser_gender(true);
+				}else{
+					uo.setUser_gender(false);
+				}
+				uo.setUser_birthdate(user_birthdate);
+				uc.editUser(uo);
+	
 			} else {
-				UserObject user = uc.getUserObject(user_email, user_pass);
-				request.getSession().setAttribute("userLogined", user);
-				out.println(Utilities.getMessageRedict(
-						"Cảm ơn bản đã đăng ký là thành viên của HCComputer.com",
-						request.getContextPath() + "/"));
-				// SMSsender.SmsSender(user_phonenum, "Cam on ban da dang ky la
-				// thanh vien HC voi email: "+user_email+", mat khau:
-				// "+user_pass+".Vui long dang nhap va doi mat khau !");
+				String user_pass = Utilities.randomString(8);
+				String user_prefix = "C";
+				int user_permiss = 4;
+				uo.setUser_name(user_name);
+				uo.setUser_phonenum(user_phonenum);
+				uo.setUser_address(user_address);
+				uo.setUser_note(user_note);
+				uo.setUser_email(user_email);
+				uo.setUser_prefix(user_prefix);
+				uo.setUser_password(user_pass);
+				uo.setUser_permission_id(user_permiss);
+				if(user_gender == "2"){
+					uo.setUser_gender(true);
+				}else{
+					uo.setUser_gender(false);
+				}
+				uo.setUser_birthdate(user_birthdate);
+				boolean result;
+				result = uc.addUser(uo);
+				if (!result) {
+					out.println(Utilities.getMessageRedict(
+							"Email đã đăng ký vui lòng đăng nhập để mua hàng. Hoặc sử dụng chức năng quên mật khẩu nếu mất mật khẩu.",
+							request.getContextPath() + "/frontend/page.jsp?paction=register-account"));
+				} else {
+					UserObject user = uc.getUserObject(user_email, user_pass);
+					request.getSession().setAttribute("userLogined", user);
+					out.println(Utilities.getMessageRedict(
+							"Cảm ơn bản đã đăng ký là thành viên của HCComputer.com. Mật khẩu đã được gửi đến số điện thoại đăng ký của bạn!",
+							request.getContextPath() + "/"));
+					if(user_phonenum != null){
+					 SMSsender.SmsSender(user_phonenum, "Cam on ban da dang ky la thanh vien HC voi email: "+user_email+", mat khau:"+user_pass+".Vui long dang nhap va doi mat khau !");
+					}
+				}
+				uc.releaseConnection();
 			}
-			uc.releaseConnection();
+		}else{
+			out.print(Utilities.getMessageRedict("Sai mã captcha. Vui lòng nhập lại!", request.getContextPath()+"/frontend/page.jsp?paction=register-account"));
 		}
-
 	}
 }

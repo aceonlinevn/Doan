@@ -50,7 +50,7 @@ public class BillImpl extends BasicImpl implements Bill {
 		String sql = "INSERT INTO `dacn_webbanhang`.`bill` (`bill_customer_id`, `bill_date_created`, `bill_payments`,"
 				+ " `bill_advance_payment`, `bill_tranfer`, `bill_discount`, `bill_note`, `bill_Total_Amount`, "
 				+ "`bill_status`,bill_user_accept_id,bill_product_detail,bill_accept_date,bill_finish_date)"
-				+ " VALUES (?,'"+Utilities.getDateNow()+"',?,?,?,?,?,?,?,?,?,NULL,NULL);";
+				+ " VALUES (?,'"+Utilities.getStringDateNowForSQL()+"',?,?,?,?,?,?,?,?,?,NULL,NULL);";
 		 try {
 	            PreparedStatement preAdd = this.con.prepareStatement(sql);
 	            preAdd.setString(1,item.getBill_customer_id());
@@ -105,6 +105,13 @@ public class BillImpl extends BasicImpl implements Bill {
 	            ex.printStackTrace();
 	        }
 	        return false;
+	}
+
+
+	@Override
+	public ResultSet getBillst(BillObject similar) {
+		String sql = "select MONTH(CONVERT(bill_finish_date,DATE)) AS bill_finish_date ,count(bill_id) AS bill_id,sum(bill_Total_Amount) AS bill_Total_Amount from bill group by MONTH(bill_finish_date) ORDER BY MONTH(CONVERT(bill_finish_date,DATE))";
+		return this.gets(sql);
 	}
 	
 

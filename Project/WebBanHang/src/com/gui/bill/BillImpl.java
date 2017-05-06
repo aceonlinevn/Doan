@@ -50,7 +50,7 @@ public class BillImpl extends BasicImpl implements Bill {
 		String sql = "INSERT INTO bill(bill_customer_id, bill_date_created, bill_payments,"
 				+ " bill_advance_payment, bill_tranfer, bill_discount, bill_note, bill_Total_Amount, "
 				+ "bill_status,bill_user_accept_id,bill_product_detail,bill_accept_date,bill_finish_date,bill_iscancel)"
-				+ " VALUES (?,'"+Utilities.getStringDateNow()+"',?,?,?,?,?,?,?,?,?,NULL,NULL,0);";
+				+ " VALUES (?,'"+Utilities.getStringDateNowForSQL()+"',?,?,?,?,?,?,?,?,?,NULL,NULL,0);";
 		 try {
 	            PreparedStatement preAdd = this.con.prepareStatement(sql);
 	            preAdd.setString(1,item.getBill_customer_id());

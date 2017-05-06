@@ -44,6 +44,7 @@ public class Header extends HttpServlet {
         	out.println("<link rel=\"stylesheet\" href=\"/WebBanHang/adv/adcss/bootstrap.min.css\">");
         	out.println("<link rel=\"stylesheet\" href=\"/WebBanHang/frontend/css/font-awesome.min.css\">");
         	out.println("<script src=\"/WebBanHang/adv/adjs/jquery-3.1.1.min.js\"></script>");
+			out.println("<script src=\"/WebBanHang/adv/adjs/Chart.min.js\"></script>");
 	        out.println("<script src=\"/WebBanHang/adv/adjs/common.js\"></script>");
 			out.println("<script src=\"/WebBanHang/adv/adjs/bootstrap.min.js\"></script>");
 			out.println("<script src=\"/WebBanHang/adv/adjs/popup.js\"></script>");

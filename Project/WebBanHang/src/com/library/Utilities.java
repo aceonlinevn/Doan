@@ -32,12 +32,21 @@ public class Utilities {
 		return ft.format(date);
 
 	}
+	public static String fomatDateForsql(Date date) {
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
 
+		return ft.format(date);
+
+	}
 	public static String fomatDateTime(Date date) {
 		SimpleDateFormat ft = new SimpleDateFormat("E dd.MM.yyyy 'at' hh:mm:ss a zzz");
 		return ft.format(date);
 	}
+	public static String getStringDateNowForSQL() {
+		Date date = new Date();
 
+		return Utilities.fomatDateForsql(date);
+	}
 	public static String encode(String strUNI) {
 		return CharacterReference.encode(strUNI);
 	}

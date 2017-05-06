@@ -14,6 +14,7 @@ import javax.servlet.http.*;
 import com.*;
 import com.ads.autodata.GetData;
 import com.ads.autodata.GetDataImpl;
+import com.ads.images.ImagesControl;
 import com.ads.product.category.*;
 import com.ads.provider.*;
 import com.library.*;
@@ -64,7 +65,8 @@ public class ProductAE extends HttpServlet {
         }
         if(request.getParameter("url") != null){
         	url = request.getParameter("url");
-        }  
+        } 
+        String product_image_url = "";
         String product_name = "",product_summary = "";
         boolean product_status = true,product_isnew = true,product_liqi = true,product_selling = true;
         int product_category_id = 1,product_price_discount=1,product_warranty_time=1,product_provider_id=1,product_visited=1,product_quantity =1;
@@ -169,6 +171,12 @@ public class ProductAE extends HttpServlet {
         		checked3 = "";
         	}
         	loadImg = "<img src=\""+product_image+"\" id=\"thumbimage\" alt=\""+product_name+"\" width=\"150px\" height=\"120px\" />"; 
+        }else
+        if( request.getParameter("product_image_url") != null)
+        {
+        	product_image_url = request.getParameter("product_image_url");
+        	loadImg = "<img src=\""+product_image_url+"\" id=\"thumbimage\" alt=\""+product_image_url+"\" width=\"150px\" height=\"120px\" />";
+        	product_image = product_image_url;
         }
         //Tim tham chieu header
         RequestDispatcher h = request.getRequestDispatcher("/header");
@@ -184,11 +192,11 @@ public class ProductAE extends HttpServlet {
         out.println("</tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Mã sản phẩm</td>");
-    	out.println("<td><input type=\"text\" maxlength=\"20\" id=\"txtProductPrefix\" value=\""+product_prefix+"\" name=\"txtProductPrefix\" size=35 /></td>");
+    	out.println("<td><input type=\"text\" required=\"required\" maxlength=\"20\" id=\"txtProductPrefix\" value=\""+product_prefix+"\" name=\"txtProductPrefix\" size=35 /></td>");
     	out.println("</tr>");
         out.println("<tr>");
     	out.println("<td class=\"lc\">Tên sản phẩm</td>");
-    	out.println("<td><input type=\"text\" id=\"txtProductName\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
+    	out.println("<td><input type=\"text\" required=\"required\" id=\"txtProductName\" value=\""+product_name+"\" name=\"txtProductName\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Ảnh đại diện</td>");
@@ -219,19 +227,19 @@ public class ProductAE extends HttpServlet {
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Số lượng</td>");
-    	out.println("<td><input type=\"number\" min=\"0\" name=\"txtProductQuantity\" value=\""+product_quantity+"\" size=20 /></td>");
+    	out.println("<td><input type=\"number\" required=\"required\" min=\"0\" name=\"txtProductQuantity\" value=\""+product_quantity+"\" size=20 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Giá gốc</td>");
-    	out.println("<td><input type=\"number\" id=\"txtProductOriginPrice\" name=\"txtProductOriginPrice\" value=\""+product_origin_price+"\" size=35 /></td>");
+    	out.println("<td><input type=\"number\" required=\"required\"  id=\"txtProductOriginPrice\" min=\"0\" name=\"txtProductOriginPrice\" value=\""+product_origin_price+"\" size=35 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Khuyến mại</td>");
-    	out.println("<td><input type=\"number\" name=\"txtProductDiscount\" value=\""+product_price_discount+"\" size=10 /><span style=\"color:red\"><b>%</b></span></td>");
+    	out.println("<td><input type=\"number\" required=\"required\" min=\"0\" name=\"txtProductDiscount\" value=\""+product_price_discount+"\" size=10 /><span style=\"color:red\"><b>%</b></span></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Bảo hành</td>");
-    	out.println("<td><input type=\"number\" id=\"txtProductWarrantyTime\" name=\"txtProductWarrantyTime\" value=\""+product_warranty_time+"\" size=20 /></td>");
+    	out.println("<td><input type=\"number\" min=\"0\" id=\"txtProductWarrantyTime\" required=\"required\" name=\"txtProductWarrantyTime\" value=\""+product_warranty_time+"\" size=20 /></td>");
     	out.println("</tr>");
     	out.println("<tr>");
     	out.println("<td class=\"lc\">Nhà cung cấp</td>");
@@ -290,10 +298,36 @@ public class ProductAE extends HttpServlet {
             out.print("<input type=\"hidden\" name=\"idForPost\" value=\""+id+"\" />");
         }
         out.println("</form>");
-        out.println("</div>");	
-        out.println("<script language=\"javascript\">");
-        out.println("popImageManager();");
-        out.println("</script>");
+        out.println("</div>");
+        ImagesControl ic = new ImagesControl(cp);
+ 		if (cp == null) {
+ 			getServletContext().setAttribute("cpool", ic.getConnectionPool());
+ 		}
+ 		ImagesObject similar12 = new ImagesObject();
+ 		String viewImages = ic.viewImages(similar12,0,(byte) 0);
+ 		ic.releaseConnection();
+        out.println("<div class=\"modal fade\" id=\"popImageManager\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">");
+        out.println("<div class=\"modal-dialog modal-lg\">");
+        out.println("<div class=\"modal-content\">");
+        out.println("<form action=\"/WebBanHang/pop/uploadfile/view\" method=\"post\" enctype=\"multipart/form-data\">");
+        out.println("<div class=\"modal-header\">");
+        out.println("<button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>");
+        out.println("<h4 class=\"modal-title\" id=\"myModalLabel\">Quản Lý Ảnh</h4>");
+        out.println("</div>");
+        out.println("<div class=\"modal-body\">");
+        out.println(viewImages);
+        out.println("<div class=\"form-group\">");
+        out.println("<input class=\"form-control\" type=\"file\" name=\"uploadFile\"/>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("<div class=\"modal-footer\">");
+        out.println("<button class=\"btn btn-primary\" type=\"submit\" />Upload</button>");
+        out.println("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</form>");
+        out.println("</div>");
+        out.println("</div>");
         out.println("<div class=\"modal fade\" id=\"addFastProduct\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">");
         out.println("<div class=\"modal-dialog modal-lg\">");
         out.println("<div class=\"modal-content\">");

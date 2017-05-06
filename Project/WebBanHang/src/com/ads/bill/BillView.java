@@ -118,10 +118,10 @@ public class BillView extends HttpServlet {
 	     String bill_finish_date = "";
 	     String bill_product_detail = request.getParameter("hdbBillProductDetail");
 	     if(status >= 1){
-	    	 bill_accept_date = Utilities.getStringDateNow();
+	    	 bill_accept_date = Utilities.getStringDateNowForSQL();
 	     }
 	     if(status == 3){
-	    	 bill_finish_date = Utilities.getStringDateNow();
+	    	 bill_finish_date = Utilities.getStringDateNowForSQL();
 	     }
 	     UserObject userLogined = (UserObject) request.getSession().getAttribute("userLogined");
 	     

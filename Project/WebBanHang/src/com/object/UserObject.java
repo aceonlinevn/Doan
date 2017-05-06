@@ -3,10 +3,10 @@ package com.object;
 public class UserObject {
 	private String userId;
 	private String user_prefix, user_name, user_last_messased, user_phonenum;
-	private String user_username, user_password, user_address, user_email, user_birthdate, user_lastlogined;
+	private String user_username, user_password, user_address, user_email, user_birthdate;
 	private boolean user_isloggined, user_gender,user_is_encryption;
 	private String user_note;
-	private int user_permission_id;
+	private int user_permission_id, user_lastlogined;
 
 	public String getUserId() {
 		return userId;
@@ -88,11 +88,11 @@ public class UserObject {
 		this.user_birthdate = user_birthdate;
 	}
 
-	public String getUser_lastlogined() {
+	public int getUser_lastlogined() {
 		return user_lastlogined;
 	}
 
-	public void setUser_lastlogined(String user_lastlogined) {
+	public void setUser_lastlogined(int user_lastlogined) {
 		this.user_lastlogined = user_lastlogined;
 	}
 
@@ -138,7 +138,7 @@ public class UserObject {
 
 	public UserObject(String userId, String user_prefix, String user_name, String user_last_messased,
 			String user_phonenum, String user_username, String user_password, String user_address, String user_email,
-			String user_birthdate, String user_lastlogined, boolean user_isloggined, boolean user_gender,
+			String user_birthdate, int user_lastlogined, boolean user_isloggined, boolean user_gender,
 			String user_note, int user_permission_id,boolean user_is_encryption) {
 		super();
 		this.userId = userId;
