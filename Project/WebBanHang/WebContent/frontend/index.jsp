@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="com.library.Utilities"%>
+<%@page import="com.object.UserObject"%>
 <jsp:include page="header.jsp" flush="true"></jsp:include>
 <div class="content">
 <div class="wrapper">
@@ -9,6 +11,10 @@
 				String viewCategory = (String) session.getAttribute("viewCategory");
 				if(viewCategory != null){
 					out.print(viewCategory);
+				}
+				UserObject userLogined = (UserObject) session.getAttribute("userLogined");
+				if(userLogined.getUser_lastlogined()==0){
+					out.print(Utilities.getMessageRedict("Chào mừng bạn lần đầu tiên đến với website. Mời bạn bấm vào đây để đổi lại mật khẩu.", "/WebBanHang/frontend/page.jsp?paction=info-account&view=account-change-pass"));
 				}
 			%>
 		</div>

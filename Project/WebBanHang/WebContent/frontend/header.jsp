@@ -87,9 +87,6 @@
 							<%=userLogined.getUser_name()%> </a> <a
 							href="/WebBanHang/user/logout" title="Thoát"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
 						<%
-							if(userLogined.getUser_lastlogined()==0){
-								out.print(Utilities.getMessageRedict("Chào mừng bạn lần đầu tiên đến với website. Mời bạn bấm vào đây để đổi lại mật khẩu.", "/WebBanHang/frontend/page.jsp?paction=info-account&view=account-change-pass"));
-							}
 							} else {
 						%>
 						<a href="javascript:void(0)" title="Đăng nhập" data-toggle="modal" data-target="#mdLogin"><i
