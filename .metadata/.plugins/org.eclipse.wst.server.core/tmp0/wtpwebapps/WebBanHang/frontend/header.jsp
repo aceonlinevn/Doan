@@ -1,3 +1,4 @@
+<%@page import="com.library.Utilities"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="com.object.UserObject"%>
@@ -47,7 +48,9 @@
 		<div class="bt-header">
 			<div class="wrapper">
 				<div class="l-bt-header">
-					<a href="#" title="Hùng cường Computer">logo</a>
+					<a href="<%=request.getContextPath() %>" title="Hùng cường Computer"><img style="height:130px"
+								src="<%=request.getContextPath()%>/frontend/pictures/logo.jpg"
+								alt="" /></a>
 				</div>
 				<!-- end l-bt-header-->
 				<div class="c-bt-header">
@@ -79,7 +82,7 @@
 							UserObject userLogined = (UserObject) session.getAttribute("userLogined");
 							if (userLogined != null && userLogined.getUser_permission_id()!=0) {
 						%>
-						<a href="/WebBanHang/" title="<%=userLogined.getUser_name()%>"><i
+						<a href="/WebBanHang/frontend/page.jsp?paction=info-account" title="<%=userLogined.getUser_name()%>"><i
 							class="fa fa-user" style="font-weight: bold;" aria-hidden="true"></i>
 							<%=userLogined.getUser_name()%> </a> <a
 							href="/WebBanHang/user/logout" title="Thoát"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
@@ -87,7 +90,7 @@
 							} else {
 						%>
 						<a href="javascript:void(0)" title="Đăng nhập" data-toggle="modal" data-target="#mdLogin"><i
-							class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a> <a href="#"
+							class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a> <a href="/WebBanHang/frontend/page.jsp?paction=register-account"
 							title="Đăng ký"><i class="fa fa-user-plus" aria-hidden="true"></i>
 							Đăng ký</a>
 						<%
@@ -97,7 +100,7 @@
 
 					</div>
 					<div class="cart-area">
-						<a href="/WebBanHang/frontend/cart.jsp" title="Giỏ hàng"><i class="fa fa-shopping-cart"
+						<a href="/WebBanHang/frontend/page.jsp?paction=cart" title="Giỏ hàng"><i class="fa fa-shopping-cart"
 							aria-hidden="true"></i> Giỏ hàng</a> <span class="cart-count"><i
 							class="fa fa-comment-o" aria-hidden="true"></i> <span
 							class="count" id="count_shopping_cart_store">0<span></span>

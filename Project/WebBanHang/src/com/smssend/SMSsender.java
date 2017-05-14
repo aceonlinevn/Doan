@@ -94,6 +94,10 @@ public class SMSsender {
 		}
 		return flag;
 	}
+	
+	public static void main(String[] args){
+		SMSsender.SmsSender("0978285870", "test");
+	}
 
 //	public static void main(String[] args) throws InterruptedException {
 //		portList = CommPortIdentifier.getPortIdentifiers();

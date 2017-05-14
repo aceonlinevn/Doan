@@ -140,3 +140,13 @@
   height: 93%;
 }
 }
+.tb1{
+	width: 100%;
+	margin: 0 !important;
+}
+.tb1 td{
+	padding: 5px;
+}
+#popImageManager img{
+	padding: 5px;
+}

@@ -64,4 +64,12 @@
     <servlet-name>UserLogin</servlet-name>
     <url-pattern>/user/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Captcha</servlet-name>
+    <servlet-class>com.library.Captcha</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Captcha</servlet-name>
+    <url-pattern>/captcha-image.jpg</url-pattern>
+  </servlet-mapping>
 </web-app>

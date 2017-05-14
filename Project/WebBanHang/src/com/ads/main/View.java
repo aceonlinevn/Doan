@@ -76,8 +76,10 @@ public class View extends HttpServlet {
         BillObject similar = new BillObject();
         ArrayList<BillObject> items = bm.getBillObjectst(similar);
         for(BillObject item : items){
+        	if(item.getBill_finish_date() != null){
         	label += "'Tháng "+item.getBill_finish_date()+"',";
         	data += item.getBill_total_amount()+",";
+        	}
         }
 		out.println("<script>");
 		out.println("var stData = {");

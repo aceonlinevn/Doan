@@ -167,31 +167,39 @@ function emptyShoppingCart(e) {
 }
 
 function addToShoppingCart(e, t, n, r) {
-	if (hura_read_cookie("shopping_cart_store") == null) {
-		hura_create_cookie("shopping_cart_store", ",", 1)
-	}
-	var i = hura_read_cookie("shopping_cart_store");
-	if (i.search("," + e + "-" + t + "-") == -1) {
-		var s = i + "," + e + "-" + t + "-" + n + "-" + r;
-		hura_create_cookie("shopping_cart_store", s, 1);
-		window.location = "/WebBanHang/fronted/cart.jsp"
-	} else {
-	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!")
+	if(n>0){
+		if (hura_read_cookie("shopping_cart_store") == null) {
+			hura_create_cookie("shopping_cart_store", ",", 1)
+		}
+		var i = hura_read_cookie("shopping_cart_store");
+		if (i.search("," + e + "-" + t + "-") == -1) {
+			var s = i + "," + e + "-" + t + "-" + n + "-" + r;
+			hura_create_cookie("shopping_cart_store", s, 1);
+			window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
+		} else {
+		    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!")
+		}
+	}else{
+		alert("Sản phẩm bạn chọn hiện đang hết hàng! Vui lòng liên hệ chúng tôi để đặt trước.")
 	}
 }
 
 function addToShoppingCartStop(e, t, n, r, i) {
-	if (hura_read_cookie("shopping_cart_store") == null) {
-		hura_create_cookie("shopping_cart_store", ",", 1)
-	}
-	var s = hura_read_cookie("shopping_cart_store");
-	if (s.search("," + e + "-" + t + "-") == -1) {
-		var o = s + "," + e + "-" + t + "-" + n + "-" + r;
-		hura_create_cookie("shopping_cart_store", o, 1);
-		countShoppingCart("shopping_cart_store");
-		alert("Thêm sản phẩm vào giỏ hàng thành công!")
-	} else {
-	    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!");
+	if(n>0){
+		if (hura_read_cookie("shopping_cart_store") == null) {
+			hura_create_cookie("shopping_cart_store", ",", 1)
+		}
+		var s = hura_read_cookie("shopping_cart_store");
+		if (s.search("," + e + "-" + t + "-") == -1) {
+			var o = s + "," + e + "-" + t + "-" + n + "-" + r;
+			hura_create_cookie("shopping_cart_store", o, 1);
+			countShoppingCart("shopping_cart_store");
+			alert("Thêm sản phẩm vào giỏ hàng thành công!")
+		} else {
+		    alert("Sản phẩm bạn chọn đã có trong giỏ hàng!");
+		}
+	}else{
+		alert("Sản phẩm bạn chọn hiện đang hết hàng! Vui lòng liên hệ chúng tôi để đặt trước.")
 	}
 }
 
@@ -205,7 +213,7 @@ function isItemInCart(e, t) {
 function deleteShoppingCartItem(e, t, n, r) {
 	if (confirm("Bạn muốn xóa bỏ sản phẩm này khỏi giỏ hàng ? ")) {
 		removeShoppingCartItem(e, t, n, r);
-		window.location = "/WebBanHang/frontend/cart.jsp"
+		window.location = "/WebBanHang/frontend/page.jsp?paction=cart"
 	}
 }
 
@@ -676,16 +684,5 @@ var Base64 = {
 };
 if (window.top !== window.self) window.top.location.replace(window.self.location.href);
 $(document).ready(function() {
-    countShoppingCart("shopping_cart_store")    
-      $("#frmCheckout").submit(function() {
-		    $.ajax({
-		     type: "POST",
-		      url: "/WebBanHang/product/cart",
-		      data: $(this).serialize(),
-		      success: function() {
-		    	  emptyShoppingCart('shopping_cart_store');
-		       }
-		    })
-		
-		  })
+    countShoppingCart("shopping_cart_store")
 })

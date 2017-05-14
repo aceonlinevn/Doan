@@ -15,6 +15,12 @@ if (userLogined != null && userLogined.getUser_permission_id()!=0) {
 <div class="wrapper">
 	<div class="sub-content">
 		<div class="sidebar">
+			<%
+				String viewCategory = (String) session.getAttribute("viewCategory");
+				if(viewCategory != null){
+					out.print(viewCategory);
+				}
+			%>
 		</div>
 		<!-- end sidebar-->
 		<div class="aside">

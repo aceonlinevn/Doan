@@ -38,7 +38,7 @@ function popImageManager() {
 	tmp += '<h4 class="modal-title" id="myModalLabel">Modal title</h4>';
 	tmp += '</div>';
 	tmp += '<div class="modal-body">';
-	tmp += '<form action="" method="post">';
+	tmp += '<form action="/WebBanHang/pop/uploadfile/view" method="post">';
 	tmp += '<a href="javascript: void(0);" ondblclick="load()">click me</a>';
 	tmp += '<input type="file" name="flImageName"/>';
 	tmp += '</form>';

@@ -28,9 +28,11 @@ function saveCategoryGroup(fn){
 	fn.submit();
 }
 //
-function  loadImg(url) {
+function loadImages(url) {
 	document.getElementById("thumbbox").innerHTML = "<img src='"+url+"' id='thumbimage' width='150px' height='120px' /><a class='removeimg' href='javascript: removeImg()' ><span class='glyphicon glyphicon-remove'></span></a></span>";  
-  }
+	document.getElementById("loadimg").value = url;
+	$('#popImageManager').modal('hide');
+}
 function removeImg(){
 	$("#thumbimage").attr('src', '').hide();
     $(".removeimg").hide();
